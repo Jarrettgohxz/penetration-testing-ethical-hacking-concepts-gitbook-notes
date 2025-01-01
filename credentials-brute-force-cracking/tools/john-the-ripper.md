@@ -20,13 +20,13 @@ $ john --format=[format] --wordlist=[wordlist] --rules=[rule]  <text_file_contai
 
 ### Rules
 
-The --rules flag allows specification of rules to be applied to values in a word list, in order to generate possible password variations.
+The `--rules` flag allows specification of rules to be applied to values in a word list, in order to generate possible password variations.
 
 The instructions/format for the rules can be found in the `/etc/john/john.conf` file under a specific header in the format `[List.Rules:rule_format]`. A few examples include `single` or `wordlist`.
 
 #### Single
 
-`[List.Rules:Single]`
+`[List.Rules:Single]` (/etc/john/john.conf)
 
 Uses information from a given set of data consisting of user-specific information such as username, passwords used in other applications, private information such as pet's name, etc. to generate variations of the initial supplied data.
 
@@ -49,9 +49,9 @@ $ john --rule=single --wordlist=user.txt --format=[format] hash.txt
 
 #### Wordlist
 
-`[List.Rules:Wordlist]`
+`[List.Rules:Wordlist]` (/etc/john/john.conf)
 
-A rule (specified in the `/etc/john/john.conf` file) will be applied to each word from the supplied wordlist to generate additional variations. For example, it could append numbers to the value, capitalize them, etc.
+A rule will be applied to each word from the supplied wordlist to generate additional variations. For example, it could append numbers to the value, capitalize them, etc.
 
 ```bash
 $ cat long_wordlist.txt # eg. rockyou.txt
@@ -64,6 +64,10 @@ weakpass2
 
 The `wordlist` ruleset may generate variations of these data such as: `weakpass12`,`12weakpass` etc.
 
+
+
+_**Overview**_
+
 * `--rules=single`: Best used to generate password guesses based on data related to a target user: usernames, passwords, etc. and apply simple transformations.
 * `--rules=wordlist`: Best used to apply transformations to every word in a wordlist to generate variatons.
 
@@ -71,7 +75,7 @@ The `wordlist` ruleset may generate variations of these data such as: `weakpass1
 
 Conversion of data format or password protected media to a format that _**john**_ can crack.
 
-_**Eg**_. password protected PDF file to _**john**_ understandable format:
+_**Eg**_. Conversion of password protected PDF file to _**john**_ understandable format:
 
 * /usr/share/john/pdf2john.pl&#x20;
 * /usr/bin/pdf2john&#x20;
