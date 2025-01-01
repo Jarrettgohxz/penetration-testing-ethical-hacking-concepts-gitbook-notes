@@ -69,12 +69,30 @@ The `wordlist` ruleset may generate variations of these data such as: `weakpass1
 
 ### Additional modules
 
-Conversion of data format or password protected media to a format that john can crack, eg. password protected PDF file to john:
+Conversion of data format or password protected media to a format that _**john**_ can crack.
+
+_**Eg**_. password protected PDF file to _**john**_ understandable format:
 
 * /usr/share/john/pdf2john.pl&#x20;
 * /usr/bin/pdf2john&#x20;
 * /opt/pdf2john.pl
 * ...
+
+Given a `.pdf` file named `private.pdf`&#x20;
+
+```bash
+# Convert the private.pdf file to a john format, and save the output to pdf.hash
+$ /usr/bin/pdf2john private.pdf > pdf.hash
+```
+
+Now,  _**john**_ can be ran on the `pdf.hash` file
+
+```bash
+# Note: the --format flag is not required as john will automatically infer the format
+# The format can still be specified explicitly with the --format flag
+# for some instance when john don't recognise the format accurately
+$ john --rules=[rule] --wordlist=[wordlist] pdf.hash
+```
 
 ### Examples
 
