@@ -13,6 +13,10 @@ $ john  <text_file_containing_hash_to_crack>
 $ john --format=[format] --wordlist=[wordlist] <text_file_containing_hash_to_crack> 
 ```
 
+### Hash formats
+
+{% embed url="https://pentestmonkey.net/cheat-sheet/john-the-ripper-hash-formats" %}
+
 ### Brute-forcing NTLM hash plaintext value (SAM database)
 
 Load the single NTLM hash value or the whole line of entry from the SAM database into a _**.txt**_ file. Eg. retrieved from TryHackMe practice room:
