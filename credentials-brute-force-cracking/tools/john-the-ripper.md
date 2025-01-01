@@ -67,6 +67,15 @@ The `wordlist` ruleset may generate variations of these data such as: `weakpass1
 * `--rules=single`: Best used to generate password guesses based on data related to a target user: usernames, passwords, etc. and apply simple transformations.
 * `--rules=wordlist`: Best used to apply transformations to every word in a wordlist to generate variatons.
 
+### Additional modules
+
+Conversion of data format or password protected media to a format that john can crack, eg. password protected PDF file to john:
+
+* /usr/share/john/pdf2john.pl&#x20;
+* /usr/bin/pdf2john&#x20;
+* /opt/pdf2john.pl
+* ...
+
 ### Examples
 
 #### 1. Brute-forcing NTLM hash (SAM database)
