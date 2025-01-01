@@ -10,14 +10,66 @@
 
 ```bash
 $ john  <text_file_containing_hash_to_crack>
-$ john --format=[format] --wordlist=[wordlist] <text_file_containing_hash_to_crack> 
+$ john --format=[format] --wordlist=[wordlist] <text_file_containing_hash_to_crack>
+$ john --format=[format] --wordlist=[wordlist] --rules=[rule]  <text_file_containing_hash_to_crack>
 ```
 
 ### Hash formats
 
 {% embed url="https://pentestmonkey.net/cheat-sheet/john-the-ripper-hash-formats" %}
 
-### Brute-forcing NTLM hash plaintext value (SAM database)
+### Rules
+
+The --rules flag allows specification of rules to be applied to values in a word list, in order to generate possible password variations.
+
+The instructions/format for the rules can be found in the `/etc/john/john.conf` file under a specific header in the format `[List.Rules:rule_format]`. A few examples include `single` or `wordlist`.
+
+#### Single
+
+`[List.Rules:Single]`
+
+Uses information from a given set of data consisting of user-specific information such as username, passwords used in other applications, private information such as pet's name, etc. to generate variations of the initial supplied data.
+
+_**Eg.**_ Information have been gathered about a target, and the following word list have been generated - consisting of the username/passwords used on other sites (leaked or hacked via means) and pet's name.
+
+```bash
+$ cat user.txt
+thundereagle
+jarrett
+jarrettgoh
+qwerty
+qwerty123
+```
+
+The `single` ruleset may generate variations of these data such as: `thundere@gle`, `j@rrett`, etc.
+
+```bash
+$ john --rule=single --wordlist=user.txt --format=[format] hash.txt
+```
+
+#### Wordlist
+
+`[List.Rules:Wordlist]`
+
+A rule (specified in the `/etc/john/john.conf` file) will be applied to each word from the supplied wordlist to generate additional variations. For example, it could append numbers to the value, capitalize them, etc.
+
+```bash
+$ cat long_wordlist.txt # eg. rockyou.txt
+weakpass1
+weakpass2
+1weakpass
+2weakpass
+...
+```
+
+The `wordlist` ruleset may generate variations of these data such as: `weakpass12`,`12weakpass` etc.
+
+* `--rules=single`: Best used to generate password guesses based on data related to a target user: usernames, passwords, etc. and apply simple transformations.
+* `--rules=wordlist`: Best used to apply transformations to every word in a wordlist to generate variatons.
+
+### Examples
+
+#### 1. Brute-forcing NTLM hash (SAM database)
 
 Load the single NTLM hash value or the whole line of entry from the SAM database into a _**.txt**_ file. Eg. retrieved from TryHackMe practice room:
 
