@@ -127,7 +127,9 @@
 
 ## Post-exploitation/Persistence
 
-* [Gaining shell](post-exploitation-persistence/gaining-shell.md)
+* [Gaining shell](post-exploitation-persistence/gaining-shell/README.md)
+  * [netcat](post-exploitation-persistence/gaining-shell/netcat.md)
+  * [socat](post-exploitation-persistence/gaining-shell/socat.md)
 
 ## Ⓜ️ MITRE ATT\&CK&#x20;
 
