@@ -11,6 +11,7 @@
 * [Internal network](virtualbox-network-setup/internal-network.md)
 * [pfSense](virtualbox-network-setup/pfsense.md)
 * [Overview](virtualbox-network-setup/overview.md)
+* [vboxmanage](virtualbox-network-setup/vboxmanage.md)
 
 ## 🕵️ OSINT
 
