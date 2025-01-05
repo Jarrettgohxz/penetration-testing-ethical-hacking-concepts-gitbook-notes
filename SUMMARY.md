@@ -136,9 +136,11 @@
 
 ## Privilege escalation
 
+* [Repositories](privilege-escalation/repositories.md)
 * [Enumeration](privilege-escalation/enumeration.md)
 * [Vulnerabilities exploit](privilege-escalation/vulnerabilities-exploit/README.md)
   * [Kernel exploit](privilege-escalation/vulnerabilities-exploit/kernel-exploit.md)
+  * [Sudo](privilege-escalation/vulnerabilities-exploit/sudo.md)
 
 ## Ⓜ️ MITRE ATT\&CK&#x20;
 
