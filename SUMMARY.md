@@ -126,13 +126,17 @@
   * [John the ripper](credentials-brute-force-cracking/tools/john-the-ripper.md)
   * [hash-identifier](credentials-brute-force-cracking/tools/hash-identifier.md)
 
-## Post-exploitation/Persistence
+## Post-exploitation
 
-* [Gaining shell](post-exploitation-persistence/gaining-shell/README.md)
-  * [netcat](post-exploitation-persistence/gaining-shell/netcat.md)
-  * [socat](post-exploitation-persistence/gaining-shell/socat.md)
-  * [powershell](post-exploitation-persistence/gaining-shell/powershell.md)
-* [Repository](post-exploitation-persistence/repository.md)
+* [Gaining shell](post-exploitation/gaining-shell/README.md)
+  * [netcat](post-exploitation/gaining-shell/netcat.md)
+  * [socat](post-exploitation/gaining-shell/socat.md)
+  * [powershell](post-exploitation/gaining-shell/powershell.md)
+* [Repository](post-exploitation/repository.md)
+
+## Privilege escalation
+
+* [enumeration](privilege-escalation/enumeration.md)
 
 ## Ⓜ️ MITRE ATT\&CK&#x20;
 
