@@ -29,6 +29,12 @@
 $ find / -perm -u=s -type f 2>/dev/null
 ```
 
+&#x20;  b) Files with 0777 permission (readable, writable and executable by all users)
+
+```bash
+$ find / -type f -perm 0777
+```
+
 ### Automated tools
 
 * LinPeas: [https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/tree/master/linPEAS](https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/tree/master/linPEAS)
