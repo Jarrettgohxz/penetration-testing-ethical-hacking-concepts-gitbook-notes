@@ -131,6 +131,8 @@
 * [Gaining shell](post-exploitation-persistence/gaining-shell/README.md)
   * [netcat](post-exploitation-persistence/gaining-shell/netcat.md)
   * [socat](post-exploitation-persistence/gaining-shell/socat.md)
+  * [powershell](post-exploitation-persistence/gaining-shell/powershell.md)
+* [Repository](post-exploitation-persistence/repository.md)
 
 ## Ⓜ️ MITRE ATT\&CK&#x20;
 
