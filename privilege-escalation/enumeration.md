@@ -1,4 +1,4 @@
-# enumeration
+# Enumeration
 
 ## Basic enumeration commands (Linux)
 
@@ -29,10 +29,20 @@
 $ find / -perm -u=s -type f 2>/dev/null
 ```
 
-&#x20;  b) Files with 0777 permission (readable, writable and executable by all users)
+&#x20;  b) Files with certain permission&#x20;
+
+* `0777`: readable, writable and executable by all users
+* `003`: writable and executable by `others`. Ignoring permissions for `owner` and `group`
 
 ```bash
-$ find / -type f -perm 0777
+$ find / -perm 777 -type f 2>/dev/null
+$ find / -perm 0777 -type f 2>/dev/null
+
+# eg. files with write and execute (wx) permissions for "others"
+$ find / -perm 003 -type f 2>/dev/null
+
+# eg. similar to above, but with folders/dirs instead
+$ find / -perm 003 -type d 2>/dev/null
 ```
 
 ### Automated tools

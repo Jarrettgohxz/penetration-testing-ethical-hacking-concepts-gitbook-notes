@@ -136,7 +136,8 @@
 
 ## Privilege escalation
 
-* [enumeration](privilege-escalation/enumeration.md)
+* [Enumeration](privilege-escalation/enumeration.md)
+* [Vulnerabilities exploit](privilege-escalation/vulnerabilities-exploit.md)
 
 ## Ⓜ️ MITRE ATT\&CK&#x20;
 
