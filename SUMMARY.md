@@ -141,6 +141,7 @@
   * [Repositories](privilege-escalation/linux/repositories.md)
   * [Enumeration](privilege-escalation/linux/enumeration.md)
   * [Vulnerabilities exploit](privilege-escalation/linux/vulnerabilities-exploit/README.md)
+    * [General](privilege-escalation/linux/vulnerabilities-exploit/general.md)
     * [Kernel exploit](privilege-escalation/linux/vulnerabilities-exploit/kernel-exploit.md)
     * [Sudo](privilege-escalation/linux/vulnerabilities-exploit/sudo.md)
     * [Capabilities](privilege-escalation/linux/vulnerabilities-exploit/capabilities.md)
