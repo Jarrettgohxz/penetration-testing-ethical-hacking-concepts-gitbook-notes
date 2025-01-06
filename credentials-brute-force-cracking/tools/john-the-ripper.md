@@ -14,6 +14,11 @@ $ john --format=[format] --wordlist=[wordlist] <text_file_containing_hash_to_cra
 $ john --format=[format] --wordlist=[wordlist] --rules=[rule]  <text_file_containing_hash_to_crack>
 ```
 
+```bash
+# show cracked passwords
+$ john --show <text_file_containing_hash_to_crack>
+```
+
 ### Hash formats
 
 {% embed url="https://pentestmonkey.net/cheat-sheet/john-the-ripper-hash-formats" %}
@@ -73,7 +78,26 @@ _**Overview**_
 
 ### Additional modules
 
-Conversion of data format or password protected media to a format that _**john**_ can crack.
+1. **`unshadow`**
+
+```bash
+$ unshadow 
+Usage: unshadow PASSWORD-FILE SHADOW-FILE
+
+# Assume a root shell on the target machine (with escalated privileges)
+$ echo /etc/passwd > passwd.txt
+$ echo /etc/shadow > shadow.txt
+$ unshadow passwd.txt shadow.txt > password.txt
+
+
+$ john password.txt
+...
+# OR
+$ john --wordlist /usr/share/wordlists/rockyou.txt password.txt
+...
+```
+
+2. **Conversion of data format or password protected media to a format that&#x20;**_**john**_**&#x20;can crack.**
 
 _**Eg**_. Conversion of password protected PDF file to _**john**_ understandable format:
 
