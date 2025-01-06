@@ -132,6 +132,7 @@
   * [netcat](post-exploitation/gaining-shell/netcat.md)
   * [socat](post-exploitation/gaining-shell/socat.md)
   * [powershell](post-exploitation/gaining-shell/powershell.md)
+  * [bash](post-exploitation/gaining-shell/bash.md)
 * [Repository](post-exploitation/repository.md)
 
 ## Privilege escalation
