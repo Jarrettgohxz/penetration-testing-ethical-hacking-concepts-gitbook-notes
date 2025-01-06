@@ -10,8 +10,8 @@
 * [Bridged adapter](virtualbox-network-setup/bridged-adapter.md)
 * [Internal network](virtualbox-network-setup/internal-network.md)
 * [pfSense](virtualbox-network-setup/pfsense.md)
-* [Overview](virtualbox-network-setup/overview.md)
 * [vboxmanage](virtualbox-network-setup/vboxmanage.md)
+* [Overview](virtualbox-network-setup/overview.md)
 
 ## 🕵️ OSINT
 
@@ -144,6 +144,8 @@
     * [Kernel exploit](privilege-escalation/linux/vulnerabilities-exploit/kernel-exploit.md)
     * [Sudo](privilege-escalation/linux/vulnerabilities-exploit/sudo.md)
     * [Capabilities](privilege-escalation/linux/vulnerabilities-exploit/capabilities.md)
+    * [Cronjobs](privilege-escalation/linux/vulnerabilities-exploit/cronjobs.md)
+    * [$PATH](privilege-escalation/linux/vulnerabilities-exploit/usdpath.md)
 
 ## Ⓜ️ MITRE ATT\&CK&#x20;
 
