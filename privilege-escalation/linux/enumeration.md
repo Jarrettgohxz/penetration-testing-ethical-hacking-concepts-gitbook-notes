@@ -34,16 +34,16 @@ $ find / -perm -u=s -type f 2>/dev/null
 * `0777`: readable, writable and executable by all users
 * `003`: writable and executable by `others`. Ignoring permissions for `owner` and `group`
 
-```bash
-$ find / -perm 777 -type f 2>/dev/null
-$ find / -perm 0777 -type f 2>/dev/null
+<pre class="language-bash"><code class="lang-bash"><strong># both the commands below are the same
+</strong><strong>$ find / -perm 777 -type f 2>/dev/null
+</strong>$ find / -perm 0777 -type f 2>/dev/null
 
 # eg. files with write and execute (wx) permissions for "others"
 $ find / -perm 003 -type f 2>/dev/null
 
 # eg. similar to above, but with folders/dirs instead
 $ find / -perm 003 -type d 2>/dev/null
-```
+</code></pre>
 
 ### Automated tools
 
