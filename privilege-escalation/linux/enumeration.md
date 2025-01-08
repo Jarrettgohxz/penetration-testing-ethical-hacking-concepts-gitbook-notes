@@ -33,6 +33,7 @@ $ find / -perm -u=s -type f 2>/dev/null
 
 * `0777`: readable, writable and executable by all users
 * `003`: writable and executable by `others`. Ignoring permissions for `owner` and `group`
+* `/001`: atleast executable permissions for others
 
 <pre class="language-bash"><code class="lang-bash"><strong># both the commands below are the same
 </strong><strong>$ find / -perm 777 -type f 2>/dev/null
@@ -43,7 +44,26 @@ $ find / -perm 003 -type f 2>/dev/null
 
 # eg. similar to above, but with folders/dirs instead
 $ find / -perm 003 -type d 2>/dev/null
+
+# eg. atleast executable by others
+$ find / -perm /001 -type f 2>/dev/null
 </code></pre>
+
+**Find world-writable folders**
+
+```bash
+$ find / -writable -type d 2>/dev/null 
+$ find / -perm -222 -type d 2>/dev/null
+$ find / -perm -o x -type d 2>/dev/null
+```
+
+**Find world-executable folders**
+
+```bash
+$ find / -executable -type d 2>/dev/null 
+$ find / -perm -111 -type d 2>/dev/null
+$ find / -perm -o x -type d 2>/dev/null
+```
 
 ### Automated tools
 

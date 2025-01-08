@@ -144,9 +144,11 @@
     * [General](privilege-escalation/linux/vulnerabilities-exploit/general.md)
     * [Kernel exploit](privilege-escalation/linux/vulnerabilities-exploit/kernel-exploit.md)
     * [Sudo](privilege-escalation/linux/vulnerabilities-exploit/sudo.md)
+    * [SUID](privilege-escalation/linux/vulnerabilities-exploit/suid.md)
     * [Capabilities](privilege-escalation/linux/vulnerabilities-exploit/capabilities.md)
     * [Cronjobs](privilege-escalation/linux/vulnerabilities-exploit/cronjobs.md)
     * [$PATH](privilege-escalation/linux/vulnerabilities-exploit/usdpath.md)
+    * [NFS](privilege-escalation/linux/vulnerabilities-exploit/nfs.md)
 
 ## Ⓜ️ MITRE ATT\&CK&#x20;
 
