@@ -30,7 +30,7 @@ cmd> type %userprofile%\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadline\
 cmd> Get-Content %userprofile%\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadline\ConsoleHost_history.txt
 ```
 
-Note: The `type` command is an alias for the `Get-Content` cmdlet.
+> The `type` command is an alias for the `Get-Content` cmdlet.
 
 _**Purpose of viewing the Powershell history**_:
 
@@ -91,10 +91,12 @@ This command consists of two parts separated by the pipe (`|`) operator:
 
 #### 1. Putty
 
-The following command searches for stored proxy credentials:
+The following command searches for stored proxy credentials under Putty:
 
 ```powershell
 PS> reg query HKEY_CURRENT_USER\Software\SimonTatham\PuTTY\Sessions\ /f "Proxy" /s
 ```
 
 The `reg query` command is used to retrieve or query information from the Windows registry. The `/f` flag is used to filter strings, while the `/s` flag is used to specify the command to search recursively.
+
+> Simon Tatham is the creator of PuTTY (and his name is part of the path), not the username for which we are retrieving the password.
