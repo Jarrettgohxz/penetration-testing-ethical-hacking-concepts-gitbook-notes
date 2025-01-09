@@ -84,3 +84,17 @@ This command consists of two parts separated by the pipe (`|`) operator:
    * View the contents of the `web.config` file
 2. `findstr connectionString`
    * Utilizes the `findstr` command (similar to the `grep` command in Unix based systems) to find filter out the portion of the contents regarding the database connection strings
+
+
+
+### Retrieve credentials from software
+
+#### 1. Putty
+
+The following command searches for stored proxy credentials:
+
+```powershell
+PS> reg query HKEY_CURRENT_USER\Software\SimonTatham\PuTTY\Sessions\ /f "Proxy" /s
+```
+
+The `reg query` command is used to retrieve or query information from the Windows registry. The `/f` flag is used to filter strings, while the `/s` flag is used to specify the command to search recursively.
