@@ -149,6 +149,8 @@
     * [Cronjobs](privilege-escalation/linux/vulnerabilities-exploit/cronjobs.md)
     * [$PATH](privilege-escalation/linux/vulnerabilities-exploit/usdpath.md)
     * [NFS](privilege-escalation/linux/vulnerabilities-exploit/nfs.md)
+* [Windows](privilege-escalation/windows/README.md)
+  * [Password harvesting](privilege-escalation/windows/password-harvesting.md)
 
 ## Ⓜ️ MITRE ATT\&CK&#x20;
 
