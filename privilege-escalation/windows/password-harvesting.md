@@ -65,8 +65,6 @@ We can used the stored credentials to run command as the user:
 PS> runas /savecred /user:rand_username <command_to_run>
 ```
 
-
-
 ### Internet Information Services (IIS)
 
 The internet information services is a default web server on Windows installations. The configuration file is named `web.config`, which can store passwords for authentication for various services. Depending on the installed version of _**IIS**_, the `web.config` file can be found in the following locations:
@@ -74,3 +72,15 @@ The internet information services is a default web server on Windows installatio
 * `C:\inetpub\wwwroot\web.config`
 * `C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\web.config`
 
+The following command allows us to find database connection strings from the `web.config` file:
+
+```powershell
+PS> type C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\web.config | findstr connectionString
+```
+
+This command consists of two parts separated by the pipe (`|`) operator:
+
+1. `type C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\web.config`
+   * View the contents of the `web.config` file
+2. `findstr connectionString`
+   * Utilizes the `findstr` command (similar to the `grep` command in Unix based systems) to find filter out the portion of the contents regarding the database connection strings
