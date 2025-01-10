@@ -154,6 +154,7 @@
   * [Vulnerabilities exploit](privilege-escalation/windows/vulnerabilities-exploit/README.md)
     * [Scheduled tasks](privilege-escalation/windows/vulnerabilities-exploit/scheduled-tasks.md)
     * [AlwaysInstallElevated](privilege-escalation/windows/vulnerabilities-exploit/alwaysinstallelevated.md)
+    * [Service misconfigurations](privilege-escalation/windows/vulnerabilities-exploit/service-misconfigurations.md)
 
 ## Ⓜ️ MITRE ATT\&CK&#x20;
 
