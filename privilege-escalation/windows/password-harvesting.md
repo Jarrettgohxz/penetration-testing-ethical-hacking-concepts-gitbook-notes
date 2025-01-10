@@ -38,7 +38,7 @@ There may be instances where there might be plaintext passwords provided directl
 
 ```powershell
 # Eg. Adding a new user to a resource, while providing plaintext password
-PS> cmdkey /add:<target_resource> /user:<username> /pass:<plaintext_password>
+cmdkey /add:<target_resource> /user:<username> /pass:<plaintext_password>
 ```
 
 ### Saved credentials
@@ -48,7 +48,7 @@ View the stored credentials
 The example below shows that the credentials for a user `rand_username` is stored:
 
 ```powershell
-PS> cmdkey /list
+C:\> cmdkey /list
 
 Currently stored credentials:
   
@@ -62,7 +62,7 @@ Currently stored credentials:
 We can used the stored credentials to run command as the user:
 
 ```powershell
-PS> runas /savecred /user:rand_username <command_to_run>
+C:\> runas /savecred /user:rand_username <command_to_run>
 ```
 
 ### Internet Information Services (IIS)
@@ -75,7 +75,7 @@ The internet information services is a default web server on Windows installatio
 The following command allows us to find database connection strings from the `web.config` file:
 
 ```powershell
-PS> type C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\web.config | findstr connectionString
+C:\> type C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\web.config | findstr connectionString
 ```
 
 This command consists of two parts separated by the pipe (`|`) operator:
@@ -94,7 +94,7 @@ This command consists of two parts separated by the pipe (`|`) operator:
 The following command searches for stored proxy credentials under Putty:
 
 ```powershell
-PS> reg query HKEY_CURRENT_USER\Software\SimonTatham\PuTTY\Sessions\ /f "Proxy" /s
+C:\> reg query HKEY_CURRENT_USER\Software\SimonTatham\PuTTY\Sessions\ /f "Proxy" /s
 ```
 
 The `reg query` command is used to retrieve or query information from the Windows registry. The `/f` flag is used to filter strings, while the `/s` flag is used to specify the command to search recursively.

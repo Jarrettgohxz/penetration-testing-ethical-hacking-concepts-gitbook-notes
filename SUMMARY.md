@@ -151,6 +151,9 @@
     * [NFS](privilege-escalation/linux/vulnerabilities-exploit/nfs.md)
 * [Windows](privilege-escalation/windows/README.md)
   * [Password harvesting](privilege-escalation/windows/password-harvesting.md)
+  * [Vulnerabilities exploit](privilege-escalation/windows/vulnerabilities-exploit/README.md)
+    * [Scheduled tasks](privilege-escalation/windows/vulnerabilities-exploit/scheduled-tasks.md)
+    * [AlwaysInstallElevated](privilege-escalation/windows/vulnerabilities-exploit/alwaysinstallelevated.md)
 
 ## Ⓜ️ MITRE ATT\&CK&#x20;
 
