@@ -150,11 +150,15 @@
     * [$PATH](privilege-escalation/linux/vulnerabilities-exploit/usdpath.md)
     * [NFS](privilege-escalation/linux/vulnerabilities-exploit/nfs.md)
 * [Windows](privilege-escalation/windows/README.md)
+  * [General](privilege-escalation/windows/general.md)
   * [Password harvesting](privilege-escalation/windows/password-harvesting.md)
   * [Vulnerabilities exploit](privilege-escalation/windows/vulnerabilities-exploit/README.md)
     * [Scheduled tasks](privilege-escalation/windows/vulnerabilities-exploit/scheduled-tasks.md)
     * [AlwaysInstallElevated](privilege-escalation/windows/vulnerabilities-exploit/alwaysinstallelevated.md)
-    * [Service misconfigurations](privilege-escalation/windows/vulnerabilities-exploit/service-misconfigurations.md)
+    * [Service misconfigurations](privilege-escalation/windows/vulnerabilities-exploit/service-misconfigurations/README.md)
+      * [Insecure permissions on service executable](privilege-escalation/windows/vulnerabilities-exploit/service-misconfigurations/insecure-permissions-on-service-executable.md)
+      * [Unquoted service path](privilege-escalation/windows/vulnerabilities-exploit/service-misconfigurations/unquoted-service-path.md)
+      * [Insecure service permission](privilege-escalation/windows/vulnerabilities-exploit/service-misconfigurations/insecure-service-permission.md)
 
 ## Ⓜ️ MITRE ATT\&CK&#x20;
 
