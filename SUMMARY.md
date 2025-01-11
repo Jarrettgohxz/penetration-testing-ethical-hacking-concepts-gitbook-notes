@@ -159,6 +159,7 @@
       * [Insecure permissions on service executable](privilege-escalation/windows/vulnerabilities-exploit/service-misconfigurations/insecure-permissions-on-service-executable.md)
       * [Unquoted service path](privilege-escalation/windows/vulnerabilities-exploit/service-misconfigurations/unquoted-service-path.md)
       * [Insecure service permission](privilege-escalation/windows/vulnerabilities-exploit/service-misconfigurations/insecure-service-permission.md)
+    * [Abusing privileges](privilege-escalation/windows/vulnerabilities-exploit/abusing-privileges.md)
 
 ## Ⓜ️ MITRE ATT\&CK&#x20;
 
@@ -172,5 +173,7 @@
   * [Burp Suite (Community)](tools-services/web-hacking/burp-suite-community.md)
 * [Information gathering/reconnaissance](tools-services/information-gathering-reconnaissance.md)
 * [Network hacking](tools-services/network-hacking/README.md)
-  * [nmap](tools-services/network-hacking/nmap.md)
+  * [nmap (general overview)](tools-services/network-hacking/nmap-general-overview.md)
+* [General](tools-services/general/README.md)
+  * [impacket](tools-services/general/impacket.md)
 * [Wordlists](tools-services/wordlists.md)
