@@ -150,7 +150,6 @@
     * [$PATH](privilege-escalation/linux/vulnerabilities-exploit/usdpath.md)
     * [NFS](privilege-escalation/linux/vulnerabilities-exploit/nfs.md)
 * [Windows](privilege-escalation/windows/README.md)
-  * [General](privilege-escalation/windows/general.md)
   * [Password harvesting](privilege-escalation/windows/password-harvesting.md)
   * [Vulnerabilities exploit](privilege-escalation/windows/vulnerabilities-exploit/README.md)
     * [Scheduled tasks](privilege-escalation/windows/vulnerabilities-exploit/scheduled-tasks.md)
