@@ -19,13 +19,8 @@ impacket-atexec          impacket-Get-GPPPassword  impacket-mqtt_check     impac
 
 **impacket-smbserver**
 
-**Eg.** The example code below (second line) starts a simple _SMB_ server with a network share named `public` pointing to the `share` directory.
-
 ```bash
 $ impacket-smbserver -smb2support -username [smb_username] -password [smb_password] [sharename] [dir]
-
-# eg.
-$ impacket-smbserver -smb2support -username jarrett -password mynamejeff public share
 ```
 
 * -`smb2support`: SMB2 support (experimental!)
@@ -33,25 +28,9 @@ $ impacket-smbserver -smb2support -username jarrett -password mynamejeff public 
 
 **impacket-secretsdump**
 
-**Eg.** The example below dumps the hashes from the `sam.hive`and `system.hive`files present on the current folder (specified by the `LOCAL` target option).
-
 ```bash
 # Simple usage
 $ impacket-secretsdump -sam SAM -system SYSTEM target  
-
-# eg.
-$ ls 
-sam.hive system.hive
-
-$ impacket-secretsdump -sam sam.hive -system system.hive LOCAL
-Impacket vxxx - Copyright Fortra, LLC and its affiliated companies 
-
-[*] Target system bootKey: ...
-[*] Dumping local SAM hashes (uid:rid:lmhash:nthash)
-...:::
-Guest:xxx:xxx:xxx::
-Administrator:xx12xx:xx34xx::
-...
 ```
 
 * `-sam`:  **SYSTEM** hive to parse
@@ -60,15 +39,9 @@ Administrator:xx12xx:xx34xx::
 
 **impacket-psexec**
 
-**Eg.** The example below uses the hashes found from the `impacket-secretsdump` command above, to authenticate as the _**administrator**_ user. This provides us with a remote shell as the specified user.
-
 ```bash
 # Simple usage
 $ impacket-psexec -hashes LMHASH:NTHASH target
-
-# eg.
-$ impacket-psexec -hashes xx12xx:xx34xx administrator@10.10.x.x
-...
 ```
 
 _**What is PsExec?**_
