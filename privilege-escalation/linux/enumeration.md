@@ -35,7 +35,16 @@ $ find / -perm -u=s -writable -user $(whoami) -type f 2>/dev/null
 find / -perm -u=s -perm 002 -type f  2>/dev/null
 ```
 
-&#x20;  b) Files with certain permission&#x20;
+&#x20;b) Files with SGID bit:
+
+```bash
+$ find / -perm -g=s-type f 2>/dev/null
+
+# SGID bit and the group is root
+$ find / -perm -g=s -group root -type f 2>/dev/null
+```
+
+&#x20;c) Files with certain permission&#x20;
 
 * `0777`: readable, writable and executable by all users
 * `003`: writable and executable by `others`. Ignoring permissions for `owner` and `group`
