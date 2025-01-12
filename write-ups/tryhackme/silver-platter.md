@@ -179,3 +179,15 @@ SGID
 admin
 ...
 ```
+
+
+
+User _**tim**_ is able to update `$SHELL`
+
+`/snap/core20/1974/usr/lib/openssh/ssh-keysign`
+
+`/snap/core20/2264/usr/lib/openssh/ssh-keysign`
+
+are found to call a file with error: `error while loading shared libraries: libcrypto.so.1.1: cannot open shared object file: No such file or directory`
+
+Adding the file to `/tmp` after appending`/tmp` to  `$SHELL` does not work, and the directory: `/snap/core20/[1974/2264]/usr/lib/openssh/`is not writable too
