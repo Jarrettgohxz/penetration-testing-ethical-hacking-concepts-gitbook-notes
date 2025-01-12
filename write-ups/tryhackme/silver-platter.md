@@ -11,7 +11,13 @@ $ nmap -sS -n -v -Pn [target_ip]
 22 ... 
 ```
 
-The results showed that there were 3 open ports: `22`, `80` and `8080`. I tried enumerating SSH at port 80 first, trying to find a CVE for the version.
+The results showed that there were 3 open ports: `22`, `80` and `8080`.&#x20;
+
+I started off by enumerating SSH at port 22 first, to find the version number and a potential CVE.
+
+```bash
+$ nmap -sV -n -Pn [target_ip]
+```
 
 After realizing that port 22 was least likely to be the vulnerable service (probably a rookie mistake for thinking that it was the vulnerable one in the first place :D), I went on to visit the website at port 80 instead
 

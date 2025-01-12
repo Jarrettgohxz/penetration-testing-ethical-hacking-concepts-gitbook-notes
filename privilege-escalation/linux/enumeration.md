@@ -27,6 +27,9 @@
 
 ```bash
 $ find / -perm -u=s -type f 2>/dev/null
+
+# SUID bit and writable by current user
+$ find / -type f -perm -u=s -writable -user $(whoami) 2>/dev/null
 ```
 
 &#x20;  b) Files with certain permission&#x20;
