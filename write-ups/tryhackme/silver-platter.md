@@ -180,7 +180,7 @@ admin
 ...
 ```
 
-
+1\.
 
 User _**tim**_ is able to update `$SHELL`
 
@@ -194,7 +194,9 @@ Adding the file to `/tmp` after appending`/tmp` to  `$SHELL` does not work, and 
 
 
 
+2\.
 
+`/snap/core20/2264/usr/bin/sudo: error while loading shared libraries: libsudo_util.so.0: cannot open shared object file: No such file or directory`
 
 ### /usr/bin/mount with SUID
 
