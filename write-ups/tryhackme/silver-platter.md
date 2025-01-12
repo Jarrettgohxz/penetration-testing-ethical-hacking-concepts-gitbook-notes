@@ -191,3 +191,13 @@ User _**tim**_ is able to update `$SHELL`
 are found to call a file with error: `error while loading shared libraries: libcrypto.so.1.1: cannot open shared object file: No such file or directory`
 
 Adding the file to `/tmp` after appending`/tmp` to  `$SHELL` does not work, and the directory: `/snap/core20/[1974/2264]/usr/lib/openssh/`is not writable too
+
+
+
+
+
+### /usr/bin/mount with SUID
+
+Run mountable share (NFS) on attacker hosting shellcode with SUID bit, mount the share from target and execute
+
+\*\* Reverse of the NFS technique covered in linuxprivesc&#x20;
