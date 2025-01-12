@@ -154,4 +154,24 @@ After looking around the website, ...
 
 ### 7. Privilege escalation
 
+```bash
+$ id 
+... 4(adm)
+```
+
+In `/var/logsyslog:`
+
+`Dec 13 15:45:57 silver-platter sudo: tyler : TTY=tty1 ; PWD=/ ; USER=root ; COMMAND=/usr/bin/docker run --name silverpeas -p 8080:8000 -d -e DB_NAME=Silverpeas -e DB_USER=silverpeas -e DB_PASSWORD=_Zd_zx7N823/ -v silverpeas-log:/opt/silverpeas/log -v silverpeas-data:/opt/silvepeas/data --link postgresql:database silverpeas:6.3.1`
+
+
+
+`linenum.sh` tool
+
+```bash
+$ ./linenum.sh
+SGID
 ...
+
+admin
+...
+```
