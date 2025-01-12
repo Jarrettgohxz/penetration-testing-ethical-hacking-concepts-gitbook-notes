@@ -203,3 +203,7 @@ Adding the file to `/tmp` after appending`/tmp` to  `$SHELL` does not work, and 
 Run mountable share (NFS) on attacker hosting shellcode with SUID bit, mount the share from target and execute
 
 \*\* Reverse of the NFS technique covered in linuxprivesc&#x20;
+
+Tried to run NFS server on attacker: [https://linuxize.com/post/how-to-install-and-configure-an-nfs-server-on-ubuntu-20-04/](https://linuxize.com/post/how-to-install-and-configure-an-nfs-server-on-ubuntu-20-04/)
+
+And mount from target (using all 3 diff binaries found from SUID bit find command, but all require root)
