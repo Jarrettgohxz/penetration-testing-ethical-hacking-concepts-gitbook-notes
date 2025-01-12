@@ -226,12 +226,14 @@ tmp$ mv libsudo_util.o libsudo_util.so.0
 </strong><strong>...so /lib/x86_64...
 </strong><strong>
 </strong><strong>$ ls -l /lib
-</strong>symlink to /usr/lib
-... world writeable
+</strong>lrwxrwxrwx 1 root root 7 Aug 10  2023 /lib -> usr/lib
+
+# ** MISSING leading slash
+# lib -> usr/lib instead of lib -> /usr/lib (??)
 
 </code></pre>
 
-
+Perhaps after fixing the issue of running `/snap/core20/2264/usr/bin/sudo` (creating fake shared library, etc.), use the sudo binary to run sudo actions
 
 ### /usr/bin/mount with SUID
 
