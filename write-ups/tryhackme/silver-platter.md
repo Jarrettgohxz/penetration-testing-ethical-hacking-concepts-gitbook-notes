@@ -198,6 +198,21 @@ Adding the file to `/tmp` after appending`/tmp` to  `$SHELL` does not work, and 
 
 `/snap/core20/2264/usr/bin/sudo: error while loading shared libraries: libsudo_util.so.0: cannot open shared object file: No such file or directory`
 
+files looks for shared libraries at `LD_LIBRARY_PATH` env variable instead of `PATH`&#x20;
+
+```bash
+export LD_LIBRARY_PATH=/tmp:$LD_LIBRARY_PATH
+```
+
+```bash
+$ ldd /snap/core20/2264/usr/bin/sudo 
+/snap/core20/2264/usr/bin/sudo: error while loading shared libraries: /tmp/libsudo_util.so.0: file too short
+```
+
+
+
+
+
 ### /usr/bin/mount with SUID
 
 Run mountable share (NFS) on attacker hosting shellcode with SUID bit, mount the share from target and execute
