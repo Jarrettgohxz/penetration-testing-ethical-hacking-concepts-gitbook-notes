@@ -176,3 +176,8 @@
 * [General](tools-services/general/README.md)
   * [impacket](tools-services/general/impacket.md)
 * [Wordlists](tools-services/wordlists.md)
+
+## Write-ups
+
+* [TryHackMe](write-ups/tryhackme/README.md)
+  * [Silver Platter](write-ups/tryhackme/silver-platter.md)
