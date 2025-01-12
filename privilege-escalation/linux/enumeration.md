@@ -29,7 +29,10 @@
 $ find / -perm -u=s -type f 2>/dev/null
 
 # SUID bit and writable by current user
-$ find / -type f -perm -u=s -writable -user $(whoami) 2>/dev/null
+$ find / -perm -u=s -writable -user $(whoami) -type f 2>/dev/null
+
+#  SUID bit and writable by others
+find / -perm -u=s -perm 002 -type f  2>/dev/null
 ```
 
 &#x20;  b) Files with certain permission&#x20;
