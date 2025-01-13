@@ -37,7 +37,7 @@ From the results obtained in `nmap`above, I tried to lookup for CVEs related to 
 
 
 
-### 3. Enumerating port 80 with common _silverpeas_ directories
+### 2. Enumerating port 80 with common _silverpeas_ directories
 
 From a quick on Google, I gathered various URL paths that are commonly used on a **silverpeas** application. Using the target IP and port 80 as the main host, I tried visiting the brief list of paths listed below:
 
@@ -53,7 +53,7 @@ All the paths returned status code _**404**_ (Not found).
 
 
 
-### 4. Concentrating my efforts on port 8080 (running Silverpeas)
+### 3. Concentrating my efforts on port 8080 (running Silverpeas)
 
 I decided to start trying to play around with port 8080 instead. I visited the website at port 8080 while behind a Burp suite community proxy. After running a quick `nmap` scan, the results shows that it is running a _**http-proxy**_.
 
@@ -77,7 +77,7 @@ $ gobuster dir --url http://[target_ip]:8080/silverpeas/ -w [wordlist]
 
 I found a few positive results ...
 
-### 5. Continuing my adventure on port 8080!
+### 4. Continuing my adventure on port 8080!
 
 **Searching for CVEs and exploits relating to JSP/2.3**
 
@@ -93,7 +93,7 @@ b) `expoit/multi/http/struts2_content_type_ognl`
 
 
 
-### 6. Further research on &#x53;_&#x69;lverpeas_
+### 5. Further research on &#x53;_&#x69;lverpeas_
 
 After much research, I came across a vulnerability listing regarding **silverpeas** authentication bypass:
 
@@ -152,7 +152,7 @@ After looking around the website, ...
 
 
 
-### 7. Privilege escalation
+### 6. Privilege escalation
 
 ```bash
 $ id 

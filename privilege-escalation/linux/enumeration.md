@@ -10,9 +10,20 @@
 
 &#x20;  b) **/etc/issue**
 
-&#x20;  c) **/etc/passwd**
+&#x20;  c) **/etc/passwd** and **/etc/shadow**
 
-&#x20; d) **/etc/shadow**
+* Readable **/etc/shadow** file
+* Writable **/etc/passwd** and **/etc/shadow**
+
+```bash
+# rx /etc/passwd
+$ ls -l /etc/passwd
+-rw-r--r-x 1 root shadow xxxx xxx xx xxxx /etc/passwd
+
+# rx /etc/shadow
+$ ls -l /etc/shadow
+-rw-r--r-x 1 root shadow xxxx xxx xx xxxx /etc/shadow
+```
 
 4. `env`
 5. `id`
