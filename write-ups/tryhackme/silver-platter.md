@@ -293,7 +293,7 @@ Tried to run NFS server on attacker: [https://linuxize.com/post/how-to-install-a
 
 There were 3 `mount` binaries found with SUID bit. When trying to mount the share from the attacker machine, we got the error: ...&#x20;
 
-4. `installer/autoinstall-user-data`
+4. `/var/log/installer/autoinstall-user-data (? to check correct path)`
 
 Found hashed password: `$6$uJuA1kpnd4kTFniw$/402iWwKzcYD8AMHG6bY/PXwZWOkrrVmtoO7qQpfvVLh1CHmiKUodwMGP7/awDYtrzpDHV8cNbpS1HJ6VMakN.`
 
