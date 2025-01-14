@@ -223,7 +223,7 @@ root@silver-platter:/home/tyler#
 
 To further my learning, I decided to continue enumerating the system as the user _**tim**_, and try to find other privilege escalation vectors.
 
-2. User _**tim**_ is able to update `$SHELL`
+2. User _**tim**_ is able to update `$SHELL` and `$LD_LIBRARY_PATH`
 
 `a) /snap/core20/1974/usr/lib/openssh/ssh-keysign`
 
@@ -283,7 +283,7 @@ $ ls -la
 
 ```
 
-It seems that we have rxw permissions for the `libsudo_util.so.0` binary found&#x20;
+It seems that we have _**rxw**_ permissions for the `libsudo_util.so.0` binary found&#x20;
 
 3. `/usr/bin/mount` with _**SUID**_
 
@@ -291,11 +291,11 @@ Run mountable share (NFS) on attacker hosting shellcode with SUID bit, mount the
 
 Tried to run NFS server on attacker: [https://linuxize.com/post/how-to-install-and-configure-an-nfs-server-on-ubuntu-20-04/](https://linuxize.com/post/how-to-install-and-configure-an-nfs-server-on-ubuntu-20-04/)
 
-There were 3 `mount` binaries found with SUID bit. When trying to mount the share from the attacker machine, we got the error: ...&#x20;
+There were 3 `mount` binaries found with _SUID_ bit. When trying to mount the share from the attacker machine, we got the error: ...&#x20;
 
 4. `/var/log/installer/autoinstall-user-data (? to check correct path)`
 
 Found hashed password: `$6$uJuA1kpnd4kTFniw$/402iWwKzcYD8AMHG6bY/PXwZWOkrrVmtoO7qQpfvVLh1CHmiKUodwMGP7/awDYtrzpDHV8cNbpS1HJ6VMakN.`
 
-
+According to the room description, the system has a strong password policy. Thus, it will be really difficult and non-viable to try a password brute-force cracking attempt on this hash.
 
