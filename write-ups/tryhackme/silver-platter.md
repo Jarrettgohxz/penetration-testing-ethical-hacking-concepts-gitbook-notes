@@ -93,15 +93,11 @@ a) `exploit/multi/http/struts_include_params`
 
 b) `expoit/multi/http/struts2_content_type_ognl`
 
-#### Performing directory discovery
 
-```
-$ gobuster
-$ ffuf
-...
-```
 
-#### Inspecting source code
+#### Further enumeration of the webpage on port 8080
+
+_Inspecting source code_
 
 ...
 
