@@ -225,7 +225,7 @@ To further my learning, I decided to continue enumerating the system as the user
 
 2. User _**tim**_ is able to update `$SHELL`
 
-`/snap/core20/1974/usr/lib/openssh/ssh-keysign`
+`a) /snap/core20/1974/usr/lib/openssh/ssh-keysign`
 
 `/snap/core20/2264/usr/lib/openssh/ssh-keysign`
 
@@ -235,7 +235,7 @@ Adding the file to `/tmp` after appending`/tmp` to  `$SHELL` does not work, and 
 
 
 
-3. `/snap/core20/2264/usr/bin/sudo: error while loading shared libraries: libsudo_util.so.0: cannot open shared object file: No such file or directory`
+**b)** `/snap/core20/2264/usr/bin/sudo: error while loading shared libraries: libsudo_util.so.0: cannot open shared object file: No such file or directory`
 
 files looks for shared libraries at `LD_LIBRARY_PATH` env variable instead of `PATH`&#x20;
 
@@ -285,17 +285,15 @@ $ ls -la
 
 It seems that we have rxw permissions for the `libsudo_util.so.0` binary found&#x20;
 
-4. `/usr/bin/mount` with _**SUID**_
+3. `/usr/bin/mount` with _**SUID**_
 
 Run mountable share (NFS) on attacker hosting shellcode with SUID bit, mount the share from target and execute
 
-\*\* Reverse of the NFS technique covered in linuxprivesc&#x20;
-
 Tried to run NFS server on attacker: [https://linuxize.com/post/how-to-install-and-configure-an-nfs-server-on-ubuntu-20-04/](https://linuxize.com/post/how-to-install-and-configure-an-nfs-server-on-ubuntu-20-04/)
 
-And mount from target (using all 3 diff binaries found from SUID bit find command, but all require root)
+There were 3 `mount` binaries found with SUID bit. When trying to mount the share from the attacker machine, we got the error: ...&#x20;
 
-5. `installer/autoinstall-user-data`
+4. `installer/autoinstall-user-data`
 
 Found hashed password: `$6$uJuA1kpnd4kTFniw$/402iWwKzcYD8AMHG6bY/PXwZWOkrrVmtoO7qQpfvVLh1CHmiKUodwMGP7/awDYtrzpDHV8cNbpS1HJ6VMakN.`
 
