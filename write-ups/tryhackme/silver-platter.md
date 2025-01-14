@@ -2,6 +2,8 @@
 
 {% embed url="https://tryhackme.com/r/room/silverplatter" %}
 
+## Gaining initial foothold
+
 1. ### Run `nmap` on the target IP address
 
 ```bash
@@ -91,6 +93,18 @@ a) `exploit/multi/http/struts_include_params`
 
 b) `expoit/multi/http/struts2_content_type_ognl`
 
+#### Performing directory discovery
+
+```
+$ gobuster
+$ ffuf
+...
+```
+
+#### Inspecting source code
+
+...
+
 
 
 ### 5. Further research on &#x53;_&#x69;lverpeas_
@@ -152,16 +166,13 @@ After looking around the website, ...
 
 
 
-### 6. Privilege escalation
 
-```bash
-$ id 
-... 4(adm)
-```
+
+## Privilege Escalation
 
 {% embed url="https://wiki.debian.org/SystemGroups" %}
 
-1. _**adm**_ group
+### 1. _adm_ group
 
 After running a few enumeration commands ([https://jarrettgxz-sec.gitbook.io/penetration-testing-ethical-hacking/privilege-escalation/linux/enumeration](https://jarrettgxz-sec.gitbook.io/penetration-testing-ethical-hacking/privilege-escalation/linux/enumeration)), I found out that the current user (_**tim**_) is in the _**adm**_ group through the `id` command.
 
@@ -223,7 +234,7 @@ root@silver-platter:/home/tyler#
 
 To further my learning, I decided to continue enumerating the system as the user _**tim**_, and try to find other privilege escalation vectors.
 
-2. User _**tim**_ is able to update `$SHELL` and `$LD_LIBRARY_PATH`
+### 2. Experimenting with SUID bit
 
 `a) /snap/core20/1974/usr/lib/openssh/ssh-keysign`
 
@@ -285,7 +296,7 @@ $ ls -la
 
 It seems that we have _**rxw**_ permissions for the `libsudo_util.so.0` binary found&#x20;
 
-3. `/usr/bin/mount` with _**SUID**_
+### 3. `/usr/bin/mount` with _SUID_
 
 Run mountable share (NFS) on attacker hosting shellcode with SUID bit, mount the share from target and execute
 
@@ -293,7 +304,7 @@ Tried to run NFS server on attacker: [https://linuxize.com/post/how-to-install-a
 
 There were 3 `mount` binaries found with _SUID_ bit. When trying to mount the share from the attacker machine, we got the error: ...&#x20;
 
-4. `/var/log/installer/autoinstall-user-data (? to check correct path)`
+### 4. `/var/log/installer/autoinstall-user-data` (? TO CHECK CORRECT PATH)
 
 Found hashed password: `$6$uJuA1kpnd4kTFniw$/402iWwKzcYD8AMHG6bY/PXwZWOkrrVmtoO7qQpfvVLh1CHmiKUodwMGP7/awDYtrzpDHV8cNbpS1HJ6VMakN.`
 
