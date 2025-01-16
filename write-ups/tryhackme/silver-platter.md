@@ -208,12 +208,14 @@ Please ask your administrator
 
 Instead, I tried the found password: `_Zd_zx7N823/` on the user _tyler_ via SSH, and _voila_ it worked!
 
+After gaining a shell with the user _tyler_, I ran a few commands to check the privileges of this user. It appears the this user can run all commands with `sudo` privileges. Using the command `sudo su root,` I have gained _**root**_ access.
+
 ```bash
 # user is in the sudo group
 tyler@silver-platter~$ id
 uid=1000(tyler) gid=1000(tyler) groups=1000(tyler),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),110(lxd)
 
-# user can run all commands with sudo
+
 tyler@silver-platter~$ sudo -l
 ...
 ...
@@ -225,8 +227,6 @@ tyler@silver-platter~$ sudo su root
 
 root@silver-platter:/home/tyler# 
 ```
-
-
 
 To further my learning, I decided to continue enumerating the system as the user _**tim**_, and try to find other privilege escalation vectors.
 
@@ -304,5 +304,8 @@ There were 3 `mount` binaries found with _SUID_ bit. When trying to mount the sh
 
 Found hashed password: `$6$uJuA1kpnd4kTFniw$/402iWwKzcYD8AMHG6bY/PXwZWOkrrVmtoO7qQpfvVLh1CHmiKUodwMGP7/awDYtrzpDHV8cNbpS1HJ6VMakN.`
 
-According to the room description, the system has a strong password policy. Thus, it will be really difficult and non-viable to try a password brute-force cracking attempt on this hash.
+According to the room description, the system has a strong password policy. Thus, it will be really difficult and non-viable to try a password brute-force cracking attempt on this hash.&#x20;
 
+### Conclusion
+
+It seems that there is only 1 vector for privilege escalation.

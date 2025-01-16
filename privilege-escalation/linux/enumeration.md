@@ -27,8 +27,23 @@ $ ls -l /etc/shadow
 
 4. `env`
 5. `id`
-6. `history`
-7. `sudo -l`
+
+Suppose a user is in the _**adm**_ group. This user will be able to read the log files present in the `/var/log` or other related folder:
+
+Practical example: [https://jarrettgxz-sec.gitbook.io/penetration-testing-ethical-hacking/write-ups/tryhackme/silver-platter](https://jarrettgxz-sec.gitbook.io/penetration-testing-ethical-hacking/write-ups/tryhackme/silver-platter)
+
+```bash
+$ id
+... ...(adm)
+
+$ cd /var/log
+/var/log$ less syslog
+```
+
+
+
+4. `history`
+5. `sudo -l`
 
 > The target system may be configured to allow users to run some (or all) commands with root privileges. The `sudo -l` command can be used to list all commands your user can run using `sudo`
 
