@@ -222,9 +222,11 @@ Host: <target-url>:8080
 Login=Manager&DomainId=0
 ```
 
-The only difference in the response is that the _svpLogin_ field in the _Set-Cookie_ cookie changed to **Manager**, and a different _JSESSIONID_ was returned. The _Location_ response headers was the same (...`/silverpeas/Main//look/jsp/MainFrame.jsp`).
+The only difference in the response is that the _svpLogin_ field in the _Set-Cookie_ cookie changed to **Manager**, and a different _JSESSIONID_ was returned. The _Location_ response headers was the same as with the user **scr1ptkiddy** (...`/silverpeas/Main//look/jsp/MainFrame.jsp`).
 
-I set the cookie values on the browser console the same way as before. I was presented with a dashboard as the user _**Manager**_. I went on to read the message notifications and found the SSH credentials in plain-text.&#x20;
+After setting the cookie values on the browser console the same way as before, I navigated to the URL (in the _Location_ field of the response headers), and was presented with a dashboard as the user **Manager**. I went on to read the message notifications and found the SSH credentials in plain-text.&#x20;
+
+
 
 _**Other CVEs to explore:**_&#x20;
 
