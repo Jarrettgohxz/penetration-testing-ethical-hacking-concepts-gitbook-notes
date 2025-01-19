@@ -170,6 +170,46 @@ I visited the URL, and was navigated to a dashboard at the following URL:
 
 `http://<target-url>:8080/silverpeas/look/jsp/MainFrame.jsp`
 
+### How I found the SSH credentials (to gain an unprivileged shell on the server)
+
+`tim`&#x20;
+
+`cm0nt!md0ntf0rg3tth!spa$$w0rdagainlol`
+
+
+
+**Method 1: CVE 2023-47323**
+
+{% embed url="https://github.com/RhinoSecurityLabs/CVEs/tree/master/CVE-2023-47323" %}
+
+Note that this method is ran as the regular user _**scr1ptkiddy**_.
+
+Through the proof-of-concept detailed in the link above, I iterated through the URL with different ID values. I found that the ID value of _**6**_ displays the SSH credentials:
+
+`http://10.10.105.62:8080/silverpeas/RSILVERMAIL/jsp/ReadMessage.jsp?ID=6`\
+
+
+**Testing the results with wfuzz:**
+
+```bash
+$ wfuzz -u "http://<target-url>:8080/silverpeas/RSILVERMAIL/jsp/ReadMessage.jsp?ID=FUZZ" -H "Cookie: JSESSIONID=xxx; path=/silverpeas; HttpOnly; defaultDomain=0; path=/; ... svpLogin=scr1ptkiddy; path=/; ..."
+```
+
+The results from _**wfuzz**_ showed a bunch of results with the content length (under the _**Chars**_ header in the output) of **13201** and **13202**. Thus, I decided to filter the results to only show those response with more than **13202** characters. (using the `--filter` flag):
+
+```bash
+$ wfuzz ... --filter "h>13202"
+
+# further filter can be made with value 13760
+$ wfuzz ... --filter "h>13760"
+```
+
+The results will either display 2-3 responses, or a single response. By now, it should be clear from the results that the payload value of _**6**_ have the highest content length.&#x20;
+
+
+
+**Method 2: Reading the plain-text SSH password in message notification as the user "Manager"**
+
 &#x20;I explored the page and found that there is another user named _**Manager**_, and an administrator named _**Administrateur**_. I tried logging in as the administrator by replacing the _Login_ data field in the _POST_ request with the values: _administrator_, _Administrator_, _administrateur_ and _Administrateur_. The response simply returned the login page URL in the _**Location**_ response headers - indicating a failed login attempt:
 
 I tried to login as the user _Manager_ instead, and received a similar response headers value as before:
@@ -184,45 +224,11 @@ Login=Manager&DomainId=0
 
 The only difference in the response is that the _svpLogin_ field in the _Set-Cookie_ cookie changed to **Manager**, and a different _JSESSIONID_ was returned. The _Location_ response headers was the same (...`/silverpeas/Main//look/jsp/MainFrame.jsp`).
 
-### How I found the SSH credentials (to gain an unprivileged shell on the server)
+I set the cookie values on the browser console the same way as before. I was presented with a dashboard as the user _**Manager**_. I went on to read the message notifications and found the SSH credentials in plain-text.&#x20;
 
-`tim`&#x20;
+_**Other CVEs to explore:**_&#x20;
 
-`cm0nt!md0ntf0rg3tth!spa$$w0rdagainlol`
-
-
-
-**Method 1: CVE 2023-47323**
-
-{% embed url="https://github.com/RhinoSecurityLabs/CVEs/tree/master/CVE-2023-47323" %}
-
-After iterating through the URL with different ID values, I found that the ID value of _**6**_ displays the credentials:
-
-`http://10.10.105.62:8080/silverpeas/RSILVERMAIL/jsp/ReadMessage.jsp?ID=6`\
-
-
-**Testing the results with wfuzz:**
-
-```bash
-$ wfuzz -u "http://<target-url>:8080/silverpeas/RSILVERMAIL/jsp/ReadMessage.jsp?ID=FUZZ" -H "Cookie: JSESSIONID=xxx; path=/silverpeas; HttpOnly; defaultDomain=0; path=/; ... svpLogin=scr1ptkiddy; path=/; ..."
-```
-
-The results from wfuzz showed a bunch of results with the content length (under the _**Chars**_ header in the output) of **13201** and **13202**. Thus, I decided to filter the results to only show those response with more than **13202** characters. (using the `--filter` flag):
-
-```bash
-$ wfuzz ... --filter "h>13202"
-
-# further filter can be made with value 13760
-$ wfuzz ... --filter "h>13760"
-```
-
-The results will either display 2-3 responses, or a single response. By now, it should be clear from the results that the payload value of _**6**_ have the highest content length.&#x20;
-
-
-
-**Method 2: CVE-...**
-
-
+{% embed url="https://rhinosecuritylabs.com/research/silverpeas-file-read-cves/" %}
 
 ## Privilege Escalation
 
