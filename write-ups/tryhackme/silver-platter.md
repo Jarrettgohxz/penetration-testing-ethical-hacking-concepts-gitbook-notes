@@ -157,9 +157,7 @@ Notice that the server returned the following URL value in the `Location` header
 The following cookies are found from the `Set-Cookie` response headers from the request above, and must be set in the browser (under the _**Console**_ tab for Google Chrome) for the dashboard to load. If not set, the page will redirect back to the login page:
 
 ```javascript
-
-
-chrome-console> document.cookie = "JSESSIONID=xxx; path=/silverpeas; HttpOnly";
+chrome-console> document.cookie = "JSESSIONID=xxx; path=/silverpeas";
 chrome-console> document.cookie = "defaultDomain=0; path=/; ...";
 chrome-console> document.cookie = "svpLogin=scr1ptkiddy; path=/; ...";
 ```
