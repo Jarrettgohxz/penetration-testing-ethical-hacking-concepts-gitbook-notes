@@ -137,7 +137,9 @@ $ curl "http://<target-url>:8080/silverpeas/AuthenticationServlet" -d "Login=scr
 
 
 
-Notice that the `Login` field (presumably the username section) has the value **scr1ptkiddy**, which was found in step 2.
+Notice that the `Login` field (presumably the username section) has the value **scr1ptkiddy**, which was found in step 2 (enumerating port 80).
+
+**The response is as follows**:
 
 ```http
 ...
@@ -146,6 +148,8 @@ HTTP/1.1 302 Found
 Set-Cookie: JSESSIONID=xxx; path=/silverpeas; HttpOnly
 Set-Cookie: defaultDomain=0; path=/; ...
 Set-Cookie: svpLogin=scr1ptkiddy; path=/; ...
+Location: http://<target-url>:8080/silverpeas/Main//look/jsp/MainFrame.jsp
+... 
 ```
 
 Notice that the server returned the following URL value in the `Location` header:
@@ -154,7 +158,7 @@ Notice that the server returned the following URL value in the `Location` header
 
 
 
-The following cookies are found from the `Set-Cookie` response headers from the request above, and must be set in the browser (under the _**Console**_ tab for Google Chrome) for the dashboard to load. If not set, the page will redirect back to the login page:
+The following cookies are found from the `Set-Cookie` response headers from the request above, and must be set in the browser (under the _**Console**_ tab for Google Chrome) for the dashboard to load. If not set, the page will redirect back to the login page (<mark style="color:red;">**\*\***</mark> _the cookie seems to bet set automatically when using the proxy browser_):
 
 ```javascript
 chrome-console> document.cookie = "JSESSIONID=xxx; path=/silverpeas";
@@ -162,13 +166,13 @@ chrome-console> document.cookie = "defaultDomain=0; path=/; ...";
 chrome-console> document.cookie = "svpLogin=scr1ptkiddy; path=/; ...";
 ```
 
+I visited the URL, and was navigated to a dashboard at the following URL:
 
+`http://<target-url>:8080/silverpeas/look/jsp/MainFrame.jsp`
 
-I visited the URL, and was navigated to a dashboard.
+&#x20;I explored the page and found that there is another user named _**Manager**_, and an administrator named _**Administrateur**_. I tried logging in as the administrator by replacing the _Login_ data field in the _POST_ request with the values: _administrator_, _Administrator_, _administrateur_ and _Administrateur_. The response simply returned the login page URL in the _**Location**_ response headers - indicating a failed login attempt:
 
-...
-
-
+I tried to login as the user _Manager_ instead, and received a similar response headers value as before:
 
 ```http
 POST /silverpeas/AuthenticationServlet 
@@ -178,11 +182,9 @@ Host: <target-url>:8080
 Login=Manager&DomainId=0
 ```
 
-**New URL**: `http://<target-url>:8080/silverpeas/look/jsp/MainFrame.jsp`
+The only difference in the response is that the _svpLogin_ field in the _Set-Cookie_ cookie changed to **Manager**, and a different _JSESSIONID_ was returned. The _Location_ response headers was the same (...`/silverpeas/Main//look/jsp/MainFrame.jsp`).
 
-
-
-The following credentials were found using a few methods:
+### How I found the SSH credentials (to gain an unprivileged shell on the server)
 
 `tim`&#x20;
 
