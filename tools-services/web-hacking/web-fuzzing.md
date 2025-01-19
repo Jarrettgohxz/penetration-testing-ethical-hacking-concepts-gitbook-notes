@@ -91,6 +91,13 @@ wfuzz is a web fuzzer that works similarly to _**ffuf**_ in that it uses th&#x65
 $ wfuzz -w wordlist/general/common.txt http://testphp.vulnweb.com/FUZZ
 ```
 
+**Specifying range of values for the FUZZ keyword**
+
+```bash
+# FUZZ keyword will be replaced with the values from 1 to 100
+$ wfuzz ... -c -z range,1-100 
+```
+
 {% embed url="https://wfuzz.readthedocs.io/en/latest/user/basicusage.html#fuzzing-paths-and-files" %}
 wfuzz documentation
 {% endembed %}
