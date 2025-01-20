@@ -226,7 +226,9 @@ The only difference in the response is that the _svpLogin_ field in the _Set-Coo
 
 After setting the cookie values on the browser console the same way as before, I navigated to the URL (in the _Location_ field of the response headers), and was presented with a dashboard as the user **Manager**. I went on to read the message notifications and found the SSH credentials in plain-text.&#x20;
 
+#### Method 3: Experimenting with cewl
 
+{% embed url="https://www.kali.org/tools/cewl/" %}
 
 _**Other CVEs to explore:**_&#x20;
 
