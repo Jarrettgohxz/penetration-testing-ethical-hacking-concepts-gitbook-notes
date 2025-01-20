@@ -2,7 +2,7 @@
 description: General overview of useful commands used in the Network mapper (nmap) tool.
 ---
 
-# nmap
+# nmap (general overview)
 
 Refer to the sections under _**NETWORK HACKING**_ for specific use cases.
 
@@ -60,6 +60,14 @@ _**Always perform DNS resolution**_&#x20;
 
 ```bash
 $ nmap -R <host>
+```
+
+### -A flag
+
+> Enable OS detection, version detection, script scanning, and traceroute
+
+```
+$ nmap -A ...
 ```
 
 ### Other useful flags
