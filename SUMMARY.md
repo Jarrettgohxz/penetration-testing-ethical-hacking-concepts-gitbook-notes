@@ -175,7 +175,8 @@
   * [nmap (general overview)](tools-services/network-hacking/nmap-general-overview.md)
 * [General](tools-services/general/README.md)
   * [impacket](tools-services/general/impacket.md)
-* [Wordlists](tools-services/wordlists.md)
+* [Wordlists](tools-services/wordlists/README.md)
+  * [cewl](tools-services/wordlists/cewl.md)
 
 ## Write-ups
 
