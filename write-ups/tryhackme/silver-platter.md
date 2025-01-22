@@ -228,7 +228,9 @@ After setting the cookie values on the browser console the same way as before, I
 
 
 
-**Method 3: Experimenting with CeWL**
+### 6. Alternative method for initial foothold
+
+**Experimenting with CeWL**
 
 Generating a custom word list
 
@@ -240,11 +242,12 @@ Using the generated passwords word list with _**ffuf,**_ for the _**scr1ptkiddy*
 
 ```bash
 $ ffuf -X POST -u http://<target_machine_URL>:8080/AuthenticationServlet?Login=scr1ptkiddy&password=FUZZ&DomainId=0 -w passwords.txt 
+
 ```
 
 
 
-{% embed url="https://www.kali.org/tools/cewl/" %}
+{% embed url="https://jarrettgxz-sec.gitbook.io/penetration-testing-ethical-hacking/tools-services/wordlists/cewl" %}
 
 _**Other CVEs to explore:**_&#x20;
 
