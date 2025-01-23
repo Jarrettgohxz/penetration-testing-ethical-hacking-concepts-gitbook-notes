@@ -76,6 +76,25 @@ _**Overview**_
 * `--rules=single`: Best used to generate password guesses based on data related to a target user: usernames, passwords, etc. and apply simple transformations.
 * `--rules=wordlist`: Best used to apply transformations to every word in a wordlist to generate variatons.
 
+### Printing results to stdout without cracking hashes
+
+The --stdout flag can be used to print the generated results without actually using it to crack any hashes
+
+```bash
+$ john ...options --stdout
+```
+
+Suppose you would like to apply certain rules (eg. `single`) to a word list and save it to an output file, without cracking any hashes.
+
+```bash
+$ john --wordlist=<wordlist> --rules=single --stdout > output.txt
+
+# extend output.txt with additional rules
+$ john --wordlist=<wordlist> --rules=wordlist --stdout >> output.txt
+```
+
+
+
 ### Additional modules
 
 1. **`unshadow`**
