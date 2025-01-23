@@ -78,7 +78,7 @@ _**Overview**_
 
 ### Printing results to stdout without cracking hashes
 
-The --stdout flag can be used to print the generated results without actually using it to crack any hashes
+The `--stdout` flag can be used to print the generated results without actually using it to crack any hashes
 
 ```bash
 $ john ...options --stdout
