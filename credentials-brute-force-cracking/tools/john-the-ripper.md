@@ -49,7 +49,7 @@ qwerty123
 The `single` ruleset may generate variations of these data such as: `thundere@gle`, `j@rrett`, etc.
 
 ```bash
-$ john --rule=single --wordlist=user.txt --format=[format] hash.txt
+$ john --rules=single --wordlist=user.txt --format=[format] hash.txt
 ```
 
 #### Wordlist
