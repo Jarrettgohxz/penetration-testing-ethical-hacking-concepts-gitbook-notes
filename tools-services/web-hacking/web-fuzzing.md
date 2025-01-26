@@ -95,7 +95,18 @@ $ wfuzz -w wordlist/general/common.txt http://testphp.vulnweb.com/FUZZ
 
 ```bash
 # FUZZ keyword will be replaced with the values from 1 to 100
+# -c for colored output
 $ wfuzz ... -c -z range,1-100 
+```
+
+_**Useful flags**_
+
+`--filter` : For various kinds of filter
+
+Eg. Filter responses with content-length more than 100 (refer to the usage example: [https://jarrettgxz-sec.gitbook.io/penetration-testing-ethical-hacking/write-ups/tryhackme/silver-platter](https://jarrettgxz-sec.gitbook.io/penetration-testing-ethical-hacking/write-ups/tryhackme/silver-platter))
+
+```bash
+$ wfuzz ... --filter "h>100"
 ```
 
 {% embed url="https://wfuzz.readthedocs.io/en/latest/user/basicusage.html#fuzzing-paths-and-files" %}
