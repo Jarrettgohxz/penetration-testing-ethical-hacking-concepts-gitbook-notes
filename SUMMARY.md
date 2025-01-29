@@ -182,3 +182,4 @@
 
 * [TryHackMe](write-ups/tryhackme/README.md)
   * [Silver Platter](write-ups/tryhackme/silver-platter.md)
+  * [Light](write-ups/tryhackme/light.md)
