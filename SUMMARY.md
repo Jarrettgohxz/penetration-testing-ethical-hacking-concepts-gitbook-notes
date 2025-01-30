@@ -181,5 +181,5 @@
 ## Write-ups
 
 * [TryHackMe](write-ups/tryhackme/README.md)
-  * [Silver Platter](write-ups/tryhackme/silver-platter.md)
+  * [Silver Platter (\*\*pending completion on some parts)](write-ups/tryhackme/silver-platter-pending-completion-on-some-parts.md)
   * [Light](write-ups/tryhackme/light.md)
