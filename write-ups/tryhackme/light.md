@@ -229,6 +229,8 @@ ARCHIVE (pending deletion):
 
 
 
+{% embed url="https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/SQL%20Injection/SQLite%20Injection.md" %}
+
 {% embed url="https://www.invicti.com/blog/web-security/sql-injection-cheat-sheet/#FindColumnsHavingGroupbyErrorBased" %}
 
 {% embed url="https://www.tutlane.com/tutorial/sqlite/sqlite-injection-attacks" %}
