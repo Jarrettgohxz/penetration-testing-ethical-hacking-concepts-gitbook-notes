@@ -147,3 +147,8 @@ The information provided in the error message tells us about the SQL query used
 * The ID of the CEO is `1`
 * This query will retrieve the content stored in the notes
 
+
+
+
+
+{% embed url="https://www.invicti.com/blog/web-security/sql-injection-cheat-sheet/#FindColumnsHavingGroupbyErrorBased" %}
