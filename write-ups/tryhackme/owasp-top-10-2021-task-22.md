@@ -20,7 +20,11 @@ General format of the HTTP URL:
 
 
 
-### \*\*Burp suite to discover other directories, error messages (from enumeration), final payload and explanations ...
+### \*\*Burp suite to discover other directories, error messages (from enumeration), final payload and explanations, attempts with path traversal and null byte injection...
+
+`http://<url>:8087/download?server=<url>/admin%00&id=1`
+
+`...`
 
 ### Gathering information&#x20;
 
