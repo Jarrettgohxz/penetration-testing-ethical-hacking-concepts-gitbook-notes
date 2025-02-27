@@ -20,17 +20,21 @@ General format of the HTTP URL:
 
 
 
+### \*\*Burp suite to discover other directories, error messages (from enumeration), final payload and explanations ...
+
 ### Gathering information&#x20;
 
-1. Visiting the following URL [http://10.10.106.252:8087/admin](http://10.10.106.252:8087/admin), presented me with a webpage displaying the following message:&#x20;
+1. Visiting the following URL [http://10.10.106.252:8087/admin](http://10.10.106.252:8087/admin) (GET request), presented me with a webpage displaying the following message:&#x20;
 
 _**Admin interface only available from localhost!!!**_
 
-2. I have noticed that an error message of: _ValueError: invalid literal for int() with base 10: 't',_ with snippets of the code-base (sensitive information) is shown when a non-integer value is provided to the `id` query parameter.&#x20;
+2. I have noticed that an error messages with snippets of the code-base (sensitive information) is shown when a non-integer value is provided to the `id` query parameter via a GET request.&#x20;
 
-The following code snippet is shown in the error message from a GET request to the following URL:
+For example, when the value `t` is provided, the following info and code snippet is shown in the error message.&#x20;
 
-`http://<url>:8087/download?server=&id=t`
+_**GET http://\<url>:8087/download?server=\&id=t**_
+
+`ValueError: invalid literal for int() with base 10: 't'`
 
 ```python
 def download():
