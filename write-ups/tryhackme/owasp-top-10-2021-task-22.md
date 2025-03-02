@@ -54,9 +54,9 @@ From the code snippet in the error message, I have discovered that the final HTT
 server + '/public-docs-k057230990384293/' + filename
 ```
 
-Where the `server` query parameter is taken directly from the _**server**"_&#x71;uery parameter value. The _**id**_ query parameter value is used directly to generate the final URL value, however, it does not have a direct exploitable impact. This tells us that we can potentially control the final URL where the GET request is being sent.
+Where the `server` query parameter is taken directly from the _**server**_ query parameter value. The _**id**_ query parameter value is used directly to generate the final URL value, however, it does not have a direct exploitable impact. This tells us that we can potentially control the final URL where the GET request is being sent.
 
-Thus, the goal is to craft a payload to the _**server**_ query parameter to forge a request to the localhost admin URL: `http://localhost:8087/admin`, in order to retrieve the admin page content`.`
+Thus, the goal is to craft a payload to the _**server**_ query parameter to forge a request to the localhost admin URL: `http://localhost:8087/admin` - allowing us to retrieve the admin page content.
 
 ### Payload to the `server` query parameter
 
