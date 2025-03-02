@@ -60,7 +60,7 @@ Thus, the goal is to craft a payload to the _**server**_ query parameter to forg
 
 ### Payload to the `server` query parameter
 
-The placeholder `<url>`will be used as a general value - it should be replaced `with localhost:8087/admin`.
+The placeholder `<url>`will be used as a general value - it should be replaced with `localhost:8087/admin`.
 
 1. Null terminator/byte (`%00`)
 
@@ -70,7 +70,7 @@ The input to the _**id**_ parameter will be a random integer value. While the va
 
 `<url>%00/public-docs-k057230990384293/<filename>` _**->**_ `<url>`
 
-2. `?` (query symbol)
+2. `?` (query symbol) (<mark style="color:green;">**✔ Working method**</mark>)
 
 Inserting a ? character at the end of the value passed to the server query parameter will trick the server to treat the rest of the input (`'/public-docs-k057230990384293/' + filename`) as a query. Thus, effectively ignoring its values, allowing an attacker to fully control the server address.
 
