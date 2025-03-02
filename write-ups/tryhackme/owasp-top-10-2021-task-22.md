@@ -70,15 +70,17 @@ The input to the _**id**_ parameter will be a random integer value. While the va
 
 `<url>%00/public-docs-k057230990384293/<filename>` _**->**_ `<url>`
 
+However, this method does not work.
+
 2. `?` (query symbol) (<mark style="color:green;">**✔ Working method**</mark>)
 
 Inserting a ? character at the end of the value passed to the server query parameter will trick the server to treat the rest of the input (`'/public-docs-k057230990384293/' + filename`) as a query. Thus, effectively ignoring its values, allowing an attacker to fully control the server address.
 
-The following payload allows us to send a request to the **/admin** path from within the server localhost, bypassing the restriction&#x73;**.**
+A GET request to the following payload allows us to send a request to the **/admin** path from within the server localhost, bypassing the restriction&#x73;**.**
 
 `10.10.106.252:8087/download?server=localhost:8087/admin?&id=1`
 
-
+This forged request allows us to view the content of the admin page.
 
 3. `#`
 4. `@`, `%2F`, `//`
