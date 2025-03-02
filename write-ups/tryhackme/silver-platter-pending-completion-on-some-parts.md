@@ -1,4 +1,10 @@
-# Silver Platter
+---
+description: This is my first documented  CTF style challenge.
+---
+
+# Silver Platter (\*\*pending completion on some parts)
+
+Due to the lack of experience and knowledge in this type of challenges; and in the whole offensive security/ethical hacking/penetration testing world, I may make rookie mistakes, or perform unnecessary exploration towards a part of the server that is highly likely to not contain any exploits. Fortunately, I am confident that I will be able to learn a lot from this, and all the subsequent challenges I will be participating in.
 
 {% embed url="https://tryhackme.com/r/room/silverplatter" %}
 
@@ -29,15 +35,25 @@ After running through the website with interception from Burp suite community, I
 
 After reading through the text content present, a particular term: **silverpeas**, and the username **scr1ptkiddy** caught my eye. I decided to research about it.&#x20;
 
-**Silverpeas** is a ...
+**Silverpeas** is an intranet/extranet software application that can be accessible from a simple web browser.  It can be used to share documents, for content management, etc.
 
 #### Trying to attack the website
 
 From the results obtained in `nmap`above, I tried to lookup for CVEs related to the particular version of **nginx** the web server is running: _**nginx 1.18.0**._&#x20;
 
-...
+I found the following CVE(s):
 
+_**CVE 2021-23017**_
 
+_Details_
+
+[https://www.cvedetails.com/cve/CVE-2021-23017/](https://www.cvedetails.com/cve/CVE-2021-23017/)
+
+_Exploit code_
+
+[https://www.exploit-db.com/exploits/50973](https://www.exploit-db.com/exploits/50973)
+
+I have tried exploiting the service with the found exploit, but to no avail. &#x20;
 
 ### 2. Enumerating port 80 with common _silverpeas_ directories
 
@@ -49,11 +65,8 @@ From a quick on Google, I gathered various URL paths that are commonly used on a
 4. `/portal/admin`
 5. `/silverpeas`
 6. `/silverpeas/portal`
-7. ...
 
 All the paths returned status code _**404**_ (Not found).
-
-
 
 ### 3. Concentrating my efforts on port 8080 (running Silverpeas)
 
@@ -158,7 +171,7 @@ Notice that the server returned the following URL value in the `Location` header
 
 
 
-The following cookies are found from the `Set-Cookie` response headers from the request above, and must be set in the browser (under the _**Console**_ tab for Google Chrome) for the dashboard to load. If not set, the page will redirect back to the login page (<mark style="color:red;">**\*\***</mark> _the cookie seems to bet set automatically when using the proxy browser_):
+The following cookies are found from the `Set-Cookie` response headers from the request above, and must be set in the browser (under the _**Console**_ tab for Google Chrome) for the dashboard to load. If not set, the page will redirect back to the login page (<mark style="color:red;">**\*\***</mark> _the cookie seems to be set automatically when using the proxy browser_):
 
 ```javascript
 chrome-console> document.cookie = "JSESSIONID=xxx; path=/silverpeas";
@@ -169,6 +182,8 @@ chrome-console> document.cookie = "svpLogin=scr1ptkiddy; path=/; ...";
 I visited the URL, and was navigated to a dashboard at the following URL:
 
 `http://<target-url>:8080/silverpeas/look/jsp/MainFrame.jsp`
+
+Now that we have found the dashboard page, and have the apprioprate cookies set in the browser, we can proceed to enumerate the webpage further, and gather more information. Furthermore, with the cookies set, this means that we are authenticated, and we are able to perform vulnerability exploit that requires authentication.
 
 ### How I found the SSH credentials (to gain an unprivileged shell on the server)
 
