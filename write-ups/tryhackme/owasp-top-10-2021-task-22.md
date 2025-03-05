@@ -122,5 +122,5 @@ Hence, the final **GET** request URL is:
 
 
 
-3. `@`, `%2F`, `//`
+4. `@`, `%2F`, `//`
 
