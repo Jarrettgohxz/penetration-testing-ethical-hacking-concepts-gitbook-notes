@@ -23,7 +23,7 @@ $ nmap -sS -n -v -Pn [target_ip]
 
 The results showed that there were 3 open ports: `22`, `80` and `8080`.&#x20;
 
-#### Enumerating SSH
+**Enumerating SSH**
 
 I started off by enumerating SSH at port 22 to find the version number and a potential CVE.
 
@@ -33,8 +33,6 @@ $ nmap -sV -n -Pn [target_ip]
 
 After realizing that port 22 was least likely to be the vulnerable service (probably a rookie mistake for thinking that it was the vulnerable one in the first place :D), I went on to visit the website at port 80 instead
 
-
-
 **Information gathering**&#x20;
 
 After running through the website (port 80) with interception from Burp suite community, I viewed the sitemap generated (**Target** -> **Site map**), but didn't find any useful information.&#x20;
@@ -43,7 +41,7 @@ After reading through the text content present, a particular term: **silverpeas*
 
 **Silverpeas** is an intranet/extranet software application that can be accessible from a simple web browser.  It can be used to share documents, for content management, etc.&#x20;
 
-#### Enumerating HTTP
+**Enumerating HTTP**
 
 ```bash
 $ nmap [target_ip] -p80 -sV -sS -v -n -Pn
