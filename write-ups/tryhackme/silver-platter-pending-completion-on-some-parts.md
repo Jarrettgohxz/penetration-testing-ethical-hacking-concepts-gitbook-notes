@@ -10,7 +10,9 @@ Due to the lack of experience and knowledge in this type of challenges; and in t
 
 ## Gaining initial foothold
 
-1. ### Run `nmap` on the target IP address
+### 1. General enumeration
+
+#### Running nmap on the target  IP address
 
 ```bash
 $ nmap -sS -n -v -Pn [target_ip]
@@ -21,7 +23,9 @@ $ nmap -sS -n -v -Pn [target_ip]
 
 The results showed that there were 3 open ports: `22`, `80` and `8080`.&#x20;
 
-I started off by enumerating SSH at port 22 first, to find the version number and a potential CVE.
+#### Enumerating SSH
+
+I started off by enumerating SSH at port 22 to find the version number and a potential CVE.
 
 ```bash
 $ nmap -sV -n -Pn [target_ip]
@@ -29,15 +33,22 @@ $ nmap -sV -n -Pn [target_ip]
 
 After realizing that port 22 was least likely to be the vulnerable service (probably a rookie mistake for thinking that it was the vulnerable one in the first place :D), I went on to visit the website at port 80 instead
 
-#### Information gathering
-
-After running through the website with interception from Burp suite community, I viewed the sitemap generated (**Target** -> **Site map**), but didn't find any useful information.&#x20;
+After running through the website (port 80) with interception from Burp suite community, I viewed the sitemap generated (**Target** -> **Site map**), but didn't find any useful information.&#x20;
 
 After reading through the text content present, a particular term: **silverpeas**, and the username **scr1ptkiddy** caught my eye. I decided to research about it.&#x20;
 
-**Silverpeas** is an intranet/extranet software application that can be accessible from a simple web browser.  It can be used to share documents, for content management, etc.
+**Silverpeas** is an intranet/extranet software application that can be accessible from a simple web browser.  It can be used to share documents, for content management, etc.&#x20;
 
-#### Trying to attack the website
+#### Enumerating HTTP
+
+```bash
+$ nmap [target_ip] -p80 -sV -sS -v -n -Pn
+
+PORT   STATE SERVICE VERSION
+80/tcp open  http    nginx 1.18.0 (Ubuntu)
+...
+...
+```
 
 From the results obtained in `nmap`above, I tried to lookup for CVEs related to the particular version of **nginx** the web server is running: _**nginx 1.18.0**._&#x20;
 
@@ -70,10 +81,14 @@ All the paths returned status code _**404**_ (Not found).
 
 ### 3. Concentrating my efforts on port 8080 (running Silverpeas)
 
-I decided to start trying to play around with port 8080 instead. I visited the website at port 8080 while behind a Burp suite community proxy. After running a quick `nmap` scan, the results shows that it is running a _**http-proxy**_.
+I decided to explore port 8080 instead. I visited the website at port 8080. After running a quick `nmap` scan, the results shows that it is running a _**http-proxy**_.
 
 ```bash
 $ nmap -sV -n -v -Pn -p8080 [target_ip]
+
+PORT     STATE SERVICE    VERSION
+8080/tcp open  http-proxy
+...
 ```
 
 I went on to try visiting the paths I tried on port 80 previously, and got a positive result for **/silverpeas** (redirection to a login page instead of status code 404).
@@ -90,15 +105,15 @@ c) DanielMiessler's SecLists ([https://github.com/danielmiessler/SecLists](https
 $ gobuster dir --url http://[target_ip]:8080/silverpeas/ -w [wordlist]
 ```
 
-I found a few positive results ...
+The following paths (only listed a few) gave a positive result with status code of 302 or 200: `/admin`, `/blog`, `/survey`.  However, each path simply displays an error message indicating that the request is not conform or is forbidden.
 
-### 4. Continuing my adventure on port 8080!
+
+
+**X-Powered-By response headers**
+
+Even though the path mentioned above gave an error message, I noticed an interesting finding (from chrome network inspection tool). The X-Powered-By reponse headers was returned, and set with the value `JSP/2.3`.
 
 **Searching for CVEs and exploits relating to JSP/2.3**
-
-From the X-powered-by response headers, ...
-
-
 
 I tried using a few Metasploit payloads:
 
@@ -106,7 +121,9 @@ a) `exploit/multi/http/struts_include_params`
 
 b) `expoit/multi/http/struts2_content_type_ognl`
 
+...
 
+### 4. Continuing my adventure on port 8080!
 
 #### Further enumeration of the webpage on port 8080
 
@@ -114,23 +131,15 @@ _Inspecting source code_
 
 ...
 
-
-
 ### 5. Further research on &#x53;_&#x69;lverpeas_
 
 After much research, I came across a vulnerability listing regarding **silverpeas** authentication bypass:
 
 {% embed url="https://github.com/advisories/GHSA-4w54-wwc9-x62c" %}
 
-...
+This vulnerability allows authentication bypass by omitting the `password` field to the `AuthenticationServlet` path.
 
-...
-
-...
-
-
-
-After playing around with the website at port 8080, I returned to Burp suite and looked through the gathered URLs. I found a `POST` request to the path: _**AuthenticationServlet**_, this prompted me to test out the vulnerability I have found previously.
+After playing around with the website at port 8080, I returned to Burp suite and looked through the gathered URLs. I found a **POST** request to the path: `AuthenticationServlet`, this prompted me to test out the vulnerability I have found previously.
 
 I sent the request to the Burp suite _repeater_ and modified the request to remove the `Password` field:
 
@@ -197,7 +206,7 @@ Now that we have found the dashboard page, and have the apprioprate cookies set 
 
 {% embed url="https://github.com/RhinoSecurityLabs/CVEs/tree/master/CVE-2023-47323" %}
 
-Note that this method is ran as the regular user _**scr1ptkiddy**_ (appropriate cookies should be set in the browser or cURL request).
+<mark style="color:red;">**Note**</mark> that this method is ran as the regular user _**scr1ptkiddy**_ (appropriate cookies should be set in the browser or cURL request).
 
 Through the proof-of-concept detailed in the link above, I iterated through the URL with different ID values. I found that the ID value of _**6**_ displays the SSH credentials:
 
@@ -227,7 +236,7 @@ The results will either display 2-3 responses, or a single response. By now, it 
 
 &#x20;I explored the page and found that there is another user named _**Manager**_, and an administrator named _**Administrateur**_. I tried logging in as the administrator by replacing the `Login` data field in the **POST** request with the values: _administrator_, _Administrator_, _administrateur_ and _Administrateur_. The response simply returned the login page URL in the _**Location**_ response headers - indicating a failed login attempt:
 
-I tried to login as the user _Manager_ instead,:
+I tried to login as the user _Manager_ instead:
 
 ```http
 POST /silverpeas/AuthenticationServlet 
