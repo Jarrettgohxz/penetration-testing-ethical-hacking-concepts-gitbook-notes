@@ -78,15 +78,13 @@ _<mark style="color:red;">ValueError: embedded null byte</mark>_
 
 
 
-2. `?` query symbol) (<mark style="color:green;">**✔ Working method**</mark>)
+2. `?` (query symbol) (<mark style="color:green;">**✔ Working method**</mark>)
 
 Inserting a ? character at the end of the server query parameter value will trick the server to treat the rest of the input (`'/public-docs-k057230990384293/' + filename`) as a query. Thus, effectively ignoring its values, allowing an attacker to fully control the server address.
 
 A **GET** request to the following payload allows us to send a request to the **/admin** path from within the server localhost, bypassing the restriction&#x73;**.**
 
 `http://<target_url>:8087/download?server=localhost:8087/admin?&id=1`
-
-This forged request allows us to view the content of the admin page.
 
 
 
@@ -119,8 +117,3 @@ A fix will be to encode the hash symbol (`%23`):
 Hence, the final **GET** request URL is:
 
 `http://<target_url>:8087/download?server=localhost:8087/admin%23&id=1`
-
-
-
-4. `@`, `%2F`, `//`
-
