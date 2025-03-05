@@ -10,7 +10,7 @@ _**Extra practice challenge: "Going the extra mile"**_
 
 > There's a way to use SSRF to gain access to the site's admin area. Can you find it?
 
-A GET request is sent to the following href to download the resume:
+A **GET** request is sent to the following href to download the resume:
 
 `/download?server=secure-file-storage.com:8087&id=75482342`
 
@@ -19,6 +19,8 @@ General format of the HTTP URL:
 `http://<url>:8087/download?server=<server_addr>&id=<file_id>`
 
 
+
+### Enumeration
 
 1. Visiting the following URL [http://10.10.106.252:8087/admin](http://10.10.106.252:8087/admin) (GET request), presented me with a webpage displaying the following message:&#x20;
 
@@ -30,7 +32,7 @@ This tells us that the admin page can only be accessed from within the machine i
 
 For example, when the value `t` is provided, the following info and code snippet is shown in the error message.&#x20;
 
-_**GET http://\<url>:8087/download?server=\&id=t**_
+`GET http://<url>:8087/download?server=&id=t` gives the following error details:
 
 `ValueError: invalid literal for int() with base 10: 't'`
 
@@ -60,7 +62,7 @@ Thus, the goal is to craft a payload to the _**server**_ query parameter to forg
 
 ### Payload to the `server` query parameter
 
-The placeholder `<url>`will be used as a general value - it should be replaced with `localhost:8087/admin`.
+The placeholder `<url>`will be used as a general value. As detailed from part 1 in the _**Enumeration**_ section, the goal will be to redirect the **GET** request to the localhost admin page at port 8087 - placeholder value should be replaced with `localhost:8087/admin`. &#x20;
 
 1. Null terminator/byte (`%00`)
 
@@ -72,16 +74,49 @@ The input to the _**id**_ parameter will be a random integer value. While the va
 
 However, this method does not work.
 
+
+
 2. `?` (query symbol) (<mark style="color:green;">**✔ Working method**</mark>)
 
-Inserting a ? character at the end of the value passed to the server query parameter will trick the server to treat the rest of the input (`'/public-docs-k057230990384293/' + filename`) as a query. Thus, effectively ignoring its values, allowing an attacker to fully control the server address.
+Inserting a ? character at the end of the server query parameter value will trick the server to treat the rest of the input (`'/public-docs-k057230990384293/' + filename`) as a query. Thus, effectively ignoring its values, allowing an attacker to fully control the server address.
 
-A GET request to the following payload allows us to send a request to the **/admin** path from within the server localhost, bypassing the restriction&#x73;**.**
+A **GET** request to the following payload allows us to send a request to the **/admin** path from within the server localhost, bypassing the restriction&#x73;**.**
 
-`10.10.106.252:8087/download?server=localhost:8087/admin?&id=1`
+`http://<target_url>:8087/download?server=localhost:8087/admin?&id=1`
 
 This forged request allows us to view the content of the admin page.
 
-3. `#`
-4. `@`, `%2F`, `//`
+
+
+3. `#`(URI fragment) (<mark style="color:green;">**✔ Working method**</mark>)
+
+{% embed url="https://developer.mozilla.org/en-US/docs/Web/URI/Reference/Fragment" %}
+
+{% embed url="https://support.google.com/richmedia/answer/190941?hl=en" %}
+
+Similar to the query symbol, inserting an URI fragment symbol (`#`) at the end of the server query parameter value will trick the server to treat the rest of the input as a fragment.
+
+First attempt of payload:
+
+`http://<target_url>:8087/download?server=localhost:8087/admin#&id=1`
+
+Some browsers may remove the section after the hash symbol (`#`):
+
+`.../.../admin#&id=1` **->** `.../.../admin`
+
+The final URL causes the id query parameter to be removed, which gives the following error:
+
+`No file selected...`
+
+A fix will be to encode the hash symbol (`%23`):
+
+`.../.../admin%23&id=1` **->** `.../.../admin#&id=1`
+
+Hence, the final **GET** request URL is:
+
+`http://<target_url>:8087/download?server=localhost:8087/admin%23&id=1`
+
+
+
+3. `@`, `%2F`, `//`
 
