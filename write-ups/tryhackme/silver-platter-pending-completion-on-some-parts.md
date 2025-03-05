@@ -130,7 +130,7 @@ After much research, I came across a vulnerability listing regarding **silverpea
 
 
 
-After playing around with the website at port 8080, I returned to Burp suite and looked through the gathered URLs. I found a `POST` request to a path with the _**AuthenticationServlet**_ word present, this prompted me to test out the vulnerability I have found previously.
+After playing around with the website at port 8080, I returned to Burp suite and looked through the gathered URLs. I found a `POST` request to the path: _**AuthenticationServlet**_, this prompted me to test out the vulnerability I have found previously.
 
 I sent the request to the Burp suite _repeater_ and modified the request to remove the `Password` field:
 
@@ -197,7 +197,7 @@ Now that we have found the dashboard page, and have the apprioprate cookies set 
 
 {% embed url="https://github.com/RhinoSecurityLabs/CVEs/tree/master/CVE-2023-47323" %}
 
-Note that this method is ran as the regular user _**scr1ptkiddy**_.
+Note that this method is ran as the regular user _**scr1ptkiddy**_ (appropriate cookies should be set in the browser or cURL request).
 
 Through the proof-of-concept detailed in the link above, I iterated through the URL with different ID values. I found that the ID value of _**6**_ displays the SSH credentials:
 
@@ -225,9 +225,9 @@ The results will either display 2-3 responses, or a single response. By now, it 
 
 **Method 2: Reading the plain-text SSH password in message notification as the user "Manager"**
 
-&#x20;I explored the page and found that there is another user named _**Manager**_, and an administrator named _**Administrateur**_. I tried logging in as the administrator by replacing the _Login_ data field in the _POST_ request with the values: _administrator_, _Administrator_, _administrateur_ and _Administrateur_. The response simply returned the login page URL in the _**Location**_ response headers - indicating a failed login attempt:
+&#x20;I explored the page and found that there is another user named _**Manager**_, and an administrator named _**Administrateur**_. I tried logging in as the administrator by replacing the `Login` data field in the **POST** request with the values: _administrator_, _Administrator_, _administrateur_ and _Administrateur_. The response simply returned the login page URL in the _**Location**_ response headers - indicating a failed login attempt:
 
-I tried to login as the user _Manager_ instead, and received a similar response headers value as before:
+I tried to login as the user _Manager_ instead,:
 
 ```http
 POST /silverpeas/AuthenticationServlet 
@@ -237,9 +237,11 @@ Host: <target-url>:8080
 Login=Manager&DomainId=0
 ```
 
-The only difference in the response is that the _svpLogin_ field in the _Set-Cookie_ cookie changed to **Manager**, and a different _JSESSIONID_ was returned. The _Location_ response headers was the same as with the user **scr1ptkiddy** (...`/silverpeas/Main//look/jsp/MainFrame.jsp`).
+I received a similar response headers value as before (with the user _**scr1ptkiddy**_), with the `Set-Cookie` and `Location` headers, etc.
 
-After setting the cookie values on the browser console the same way as before, I navigated to the URL (in the _Location_ field of the response headers), and was presented with a dashboard as the user **Manager**. I went on to read the message notifications and found the SSH credentials in plain-text.&#x20;
+The only difference in the response is that the _svpLogin_ field in the _Set-Cookie_ cookie changed to _**Manager**_, and a different _JSESSIONID_ was returned. The _Location_ response headers was the same as with the user **scr1ptkiddy** (...`/silverpeas/Main//look/jsp/MainFrame.jsp`).
+
+After setting the cookie values on the browser console the same way as before, I navigated to the URL (in the _Location_ field of the response headers), and was presented with a dashboard as the user _**Manager**_. I went on to read the message notifications and found the SSH credentials in plain-text.&#x20;
 
 
 
@@ -287,7 +289,9 @@ _Other possible options_
 <pre class="language-bash"><code class="lang-bash"><strong>$ ffuf -fr "ErrorCode" ...
 </strong></code></pre>
 
-This option works to return a positive match for the password: `adipiscing`. Using the found password with the username scr1ptkiddy allows us to login to the dashboard. The method to retrieve the SSH credentials (refer to the details above - **CVE 2023-47323**) can be applied as the newly authenticated user.
+This option works to return a positive match for the password: `adipiscing`. Using the found password with the username _**scr1ptkidd**_, allows us to login to the dashboard.&#x20;
+
+The method to retrieve the SSH credentials (refer to the details above - **CVE 2023-47323**) can be applied as the newly authenticated user.
 
 {% embed url="https://jarrettgxz-sec.gitbook.io/penetration-testing-ethical-hacking/tools-services/wordlists/cewl" %}
 
