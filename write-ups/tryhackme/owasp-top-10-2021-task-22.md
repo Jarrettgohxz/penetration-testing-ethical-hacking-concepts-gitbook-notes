@@ -78,7 +78,7 @@ _<mark style="color:red;">ValueError: embedded null byte</mark>_
 
 
 
-2. `?` (query symbol) (<mark style="color:green;">**✔ Working method**</mark>)
+2. `?` query symbol) (<mark style="color:green;">**✔ Working method**</mark>)
 
 Inserting a ? character at the end of the server query parameter value will trick the server to treat the rest of the input (`'/public-docs-k057230990384293/' + filename`) as a query. Thus, effectively ignoring its values, allowing an attacker to fully control the server address.
 
@@ -110,7 +110,7 @@ Some browsers may remove the section after the hash symbol (`#`):
 
 The final URL causes the id query parameter to be removed, which gives the following error:
 
-`No file selected...`
+_<mark style="color:red;">No file selected...</mark>_
 
 A fix will be to encode the hash symbol (`%23`):
 
