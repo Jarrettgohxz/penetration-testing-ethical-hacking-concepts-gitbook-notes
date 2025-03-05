@@ -33,6 +33,10 @@ $ nmap -sV -n -Pn [target_ip]
 
 After realizing that port 22 was least likely to be the vulnerable service (probably a rookie mistake for thinking that it was the vulnerable one in the first place :D), I went on to visit the website at port 80 instead
 
+
+
+**Information gathering**&#x20;
+
 After running through the website (port 80) with interception from Burp suite community, I viewed the sitemap generated (**Target** -> **Site map**), but didn't find any useful information.&#x20;
 
 After reading through the text content present, a particular term: **silverpeas**, and the username **scr1ptkiddy** caught my eye. I decided to research about it.&#x20;
@@ -64,7 +68,7 @@ _Exploit code_
 
 [https://www.exploit-db.com/exploits/50973](https://www.exploit-db.com/exploits/50973)
 
-I have tried exploiting the service with the found exploit, but to no avail. &#x20;
+I  tried exploiting the service with the found exploit, but to no avail. &#x20;
 
 ### 2. Enumerating port 80 with common _silverpeas_ directories
 
