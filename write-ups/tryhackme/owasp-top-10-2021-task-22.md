@@ -24,7 +24,7 @@ General format of the HTTP URL:
 
 1. Visiting the following URL [http://10.10.106.252:8087/admin](http://10.10.106.252:8087/admin) (GET request), presented me with a webpage displaying the following message:&#x20;
 
-`Admin interface only available from localhost!!!`
+_<mark style="color:red;">Admin interface only available from localhost!!!</mark>_
 
 This tells us that the admin page can only be accessed from within the machine itself. The goal now will be to find a SSRF vulnerability to redirect the request to the localhost admin URL instead.
 
@@ -32,9 +32,9 @@ This tells us that the admin page can only be accessed from within the machine i
 
 For example, when the value `t` is provided, the following info and code snippet is shown in the error message.&#x20;
 
-`GET http://<url>:8087/download?server=&id=t` gives the following error details:
+A GET request to `http://<url>:8087/download?server=&id=t` gives the following error details:
 
-`ValueError: invalid literal for int() with base 10: 't'`
+_<mark style="color:red;">ValueError: invalid literal for int() with base 10: 't'</mark>_
 
 ```python
 def download():
@@ -72,7 +72,9 @@ The input to the _**id**_ parameter will be a random integer value. While the va
 
 `<url>%00/public-docs-k057230990384293/<filename>` _**->**_ `<url>`
 
-However, this method does not work.
+However, this method does not work, and produces the following error message:
+
+_<mark style="color:red;">ValueError: embedded null byte</mark>_
 
 
 
@@ -99,6 +101,8 @@ Similar to the query symbol, inserting an URI fragment symbol (`#`) at the end o
 First attempt of payload:
 
 `http://<target_url>:8087/download?server=localhost:8087/admin#&id=1`
+
+_\*\*Tested on Google Chrome and Firefox_
 
 Some browsers may remove the section after the hash symbol (`#`):
 
