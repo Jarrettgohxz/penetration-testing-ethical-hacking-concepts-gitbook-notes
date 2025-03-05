@@ -7,13 +7,21 @@ description: >-
 
 # SSRF
 
-## Example
+## Methods
+
+### Forming payloads
 
 Refer to the following challenge write-up for more information:&#x20;
 
 {% embed url="https://jarrettgxz-sec.gitbook.io/penetration-testing-ethical-hacking/write-ups/tryhackme/owasp-top-10-2021-task-22" %}
 
-Generally, there are a few HTTP URL symbols that can be used to form payloads for SSRF based attacks. This includes `?`, `#`, `%00`, etc.
+Generally, there are a few HTTP URL symbols that can be used to form payloads for SSRF based attacks: `?`, `#`, `%00`, etc.
+
+In some instances, the symbols may need to be URL encoded to bypass filter checks:
+
+`?` -> `%3F`
+
+`#` -> `%23`
 
 ## Common endpoints to access
 
