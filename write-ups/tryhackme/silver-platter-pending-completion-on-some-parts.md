@@ -111,7 +111,7 @@ The following paths (only listed a few) gave a positive result with status code 
 
 **X-Powered-By response headers**
 
-Even though the path mentioned above gave an error message, I noticed an interesting finding (from chrome network inspection tool). The X-Powered-By reponse headers was returned, and set with the value `JSP/2.3`.
+Even though the path mentioned above gave an error message, I noticed an interesting finding (from chrome network inspection tool). The `X-Powered-By` reponse headers was returned, and set with the value `JSP/2.3`.
 
 **Searching for CVEs and exploits relating to JSP/2.3**
 
@@ -123,15 +123,7 @@ b) `expoit/multi/http/struts2_content_type_ognl`
 
 ...
 
-### 4. Continuing my adventure on port 8080!
-
-#### Further enumeration of the webpage on port 8080
-
-_Inspecting source code_
-
-...
-
-### 5. Further research on &#x53;_&#x69;lverpeas_
+### 4. Further research on &#x53;_&#x69;lverpeas_&#x20;
 
 After much research, I came across a vulnerability listing regarding **silverpeas** authentication bypass:
 
@@ -254,7 +246,7 @@ After setting the cookie values on the browser console the same way as before, I
 
 
 
-### 6. Alternative method for initial foothold
+### 5. Alternative method for initial foothold
 
 **Experimenting with CeWL**
 
