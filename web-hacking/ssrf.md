@@ -7,6 +7,14 @@ description: >-
 
 # SSRF
 
+## Example
+
+Refer to the following challenge write-up for more information:&#x20;
+
+{% embed url="https://jarrettgxz-sec.gitbook.io/penetration-testing-ethical-hacking/write-ups/tryhackme/owasp-top-10-2021-task-22" %}
+
+Generally, there are a few HTTP URL symbols that can be used to form payloads for SSRF based attacks. This includes `?`, `#`, `%00`, etc.
+
 ## Common endpoints to access
 
 1. `169.254.169.254`: A special IP in cloud environments to retrieve user data and instance metadata related to the current instance
@@ -62,3 +70,4 @@ Hosting a DNS server to resolve controlled subdomains to a specified IP address 
 For example a certain deny list includes the localhost addresses. An attacker controlled domain: `https://localhost.malicious.com` can be created to resolve to the localhost address of 1`27.0.0.1.` However, since this particular domain was not specified in the deny list, the request will be sent, and eventually resolved to the localhost address, completely bypassing the deny list.
 
 This method can be used to bypass IP address restrictions for other addresses besides the localhost, by changing the IP address value in the DNS server.
+
