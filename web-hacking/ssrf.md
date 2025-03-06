@@ -17,11 +17,13 @@ Refer to the following challenge write-up for more information:&#x20;
 
 Generally, there are a few HTTP URL symbols that can be used to form payloads for SSRF based attacks: `?`, `#`, `%00`, etc.
 
-In some instances, the symbols may need to be URL encoded to bypass filter checks:
+In some instances, the symbols may need to be URL encoded to accurately represent the value, or bypass filter checks:
 
 `?` -> `%3F`
 
 `#` -> `%23`
+
+`%00 -> %2500`
 
 ## Common endpoints to access
 

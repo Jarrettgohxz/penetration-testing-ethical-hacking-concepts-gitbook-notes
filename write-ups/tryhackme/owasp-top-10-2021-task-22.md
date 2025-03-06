@@ -18,8 +18,6 @@ General format of the HTTP URL:
 
 `http://<url>:8087/download?server=<server_addr>&id=<file_id>`
 
-
-
 ### Enumeration
 
 1. Visiting the following URL [http://10.10.106.252:8087/admin](http://10.10.106.252:8087/admin) (GET request), presented me with a webpage displaying the following message:&#x20;
@@ -66,9 +64,9 @@ The placeholder `<url>`will be used as a general value. As detailed from part 1 
 
 1. Null terminator/byte (`%00`)
 
-`http://<url>:8087/download?server=<url>%00&id=1`
+`http://<url>:8087/download?server=<url>%2500&id=1`
 
-The input to the _**id**_ parameter will be a random integer value. While the value to the _**server**_ query parameter will be the target URL with the `%00` character at the end. The goal is to forcefully terminate the string value, to have the server ignore the part after the input.
+The input to the _**id**_ parameter will be a random integer value. While the value to the _**server**_ query parameter will be the target URL with the `%00`character at the end. The goal is to forcefully terminate the string value, to have the server ignore the part after the input.
 
 `<url>%00/public-docs-k057230990384293/<filename>` _**->**_ `<url>`
 

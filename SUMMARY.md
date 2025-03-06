@@ -186,3 +186,5 @@
   * [Light](write-ups/tryhackme/light.md)
   * [OWASP Top 10 - 2021 (task 22)](write-ups/tryhackme/owasp-top-10-2021-task-22.md)
   * [OWASP juice shop](write-ups/tryhackme/owasp-juice-shop.md)
+* [OverTheWire](write-ups/overthewire/README.md)
+  * [Untitled](write-ups/overthewire/untitled.md)
