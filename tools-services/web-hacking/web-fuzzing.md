@@ -25,21 +25,21 @@ _**Flags**_
 
 ```bash
 # eg. with multiple -w flags
-$ ffuf -w <path_to_wordlist_1>:FUZZ1 -w <path_to_wordlist_2>:FUZZ2 -d "key1=FUZZ1&key2=FUZZ2"
+$ ffuf -w <path_to_wordlist_1>:FUZZ1 -w <path_to_wordlist_2>:FUZZ2 -H "content-type:application/x-www-form-urlencoded" -d "key1=FUZZ1&key2=FUZZ2"
 
 # eg. with a single -w flag
-$ ffuf -w <path_to_wordlist_1>:FUZZ1,<path_to_wordlist_2>:FUZZ2 -d "key1=FUZZ1&key2=FUZZ2"
+$ ffuf -w <path_to_wordlist_1>:FUZZ1,<path_to_wordlist_2>:FUZZ2 -H "content-type:application/x-www-form-urlencoded" -d "key1=FUZZ1&key2=FUZZ2"
 ```
 
-**Note:** The placeholder values for each line in the word-list must be capital letters.
+**Note:** The placeholder values for the identifier for each of the word-list must be capital letters (eg. `FUZZ1`, `FUZZ2`).
 
 `-u`: HTTP URL
 
 `-X`: HTTP method, default value is **GET**
 
-The _**`FUZZ`**_ keyword will be inserted with values from the word-list during the fuzzing process (refer to basic command example above).
+The `FUZZ` keyword will be inserted with values from the word-list during the fuzzing process (refer to basic command example above).
 
-There are multiple other use cases where th&#x65;_**`FUZZ`**_&#x6B;eyword can be utilized to fuzz different input values such as headers, request data, etc. Refer to the various sub-sections under the **WEB EXPLOITATION** section for more examples.
+There are multiple other use cases where the`FUZZ`keyword can be utilized to fuzz different input values such as headers, request data, etc. Refer to the various sub-sections under the **WEB EXPLOITATION** section for more examples.
 
 #### Other useful flags
 

@@ -168,6 +168,7 @@
 
 * [Introduction](tools-services/introduction.md)
 * [Web hacking](tools-services/web-hacking/README.md)
+  * [Password brute-forcing](tools-services/web-hacking/password-brute-forcing.md)
   * [Web fuzzing](tools-services/web-hacking/web-fuzzing.md)
   * [Burp Suite (Community)](tools-services/web-hacking/burp-suite-community.md)
 * [Information gathering/reconnaissance](tools-services/information-gathering-reconnaissance.md)
@@ -184,3 +185,4 @@
   * [Silver Platter](write-ups/tryhackme/silver-platter.md)
   * [Light](write-ups/tryhackme/light.md)
   * [OWASP Top 10 - 2021 (task 22)](write-ups/tryhackme/owasp-top-10-2021-task-22.md)
+  * [OWASP juice shop](write-ups/tryhackme/owasp-juice-shop.md)
