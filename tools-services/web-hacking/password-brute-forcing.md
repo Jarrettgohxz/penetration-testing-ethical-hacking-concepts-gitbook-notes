@@ -4,7 +4,7 @@ The tools discussed in the [Web Fuzzing](https://jarrettgxz-sec.gitbook.io/penet
 
 ### Example with ffuf (content-type application/json)
 
-Suppose we want to brute-force a POST request to the URL: http://vuln-website.com/user/login. Assuming that this website retrieves the data in a [JSON](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/JSON) format, with the fields: _username (test)_ and _password_. The general format of the request will be:
+Suppose we want to brute-force a POST request to the URL: `http://vuln-website.com/user/login`. Assuming that the server retrieves the data in a [JSON](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/JSON) format, with the fields: _username (test)_ and _password_. The general format of the request will be:
 
 <pre class="language-bash"><code class="lang-bash"><strong>$ ffuf -X POST -H "content-type:application/json" -d &#x3C;data> -w &#x3C;password_wordlist> -u http://vuln-website.com/user/login 
 </strong></code></pre>
