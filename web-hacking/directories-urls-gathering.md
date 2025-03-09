@@ -15,7 +15,40 @@ The Burp Suite _**Site map**_ feature found under the _**Target**_ tab provides 
 
 ## getallurls/gau
 
-The package `getallurls`installed directly in Kali Linux with `apt install` seems to have some issue. To use the `gau` binary that can be installed from the installation step listed in the Github link below.
+The package `getallurls`installed directly in Kali Linux with `apt install`seems to have some issue.&#x20;
+
+The `gau` binary  can be installed from the installation step listed in the Github link below instead:
+
+1. Determine the current system architecture (Linux)
+
+```bash
+$ uname -a
+$ arch
+$ cat /proc/version
+... aarch64
+... x86_64
+```
+
+Since I am running my Kali on a Raspberry pi in this case, the commands above will display `aarch64`, which is ARM-64.
+
+2. Download the apprioprate gau binary `.tar.gz` file. In my case, it will be labelled as `gau_2.2.4_linux_arm64.tar.gz`.
+3. Extract the files, and move the binary file to another location. Depending on your system, the default binary path may defer. In this example, I'll assume its `/usr/bin`.
+
+```bash
+$ mktemp -d # create temp dir
+$ cd ... # change dir to temp dir
+ 
+$ tar xvf gau_2.2.4_linux_arm64.tar.gz
+LICENSE
+README
+gau
+
+$ file gau
+/usr/bin/gau: ELF 64-bit LSB executable, ARM aarch64, ...
+$ mv gau /usr/bin/gau
+$ which gau
+/usr/bin/gau
+```
 
 #### Basic commands:
 
