@@ -95,6 +95,10 @@
 * [XSS](web-hacking/xss.md)
 * [SQL injection](web-hacking/sql-injection.md)
 
+***
+
+* [URI standard (RFC 3986)](uri-standard-rfc-3986.md)
+
 ## 🛣️ Attacks on routing protocols
 
 * [What are attacks on routing protocols?](attacks-on-routing-protocols/what-are-attacks-on-routing-protocols.md)
@@ -185,6 +189,6 @@
   * [Silver Platter](write-ups/tryhackme/silver-platter.md)
   * [Light](write-ups/tryhackme/light.md)
   * [OWASP Top 10 - 2021 (task 22)](write-ups/tryhackme/owasp-top-10-2021-task-22.md)
-  * [OWASP juice shop](write-ups/tryhackme/owasp-juice-shop.md)
 * [OverTheWire](write-ups/overthewire/README.md)
   * [Untitled](write-ups/overthewire/untitled.md)
+* [OWASP juice shop](write-ups/owasp-juice-shop.md)
