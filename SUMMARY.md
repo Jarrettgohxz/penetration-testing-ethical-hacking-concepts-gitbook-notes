@@ -106,6 +106,7 @@
 ***
 
 * [URI standard (RFC 3986)](uri-standard-rfc-3986.md)
+* [HTTP headers](http-headers.md)
 
 ## 🛣️ Attacks on routing protocols
 

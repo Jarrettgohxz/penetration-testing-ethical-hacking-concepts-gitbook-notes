@@ -4,7 +4,7 @@ description: XSS (cross-site scripting).
 
 # XSS
 
-## 4 types of XSS attack methods:
+4 types of XSS attack methods:
 
 1. Reflected XSS
 2. Stored XSS
@@ -223,9 +223,11 @@ Eg. `<img src="x" onerror="alert('xss')"/>`&#x20;
 
 ## Practice
 
-Tasl 7 of OWASP juice shop room in TryHackMe:&#x20;
+Task 7 of OWASP juice shop room in TryHackMe:&#x20;
 
-{% embed url="https://tryhackme.com/room/owaspjuiceshop" %}
+a) Challenge: [https://tryhackme.com/room/owaspjuiceshop](https://tryhackme.com/room/owaspjuiceshop)
+
+b) Write-up: [https://jarrettgxz-sec.gitbook.io/penetration-testing-ethical-hacking/write-ups/owasp-juice-shop](https://jarrettgxz-sec.gitbook.io/penetration-testing-ethical-hacking/write-ups/owasp-juice-shop)
 
 {% embed url="https://tryhackme.com/r/room/thestickershop" %}
 
