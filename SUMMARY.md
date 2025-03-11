@@ -20,6 +20,14 @@
 * [Metadata](osint/metadata.md)
 * [Social media](osint/social-media.md)
 
+***
+
+* [Tools](tools/README.md)
+  * [Recon-ng](tools/recon-ng.md)
+  * [sherlock](tools/sherlock.md)
+  * [osintagram](tools/osintagram.md)
+  * [...](tools/....md)
+
 ## 😨 Social Engineering
 
 * [What is social engineering?](social-engineering/what-is-social-engineering.md)

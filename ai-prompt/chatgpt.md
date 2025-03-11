@@ -59,8 +59,14 @@ _**Examples**_
 
 ### 6. Success criteria
 
-What defines how we judge a successful result.
+What defines how we judge a good response from the AI.
 
 _**Examples**_
 
 > Payloads should be concise, avoid the forbidden characters, and effectively exploit JavaScript execution using an alert(1) within the described limitations.
+
+
+
+## Useful tools
+
+{% embed url="https://github.com/simonw/llm" %}
