@@ -192,3 +192,7 @@
 * [OverTheWire](write-ups/overthewire/README.md)
   * [Untitled](write-ups/overthewire/untitled.md)
 * [OWASP juice shop](write-ups/owasp-juice-shop.md)
+
+## AI prompt
+
+* [ChatGPT](ai-prompt/chatgpt.md)
