@@ -6,6 +6,8 @@ description: >-
 
 # OWASP Top 10 - 2021 (task 22)
 
+{% embed url="https://tryhackme.com/room/owasptop102021" %}
+
 _**Extra practice challenge: "Going the extra mile"**_
 
 > There's a way to use SSRF to gain access to the site's admin area. Can you find it?
