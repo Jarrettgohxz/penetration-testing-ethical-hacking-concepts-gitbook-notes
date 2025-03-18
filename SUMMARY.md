@@ -93,6 +93,11 @@
 * [Metasploit](vulnerability-and-exploitation/metasploit.md)
 * [Msfvenom](vulnerability-and-exploitation/msfvenom.md)
 
+***
+
+* [Misconfigurations](misconfigurations/README.md)
+  * [.DS\_Store](misconfigurations/.ds_store.md)
+
 ## Web Hacking
 
 * [Introduction](web-hacking/introduction.md)
@@ -107,6 +112,7 @@
 
 * [URI standard (RFC 3986)](uri-standard-rfc-3986.md)
 * [HTTP headers](http-headers.md)
+* [OWASP Top 10](owasp-top-10.md)
 
 ## 🛣️ Attacks on routing protocols
 
