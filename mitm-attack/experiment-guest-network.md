@@ -17,6 +17,9 @@ I am experimenting with a method which involves the following steps (<mark style
 
 * This packet's destination MAC address would contain the actual address of the target host&#x20;
 * The usual pattern is that the router would check that the destination MAC address is itself, before going on to resolve the IP address - <mark style="color:yellow;">will this trick the router to not ARP resolve the IP address and directly sent it to the destination MAC address instead?</mark>
+
+<mark style="color:yellow;">-> potentially, but most likely NOT since the packet is coming from the WAN side of the router</mark>&#x20;
+
 * the goal is to have the router to directly send the packet to the target host, bypassing the need for ARP table lookup (which will return the MAC address of the attacker instead)
 
 3. If this is successful, a MitM position is established, bypassing the host isolation feature

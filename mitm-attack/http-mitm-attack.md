@@ -114,11 +114,9 @@ $ sudo arpspoof -i eth0 -t 10.0.2.4 10.0.2.1 -r
 
 ## msftconnecttest.com
 
-The address <mark style="color:blue;">http://www.msftconnecttest.com/redirect</mark> is automatically opened on the default browser based on a few factors:
+On a Windows machine, the address <mark style="color:blue;">http://www.msftconnecttest.com/redirect</mark> is observed to be automatically opened on the default browser it is disconnected from a VPN, and subsequently reconnected. I have noticed that the website used in the Windows NCSI configurations are in HTTP, rather than HTTPS.&#x20;
 
-1. ...
-
-Notice that the website used in the Windows NCSI configurations are in HTTP, rather than HTTPS. If these factors could be replicated by an attacker on the same network as a user, it could trick the browser to open this address, which can be intercepted and modified.
+In an effort to understand why this happens, and how I can trigger this behavior, I have done some research. I hope to replicate this as an attacker while being on the same network as a target user, to trick their browser to open this address — which can be intercepted and modified.
 
 ### Factors that trigger the browser to open the msfconnecttest.com/redirect address (theory)
 
@@ -128,24 +126,23 @@ Notice that the website used in the Windows NCSI configurations are in HTTP, rat
     * How to trick the user device to believe it is connected to a proxy server?
 
 
-2. **NCSI probs failure**
+2. **NCSI probes failure**
    * how to make it fail?
 
 Refer to " <mark style="color:blue;">Why default browser automatically opens</mark>" link below:
 
 <mark style="background-color:blue;">"In some cases, such as when you connect to a network that uses a proxy server to connect to the internet or when network restrictions prevent NCSI from completing its active probe process, Windows opens the MSN Portal page in the default browser."</mark>
 
-### Factors that trigger the browser to open the msfconnecttest.com/redirect address (practical experimentation)
+### Practical experimentation based on point 2 (force the NCSI probes to fail)
 
 #### Assume the following:
 
 1. Both the user and attacker machine are in a virtualbox NAT network
-2. Default gateway would be the host machine at a particular address
-3. DNS server address is inherited from the host machine &#x20;
+2. The default gateway and fake DNS address for the target user would be the attacker machine at a particular address
 
 <mark style="color:red;">**Attacker machine**</mark>**: Run usual ARP & DNS spoof techniques**
 
-* &#x20;ip forwarding, drop DNS packets, etc.
+* &#x20;IP forwarding, drop DNS packets, etc.
 * Resolve **www.msftconnecttest.com** to any address
 
 <mark style="color:green;">**Windows user machine**</mark>: **Simulate change in network settings**
@@ -161,7 +158,7 @@ PS C:\Windows\System32> netsh interface set interface <iface_name> disable
 PS C:\Windows\System32> netsh interface set interface <iface_name> enable
 ```
 
-&#x20;To flush the DNS cache, followed by disabling interface (disconnect from network), and wait a few seconds before connecting back again
+&#x20;To flush the DNS cache, followed by disabling interface (disconnect from network), and wait a few seconds before connecting back again. The goal of these steps is to trick the use's Windows machine to trigger the process explained in the observation description above.
 
 #### Connect to VPN (expected to fail) for a few seconds, before disconnecting again
 
@@ -183,27 +180,23 @@ NOTE:&#x20;
 
 * **ARP spoof**: To redirect DNS & HTTP traffic during the NCSI probe process to the attacker machine
 * **DNS spoof:** To resolve **www.msftconnecttest.com**&#x20;
-* **HTTP proxy:** To send content when request is sent to **http://www.msftconnecttest.com/redirect**
+* **HTTP proxy:** To process requests for **http://www.msftconnecttest.com/connecttest.txt** and **http://www.msftconnecttest.com/redirect**&#x20;
 
-#### <mark style="color:yellow;">Why doesn't the same behavior happen right after the device is reconnected to the network, without having to have any interactions with the VPN?</mark>
 
-The NCSI probes are sent immediately after the device reconnects, this means that the ARP poisoned entry is not in use yet, and the initial DNS query for **www.msftconnecttest.com** would be resolved by the actual gateway instead, followed by the HTTP request, which would resolve correctly and allow the NCSI probe process to succeed. Hence, the **http://www.msftconnecttest.com/redirect** address would not triggered on the default browse&#x72;**.**
 
-**Solution: Drop DNS packets returning from the gateway that is intended for the device**
+### Experiment results
 
-```bash
-$ sudo iptables -A FORWARD -p udp --sport 53 -j DROP
-```
+The attack does not work., which leads me to wonder how does the presence of a proxy server such as a VPN trigger the mentioned behavior?&#x20;
 
-This would prevent the initial real DNS response from returning to the device. Subsequently, the DNS queries would be sent to the attacker device instead, due to the ARP spoof.
+_**The following is my theory on why the attack does not work**_:
 
-However, this seems to not be enough for the default browser to be automatically opened.
+The NCSI probes are sent immediately after the device reconnects, this means that the ARP poisoned entry is not in use yet, and the initial DNS query for **www.msftconnecttest.com** would be resolved by the actual gateway instead, followed by the HTTP request. This would allow the NCSI probe process to succeed. Hence, the **http://www.msftconnecttest.com/redirect** address would not be triggered on the default browse&#x72;**.**
 
-### Authentication and automatic sign-in page
+### Further experimentation: authentication and automatic sign-in page
 
 How to make the device believe that the network requires authentication, to trigger the sign-in page to be opened on the browser?
 
-
+_pending research..._
 
 
 
