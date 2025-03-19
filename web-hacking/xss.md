@@ -142,11 +142,11 @@ For some browsers, the payload may be interpreted diferrently. Try the following
 
 a) Closing slash
 
-Eg. `<img>` and `<img/>`
+Eg. `<img>` vs `<img/>`
 
-b) Apostrophe and backtick&#x20;
+b) Apostrophe vs backtick&#x20;
 
-Eg. ``alert(`xss`)`` and `alert('xss')`
+Eg. ``alert(`xss`)`` vs `alert('xss')`
 
 
 
