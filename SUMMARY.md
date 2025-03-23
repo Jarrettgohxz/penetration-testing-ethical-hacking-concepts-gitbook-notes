@@ -110,6 +110,7 @@
 
 ***
 
+* [Upload vulnerabilities](upload-vulnerabilities.md)
 * [URI standard (RFC 3986)](uri-standard-rfc-3986.md)
 * [HTTP headers](http-headers.md)
 * [OWASP Top 10](owasp-top-10.md)
