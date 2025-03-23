@@ -104,16 +104,17 @@
 * [Directories/URLs gathering](web-hacking/directories-urls-gathering.md)
 * [Subdomain enumeration](web-hacking/subdomain-enumeration.md)
 * [File inclusion](web-hacking/file-inclusion.md)
+* [Upload vulnerabilities](web-hacking/upload-vulnerabilities.md)
 * [SSRF](web-hacking/ssrf.md)
 * [XSS](web-hacking/xss.md)
 * [SQL injection](web-hacking/sql-injection.md)
 
 ***
 
-* [Upload vulnerabilities](upload-vulnerabilities.md)
-* [URI standard (RFC 3986)](uri-standard-rfc-3986.md)
-* [HTTP headers](http-headers.md)
 * [OWASP Top 10](owasp-top-10.md)
+* [General web knowledge](general-web-knowledge/README.md)
+  * [URI standard (RFC 3986)](general-web-knowledge/uri-standard-rfc-3986.md)
+  * [HTTP headers](general-web-knowledge/http-headers.md)
 
 ## 🛣️ Attacks on routing protocols
 

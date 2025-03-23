@@ -8,7 +8,7 @@ description: >-
 
 The most common default base directory for web content is`/var/www`, such as: `/var/www/html`.
 
-## List of command files to read
+## List of common files to read
 
 The following list includes some of the common files to read when a file inclusion vulnerability is discovered:
 
@@ -26,7 +26,9 @@ The following list includes some of the common files to read when a file inclusi
 
 ### Path traversal attack with wfuzz
 
-**Basic command:**
+Eg. Suppose we have found a PHP file on the server named `file.php` that accepts a query parameter `input`, allowing us to view the contents of a specified file. A fuzzing tool can be used to test the paths that may be vulnerable to a traversal attack.
+
+**Basic command with wfuzz:**
 
 ```bash
 $ wfuzz -w <path_to_wordlist> <url>/file.php?input=FUZZ
@@ -34,11 +36,7 @@ $ wfuzz -w <path_to_wordlist> <url>/file.php?input=FUZZ
 
 Sometimes, there may be many unnecessary results returned. Filter flags such as _`--hc`_,_`--hl`_ can be used to filter unwanted results.
 
-### Using the wordlist provided by wfuzz
-
-```bash
-$ wfuzz -w /usr/share/wfuzz/wordlist/Injections/traversal.txt <url>/file.php?input=FUZZ
-```
+The following wordlist can be used: `/usr/share/wfuzz/wordlist/Injections/traversal.txt`
 
 {% embed url="https://wfuzz.readthedocs.io/en/latest/user/basicusage.html#fuzzing-paths-and-files" %}
 Fuzzing examples
@@ -54,7 +52,7 @@ In the null-byte injection attack, the null-byte is used to bypass input validat
 
 
 
-### Automated file inclusion tool <mark style="color:orange;">(not tested)</mark>
+### Automated file inclusion tool <mark style="color:orange;">(test pending...)</mark>
 
 {% embed url="https://github.com/kurobeats/fimap" %}
 
