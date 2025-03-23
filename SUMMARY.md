@@ -152,6 +152,7 @@
   * [socat](post-exploitation/gaining-shell/socat.md)
   * [powershell](post-exploitation/gaining-shell/powershell.md)
   * [bash](post-exploitation/gaining-shell/bash.md)
+  * [PHP](post-exploitation/gaining-shell/php.md)
 * [Repository](post-exploitation/repository.md)
 
 ## Privilege escalation
