@@ -132,3 +132,20 @@ done < "$file"
 Output: `FOUND: .php5`
 
 The accepted PHP shell script filename is `shell.jpg.php5`.
+
+
+
+```
+<?php
+// Check if 'cmd' parameter is set in the URL
+if (isset($_GET['cmd'])) {
+    // Get the value of 'cmd' parameter
+    $cmd = $_GET['cmd'];
+
+    // Display the value
+    echo "Command: " . htmlspecialchars($cmd);
+} else {
+    echo "No command provided.";
+}
+?>
+```
