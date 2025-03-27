@@ -26,7 +26,7 @@
   * [Recon-ng](tools/recon-ng.md)
   * [sherlock](tools/sherlock.md)
   * [osintagram](tools/osintagram.md)
-  * [...](tools/....md)
+  * [maltego](tools/maltego.md)
 
 ## 😨 Social Engineering
 
