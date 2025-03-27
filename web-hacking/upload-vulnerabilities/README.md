@@ -72,9 +72,11 @@ b) The POST request sent to the server, enabling the removal of client-side filt
 
 ### Bypassing server-side filtering
 
-1. Presence of valid file extension anywhere within the filename (_whitelist_)
+1. Presence of valid file extension anywhere within the filename (_whitelist bypass_)
 
-Some server-side filtering logic may involve simply checking for the presence of a file extension string within the filename:
+Some server-side filtering mechanism check if the filename contains a valid file extension without enforcing strict validation at the end of the filenam. This logic can be exploited by including the allowed extension within the filename while using a malicious extension.
+
+A possible server-side logic:
 
 ```php
 IF STRING ".[file-ext]" IS IN VARIABLE <user_input>:
@@ -83,15 +85,19 @@ ELSE:
     RETURN ERROR MESSAGE
 ```
 
-Eg. Given that the valid file extension is `.jpg`. A possible valid filename can be: `shell.jpg.php`. This allows us to bypass the filter and upload a PHP file.
+Eg. Given that the valid file extension is `.jpg`. A possible valid filename can be: `shell.jpg.php`. This allows us to bypass the filter and upload a PHP file — providing us a platform for code execution..
 
 
 
-2. Uncommon file extension for the same file-type (_blacklist_)
+2. Using uncommon file extension for the same file-type (_blacklist bypass_)
 
-Some server-side filtering logic may check the file extension, and reject the file based on a blacklist. However, chances are that the list is non-exhaustive of all the possible file extensions for the same file-type. This allows us to sneak a filename through the filters, which may be recognized and properly executed by the server.
+Some server-side filtering logic may check the file extension, and reject the file based on a blacklist. However, blacklist implementations are often incomplete, and fail to cover all possible extensions for the same file-type. This allows us to sneak a filename through the filters, which may be recognized and executed by the server.
 
 Refer to the sub-page named: _**File extension cheat-sheet**_.
+
+Eg. Given that `.php` is blacklisted, `.php5` may still be allowed. Thus, the filename `shell.php5` will be accepted by the server, and may execute if configured to handle `.php5` files as PHP scripts — providing us a platform for code execution.
+
+
 
 ### Examples
 
