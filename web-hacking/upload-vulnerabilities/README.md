@@ -72,7 +72,9 @@ b) The POST request sent to the server, enabling the removal of client-side filt
 
 ### Bypassing server-side filtering
 
-1. Presence of valid file extension anywhere within the filename (_whitelist bypass_)
+### 1. File extension
+
+a) Presence of valid file extension anywhere within the filename (_whitelist bypass_)
 
 Some server-side filtering mechanism check if the filename contains a valid file extension without enforcing strict validation at the end of the filenam. This logic can be exploited by including the allowed extension within the filename while using a malicious extension.
 
@@ -89,7 +91,7 @@ Eg. Given that the valid file extension is `.jpg`. A possible valid filename can
 
 
 
-2. Using uncommon file extension for the same file-type (_blacklist bypass_)
+b) Using uncommon file extension for the same file-type (_blacklist bypass_)
 
 Some server-side filtering logic may check the file extension, and reject the file based on a blacklist. However, blacklist implementations are often incomplete, and fail to cover all possible extensions for the same file-type. This allows us to sneak a filename through the filters, which may be recognized and executed by the server.
 
@@ -169,3 +171,11 @@ if (isset($_GET['cmd'])) {
 }
 ?>
 ```
+
+
+
+### 2. Magic numbers
+
+Magic number refers to the 4 hexadecimal digits present at the start of a file. It is used to identify the type of file, and can be viewed by using the `xxd`/`hexdump` command (`hexeditor` to edit). This logic is implemented by some servers to detect the file-type for filtering purposes —  but unfortunately, can be easily workaround.
+
+...
