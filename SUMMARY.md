@@ -208,6 +208,7 @@
   * [Silver Platter](write-ups/tryhackme/silver-platter.md)
   * [Light](write-ups/tryhackme/light.md)
   * [OWASP Top 10 - 2021 (task 22)](write-ups/tryhackme/owasp-top-10-2021-task-22.md)
+  * [Pickle Rick](write-ups/tryhackme/pickle-rick.md)
 * [OverTheWire](write-ups/overthewire/README.md)
   * [Untitled](write-ups/overthewire/untitled.md)
 * [OWASP juice shop](write-ups/owasp-juice-shop.md)
