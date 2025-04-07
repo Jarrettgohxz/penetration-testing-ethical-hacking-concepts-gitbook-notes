@@ -194,6 +194,7 @@
   * [Password brute-forcing](tools-services/web-hacking/password-brute-forcing.md)
   * [Web fuzzing](tools-services/web-hacking/web-fuzzing.md)
   * [Burp Suite (Community)](tools-services/web-hacking/burp-suite-community.md)
+  * [nikto](tools-services/web-hacking/nikto.md)
 * [Information gathering/reconnaissance](tools-services/information-gathering-reconnaissance.md)
 * [Network hacking](tools-services/network-hacking/README.md)
   * [nmap (general overview)](tools-services/network-hacking/nmap-general-overview.md)
