@@ -180,7 +180,9 @@ Magic number refers to the 4 hexadecimal digits present at the start of a file. 
 
 ...
 
+> [https://tryhackme.com/room/uploadvulns](https://tryhackme.com/room/uploadvulns) (TASK 9)&#x20;
 
+_<mark style="color:orange;">**\*\* rmb do not include extra**</mark><mark style="color:orange;">**&#x20;**</mark><mark style="color:orange;">**`/`**</mark><mark style="color:orange;">**&#x20;**</mark><mark style="color:orange;">**at the end of the path passed to gobuster**</mark><mark style="color:orange;">**&#x20;**</mark><mark style="color:orange;">**`-u`**</mark><mark style="color:orange;">**&#x20;**</mark><mark style="color:orange;">**flag if the wordlist item already has a**</mark><mark style="color:orange;">**&#x20;**</mark><mark style="color:orange;">**`/`**</mark>_
 
 a) Fingerprint the webserver technology — nodejs, Apache/PHP, etc.
 
@@ -194,7 +196,9 @@ a) Fingerprint the webserver technology — nodejs, Apache/PHP, etc.
 $ gobuster dir -u http://magic.uploadvulns.thm/FUZZ -w /usr/share/wordlists/SecLists/Discovery/Web-Content/Common-PHP-Filenames.txt
 ```
 
-`/index.php` (not present in the wordlist though) returned -> confirm PHP
+`/index.php` (not present in the wordlist though) returned&#x20;
+
+* &#x20;confirm PHP
 
 
 
@@ -203,6 +207,10 @@ b) Try common file upload directories for the found webserver technology (gobust
 * assets/uploads/
 * assets/js/ (if webserver is nodejs?)
 
+```bash
+$ gobuster dir -u http://magic.uploadvulns.thm/assets/FUZZ/background.php -w /usr/share/wordlists/SecLists/Discovery/Web-Content/directory-list-2.3-medium.txt
+```
 
+Nothing found...
 
-c) ...&#x20;
+c) Upload magic-numbered file named background.jpg to overwrite file at `/assets/images/background.jpg` not working&#x20;
