@@ -179,3 +179,22 @@ if (isset($_GET['cmd'])) {
 Magic number refers to the 4 hexadecimal digits present at the start of a file. It is used to identify the type of file, and can be viewed by using the `xxd`/`hexdump` command (`hexeditor` to edit). This logic is implemented by some servers to detect the file-type for filtering purposes —  but unfortunately, can be easily workaround.
 
 ...
+
+
+
+a) Fingerprint the webserver technology — nodejs, Apache/PHP, etc.
+
+* Visit webpage which returns 404 (the webserver tech may be shown)
+* nmap script
+* response headers?
+
+
+
+b) Try common file upload directories for the found webserver technology (gobuster/manual?):
+
+* assets/uploads/
+* assets/js/ (if webserver is nodejs?)
+
+
+
+c) ...&#x20;
