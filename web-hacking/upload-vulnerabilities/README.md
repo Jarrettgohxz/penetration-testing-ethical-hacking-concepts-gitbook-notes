@@ -190,6 +190,14 @@ a) Fingerprint the webserver technology — nodejs, Apache/PHP, etc.
 
 
 
+```bash
+$ gobuster dir -u http://magic.uploadvulns.thm/FUZZ -w /usr/share/wordlists/SecLists/Discovery/Web-Content/Common-PHP-Filenames.txt
+```
+
+`/index.php` (not present in the wordlist though) returned -> confirm PHP
+
+
+
 b) Try common file upload directories for the found webserver technology (gobuster/manual?):
 
 * assets/uploads/
