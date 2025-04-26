@@ -116,6 +116,7 @@
 * [General web knowledge](general-web-knowledge/README.md)
   * [URI standard (RFC 3986)](general-web-knowledge/uri-standard-rfc-3986.md)
   * [HTTP headers](general-web-knowledge/http-headers.md)
+* [Webshell](webshell.md)
 
 ## 🛣️ Attacks on routing protocols
 

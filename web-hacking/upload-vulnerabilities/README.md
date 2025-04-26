@@ -153,27 +153,6 @@ Output: `FOUND: .php5`
 
 The accepted PHP shell script filename is `shell.jpg.php5`.
 
-
-
-Simple webshell (to transfer to a dedicated _**WEBSHELL**_ section?)
-
-```php
-<?php
-// Check if 'cmd' parameter is set in the URL
-if (isset($_GET['cmd'])) {
-    // Get the value of 'cmd' parameter
-    $cmd = $_GET['cmd'];
-
-    // Display the value
-    echo "Command: " . htmlspecialchars($cmd);
-} else {
-    echo "No command provided.";
-}
-?>
-```
-
-
-
 ### 2. Magic numbers
 
 Magic number refers to the 4 hexadecimal digits present at the start of a file. It is used to identify the type of file, and can be viewed by using the `xxd`/`hexdump` command (`hexeditor` to edit). This logic is implemented by some servers to detect the file-type for filtering purposes —  but unfortunately, can be easily workaround.
