@@ -1,11 +1,12 @@
 ---
 description: >-
-  Hello friend! This documentation serves to list my experimentation and
-  learning based on technical readings, online courses/videos, and my own
-  imagination.
+  Hello friend! This documentation involves offensive security concepts:
+  penetration testing,  ethical hacking and red teaming.
 ---
 
 # Introduction
+
+It serves to list my experimentation and learning based on technical readings, online courses/videos, and my own imagination.
 
 The content is based on my own research and understanding, and are prone to mistakes. Feel free to contact me via email: [jarrett.aiml@gmail.com](mailto:jarrett.aiml@gmail.com), if there are any discrepancies.&#x20;
 

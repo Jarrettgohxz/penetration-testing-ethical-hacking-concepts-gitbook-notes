@@ -117,6 +117,10 @@
   * [URI standard (RFC 3986)](general-web-knowledge/uri-standard-rfc-3986.md)
   * [HTTP headers](general-web-knowledge/http-headers.md)
 * [Webshell](webshell.md)
+* [Web API pentesting](web-api-pentesting/README.md)
+  * [jq](web-api-pentesting/jq.md)
+  * [httpx](web-api-pentesting/httpx.md)
+  * [ParamSpider](web-api-pentesting/paramspider.md)
 
 ## 🛣️ Attacks on routing protocols
 
@@ -218,3 +222,7 @@
 ## AI prompt
 
 * [ChatGPT](ai-prompt/chatgpt.md)
+
+## Professional report writing
+
+* [OSCP](professional-report-writing/oscp.md)
