@@ -208,6 +208,16 @@
 * [Wordlists](tools-services/wordlists/README.md)
   * [cewl](tools-services/wordlists/cewl.md)
 
+## Professional report writing
+
+* [OSCP](professional-report-writing/oscp.md)
+
+***
+
+* [Practice](practice/README.md)
+  * [Metasploitable 2](practice/metasploitable-2.md)
+  * [...](practice/....md)
+
 ## Write-ups
 
 * [TryHackMe](write-ups/tryhackme/README.md)
@@ -222,7 +232,3 @@
 ## AI prompt
 
 * [ChatGPT](ai-prompt/chatgpt.md)
-
-## Professional report writing
-
-* [OSCP](professional-report-writing/oscp.md)
