@@ -204,6 +204,7 @@
 * [Network hacking](tools-services/network-hacking/README.md)
   * [nmap (general overview)](tools-services/network-hacking/nmap-general-overview.md)
   * [scapy](tools-services/network-hacking/scapy.md)
+  * [bettercap](tools-services/network-hacking/bettercap.md)
 * [General](tools-services/general/README.md)
   * [impacket](tools-services/general/impacket.md)
 * [Wordlists](tools-services/wordlists/README.md)
