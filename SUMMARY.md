@@ -121,7 +121,6 @@
   * [jq](web-api-pentesting/jq.md)
   * [httpx](web-api-pentesting/httpx.md)
   * [ParamSpider](web-api-pentesting/paramspider.md)
-* [Web app pentesting methodology](web-app-pentesting-methodology.md)
 
 ## 🛣️ Attacks on routing protocols
 
@@ -217,6 +216,7 @@
 
 ***
 
+* [Pentesting methodology](pentesting-methodology.md)
 * [Practice](practice/README.md)
   * [Metasploitable 2](practice/metasploitable-2.md)
   * [...](practice/....md)
