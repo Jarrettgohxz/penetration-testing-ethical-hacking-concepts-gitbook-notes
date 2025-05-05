@@ -1,16 +1,15 @@
 ---
 description: >-
-  Hello friend! This documentation involves offensive security concepts:
-  penetration testing,  ethical hacking and red teaming.
+  Hello friend! This documentation summarizes my findings on various offensive
+  security concepts, such as penetration testing,  ethical hacking and red
+  teaming.
 ---
 
 # Introduction
 
-It serves to list my experimentation and learning based on technical readings, online courses/videos, and my own imagination.
+The content serves to list my experimentation and learning based on technical readings, online courses/videos, and my own imagination.&#x20;
 
-The content is based on my own research and understanding, and are prone to mistakes. Feel free to contact me via email: [jarrett.aiml@gmail.com](mailto:jarrett.aiml@gmail.com), if there are any discrepancies.&#x20;
-
-Do check out my personal website: [https://jarrett.gohxiangzheng.com/](https://jarrett.gohxiangzheng.com/).
+If you notice any mistakes or have suggestions for improvement, feel free to contact me at [jarrettgxz.sec@gmail.com](mailto:jarrettgxz.sec@gmail.com). Your feedback is greatly appreciated, thank you!
 
 Without further ado, let's hack away!
 
