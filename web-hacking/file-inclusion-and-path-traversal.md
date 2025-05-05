@@ -4,7 +4,9 @@ description: >-
   local/remote file inclusion. Related techniques will be discussed.
 ---
 
-# File inclusion
+# File inclusion & Path traversal
+
+{% embed url="https://tryhackme.com/room/fileinc" %}
 
 The most common default base directory for web content is`/var/www`, such as: `/var/www/html`.
 
@@ -52,7 +54,7 @@ In the null-byte injection attack, the null-byte is used to bypass input validat
 
 
 
-### Automated file inclusion tool <mark style="color:orange;">(test pending...)</mark>
+### Automated file inclusion tool <mark style="color:orange;">(test pending)</mark>
 
 {% embed url="https://github.com/kurobeats/fimap" %}
 

@@ -1,8 +1,8 @@
 ---
 description: >-
   Server Side Request Forgery (SSRF) is a form of attack that allows an attacker
-  to trick a webserver in performing requests to make unintended HTTP requests
-  to a resource of the attacker's choice.
+  to trick a webserver in performing unintended HTTP requests to a resource of
+  the attacker's choice.
 ---
 
 # SSRF
