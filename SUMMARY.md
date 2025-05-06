@@ -25,8 +25,10 @@
 * [Tools](tools/README.md)
   * [Recon-ng](tools/recon-ng.md)
   * [sherlock](tools/sherlock.md)
-  * [osintagram](tools/osintagram.md)
   * [maltego](tools/maltego.md)
+  * [theHarvester](tools/theharvester.md)
+  * [osintagram](tools/osintagram.md)
+  * [...](tools/....md)
 
 ## 😨 Social Engineering
 
