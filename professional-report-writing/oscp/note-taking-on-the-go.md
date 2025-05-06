@@ -17,7 +17,7 @@ description: >-
 
 {% stepper %}
 {% step %}
-Information gathering (passive reconnaisance)
+Information gathering (passive reconnaissance)
 
 a) Ports/services found
 
@@ -29,9 +29,8 @@ b) ...
 {% endstep %}
 
 {% step %}
-Enumeration (active reconnaisance)
-
-
+Enumeration (active reconnaissance)\
+...
 {% endstep %}
 
 {% step %}
