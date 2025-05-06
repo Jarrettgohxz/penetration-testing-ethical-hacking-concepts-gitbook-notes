@@ -1,8 +1,10 @@
 ---
-description: This is my first documented  CTF style challenge.
+description: >-
+  This is my first documented CTF style challenge. LAST UPDATED FEB-2025 (p.s.
+  pardon me, I'm still a rookie at CTFs)
 ---
 
-# Silver Platter (\*\*pending completion on some parts)
+# Silver Platter
 
 Due to the lack of experience and knowledge in this type of challenges; and in the whole offensive security/ethical hacking/penetration testing world, I may make rookie mistakes, or perform unnecessary exploration towards a part of the server that is highly likely to not contain any exploits. Fortunately, I am confident that I will be able to learn a lot from this, and all the subsequent challenges I will be participating in.
 

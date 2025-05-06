@@ -1,3 +1,7 @@
+---
+description: LAST UPDATED FEB-2025 (p.s. pardon me, I'm still a rookie at CTFs)
+---
+
 # Light
 
 {% embed url="https://tryhackme.com/room/lightroom" %}

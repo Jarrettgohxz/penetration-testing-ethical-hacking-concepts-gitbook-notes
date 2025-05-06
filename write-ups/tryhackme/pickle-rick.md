@@ -1,3 +1,7 @@
+---
+description: LAST UPDATED FEB-2025 (p.s. pardon me, I'm still a rookie at CTFs)
+---
+
 # Pickle Rick
 
 {% embed url="https://tryhackme.com/room/picklerick" %}
@@ -50,7 +54,7 @@ The following comment was found in the source code:
 
 `Vm1wR1UxTnRWa2RUV0d4VFlrZFNjRlV3V2t0alJsWnlWbXQwVkUxV1duaFZNakExVkcxS1NHVkliRmhoTVhCb1ZsWmFWMVpWTVVWaGVqQT0==`
 
-This is a string that has been base64-encoded multiple times. The plaintext value turns out to be `rabbit hole` . Well, is this a clue, or perhaps a directory path value, name of a file, or simply something just to throw us off?
+This is a string that has been base64-encoded multiple times. The plaintext value turns out to be `rabbit hole` . Well, is this a clue,  perhaps a directory path value, name of a file, or simply something just to throw us off?
 
 The main interface presented an input form that accepts commands for a Linux environment. This form will be used to enumerate the Linux system and find the ingredients.
 
