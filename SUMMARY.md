@@ -18,17 +18,17 @@
 * [What is OSINT?](osint/what-is-osint.md)
 * [Google dorks](osint/google-dorks.md)
 * [Metadata](osint/metadata.md)
-* [Social media](osint/social-media.md)
+* [Social media](osint/social-media/README.md)
+  * [osintagram](osint/social-media/osintagram.md)
 
 ***
 
 * [Tools](tools/README.md)
-  * [Recon-ng](tools/recon-ng.md)
+  * [recon-ng](tools/recon-ng.md)
   * [sherlock](tools/sherlock.md)
   * [maltego](tools/maltego.md)
   * [theHarvester](tools/theharvester.md)
-  * [osintagram](tools/osintagram.md)
-  * [...](tools/....md)
+  * [photon](tools/photon.md)
 
 ## 😨 Social Engineering
 

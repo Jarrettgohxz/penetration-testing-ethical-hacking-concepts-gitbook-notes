@@ -6,7 +6,7 @@ description: >-
 
 # Google dorks
 
-## Site operator
+## site operator
 
 Discover all subdomains of `domain.com`
 
@@ -18,3 +18,12 @@ Exclude matches for `www.domain.com`
 ```markup
 site:*domain.com -site:www.domain.com
 ```
+
+## filetype operator
+
+...
+
+## inurl operator
+
+...
+
