@@ -213,11 +213,13 @@
 
 ## Professional report writing
 
-* [OSCP](professional-report-writing/oscp.md)
+* [Pentesting methodology](professional-report-writing/pentesting-methodology.md)
+* [OSCP](professional-report-writing/oscp/README.md)
+  * [Report layout](professional-report-writing/oscp/report-layout.md)
+  * [Note taking on-the-go](professional-report-writing/oscp/note-taking-on-the-go.md)
 
 ***
 
-* [Pentesting methodology](pentesting-methodology.md)
 * [Practice](practice/README.md)
   * [Metasploitable 2](practice/metasploitable-2.md)
   * [...](practice/....md)
