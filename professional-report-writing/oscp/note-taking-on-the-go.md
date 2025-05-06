@@ -7,7 +7,7 @@ description: >-
 
 # Note taking on-the-go
 
-> As adapted from [https://jarrettgxz-sec.gitbook.io/offensive-security-concepts/pentesting-methodology](https://jarrettgxz-sec.gitbook.io/offensive-security-concepts/pentesting-methodology)
+> As adapted from [https://jarrettgxz-sec.gitbook.io/offensive-security-concepts/professional-report-writing/oscp/report-layout](https://jarrettgxz-sec.gitbook.io/offensive-security-concepts/professional-report-writing/oscp/report-layout)
 
 ### Google Documents
 

@@ -122,6 +122,7 @@
   * [jq](web-api-pentesting/jq.md)
   * [httpx](web-api-pentesting/httpx.md)
   * [ParamSpider](web-api-pentesting/paramspider.md)
+* [Web app pentesting methodology](web-app-pentesting-methodology.md)
 
 ## 🛣️ Attacks on routing protocols
 
@@ -213,7 +214,6 @@
 
 ## Professional report writing
 
-* [Pentesting methodology](professional-report-writing/pentesting-methodology.md)
 * [OSCP](professional-report-writing/oscp/README.md)
   * [Report layout](professional-report-writing/oscp/report-layout.md)
   * [Note taking on-the-go](professional-report-writing/oscp/note-taking-on-the-go.md)
