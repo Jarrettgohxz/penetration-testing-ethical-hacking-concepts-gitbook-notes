@@ -115,7 +115,6 @@
 
 ***
 
-* [OWASP Top 10](owasp-top-10.md)
 * [General web knowledge](general-web-knowledge/README.md)
   * [URI standard (RFC 3986)](general-web-knowledge/uri-standard-rfc-3986.md)
   * [HTTP headers](general-web-knowledge/http-headers.md)
@@ -125,6 +124,10 @@
   * [httpx](web-api-pentesting/httpx.md)
   * [ParamSpider](web-api-pentesting/paramspider.md)
 * [Web app pentesting methodology](web-app-pentesting-methodology.md)
+* [OWASP](owasp/README.md)
+  * [OWASP top 10](owasp/owasp-top-10.md)
+  * [OWASP API top 10](owasp/owasp-api-top-10.md)
+  * [Web Security Testing Guide (WSTG)](owasp/web-security-testing-guide-wstg.md)
 
 ## 🛣️ Attacks on routing protocols
 
