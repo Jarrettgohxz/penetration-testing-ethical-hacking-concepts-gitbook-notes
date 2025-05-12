@@ -120,6 +120,8 @@
   * [HTTP headers](general-web-knowledge/http-headers.md)
 * [Webshell](webshell.md)
 * [Web API pentesting](web-api-pentesting/README.md)
+  * [Resources](web-api-pentesting/resources.md)
+  * [Methodology](web-api-pentesting/methodology.md)
   * [jq](web-api-pentesting/jq.md)
   * [httpx](web-api-pentesting/httpx.md)
   * [ParamSpider](web-api-pentesting/paramspider.md)
