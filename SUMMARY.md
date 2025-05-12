@@ -238,7 +238,9 @@
   * [Pickle Rick](write-ups/tryhackme/pickle-rick.md)
 * [OverTheWire](write-ups/overthewire/README.md)
   * [Untitled](write-ups/overthewire/untitled.md)
-* [OWASP juice shop](write-ups/owasp-juice-shop.md)
+* [OWASP](write-ups/owasp/README.md)
+  * [OWASP Juice Shop](write-ups/owasp/owasp-juice-shop.md)
+  * [OWASP WebGoat](write-ups/owasp/owasp-webgoat.md)
 
 ## AI prompt
 
