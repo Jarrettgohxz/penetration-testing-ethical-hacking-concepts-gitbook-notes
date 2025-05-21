@@ -115,9 +115,6 @@
 
 ***
 
-* [General web knowledge](general-web-knowledge/README.md)
-  * [URI standard (RFC 3986)](general-web-knowledge/uri-standard-rfc-3986.md)
-  * [HTTP headers](general-web-knowledge/http-headers.md)
 * [Webshell](webshell.md)
 * [Web API pentesting](web-api-pentesting/README.md)
   * [Resources](web-api-pentesting/resources.md)
@@ -130,6 +127,9 @@
   * [OWASP top 10](owasp/owasp-top-10.md)
   * [OWASP API top 10](owasp/owasp-api-top-10.md)
   * [Web Security Testing Guide (WSTG)](owasp/web-security-testing-guide-wstg.md)
+* [General web knowledge](general-web-knowledge/README.md)
+  * [URI standard (RFC 3986)](general-web-knowledge/uri-standard-rfc-3986.md)
+  * [HTTP headers](general-web-knowledge/http-headers.md)
 
 ## 🛣️ Attacks on routing protocols
 
@@ -209,6 +209,8 @@
   * [Web fuzzing](tools-services/web-hacking/web-fuzzing.md)
   * [Burp Suite (Community)](tools-services/web-hacking/burp-suite-community.md)
   * [nikto](tools-services/web-hacking/nikto.md)
+  * [ZAP (Zed Attack Proxy)](tools-services/web-hacking/zap-zed-attack-proxy.md)
+  * [nuclei](tools-services/web-hacking/nuclei.md)
 * [Information gathering/reconnaissance](tools-services/information-gathering-reconnaissance.md)
 * [Network hacking](tools-services/network-hacking/README.md)
   * [nmap (general overview)](tools-services/network-hacking/nmap-general-overview.md)
