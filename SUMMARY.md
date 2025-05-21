@@ -231,7 +231,8 @@
 
 * [Practice](practice/README.md)
   * [Metasploitable 2](practice/metasploitable-2.md)
-  * [...](practice/....md)
+  * [TryHackMe](practice/tryhackme/README.md)
+    * [Silver Platter](practice/tryhackme/silver-platter.md)
 
 ## Write-ups
 
