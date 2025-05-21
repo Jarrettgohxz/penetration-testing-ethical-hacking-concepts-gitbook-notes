@@ -9,9 +9,7 @@ description: >-
 
 In an effort to understand the dangers of a public network, and the risks of ARP spoofing attacks, I have came up with a simple simulation example.
 
-{% embed url="https://jarrett.gohxiangzheng.com/projects/http-mitm-attack/" %}
-Demonstration
-{% endembed %}
+{% embed url="https://gohxiangzheng.com/projects/http-mitm-attack/" %}
 
 ### Overview of attack
 
