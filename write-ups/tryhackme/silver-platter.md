@@ -95,7 +95,7 @@ PORT     STATE SERVICE    VERSION
 ...
 ```
 
-I went on to try visiting the paths I tried on port 80 previously, and got a positive result for **/silverpeas** (redirection to a login page instead of status code 404).
+I went on to try visiting the paths I tried on port 80 previously, and got a positive result for **/silverpeas** — redirection to a login page at `/defaultLogin.jsp` instead of status code 404.
 
 I decided to run a quick directory gathering scan on the found URL path with `gobuster`. I utilized a few different word-lists found on Kali Linux, along with a few popular ones that is not part of the default installation:
 
@@ -113,19 +113,17 @@ The following paths (only listed a few) gave a positive result with status code 
 
 
 
-**X-Powered-By response headers**
+**`X-Powered-By` response headers**
 
-Even though the path mentioned above gave an error message, I noticed an interesting finding (from chrome network inspection tool). The `X-Powered-By` reponse headers was returned, and set with the value `JSP/2.3`.
+Even though the path mentioned above gave an error message, I noticed an interesting finding (from chrome network inspection tool). The `X-Powered-By` response headers was returned, and set with the value `JSP/2.3`.
 
 **Searching for CVEs and exploits relating to JSP/2.3**
 
-I tried using a few Metasploit payloads:
+I tried using a few Metasploit payloads to no avail:
 
 a) `exploit/multi/http/struts_include_params`
 
 b) `expoit/multi/http/struts2_content_type_ognl`
-
-...
 
 ### 4. Further research on &#x53;_&#x69;lverpeas_&#x20;
 
@@ -330,7 +328,7 @@ tim@silver-platter:/var/log$ grep -irl --exclude-dir=journal password 2>/dev/nul
 
 Found in `/var/log/auth.log.2:`
 
-`Dec 13 15:45:57 silver-platter sudo: tyler : TTY=tty1 ; PWD=/ ; USER=root ; COMMAND=/usr/bin/docker run --name silverpeas -p 8080:8000 -d -e DB_NAME=Silverpeas -e DB_USER=silverpeas -e DB_PASSWORD=10 -v silverpeas-log:/opt/silverpeas/log -v silverpeas-data:/opt/silvepeas/data --link postgresql:database silverpeas:6.3.1`
+`Dec 13 15:45:57 silver-platter sudo: tyler : TTY=tty1 ; PWD=/ ; USER=root ; COMMAND=/usr/bin/docker run --name silverpeas -p 8080:8000 -d -e DB_NAME=Silverpeas -e DB_USER=silverpeas -e DB_PASSWORD=_Zd_zx7N823/ -v silverpeas-log:/opt/silverpeas/log -v silverpeas-data:/opt/silvepeas/data --link postgresql:database silverpeas:6.3.1`
 
 I tried to access the Postgresql database, but it appears that the common CLI tools associated with Postgesql is not installed on the system.
 
@@ -346,9 +344,9 @@ Command ... not found, but can be installed with:
 Please ask your administrator
 ```
 
-Instead, I tried the found password: `_Zd_zx7N823/` on the user _tyler_ via SSH, and _voila_ it worked!
+Instead, I tried the found password: `_Zd_zx7N823/` on the user _**tyler**_ via SSH, and it worked!
 
-After gaining a shell with the user _tyler_, I ran a few commands to check the privileges of this user. It appears the this user can run all commands with `sudo` privileges. Using the command `sudo su root,` I have gained _**root**_ access.
+After gaining a shell with the user _**tyler**_, I ran a few commands to check the privileges of this user. It appears the this user can run all commands with `sudo` privileges. Using the command `sudo su root`, I gained _**root**_ access.
 
 ```bash
 # user is in the sudo group
@@ -370,77 +368,46 @@ root@silver-platter:/home/tyler#
 
 To further my learning, I decided to continue enumerating the system as the user _**tim**_, and try to find other privilege escalation vectors.
 
-### 2. Experimenting with SUID bit
+### 2. `/usr/bin/mount` with _SUID_
 
-`a) /snap/core20/1974/usr/lib/openssh/ssh-keysign`
+a) Run mountable share via NFS on an attacker machine hosting a shellcode as the _**root**_ user with SUID bit set
 
-`/snap/core20/2264/usr/lib/openssh/ssh-keysign`
+{% embed url="https://linuxize.com/post/how-to-install-and-configure-an-nfs-server-on-ubuntu-20-04/" %}
 
-are found to call a file with error: `error while loading shared libraries: libcrypto.so.1.1: cannot open shared object file: No such file or directory`
-
-Adding the file to `/tmp` after appending`/tmp` to  `$SHELL` does not work, and the directory: `/snap/core20/[1974/2264]/usr/lib/openssh/`is not writable too
-
-
-
-**b)** `/snap/core20/2264/usr/bin/sudo: error while loading shared libraries: libsudo_util.so.0: cannot open shared object file: No such file or directory`
-
-files looks for shared libraries at `LD_LIBRARY_PATH` env variable instead of `PATH`&#x20;
+_**Attacker machine**_
 
 ```bash
-export LD_LIBRARY_PATH=/tmp:$LD_LIBRARY_PATH
+# install required tools
+$ apt install ...
+
+# configure NFS share
+$ ...
 ```
+
+b) Mount the share on the target machine, and execute the retrieved shellcode to gain _**root**_ shell
 
 ```bash
-$ ldd /snap/core20/2264/usr/bin/sudo # the other sudo bin and other bin (can't rmb) works too
-/snap/core20/2264/usr/bin/sudo: error while loading shared libraries: /tmp/libsudo_util.so.0: file too short
+# mount NFS share
+$ mount -t nfs ...
+
+# execute shellcode
+$ ...
 ```
 
+~~There were 3 `mount` binaries found with _SUID_ bit.~~&#x20;
 
+When trying to mount the share hosted on the attacker machine, I got the error: ...&#x20;
 
-```bash
-tmp$ gcc -fPIC -c libsudo_util.c -o libsudo_util.o
-tmp$ gcc -shared -o libsudo_util.so.0 libsudo_util.o
-tmp$ file libsudo_util.o
+### 3. `/var/log/installer/autoinstall-user-data`
 
+Through manual enumeration of the files in each of the directories under the `/var/log` directory, I found an autoinstall configuration file that contains a hashed password string:
 
-... python3 server transfer to target
-tmp$ mv libsudo_util.o libsudo_util.so.0
+```yaml
+hostname: silver-platter
+password: $6$uJuA1kpnd4kTFniw$/402iWwKzcYD8AMHG6bY/PXwZWOkrrVmtoO7qQpfvVLh1CHmiKUodwMGP7/awDYtrzpDHV8cNbpS1HJ6VMakN.
+realname: root
+username: tyler
 ```
-
-<pre class="language-bash"><code class="lang-bash"><strong># after creating the shared libary file (above)
-</strong><strong>$ ldd /snap/core20/2264/usr/bin/sudo
-</strong><strong>...so /lib/x86_64...
-</strong><strong>
-</strong><strong>$ ls -l /lib
-</strong>lrwxrwxrwx 1 root root 7 Aug 10  2023 /lib -> usr/lib
-
-# ** MISSING leading slash
-# lib -> usr/lib instead of lib -> /usr/lib (??)
-
-</code></pre>
-
-Perhaps after fixing the issue of running `/snap/core20/2264/usr/bin/sudo` (creating fake shared library, etc.), use the sudo binary to run sudo actions
-
-
-
-```bash
-$ find / -name "libsudo_util.so.0" 2>/dev/null
-
-$ ls -la 
-
-```
-
-It seems that we have _**rxw**_ permissions for the `libsudo_util.so.0` binary found&#x20;
-
-### 3. `/usr/bin/mount` with _SUID_
-
-Run mountable share (NFS) on attacker hosting shellcode with SUID bit, mount the share from target and execute
-
-Tried to run NFS server on attacker: [https://linuxize.com/post/how-to-install-and-configure-an-nfs-server-on-ubuntu-20-04/](https://linuxize.com/post/how-to-install-and-configure-an-nfs-server-on-ubuntu-20-04/)
-
-There were 3 `mount` binaries found with _SUID_ bit. When trying to mount the share from the attacker machine, we got the error: ...&#x20;
-
-### 4. `/var/log/installer/autoinstall-user-data` (? TO CHECK CORRECT PATH)
 
 Found hashed password: `$6$uJuA1kpnd4kTFniw$/402iWwKzcYD8AMHG6bY/PXwZWOkrrVmtoO7qQpfvVLh1CHmiKUodwMGP7/awDYtrzpDHV8cNbpS1HJ6VMakN.`
 

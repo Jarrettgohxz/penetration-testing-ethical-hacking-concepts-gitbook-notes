@@ -234,8 +234,7 @@
   * [Other tips](tasks-on-the-go/other-tips.md)
 * [Practice](practice/README.md)
   * [Metasploitable 2](practice/metasploitable-2.md)
-  * [TryHackMe](practice/tryhackme/README.md)
-    * [Silver Platter](practice/tryhackme/silver-platter.md)
+  * [TryHackMe](practice/tryhackme.md)
 
 ## Write-ups
 
