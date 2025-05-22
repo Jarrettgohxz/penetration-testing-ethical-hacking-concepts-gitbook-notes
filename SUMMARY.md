@@ -224,7 +224,8 @@
 ## Professional report writing
 
 * [Report template](professional-report-writing/report-template/README.md)
-  * [Final report layout](professional-report-writing/report-template/final-report-layout.md)
+  * [Web applicaton pentesting](professional-report-writing/report-template/web-applicaton-pentesting/README.md)
+    * [OWASP report layout](professional-report-writing/report-template/web-applicaton-pentesting/owasp-report-layout.md)
 
 ***
 
