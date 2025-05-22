@@ -223,9 +223,9 @@
 
 ## Professional report writing
 
-* [OSCP](professional-report-writing/oscp/README.md)
-  * [Report layout](professional-report-writing/oscp/report-layout.md)
-  * [Note taking on-the-go](professional-report-writing/oscp/note-taking-on-the-go.md)
+* [Report template](professional-report-writing/report-template/README.md)
+  * [Final report layout](professional-report-writing/report-template/final-report-layout.md)
+  * [Note taking on-the-go](professional-report-writing/report-template/note-taking-on-the-go.md)
 
 ***
 
