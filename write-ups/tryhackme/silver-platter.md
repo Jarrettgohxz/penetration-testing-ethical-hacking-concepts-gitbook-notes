@@ -370,7 +370,7 @@ To further my learning, I decided to continue enumerating the system as the user
 
 ### 2. `/usr/bin/mount` with _SUID_
 
-a) Run mountable share via NFS on an attacker machine hosting a shellcode as the _**root**_ user with SUID bit set
+a) Create a mountable share via NFS on the attacker machine.  Host a shellcode with the _**root**_ user as the owner and  SUID bit set:
 
 {% embed url="https://linuxize.com/post/how-to-install-and-configure-an-nfs-server-on-ubuntu-20-04/" %}
 
@@ -384,7 +384,9 @@ $ apt install ...
 $ ...
 ```
 
-b) Mount the share on the target machine, and execute the retrieved shellcode to gain _**root**_ shell
+b) Mount the share on the target machine, and execute the retrieved shellcode to gain _**root**_ shell:
+
+_**Client machine**_
 
 ```bash
 # mount NFS share
