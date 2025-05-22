@@ -225,10 +225,12 @@
 
 * [Report template](professional-report-writing/report-template/README.md)
   * [Final report layout](professional-report-writing/report-template/final-report-layout.md)
-  * [Note taking on-the-go](professional-report-writing/report-template/note-taking-on-the-go.md)
 
 ***
 
+* [Tasks on-the-go](tasks-on-the-go/README.md)
+  * [Note taking on-the-go](tasks-on-the-go/note-taking-on-the-go.md)
+  * [Other tips](tasks-on-the-go/other-tips.md)
 * [Practice](practice/README.md)
   * [Metasploitable 2](practice/metasploitable-2.md)
   * [TryHackMe](practice/tryhackme/README.md)
