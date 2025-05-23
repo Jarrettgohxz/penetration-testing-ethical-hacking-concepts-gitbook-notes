@@ -151,10 +151,7 @@ As mentioned before, access to the third ingredient most likely requires a privi
 
 ```bash
 $ id
-... # no dangerous groups such adm
-
-$ find ..
-# no dangerous file privileges
+uid=33(www-data) gid=33(www-data) groups=33(www-data) # no dangerous groups such as adm
 
 $ sudo -l
 
@@ -162,19 +159,17 @@ Matching Defaults entries for www-data on ip-10-10-49-150:
     env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
 
 User www-data may run the following commands on ip-10-10-49-150:
-    (ALL) NOPASSWD: ALL # root privileges without password!!
+    (ALL) NOPASSWD: ALL 
     
 ```
 
-**2.1 Gaining a root shell**
+The output  `(ALL) NOPASSWD: ALL`  tells us that the current user is allowed to run `sudo` to gain superuser privileges, without any password.
 
-```bash
-$ sudo su root
-```
+
 
 **2.2 Finding the last and final ingredient**
 
-After further enumeration on the file system as te, it turns out, the 3rd ingredient is not hidden within any log files, but simply in the `/root` directory.&#x20;
+After further enumeration on the file system, I found out that the 3rd ingredient is in the `/root` directory.&#x20;
 
 ```bash
 $ sudo ls -la /root
