@@ -106,6 +106,11 @@ $ find / -perm -111 -type d 2>/dev/null
 $ find / -perm -o x -type d 2>/dev/null
 ```
 
+#### Files to look out for
+
+1. Writable `/etc/fstab`  ([https://jarrettgxz-sec.gitbook.io/offensive-security-concepts/privilege-escalation/linux/vulnerabilities-exploit/filesystem-sharing/nfs-attacker-machine](https://jarrettgxz-sec.gitbook.io/offensive-security-concepts/privilege-escalation/linux/vulnerabilities-exploit/filesystem-sharing/nfs-attacker-machine))
+2. Writable `/etc/systemd/system` , `/lib/systemd/services`, `/usr/lib/systemd/system`, `/run/systemd/system` (systemd services) and other similar directories
+
 ### Automated tools
 
 * LinPeas: [https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/tree/master/linPEAS](https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/tree/master/linPEAS)

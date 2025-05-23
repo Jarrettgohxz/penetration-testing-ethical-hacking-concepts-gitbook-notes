@@ -372,6 +372,10 @@ To further my learning, I decided to continue enumerating the system as the user
 
 I thought of the idea to mount a malicious shellcode via the attacker machine's NFS share, before executing the shellcode from the target machine to retrieve a root shell. However, superuser privileges are required to use the `mount` command.
 
+_Refer to the following_:
+
+{% embed url="https://jarrettgxz-sec.gitbook.io/offensive-security-concepts/privilege-escalation/linux/vulnerabilities-exploit/filesystem-sharing/nfs-attacker-machine" %}
+
 {% embed url="https://linuxize.com/post/how-to-install-and-configure-an-nfs-server-on-ubuntu-20-04/" %}
 
 ### 3. `/var/log/installer/autoinstall-user-data`
