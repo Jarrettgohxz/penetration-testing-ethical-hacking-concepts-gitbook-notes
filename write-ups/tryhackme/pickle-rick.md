@@ -240,3 +240,8 @@ root@host:~#
 ```
 
 Assuming that the admin does not clean up the `.ssh/authorized_keys` file, we can access our backdoor with a root shell anytime as needed.
+
+
+
+ssh -i www-data-key root@10.10.110.54
+
