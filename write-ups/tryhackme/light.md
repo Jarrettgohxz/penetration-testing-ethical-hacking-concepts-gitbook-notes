@@ -312,7 +312,9 @@ Returns the same response as query 3.1 above
 
 ### Conclusion
 
-From the results, I have learnt that SQLite accepts variations of SQL keywords, such as but not limited to: `Union`, `uNion`, `unIon`, `uniOn`, `UNion`, etc. are allowed, and are treated as valid commands.
+From the results, I have learnt that SQLite accepts variations of SQL keywords. This includes the following (non-exhaustive): `Union`, `uNion`, `unIon`, `uniOn`, `UNion`, etc., which are treated as valid commands.&#x20;
+
+This is because SQLite follows the SQL standard, which states that keywords are case-insensitive. However, this only applies to keywords, not to identifiers like table names (unless quoted). This can allow  attackers to bypass simple SQL injection filters that relies on specific standard keyword filters such as "_UNION_", "_union_", etc.
 
 
 
