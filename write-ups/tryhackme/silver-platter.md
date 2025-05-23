@@ -370,35 +370,9 @@ To further my learning, I decided to continue enumerating the system as the user
 
 ### 2. `/usr/bin/mount` with _SUID_
 
-a) Create a mountable share via NFS on the attacker machine.  Host a shellcode with the _**root**_ user as the owner and  SUID bit set:
+I thought of the idea to mount a malicious shellcode via the attacker machine's NFS share, before executing the shellcode from the target machine to retrieve a root shell. However, superuser privileges are required to use the `mount` command.
 
 {% embed url="https://linuxize.com/post/how-to-install-and-configure-an-nfs-server-on-ubuntu-20-04/" %}
-
-_**Attacker machine**_
-
-```bash
-# install required tools
-$ apt install ...
-
-# configure NFS share
-$ ...
-```
-
-b) Mount the share on the target machine, and execute the retrieved shellcode to gain _**root**_ shell:
-
-_**Client machine**_
-
-```bash
-# mount NFS share
-$ mount -t nfs ...
-
-# execute shellcode
-$ ...
-```
-
-~~There were 3 `mount` binaries found with _SUID_ bit.~~&#x20;
-
-When trying to mount the share hosted on the attacker machine, I got the error: ...&#x20;
 
 ### 3. `/var/log/installer/autoinstall-user-data`
 
