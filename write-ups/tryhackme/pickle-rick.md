@@ -44,11 +44,32 @@ Seems like a strange text, could it be another username, a clue, or perhaps a pa
 
 
 
-_**(2) Enumerating PHP**_
+_**(2) Fingerprinting the web server**_
 
-PHP is commonly used as the underlying programming language or an Apache web server. Thus, I decided to enumerate common PHP filenames and directories. Note that the commands listed below are similar to the ones used in the first part above, just with addition of flags, and change of wordlist.
+```bash
+$ curl -I http://<target_url>
+...
+```
+
+```bash
+$ nc http://<target_url> 80
+```
+
+```bash
+$ whatweb <target_url>
+```
+
+We have found out that the web server uses _**Apache.**_
+
+
+
+_**(3) Enumerating PHP**_
+
+PHP is commonly used as the underlying programming language on an Apache web server. Thus, I decided to enumerate common PHP filenames and directories. Note that the commands listed below are similar to the ones used in the first part above, just with addition of flags, and change of wordlist.
 
 1. _common.txt_
+
+* Extra `-x php` option
 
 ```bash
 $ gobuster dir -u http://<target> -x php -w .../common.txt
