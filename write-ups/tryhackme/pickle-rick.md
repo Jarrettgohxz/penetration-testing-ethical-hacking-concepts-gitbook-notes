@@ -66,11 +66,9 @@ $ gobuster dir -u http://<target> -w .../Common-PHP-Filenames.txt
 
 <figure><img src="../../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
 
-It appears that we have found a few `.php` files such as `login.php`, `portal.php` and `denied.php`. This is a strong indicator the web server is running PHP.
+It appears that we have found a few `.php` files such as `login.php`, `portal.php` and `denied.php`.&#x20;
 
-
-
-_**The****&#x20;****`ffuf`****&#x20;****tool can be used too:**_
+_**The****&#x20;****`ffuf`****&#x20;****tool can be used to enumerate the directories too:**_
 
 ```bash
 # 1)
@@ -86,7 +84,7 @@ Next, I visited the path `/login.php` , and was presented with a login page. I u
 
 **Enumerating the webpage**
 
-&#x20;`/portal.php`:
+&#x20;After logging in, the webpage was redirected to`/portal.php` .
 
 The following comment was found in the source code:
 
@@ -163,11 +161,11 @@ User www-data may run the following commands on ip-10-10-49-150:
     
 ```
 
-The output  `(ALL) NOPASSWD: ALL`  tells us that the current user is allowed to run `sudo` to gain superuser privileges, without any password.
+The output  `(ALL) NOPASSWD: ALL`  tells us that the current user is allowed to run `sudo` without any password. This means that we are able to gain an unauthenticated superuser privilege.
 
 
 
-**2.2 Finding the last and final ingredient**
+**Finding the last and final ingredient**
 
 After further enumeration on the file system, I found out that the 3rd ingredient is in the `/root` directory.&#x20;
 
