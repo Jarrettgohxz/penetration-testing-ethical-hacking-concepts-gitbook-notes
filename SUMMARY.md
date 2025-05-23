@@ -58,9 +58,9 @@
 * [LAN devices](upnp-exploitation/lan-devices.md)
 * [Compiled resources](upnp-exploitation/compiled-resources.md)
 
-## 🪚 Network hacking
+## Network Reconnaissance & Attacks
 
-* [What is network hacking?](network-hacking/what-is-network-hacking.md)
+* [What is network hacking?](network-reconnaissance-and-attacks/what-is-network-hacking.md)
 
 ## 1️⃣ Network live host discovery
 
@@ -100,18 +100,18 @@
 * [Misconfigurations](misconfigurations/README.md)
   * [.DS\_Store](misconfigurations/.ds_store.md)
 
-## Web Hacking
+## Web Application Penetration Testing
 
-* [Introduction](web-hacking/introduction.md)
-* [Directories/URLs gathering](web-hacking/directories-urls-gathering.md)
-* [Subdomain enumeration](web-hacking/subdomain-enumeration.md)
-* [File inclusion & Path traversal](web-hacking/file-inclusion-and-path-traversal.md)
-* [Insecure Direct Object Reference (IDOR)](web-hacking/insecure-direct-object-reference-idor.md)
-* [Upload vulnerabilities](web-hacking/upload-vulnerabilities/README.md)
-  * [File extension cheat-sheet](web-hacking/upload-vulnerabilities/file-extension-cheat-sheet.md)
-* [SSRF](web-hacking/ssrf.md)
-* [XSS](web-hacking/xss.md)
-* [SQL injection](web-hacking/sql-injection.md)
+* [Introduction](web-application-penetration-testing/introduction.md)
+* [Directories/URLs gathering](web-application-penetration-testing/directories-urls-gathering.md)
+* [Subdomain enumeration](web-application-penetration-testing/subdomain-enumeration.md)
+* [File inclusion & Path traversal](web-application-penetration-testing/file-inclusion-and-path-traversal.md)
+* [Insecure Direct Object Reference (IDOR)](web-application-penetration-testing/insecure-direct-object-reference-idor.md)
+* [Upload vulnerabilities](web-application-penetration-testing/upload-vulnerabilities/README.md)
+  * [File extension cheat-sheet](web-application-penetration-testing/upload-vulnerabilities/file-extension-cheat-sheet.md)
+* [SSRF](web-application-penetration-testing/ssrf.md)
+* [XSS](web-application-penetration-testing/xss.md)
+* [SQL injection](web-application-penetration-testing/sql-injection.md)
 
 ***
 
