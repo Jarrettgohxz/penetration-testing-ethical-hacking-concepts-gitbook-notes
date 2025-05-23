@@ -176,7 +176,7 @@ What is `sqlite_master`?
 
 The schema table looks like this:
 
-> ```
+> ```sql
 > CREATE TABLE sqlite_schema(
 >   type text,
 >   name text,
