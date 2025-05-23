@@ -172,7 +172,19 @@ a) Query the `sqlite_master` database for more information
 
 What is `sqlite_master`?
 
-> Every SQLite database contains a single "schema table" that stores the schema for that database. The schema for a database is a description of all the other tables, etc. that are contained within the database.
+> Every SQLite database contains a single "schema table" that stores the schema for that database. The schema for a database is a description of all the other tables, indexes, triggers, and views that are contained within the database.
+
+The schema table looks like this:
+
+> ```
+> CREATE TABLE sqlite_schema(
+>   type text,
+>   name text,
+>   tbl_name text,
+>   rootpage integer,
+>   sql text
+> );
+> ```
 
 {% embed url="https://www.sqlite.org/schematab.html" %}
 
