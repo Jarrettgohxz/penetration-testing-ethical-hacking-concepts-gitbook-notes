@@ -262,6 +262,8 @@ root@host:~#
 
 Assuming that the admin does not clean up the `.ssh/authorized_keys` file, we can access our backdoor with a root shell anytime as needed.
 
+> NOTE: Yes, ofcourse I removed the backdoor access after I was done testing.
+
 
 
 ```bash
