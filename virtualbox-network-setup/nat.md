@@ -9,8 +9,9 @@ description: >-
 The following are the features of the _**NAT**_ settings:
 
 1. Allows connection to the host machine (NAT gateway IP address)
-2. Does not allow connections to the machines on the same LAN as the host machine
-3. Allows internet access
+2. Does not allow connection to the guest machine from the host
+3. Does not allow connections to the machines on the same LAN as the host machine
+4. Allows internet access
 
 ### Scenario
 

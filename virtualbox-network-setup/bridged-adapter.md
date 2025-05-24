@@ -6,11 +6,12 @@ description: >-
 
 # Bridged adapter
 
-
-
 The following are the features of the _**Bridged Adapter**_ settings:
 
-1. ...
+1. Allow connection to the host machine (simply another host on the same LAN)
+2. Allows connection to the guest machine from the host (same as with option 1 — simply another host on the LAN)
+3. Allows connections to the machines on the same LAN as the host machine
+4. Allows internet access
 
 
 
