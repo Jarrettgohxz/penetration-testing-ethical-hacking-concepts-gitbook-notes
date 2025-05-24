@@ -10,7 +10,9 @@ The following are the features of the _**NAT**_ settings:
 
 1. ...
 
+<figure><img src="../.gitbook/assets/image (8).png" alt=""><figcaption></figcaption></figure>
 
+<figure><img src="../.gitbook/assets/image (7).png" alt=""><figcaption></figcaption></figure>
 
 In the NAT network mode, the guest operating system (OS) is able to access the internet, but not the addresses on the same local area network (LAN) as the host OS. The host and guest machines are not able to directly communicate with each other too.
 

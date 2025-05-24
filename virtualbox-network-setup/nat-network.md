@@ -14,6 +14,12 @@ In this mode, the same features of the NAT mode is enabled, with the additional 
 
 Essentially, the NAT network mode contains both the elements present in the NAT and Internal network mode (discussed below).
 
+
+
+<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+
+<figure><img src="../.gitbook/assets/image (9).png" alt=""><figcaption></figcaption></figure>
+
 ### Example
 
 Assume there is a need to simulate a LAN environment involving 2 machines, where 1 is the attacker, and another the target. Suppose there is only a single computer running VirtualBox to work with, where the physical network interface on the host machine is not enabled.
