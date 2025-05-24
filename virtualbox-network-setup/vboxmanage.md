@@ -1,6 +1,6 @@
 # vboxmanage
 
-VBoxManage is a command line tool for configurations for the Oracle VM VirtualBox.
+VBoxManage is a command line tool for configurations of the Oracle VM VirtualBox.
 
 ### NAT network
 

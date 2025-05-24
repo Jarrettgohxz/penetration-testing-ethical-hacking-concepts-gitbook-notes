@@ -6,6 +6,14 @@ description: >-
 
 # Bridged adapter
 
+
+
+The following are the features of the _**Bridged Adapter**_ settings:
+
+1. ...
+
+
+
 In this way, the guest VM is able to communicate with the host machine itself, the addresses in the LAN of the host machine and also the internet.&#x20;
 
 ### Demonstration
