@@ -264,5 +264,7 @@ Assuming that the admin does not clean up the `.ssh/authorized_keys` file, we ca
 
 
 
-ssh -i www-data-key root@10.10.110.54
+```bash
+$ ~/.ssh: ssh -i b34e9c2a b34e9c2a@<target>
+```
 
