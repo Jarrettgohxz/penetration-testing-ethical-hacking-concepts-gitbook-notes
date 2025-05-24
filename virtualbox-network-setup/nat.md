@@ -8,12 +8,35 @@ description: >-
 
 The following are the features of the _**NAT**_ settings:
 
-1. ...
+1. Allows connection to the host machine (NAT gateway IP address)
+2. Does not allow connections to the machines on the same LAN as the host machine
+3. Allows internet access
 
-<figure><img src="../.gitbook/assets/image (8).png" alt=""><figcaption></figcaption></figure>
+### Scenario
+
+Given the following configurations:
+
+1. Guest machine in a "_**NAT"**_ network setting(note: this is different from the "_**NAT network"**_ network setting)
+2. Host machine with 2 services running: `111/tcp`, `631/tcp`, IP: `10.0.2.2` — this is the NAT gateway IP for the guest machine
+
+
+
+The following image below displays the output from an `nmap` scan on the host machine (from the guest machine).
+
+<figure><img src="../.gitbook/assets/image (11).png" alt=""><figcaption></figcaption></figure>
+
+
+
+The image below displays the output from 3 commands:
+
+1. TCP connection to the host machine at port _**111**_ (with _netcat_)
+2. TCP connection at port _**631**_&#x20;
+3. TCP connection at port _**632**_ — for control purposes
+
+Notice that the response shows that ports _**111**_ and _**631**_ are open, while connection to port _**632**_ is reufsed — port is closed.
 
 <figure><img src="../.gitbook/assets/image (7).png" alt=""><figcaption></figcaption></figure>
 
-In the NAT network mode, the guest operating system (OS) is able to access the internet, but not the addresses on the same local area network (LAN) as the host OS. The host and guest machines are not able to directly communicate with each other too.
+### Conclusion
 
-<mark style="color:red;">\*\* TO CONFIRM IF GUEST OS ABLE TO COMMUNICATE WITH HOSTS ON THE SAME LAN OF THE HOST MACHINE</mark>
+We can see that the guest machine in a "_**NAT"**_ network setting is able to communicate with the services on the host machine. For a more secure network setting, refer to the "[_**NAT network**_](https://jarrettgxz-sec.gitbook.io/offensive-security-concepts/virtualbox-network-setup/nat-network)" configuration.
