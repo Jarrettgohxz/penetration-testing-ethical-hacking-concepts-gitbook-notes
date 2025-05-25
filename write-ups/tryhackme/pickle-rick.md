@@ -264,9 +264,3 @@ Assuming that the admin does not clean up the `.ssh/authorized_keys` file, we ca
 
 > NOTE: Yes, ofcourse I removed the backdoor access after I was done testing.
 
-
-
-```bash
-$ ~/.ssh: ssh -i b34e9c2a b34e9c2a@<target>
-```
-
