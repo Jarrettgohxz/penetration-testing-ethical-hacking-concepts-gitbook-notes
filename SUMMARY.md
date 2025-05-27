@@ -24,6 +24,7 @@
 ***
 
 * [Tools](tools/README.md)
+  * [waybackurls](tools/waybackurls.md)
   * [recon-ng](tools/recon-ng.md)
   * [sherlock](tools/sherlock.md)
   * [maltego](tools/maltego.md)

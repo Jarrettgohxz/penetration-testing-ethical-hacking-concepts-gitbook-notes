@@ -8,15 +8,16 @@ description: >-
 
 ## site operator
 
-Discover all subdomains of `domain.com`
+Discover all subdomains of `domain.com` :
 
-<pre><code><strong>site:*domain.com
-</strong></code></pre>
+```markup
+site:*.domain.com
+```
 
 Exclude matches for `www.domain.com`
 
 ```markup
-site:*domain.com -site:www.domain.com
+site:*.domain.com -site:www.domain.com
 ```
 
 ## filetype operator
@@ -26,4 +27,16 @@ site:*domain.com -site:www.domain.com
 ## inurl operator
 
 ...
+
+## intitle operator
+
+...
+
+
+
+## Resources
+
+{% embed url="https://www.exploit-db.com/google-hacking-database" %}
+
+
 
