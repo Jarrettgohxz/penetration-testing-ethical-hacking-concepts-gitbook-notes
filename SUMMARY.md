@@ -239,6 +239,13 @@
   * [Metasploitable 2](practice/metasploitable-2.md)
   * [TryHackMe](practice/tryhackme.md)
 
+## Operational Security (OpSec)
+
+* [Hardening](operational-security-opsec/hardening/README.md)
+  * [General](operational-security-opsec/hardening/general.md)
+  * [VirtualBox](operational-security-opsec/hardening/virtualbox.md)
+  * [Web Browser](operational-security-opsec/hardening/web-browser.md)
+
 ## Write-ups
 
 * [TryHackMe](write-ups/tryhackme/README.md)
