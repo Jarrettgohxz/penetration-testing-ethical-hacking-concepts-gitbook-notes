@@ -161,6 +161,7 @@
 * [Tools](credentials-brute-force-cracking/tools/README.md)
   * [Hydra](credentials-brute-force-cracking/tools/hydra.md)
   * [John the ripper](credentials-brute-force-cracking/tools/john-the-ripper.md)
+  * [Hashcat](credentials-brute-force-cracking/tools/hashcat.md)
   * [hash-identifier](credentials-brute-force-cracking/tools/hash-identifier.md)
 
 ## Post-exploitation

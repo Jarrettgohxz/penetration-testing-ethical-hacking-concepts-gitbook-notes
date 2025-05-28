@@ -13,9 +13,16 @@ $ hydra -l user -P /usr/share/wordlists/rockyou.txt ftp://10.10.10.2
 
 _**Additional flags**_
 
-* `-s PORT` to specify a non-default port for the service in question.
+* `-s PORT` to specify a non-default port for the service we are working with
 * `-V` or `-vV`, for verbose output
 * `-t n` where n is the number of parallel connections to the target. `-t 16` will create 16 (default) threads used to connect to the target.
 * `-d`, for debugging
 
+
+
+
+
+
+
 {% embed url="https://github.com/vanhauser-thc/thc-hydra" %}
+
