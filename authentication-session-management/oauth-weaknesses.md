@@ -22,13 +22,15 @@ A user performs an action to start an OAuth process on a _Client_ application
 {% step %}
 ### Authorization request
 
-The application redirects the user to an &#x41;_&#x75;thorization Server_ (`AS`)&#x20;
+1. The application redirects the user to an &#x41;_&#x75;thorization Server_ (`AS`)&#x20;
 
-> This process is displayed as the small pop-up window from the OAuth provider.
+> This process is often displayed as a small pop-up window or redirect initiated by the OAuth provider.
 
 The authorization server URL may look like:
 
-`https:// example.com/oauth/authorize?client_id=xxx&response_type=code&...`&#x20;
+```http
+https://example.com/oauth/authorize?client_id=xxx&response_type=code&... 
+```
 
 With the following list of parameters:
 
@@ -40,7 +42,7 @@ With the following list of parameters:
 
 > Take note of the `state` value, as this is an important parameter involved in various attacks
 
-> The user will be prompted to login (to verify his/her identity with the _protected resource_). Following that, a consent screen will be displayed to inform the user the scope of permissions that the _Client application_ is requesting access to.
+2. The user will be prompted to login (to verify his/her identity with the _protected resource_). Following that, a consent screen will be displayed to inform the user the scope of permissions that the _Client application_ is requesting access to.
 {% endstep %}
 
 {% step %}
@@ -48,20 +50,27 @@ With the following list of parameters:
 
 If the user accepts the permissions displayed in the consent screen (eg. click the "Authorize" button)
 
-1. The _Authorization Server_ then redirects the user to the `redirect_uri` specified earlier, with a generated _Authorization Code_ and the `state` provided by the _client application_ in the first reque&#x73;_&#x74;_.
+1. The _Authorization Server_ will handle the consent internally
 
-Within the internal server-side logic, the following may happen:
+This may include a request to  an internal endpoint with the `state` and relevant `scope`(s).
 
-* A request to update the consent configrations will be sent to an internal endpoint with the `state` and relevant `scope`(s).
+> Example internal URL:
 
-The URL may look like:\
-`https://example.com/oauth/consent?state=xxx&scope=...`&#x20;
+```http
+https://example.com/oauth/consent?state=xxx&scope=... 
+```
 
 > Note: this concept is important to understand the server-side CSRF vulnerability (**05.1-Testing for OAuth server weaknesses**)
+>
+>
+
+2.  The _Authorization Server_ then redirects the user to the `redirect_uri` specified earlier, with a generated _Authorization Code_ and the `state` provided by the _client application_ in the first reque&#x73;_&#x74;_.
+
+    * The _Client_ application must validate the `state` to ensure that it matches the one sent in the initial request. This ensures that the response is linked to the _Client'_&#x73; initial request (refer to the CSRF based attacks below).
 
 
 
-2. The _Client_ application must validate the `state` to ensure that it matches the one sent in the initial request. This ensures that the response is linked to the _Client'_&#x73; initial request (refer to the CSRF based attacks below).
+
 {% endstep %}
 
 {% step %}
