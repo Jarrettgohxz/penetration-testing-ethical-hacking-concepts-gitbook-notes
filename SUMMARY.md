@@ -252,7 +252,7 @@
 
 * [Hardening](operational-security-opsec/hardening/README.md)
   * [General](operational-security-opsec/hardening/general.md)
-  * [VirtualBox](operational-security-opsec/hardening/virtualbox.md)
+  * [Oracle VirtualBox](operational-security-opsec/hardening/oracle-virtualbox.md)
   * [Web Browser](operational-security-opsec/hardening/web-browser.md)
 
 ## Write-ups
