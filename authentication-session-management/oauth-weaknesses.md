@@ -4,10 +4,10 @@
 
 _**Common terms:**_&#x20;
 
-* **OAuth provider**: The third-party that a user wishes to integrate/authenticate with.
-* **Resource Server**: An entity that can grant access to a protected resource — eg. an end-user.
-* **Client**: Application requesting access to a protected resource on behalf of the Resource Owner — eg. a web application.
-* **Resource Server**: A server hosting protected resource — eg. API to access.
+* **OAuth provider**: The third-party service that implementign OAuth that a user wishes to integrate/authenticate with (eg. Google, Github).
+* **Resource Server**: An entity that can grant access to a protected resource (eg. an end-user).
+* **Client**: Application requesting access to a protected resource on behalf of the Resource Owner (eg. a web application).
+* **Resource Server**: A server hosting protected resource (eg. API to access).
 * **Authorization Server (AS)**: A server that authenticates the Resource Owner and issues Access Tokens after a proper authorization process.
 * **Authorization Code:** A string value used to request for an _Access Token_.
 * **Access Tokens**: A string values used to validate a user's access to protected resource
@@ -48,16 +48,20 @@ With the following list of parameters:
 
 If the user accepts the permissions displayed in the consent screen (eg. click the "Authorize" button)
 
-a) A consent request will be sent to the _Authorization Server_ endpoint with the `state` and relevant `scope`(s).
+1. The _Authorization Server_ then redirects the user to the `redirect_uri` specified earlier, with a generated _Authorization Code_ and the `state` provided by the _client application_ in the first reque&#x73;_&#x74;_.
+
+Within the internal server-side logic, the following may happen:
+
+* A request to update the consent configrations will be sent to an internal endpoint with the `state` and relevant `scope`(s).
 
 The URL may look like:\
-`https://example.com/oauth/consent?state=xxx&scope=...`
+`https://example.com/oauth/consent?state=xxx&scope=...`&#x20;
+
+> Note: this concept is important to understand the server-side CSRF vulnerability (**05.1-Testing for OAuth server weaknesses**)
 
 
 
-b) The _Authorization Server_ then redirects the user to the `redirect_uri` specified earlier, with a generated _Authorization Code_ and the `state` provided by the _client application_ in the first reque&#x73;_&#x74;_.
-
-* The _Client_ application must validate the `state` to ensure that it matches the one sent in the initial request. This ensures that the response is linked to the _Client'_&#x73; initial request (refer to the CSRF based attacks below).
+2. The _Client_ application must validate the `state` to ensure that it matches the one sent in the initial request. This ensures that the response is linked to the _Client'_&#x73; initial request (refer to the CSRF based attacks below).
 {% endstep %}
 
 {% step %}
