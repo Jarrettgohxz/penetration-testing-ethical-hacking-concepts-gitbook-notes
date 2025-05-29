@@ -101,7 +101,7 @@ The _Authorization Code_ can be used to request for an _Access Token._
 **This attack is possible due to a few potential flaws in the&#x20;**_**Authorization Server**:_
 
 1. Improper or missing validation of the `state` parameter by the _Authorization Server_.
-2. Predictable `state` parameter value.
+2. Predictable or reused`state` parameter value.
 
 The goal of this CSRF-based attack is to trick an &#x41;_&#x75;thorization Server_ into generating an _Authorization Code_ with permissions/scopes defined by an attacker. Typically, the scopes defined will provide the attacker access to sensitive information about a target user.&#x20;
 
@@ -149,7 +149,13 @@ b. `scope`: Desired scope&#x20;
 
 #### Prevention
 
-The _Authorization Server_ should validate that the `state` parameter is linked to an existing active OAuth process, and that it also matches the user session. This prevents an attacker from hijacking the OAuth flow.
+The _Authorization Server_ should validate the  following conditions for the`state` parameter:
+
+1. &#x20;Linked to an existing active OAuth process
+2. Matches the user session.&#x20;
+3. Uses a cryptographically secure and random algorithm.
+
+This prevents an attacker from hijacking the OAuth flow.
 
 > OWASP reference: copy and paste this link on a chromium-based browser to directly view the relevant paragraph.
 
@@ -172,9 +178,9 @@ This attack is categorized as a server-side vulnerability as it is reliant on th
 **This attack is possible due to a few potential flaws in the&#x20;**_**Client**_**&#x20;application**:
 
 1. Improper or missing validation of the `state` parameter by the _Client_ application.
-2. Predictable `state` parameter value.
+2. Predictable or reused-+ `state` parameter value.
 
-The goal of this CSRF-based attack is to trick a _Client_ application into updating the current OAuth session with that of an attacker, by specifiying the _Authorization Code_.
+The goal of this CSRF-based attack is to trick a _Client_ application into accepting an _Authorization Code_ tied to an attacker-controlled account, causing the victim's session to be linked to the attacker's OAuth identity.
 
 **Steps involved:**
 
@@ -189,15 +195,22 @@ https://[client_addr].com/callback?code=[attacker_authorization_code]
 
 > Note : this URL is similar to the one shown in part **3.2** in the **General OAuth flow** section above.
 
-3. A target user will be tricked to send a GET request to the malicious URL (eg. via a social engineering email)
+3. A target user will be tricked into sending a GET request to the malicious URL (eg. via a social engineering email)
 
 * However, for the attack to work, the target user's browser must be authenticated with the OAuth provider — a valid authenticated session must be established through an OAuth process prior to the attack.
-* if successful, the target user's web browser will link the _Client_ application to the attacker's _Authorization Code_ instead.
+* If successful, the target user's web browser will link the _Client_ application to the attacker's _Authorization Code_ instead.
 
 
 
-4. consequently, any actions performed on the Client application will be linked to the attacker's OAuth account instead. This may allow the attacker to view sensitive information about the target user.
+4. As a result:
+   * Any subsequent actions performed on the Client application will be linked to the attacker's account instead
+   * This may allow the attacker to view sensitive information about the target user.
 
 #### Prevention
 
-The _Client_ application should validate that the `state` parameter is linked to an existing active OAuth process, and that it also matches the one defined in the initial request (eg. `/oauth/authorize` endpoint).
+The _Client_ application should validate the following conditions for the `state` parameter:&#x20;
+
+1. Linked to an existing active OAuth process.
+2. Matches the one defined in the initial request (eg. `/oauth/authorize` endpoint).
+3. Uses a cryptographically secure and random algorithm.
+
