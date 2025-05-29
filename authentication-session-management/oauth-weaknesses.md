@@ -126,9 +126,14 @@ Parameters in the URL:
 
 > The scope defined may contain highly sensitive permissions about the target user
 
-2. The attacker will trick a target user into visiting the malicious Client application containing the CSRF payload — this can be through a social engineering attack.&#x20;
-   * However, for the attack to work, the target user's browser must be authenticated with the OAuth provider — a valid session must be established through a complete OAuth process prior to the attack.
-   * Within the _Authorization Server_ logi&#x63;_,_ without proper validtion of the `state` parameter (see **Prevention** section below for more information), the server will treat this as a valid OAuth request, and continue the OAuth process and redirect the user back to the `redirect_uri`  (defined by the attacker in the initial request) with the _Authorization Code_ passed as the paramete&#x72;_._&#x20;
+2.  The attacker will trick a target user into visiting the malicious Client application containing the CSRF payload — this can be through a social engineering attack.&#x20;
+
+    * However, for the attack to work, the target user's browser must be authenticated with the OAuth provider — a valid session must be established through a complete OAuth process prior to the attack.
+
+    > This is due to the nature of  web browsers, which sends relevant information regarding the established session with the OAuth provider (eg. cookies, etc.) to identify the current user session
+
+    * The CSRF attack happens when the scope is being processed for the target user's session instead, due to the web browser sending session information about this particular user
+    * Within the _Authorization Server_ logi&#x63;_,_ without proper validtion of the `state` parameter (see **Prevention** section below for more information), the server will treat this as a valid OAuth request, and continue the OAuth process and redirect the user back to the `redirect_uri`  (defined by the attacker in the initial request) with the _Authorization Code_ passed as the paramete&#x72;_._&#x20;
 
 > Since the redirect URI is controlled by the attacker, he/she can retrieve the Authorization Code.
 
