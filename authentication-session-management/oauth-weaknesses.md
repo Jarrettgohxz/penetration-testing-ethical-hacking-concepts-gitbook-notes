@@ -60,17 +60,10 @@ This may include a request to an internal endpoint with the `state` and relevant
 https://example.com/oauth/consent?state=xxx&scope=... 
 ```
 
-> Note: this concept is important in understanding the server-side CSRF vulnerability (**05.1-Testing for OAuth server weaknesses**)
->
->
+2. The _Authorization Server_ then redirects the user to the `redirect_uri` specified earlier, with a generated _Authorization Code_ and the `state` provided by the _client application_ in the first reque&#x73;_&#x74;_.
+   * The _Client_ application must validate the `state` to ensure that it matches the one sent in the initial request. This ensures that the response is linked to the _Client'_&#x73; initial request&#x20;
 
-2.  The _Authorization Server_ then redirects the user to the `redirect_uri` specified earlier, with a generated _Authorization Code_ and the `state` provided by the _client application_ in the first reque&#x73;_&#x74;_.
-
-    * The _Client_ application must validate the `state` to ensure that it matches the one sent in the initial request. This ensures that the response is linked to the _Client'_&#x73; initial request&#x20;
-
-    > This concept relates to another server-side CSRF vulnerability (**05.1-Testing for OAuth server weaknesses**)
-
-
+> Note: The `state` parameter is important in preventing server-side CSRF vulnerabilities (**05.1-Testing for OAuth server weaknesses**)
 
 
 {% endstep %}
