@@ -22,14 +22,14 @@ A user performs an action to start an OAuth process on a _Client_ application
 {% step %}
 ### Authorization request
 
-1. The application redirects the user to an &#x41;_&#x75;thorization Server_ (/authorize endpoint).
+**2.1** The application redirects the user to an &#x41;_&#x75;thorization Server_ (`/authorize` endpoint).
 
 > This process is often displayed as a small pop-up window or redirect initiated by the OAuth provider.
 
 The authorization server URL may look like:
 
 ```http
-https://example.com/oauth/authorize?client_id=xxx&response_type=code&... 
+https://[client_addr].com/oauth/authorize?client_id=xxx&response_type=code&... 
 ```
 
 With the following list of parameters:
@@ -42,7 +42,7 @@ With the following list of parameters:
 
 > Take note of the `state` value, as this is an important parameter involved in various CSRF-based attacks discussed below.
 
-2. The user will be prompted to login (to verify his/her identity with the _protected resource_). Following that, a consent screen will be displayed to inform the user of the scope of permissions that the _Client application_ is requesting access to.
+**2.2** The user will be prompted to login (to verify his/her identity with the _protected resource_). Following that, a consent screen will be displayed to inform the user of the scope of permissions that the _Client application_ is requesting access to.
 {% endstep %}
 
 {% step %}
@@ -50,22 +50,22 @@ With the following list of parameters:
 
 If the user accepts the permissions displayed in the consent screen (eg. click the "Authorize" button)
 
-1. The _Authorization Server_ will handle the consent internally
+**3.1** The _Authorization Server_ will handle the consent internally
 
 This may include a request to an internal endpoint with the `state` and relevant `scope`(s).
 
 > Example internal request:
 
 ```http
-POST https://example.com/oauth/consent?state=xxx&scope=... 
+POST https://[AS_addr].com/oauth/consent?state=xxx&scope=... 
 ```
 
-2. The _Authorization Server_ then redirects the user to the `redirect_uri` specified earlier, with a generated _Authorization Code_ and the `state` provided by the _client application_ in the first reque&#x73;_&#x74;_.
+**3.2** The _Authorization Server_ then redirects the user to the `redirect_uri` specified earlier, with a generated _Authorization Code_ and the `state` provided by the _client application_ in the first reque&#x73;_&#x74;_.
 
 > Example redirect:
 
 ```http
-https://example.com/callback?code=xxx&state=xxxx
+https://[client_addr].com/callback?code=xxx&state=xxxx
 ```
 
 * The _Client_ application must validate the `state` to ensure that it matches the one sent in the initial request. This ensures that the response is linked to the _Client'_&#x73; initial request&#x20;
@@ -96,7 +96,43 @@ The _Authorization Code_ can be used to request for an _Access Token._
 
 ### 1. Consent page CSRF
 
-The goal of this CSRF attack is to steal a
+> Refer to the _Testing for Consent Page Cross-Site Request Forgery_ header in the main link above (**OWASP WSTG-05.1-Testing for OAuth server weaknesses**)
+
+This attack is possible due to a few reasons:
+
+1. Improper or missing validation of the `state` parameter by the _Authorization Server_.
+2. Predictable `state` parameter value.
+
+The goal of this CSRF-based attack is to trick the Authorization Server into generating an Authorization Code with permissions/scopes defined by an attacker. Typically, the scopes defined will provide the attacker access to sensitive information about a target user.&#x20;
+
+1. The attacker will create a malicious URL with the following format:
+
+```http
+https://[AS_addr].com/oauth/consent?state=xxx&scope=... 
+```
+
+Parameters in the URL:
+
+1. `state`: A random/predictable value
+2. `scope`: Desired scope&#x20;
+
+> Note: this URL is similar to the one shown in part **3.1** in the **General OAuth flow** section above.
+
+> The scope defined may contain highly sensitive permissions about the target user
+
+2. The attacker will trick a target user into sending a POST request to the malicious URL from within their browser, this can be through a social engineering attack.&#x20;
+
+However, for the attack to work, the target user's browser must be authenticated with the OAuth provider — session established through a complete OAuth process prior to the attack.
+
+If the state parameter is not validated by the _Authorization Server_ (see **Prevention** section below for more information), the server will treat this as a valid OAuth request, and redirect the user back to the `redirect_uri`  (defined by the attacker in the initial request) with the _Authorization Code_ passed as the paramete&#x72;_._&#x20;
+
+> Since the redirect URI is controlled by the attacker, they can retrieve the Authorization Code.
+
+
+
+3. The attacker will be able to use this code to request for an _Access Token_, and perform actions for the target user within the _Client_ application (controlled by the attacker) with the privileged scopes.
+
+> This attack is categorized as a server-side vulnerability as it is reliant on the Authorization Server itself to employ the measures.
 
 #### Prevention
 
@@ -104,11 +140,7 @@ The Authorization Server should validate that the state parameter is linked to a
 
 > OWASP reference: copy and paste this link on a chromium-based browser to directly view the relevant paragraph.
 
-**https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site\_Request\_Forgery\_Prevention\_Cheat\_Sheet.html#:\~:text=When%20a%20client%20issues%20a%20request**&#x20;
-
-
-
-
+<mark style="color:blue;">https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site\_Request\_Forgery\_Prevention\_Cheat\_Sheet.html#:\~:text=When%20a%20client%20issues%20a%20request</mark>&#x20;
 
 
 
@@ -120,6 +152,8 @@ The Authorization Server should validate that the state parameter is linked to a
 {% step %}
 ### Redirect URI CSRF/Login CSRF
 
+The following provides an outline of the steps involved in the attack:
 
+1. Given that an attacker have an account with an OAuth provider, configured with the desired scopes. A partial OAuth will be initiated with the following steps:
 {% endstep %}
 {% endstepper %}
