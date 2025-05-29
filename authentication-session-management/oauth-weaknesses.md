@@ -20,7 +20,7 @@ A user performs an action to start an OAuth process on a _Client_ application
 {% endstep %}
 
 {% step %}
-### Authentication
+### Authorization request
 
 The application redirects the user to an &#x41;_&#x75;thorization Server_ (`AS`)&#x20;
 
@@ -69,16 +69,30 @@ The _Authorization Code_ can be used to request for an _Access Token._
 
 {% embed url="https://auth0.com/docs/get-started/authentication-and-authorization-flow/authorization-code-flow" %}
 
-### OWASP WSTG-ATHZ-05
+## OWASP WSTG-ATHZ-05
 
-#### 05 Testing for OAuth weaknesses
+### 05-Testing for OAuth weaknesses
+
+
 
 {% embed url="https://github.com/OWASP/wstg/blob/master/document/4-Web_Application_Security_Testing/05-Authorization_Testing/05-Testing_for_OAuth_Weaknesses.md" %}
 
-#### 05.1-Testing for OAuth server weaknesses
+### 05.1-Testing for OAuth server weaknesses
 
 {% embed url="https://github.com/OWASP/wstg/blob/master/document/4-Web_Application_Security_Testing/05-Authorization_Testing/05.1-Testing_for_OAuth_Authorization_Server_Weaknesses.md" %}
 
-#### 05.2-Testing for OAuth client weaknesses
+{% stepper %}
+{% step %}
+### Consent page CSRF
+
+...
+{% endstep %}
+{% endstepper %}
+
+
+
+
+
+### 05.2-Testing for OAuth client weaknesses
 
 {% embed url="https://github.com/OWASP/wstg/blob/master/document/4-Web_Application_Security_Testing/05-Authorization_Testing/05.2-Testing_for_OAuth_Client_Weaknesses.md" %}
