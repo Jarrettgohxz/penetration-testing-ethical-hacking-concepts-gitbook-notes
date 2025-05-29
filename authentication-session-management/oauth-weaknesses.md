@@ -145,7 +145,7 @@ b. `scope`: Desired scope&#x20;
 
 3. The attacker will be able to use this code to request for an _Access Token_, and perform actions for the target user within the _Client_ application (controlled by the attacker) with the privileged scopes.
 
-> This attack is categorized as a server-side vulnerability as it is reliant on the Authorization Server itself to employ the measures.
+
 
 #### Prevention
 
@@ -157,16 +157,21 @@ The _Authorization Server_ should validate that the state parameter is linked to
 
 
 
+**Final notes**
+
+This attack is categorized as a server-side vulnerability as it is reliant on the Authorization Server itself to employ the measures.
+
 ### 05.2-Testing for OAuth client weaknesses
 
 {% embed url="https://github.com/OWASP/wstg/blob/master/document/4-Web_Application_Security_Testing/05-Authorization_Testing/05.2-Testing_for_OAuth_Client_Weaknesses.md" %}
 
-{% stepper %}
-{% step %}
-### Redirect URI CSRF/Login CSRF
+### 1. Redirect URI CSRF/Login CSRF
 
-The following provides an outline of the steps involved in the attack:
+> Refer to TryHackMe task 7 for OAuth Vulnerabilities room: [https://tryhackme.com/room/oauthvulnerabilities](https://tryhackme.com/room/oauthvulnerabilities)
 
-1. Given that an attacker have an account with an OAuth provider, configured with the desired scopes. A partial OAuth will be initiated with the following steps:
-{% endstep %}
-{% endstepper %}
+**The following provides an outline of the steps involved in the attack:**
+
+1. .
+
+
+
