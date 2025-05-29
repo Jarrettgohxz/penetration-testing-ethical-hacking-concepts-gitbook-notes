@@ -107,8 +107,8 @@ The goal of this CSRF-based attack is to trick the Authorization Server into gen
 
 **Steps involved:**
 
-1. The attacker will initiate an OAuth flow (from within a malicious _Client_ application)
-   1. The attacker will then create a CSRF payload (eg. auto-submitting HTML element using a POST request) containing a malicious URL with the following format:
+1. The attacker will initiate an OAuth request from within a malicious _Client_ application (eg. `/oauth/authorize` endpoint).
+   * The attacker will then create a CSRF payload (eg. auto-submitting HTML element using a POST request) containing a malicious URL with the following format:
 
 ```http
 https://[AS_addr].com/oauth/consent?state=xxx&scope=... 
@@ -119,7 +119,10 @@ Parameters in the URL:
 1. `state`: A random/predictable value
 2. `scope`: Desired scope&#x20;
 
-> Note: this URL is similar to the one shown in part **3.1** in the **General OAuth flow** section above.
+> Note the following:
+>
+> 1. The attacker is required to start an OAuth request to trick the Authorization Server into believing that an active OAuth process is happening for the malicious _Client_ application.
+> 2. This URL is similar to the one shown in part **3.1** in the **General OAuth flow** section above.
 
 > The scope defined may contain highly sensitive permissions about the target user
 
