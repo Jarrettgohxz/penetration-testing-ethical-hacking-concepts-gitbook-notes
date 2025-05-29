@@ -165,7 +165,7 @@ This prevents an attacker from hijacking the OAuth flow.
 
 **Final notes**
 
-This attack is categorized as a server-side vulnerability as it is reliant on the Authorization Server itself to employ the measures.
+This attack is categorized as a server-side vulnerability as the vulnerability (lack of `state` validation, etc.) lies within the _Authorization Server_ itself.
 
 ### 05.2-Testing for OAuth client weaknesses
 
@@ -214,3 +214,7 @@ The _Client_ application should validate the following conditions for the `state
 2. Matches the one defined in the initial request (eg. `/oauth/authorize` endpoint).
 3. Uses a cryptographically secure and random algorithm.
 
+\
+**Final notes**
+
+This attack is categorized as a client-side vulnerability as the vulnerability (lack of `state` validation, etc.) lies within the _Client_ application itself.
