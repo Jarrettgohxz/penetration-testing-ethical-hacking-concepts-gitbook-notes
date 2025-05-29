@@ -116,6 +116,9 @@
 
 ***
 
+* [Authentication/session management](authentication-session-management/README.md)
+  * [JSON Web Token (JWT)](authentication-session-management/json-web-token-jwt.md)
+  * [OAuth weaknesses](authentication-session-management/oauth-weaknesses.md)
 * [Webshell](webshell.md)
 * [Web API pentesting](web-api-pentesting/README.md)
   * [Resources](web-api-pentesting/resources.md)
