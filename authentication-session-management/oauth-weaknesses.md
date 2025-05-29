@@ -107,8 +107,11 @@ The goal of this CSRF-based attack is to trick the Authorization Server into gen
 
 **Steps involved:**
 
-1. The attacker will initiate an OAuth request from within a malicious _Client_ application (eg. `/oauth/authorize` endpoint).
-   * The attacker will then create a CSRF payload (eg. auto-submitting HTML element using a POST request) containing a malicious URL with the following format:
+1.  The attacker will initiate an OAuth request from within a malicious _Client_ application (eg. `/oauth/authorize` endpoint).
+
+    * The attacker will then create a CSRF payload (eg. auto-submitting HTML element using a POST request) containing a malicious URL with the following format:
+
+    > Not all _Authorization Server_ implementations expose `/oauth/consent` as a public endpoint. Some may process it internally.
 
 ```http
 https://[AS_addr].com/oauth/consent?state=xxx&scope=... 
@@ -116,8 +119,9 @@ https://[AS_addr].com/oauth/consent?state=xxx&scope=...
 
 Parameters in the URL:
 
-1. `state`: A random/predictable value
-2. `scope`: Desired scope&#x20;
+a. `state`: A random/predictable value
+
+b. `scope`: Desired scope&#x20;
 
 > Note the following:
 >
@@ -128,12 +132,12 @@ Parameters in the URL:
 
 2.  The attacker will trick a target user into visiting the malicious Client application containing the CSRF payload — this can be through a social engineering attack.&#x20;
 
-    * However, for the attack to work, the target user's browser must be authenticated with the OAuth provider — a valid session must be established through a complete OAuth process prior to the attack.
+    * However, for the attack to work, the target user's browser must be authenticated with the OAuth provider — a valid authenticated session must be established through an OAuth process prior to the attack.
 
     > This is due to the nature of  web browsers, which sends relevant information regarding the established session with the OAuth provider (eg. cookies, etc.) to identify the current user session
 
-    * The CSRF attack happens when the scope is being processed for the target user's session instead, due to the web browser sending session information about this particular user
-    * Within the _Authorization Server_ logi&#x63;_,_ without proper validtion of the `state` parameter (see **Prevention** section below for more information), the server will treat this as a valid OAuth request, and continue the OAuth process and redirect the user back to the `redirect_uri`  (defined by the attacker in the initial request) with the _Authorization Code_ passed as the paramete&#x72;_._&#x20;
+    * The CSRF attack occurs because the Authorization Server associates the scope processing with the session of the target user, instead of the attacker. This is due to the web browser sending session information about this particular user
+    * Within the _Authorization Server_ logi&#x63;_,_ without proper validation of the `state` parameter (see **Prevention** section below for more information), the server will treat this as a valid OAuth request, and continue the OAuth process by redirecting the user back to the `redirect_uri`  (defined by the attacker in the initial request) with the _Authorization Code_ passed as the paramete&#x72;_._&#x20;
 
 > Since the redirect URI is controlled by the attacker, he/she can retrieve the Authorization Code.
 
