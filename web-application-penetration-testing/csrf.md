@@ -6,3 +6,9 @@ description: >-
 
 # CSRF
 
+## Examples
+
+1. **OAuth client and server side CSRF vulnerabilities.**
+
+{% embed url="https://jarrettgxz-sec.gitbook.io/offensive-security-concepts/authentication-session-management/owasp-wstg-athz-05-oauth-weaknesses" %}
+
