@@ -111,6 +111,7 @@
 * [Upload vulnerabilities](web-application-penetration-testing/upload-vulnerabilities/README.md)
   * [File extension cheat-sheet](web-application-penetration-testing/upload-vulnerabilities/file-extension-cheat-sheet.md)
 * [SSRF](web-application-penetration-testing/ssrf.md)
+* [CSRF](web-application-penetration-testing/csrf.md)
 * [XSS](web-application-penetration-testing/xss.md)
 * [SQL injection](web-application-penetration-testing/sql-injection.md)
 

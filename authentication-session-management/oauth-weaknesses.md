@@ -4,13 +4,13 @@
 
 _**Common terms:**_&#x20;
 
-* **OAuth provider**: The third-party service that implementign OAuth that a user wishes to integrate/authenticate with (eg. Google, Github).
-* **Resource Server**: An entity that can grant access to a protected resource (eg. an end-user).
+* **OAuth provider**: The third-party service that implementing OAuth that a user wishes to integrate/authenticate with (eg. Google, Github).
+* **Resource Owner**: An entity that can grant access to a protected resource (eg. an end-user).
 * **Client**: Application requesting access to a protected resource on behalf of the Resource Owner (eg. a web application).
 * **Resource Server**: A server hosting protected resource (eg. API to access).
 * **Authorization Server (AS)**: A server that authenticates the Resource Owner and issues Access Tokens after a proper authorization process.
 * **Authorization Code:** A string value used to request for an _Access Token_.
-* **Access Tokens**: A string values used to validate a user's access to protected resource
+* **Access Tokens**: A string value used to validate a user's access to protected resource
 
 {% stepper %}
 {% step %}
@@ -22,7 +22,7 @@ A user performs an action to start an OAuth process on a _Client_ application
 {% step %}
 ### Authorization request
 
-1. The application redirects the user to an &#x41;_&#x75;thorization Server_ (`AS`)&#x20;
+1. The application redirects the user to an &#x41;_&#x75;thorization Server_ (/authorize endpoint).
 
 > This process is often displayed as a small pop-up window or redirect initiated by the OAuth provider.
 
@@ -40,7 +40,7 @@ With the following list of parameters:
 * `redirect_uri`: the URL that AS will redirect the user
 * `scope`: level of access requested
 
-> Take note of the `state` value, as this is an important parameter involved in various attacks
+> Take note of the `state` value, as this is an important parameter involved in various CSRF-based attacks discussed below.
 
 2. The user will be prompted to login (to verify his/her identity with the _protected resource_). Following that, a consent screen will be displayed to inform the user of the scope of permissions that the _Client application_ is requesting access to.
 {% endstep %}
@@ -54,16 +54,23 @@ If the user accepts the permissions displayed in the consent screen (eg. click t
 
 This may include a request to an internal endpoint with the `state` and relevant `scope`(s).
 
-> Example internal URL:
+> Example internal request:
 
 ```http
-https://example.com/oauth/consent?state=xxx&scope=... 
+POST https://example.com/oauth/consent?state=xxx&scope=... 
 ```
 
 2. The _Authorization Server_ then redirects the user to the `redirect_uri` specified earlier, with a generated _Authorization Code_ and the `state` provided by the _client application_ in the first reque&#x73;_&#x74;_.
-   * The _Client_ application must validate the `state` to ensure that it matches the one sent in the initial request. This ensures that the response is linked to the _Client'_&#x73; initial request&#x20;
 
-> Note: The `state` parameter is important in preventing server-side CSRF vulnerabilities (**05.1-Testing for OAuth server weaknesses**)
+> Example redirect:
+
+```http
+https://example.com/callback?code=xxx&state=xxxx
+```
+
+* The _Client_ application must validate the `state` to ensure that it matches the one sent in the initial request. This ensures that the response is linked to the _Client'_&#x73; initial request&#x20;
+
+> Note: The `state` parameter is important in preventing server-side CSRF vulnerabilities (**OWASP WSTG-ATHZ-05** — **05.1-Testing for OAuth server weaknesses**)
 
 
 {% endstep %}
@@ -81,8 +88,6 @@ The _Authorization Code_ can be used to request for an _Access Token._
 
 ### 05-Testing for OAuth weaknesses
 
-
-
 {% embed url="https://github.com/OWASP/wstg/blob/master/document/4-Web_Application_Security_Testing/05-Authorization_Testing/05-Testing_for_OAuth_Weaknesses.md" %}
 
 ### 05.1-Testing for OAuth server weaknesses
@@ -93,7 +98,13 @@ The _Authorization Code_ can be used to request for an _Access Token._
 {% step %}
 ### Consent page CSRF
 
-...
+The goal of this CSRF attack is to steal a
+{% endstep %}
+
+{% step %}
+### Redirect URI CSRF/Login CSRF
+
+
 {% endstep %}
 {% endstepper %}
 
