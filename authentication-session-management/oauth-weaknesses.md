@@ -98,16 +98,17 @@ The _Authorization Code_ can be used to request for an _Access Token._
 
 > Refer to the _Testing for Consent Page Cross-Site Request Forgery_ header in the main link above (**OWASP WSTG-05.1-Testing for OAuth server weaknesses**)
 
-This attack is possible due to a few reasons:
+**This attack is possible due to a few reasons**:
 
 1. Improper or missing validation of the `state` parameter by the _Authorization Server_.
 2. Predictable `state` parameter value.
 
 The goal of this CSRF-based attack is to trick the Authorization Server into generating an Authorization Code with permissions/scopes defined by an attacker. Typically, the scopes defined will provide the attacker access to sensitive information about a target user.&#x20;
 
-Steps involved:
+**Steps involved:**
 
-1. The attacker will create a malicious URL with the following format:
+1. The attacker will initiate an OAuth flow (from within a malicious _Client_ application)
+   1. The attacker will then create a CSRF payload (eg. auto-submitting HTML element using a POST request) containing a malicious URL with the following format:
 
 ```http
 https://[AS_addr].com/oauth/consent?state=xxx&scope=... 
@@ -122,13 +123,11 @@ Parameters in the URL:
 
 > The scope defined may contain highly sensitive permissions about the target user
 
-2. The attacker will trick a target user into sending a POST request to the malicious URL from within their browser, this can be through a social engineering attack.&#x20;
+2. The attacker will trick a target user into visiting the malicious Client application containing the CSRF payload — this can be through a social engineering attack.&#x20;
+   * However, for the attack to work, the target user's browser must be authenticated with the OAuth provider — a valid session must be established through a complete OAuth process prior to the attack.
+   * Within the _Authorization Server_ logi&#x63;_,_ without proper validtion of the `state` parameter (see **Prevention** section below for more information), the server will treat this as a valid OAuth request, and continue the OAuth process and redirect the user back to the `redirect_uri`  (defined by the attacker in the initial request) with the _Authorization Code_ passed as the paramete&#x72;_._&#x20;
 
-However, for the attack to work, the target user's browser must be authenticated with the OAuth provider — session established through a complete OAuth process prior to the attack.
-
-Within the _Authorization Server_ logi&#x63;_,_ without proper validtion of the `state` parameter (see **Prevention** section below for more information), the server will treat this as a valid OAuth request, and redirect the user back to the `redirect_uri`  (defined by the attacker in the initial request) with the _Authorization Code_ passed as the paramete&#x72;_._&#x20;
-
-> Since the redirect URI is controlled by the attacker, they can retrieve the Authorization Code.
+> Since the redirect URI is controlled by the attacker, he/she can retrieve the Authorization Code.
 
 
 
