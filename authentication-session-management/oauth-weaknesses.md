@@ -105,6 +105,8 @@ This attack is possible due to a few reasons:
 
 The goal of this CSRF-based attack is to trick the Authorization Server into generating an Authorization Code with permissions/scopes defined by an attacker. Typically, the scopes defined will provide the attacker access to sensitive information about a target user.&#x20;
 
+Steps involved:
+
 1. The attacker will create a malicious URL with the following format:
 
 ```http
@@ -124,7 +126,7 @@ Parameters in the URL:
 
 However, for the attack to work, the target user's browser must be authenticated with the OAuth provider — session established through a complete OAuth process prior to the attack.
 
-If the state parameter is not validated by the _Authorization Server_ (see **Prevention** section below for more information), the server will treat this as a valid OAuth request, and redirect the user back to the `redirect_uri`  (defined by the attacker in the initial request) with the _Authorization Code_ passed as the paramete&#x72;_._&#x20;
+Within the _Authorization Server_ logi&#x63;_,_ without proper validtion of the `state` parameter (see **Prevention** section below for more information), the server will treat this as a valid OAuth request, and redirect the user back to the `redirect_uri`  (defined by the attacker in the initial request) with the _Authorization Code_ passed as the paramete&#x72;_._&#x20;
 
 > Since the redirect URI is controlled by the attacker, they can retrieve the Authorization Code.
 
@@ -136,7 +138,7 @@ If the state parameter is not validated by the _Authorization Server_ (see **Pre
 
 #### Prevention
 
-The Authorization Server should validate that the state parameter is linked to an existing active OAuth process, and also that it matches the user session. This prevents an attacker from hijacking the OAuth flow.
+The _Authorization Server_ should validate that the state parameter is linked to an existing active OAuth process, and also that it matches the user session. This prevents an attacker from hijacking the OAuth flow.
 
 > OWASP reference: copy and paste this link on a chromium-based browser to directly view the relevant paragraph.
 
