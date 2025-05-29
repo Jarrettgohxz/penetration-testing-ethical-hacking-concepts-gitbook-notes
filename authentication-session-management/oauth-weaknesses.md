@@ -42,7 +42,7 @@ With the following list of parameters:
 
 > Take note of the `state` value, as this is an important parameter involved in various attacks
 
-2. The user will be prompted to login (to verify his/her identity with the _protected resource_). Following that, a consent screen will be displayed to inform the user the scope of permissions that the _Client application_ is requesting access to.
+2. The user will be prompted to login (to verify his/her identity with the _protected resource_). Following that, a consent screen will be displayed to inform the user of the scope of permissions that the _Client application_ is requesting access to.
 {% endstep %}
 
 {% step %}
@@ -52,7 +52,7 @@ If the user accepts the permissions displayed in the consent screen (eg. click t
 
 1. The _Authorization Server_ will handle the consent internally
 
-This may include a request to  an internal endpoint with the `state` and relevant `scope`(s).
+This may include a request to an internal endpoint with the `state` and relevant `scope`(s).
 
 > Example internal URL:
 
@@ -60,13 +60,15 @@ This may include a request to  an internal endpoint with the `state` and relevan
 https://example.com/oauth/consent?state=xxx&scope=... 
 ```
 
-> Note: this concept is important to understand the server-side CSRF vulnerability (**05.1-Testing for OAuth server weaknesses**)
+> Note: this concept is important in understanding the server-side CSRF vulnerability (**05.1-Testing for OAuth server weaknesses**)
 >
 >
 
 2.  The _Authorization Server_ then redirects the user to the `redirect_uri` specified earlier, with a generated _Authorization Code_ and the `state` provided by the _client application_ in the first reque&#x73;_&#x74;_.
 
-    * The _Client_ application must validate the `state` to ensure that it matches the one sent in the initial request. This ensures that the response is linked to the _Client'_&#x73; initial request (refer to the CSRF based attacks below).
+    * The _Client_ application must validate the `state` to ensure that it matches the one sent in the initial request. This ensures that the response is linked to the _Client'_&#x73; initial request&#x20;
+
+    > This concept relates to another server-side CSRF vulnerability (**05.1-Testing for OAuth server weaknesses**)
 
 
 
