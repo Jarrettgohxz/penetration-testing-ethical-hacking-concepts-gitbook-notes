@@ -130,7 +130,7 @@ b. `scope`: Desired scope&#x20;
 
 > The scope defined may contain highly sensitive permissions about the target user
 
-2.  The attacker will trick a target user into visiting the malicious Client application containing the CSRF payload — this can be through a social engineering attack.&#x20;
+2.  The attacker will trick a target user into visiting the malicious Client application containing the CSRF payload **via a web browser** — this can be through a social engineering attack.&#x20;
 
     * However, for the attack to work, the target user's browser must be authenticated with the OAuth provider — a valid authenticated session must be established through an OAuth process prior to the attack.
 
@@ -195,10 +195,10 @@ https://[client_addr].com/callback?code=[attacker_authorization_code]
 
 > Note : this URL is similar to the one shown in part **3.2** in the **General OAuth flow** section above.
 
-3. A target user will be tricked into sending a GET request to the malicious URL (eg. via a social engineering email)
+3. A target user will be tricked into sending a GET request to the malicious URL **via a web browser**  (eg. via social engineering)
 
 * However, for the attack to work, the target user's browser must be authenticated with the OAuth provider — a valid authenticated session must be established through an OAuth process prior to the attack.
-* If successful, the target user's web browser will link the _Client_ application to the attacker's _Authorization Code_ instead.
+* If successful, the _Client_ application will link the victim's session to the attacker's OAuth account.
 
 
 
