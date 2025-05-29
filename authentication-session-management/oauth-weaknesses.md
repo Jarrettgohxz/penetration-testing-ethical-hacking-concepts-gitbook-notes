@@ -94,19 +94,19 @@ The _Authorization Code_ can be used to request for an _Access Token._
 
 {% embed url="https://github.com/OWASP/wstg/blob/master/document/4-Web_Application_Security_Testing/05-Authorization_Testing/05.1-Testing_for_OAuth_Authorization_Server_Weaknesses.md" %}
 
-{% stepper %}
-{% step %}
-### Consent page CSRF
+### 1. Consent page CSRF
 
 The goal of this CSRF attack is to steal a
-{% endstep %}
 
-{% step %}
-### Redirect URI CSRF/Login CSRF
+#### Prevention
+
+The Authorization Server should validate that the state parameter is linked to an existing active OAuth process, and also that it matches the user session. This prevents an attacker from hijacking the OAuth flow.
+
+> OWASP reference: copy and paste this link on a chromium-based browser to directly view the relevant paragraph.
+
+**https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site\_Request\_Forgery\_Prevention\_Cheat\_Sheet.html#:\~:text=When%20a%20client%20issues%20a%20request**&#x20;
 
 
-{% endstep %}
-{% endstepper %}
 
 
 
@@ -115,3 +115,11 @@ The goal of this CSRF attack is to steal a
 ### 05.2-Testing for OAuth client weaknesses
 
 {% embed url="https://github.com/OWASP/wstg/blob/master/document/4-Web_Application_Security_Testing/05-Authorization_Testing/05.2-Testing_for_OAuth_Client_Weaknesses.md" %}
+
+{% stepper %}
+{% step %}
+### Redirect URI CSRF/Login CSRF
+
+
+{% endstep %}
+{% endstepper %}
