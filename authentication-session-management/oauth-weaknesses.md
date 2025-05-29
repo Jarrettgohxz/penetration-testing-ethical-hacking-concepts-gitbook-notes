@@ -9,21 +9,28 @@ _**Common terms:**_&#x20;
 * **Client**: Application requesting access to a protected resource on behalf of the Resource Owner — eg. a web application.
 * **Resource Server**: A server hosting protected resource — eg. API to access.
 * **Authorization Server (AS)**: A server that authenticates the Resource Owner and issues Access Tokens after a proper authorization process.
+* **Authorization Code:** A string value used to request for an _Access Token_.
 * **Access Tokens**: A string values used to validate a user's access to protected resource
 
 {% stepper %}
 {% step %}
+### Start of OAuth process
+
 A user performs an action to start an OAuth process on a _Client_ application
 {% endstep %}
 
 {% step %}
+### Authentication
+
 The application redirects the user to an &#x41;_&#x75;thorization Server_ (`AS`)&#x20;
 
 > This process is displayed as the small pop-up window from the OAuth provider.
 
 The authorization server URL may look like:
 
-`https:// example.com/oauth/authorize?client_id=xxx&response_type=code&...` , with the following list of parameters:
+`https:// example.com/oauth/authorize?client_id=xxx&response_type=code&...`&#x20;
+
+With the following list of parameters:
 
 * `response_type` (eg. code)
 * `state`: CSRF token&#x20;
@@ -33,23 +40,34 @@ The authorization server URL may look like:
 
 > Take note of the `state` value, as this is an important parameter involved in various attacks
 
-> The user will be prompted to login (to verify his/her identity with the _protected resource_). Following that, a consent screen will be displayed to inform the user the scope of permissions that the _client application_ is requesting access to.
+> The user will be prompted to login (to verify his/her identity with the _protected resource_). Following that, a consent screen will be displayed to inform the user the scope of permissions that the _Client application_ is requesting access to.
 {% endstep %}
 
 {% step %}
+### Consent page & redirect
+
 If the user accepts the permissions displayed in the consent screen (eg. click the "Authorize" button)
 
-a) A consent request will be sent to the authorization server endpoint with the `state` and relevant `scope`(s).
+a) A consent request will be sent to the _Authorization Server_ endpoint with the `state` and relevant `scope`(s).
+
+The URL may look like:\
+`https://example.com/oauth/consent?state=xxx&scope=...`
 
 
 
+b) The _Authorization Server_ then redirects the user to the `redirect_uri` specified earlier, with a generated _Authorization Code_ and the `state` provided by the _client application_ in the first reque&#x73;_&#x74;_.
 
+* The _Client_ application must validate the `state` to ensure that it matches the one sent in the initial request. This ensures that the response is linked to the _Client'_&#x73; initial request (refer to the CSRF based attacks below).
+{% endstep %}
 
-b) The authorization server then redirects the user to the `redirect_uri` specified earlier, with a generated authorization code.
+{% step %}
+### Request for Access Token
+
+The _Authorization Code_ can be used to request for an _Access Token._
 {% endstep %}
 {% endstepper %}
 
-
+{% embed url="https://auth0.com/docs/get-started/authentication-and-authorization-flow/authorization-code-flow" %}
 
 ### OWASP WSTG-ATHZ-05
 
