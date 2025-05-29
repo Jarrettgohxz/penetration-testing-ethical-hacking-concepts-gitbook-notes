@@ -118,8 +118,8 @@
 ***
 
 * [Authentication/session management](authentication-session-management/README.md)
-  * [OWASP WSTG-SESS-10 \~ JSON Web Token (JWT) ](authentication-session-management/owasp-wstg-sess-10-json-web-token-jwt.md)
-  * [OWASP WSTG-ATHZ-05 \~ OAuth weaknesses](authentication-session-management/owasp-wstg-athz-05-oauth-weaknesses.md)
+  * [OWASP WSTG-SESS-10 \~ JSON Web Token (JWT) ](authentication-session-management/json-web-token-jwt.md)
+  * [OWASP WSTG-ATHZ-05 \~ OAuth weaknesses](authentication-session-management/oauth-weaknesses.md)
 * [Webshell](webshell.md)
 * [Web API pentesting](web-api-pentesting/README.md)
   * [Resources](web-api-pentesting/resources.md)
@@ -131,7 +131,7 @@
 * [OWASP](owasp/README.md)
   * [OWASP top 10](owasp/owasp-top-10.md)
   * [OWASP API top 10](owasp/owasp-api-top-10.md)
-  * [Web Security Testing Guide (WSTG)](owasp/web-security-testing-guide-wstg/README.md)
+  * [Web Security Testing Guide (WSTG)](owasp/web-security-testing-guide-wstg.md)
     * [WSTG-ATHZ](owasp/web-security-testing-guide-wstg/wstg-athz/README.md)
       * [WSTG-ATHZ-05 \~ OAuth weaknesses](owasp/web-security-testing-guide-wstg/wstg-athz/wstg-athz-05-oauth-weaknesses.md)
     * [WSTG-SESS](owasp/web-security-testing-guide-wstg/wstg-sess/README.md)

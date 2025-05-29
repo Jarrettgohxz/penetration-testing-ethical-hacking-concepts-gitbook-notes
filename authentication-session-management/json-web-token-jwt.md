@@ -1,4 +1,4 @@
-# JSON Web Token (JWT)
+# OWASP WSTG-SESS-10 \~ JSON Web Token (JWT)&#x20;
 
 ### OWASP WSTG-SESS-10
 
