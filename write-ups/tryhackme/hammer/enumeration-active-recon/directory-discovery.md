@@ -7,7 +7,7 @@
 ## 1. Initial enumeration
 
 ```bash
-$ gobuster dir -x php -u http://<target>:1337/ -w .../Discovery/Web-Content/common.txt
+$ gobuster dir -x php -u http://<target>:1337/ -w Discovery/Web-Content/common.txt
 ```
 
 **Important options to note:**
@@ -17,7 +17,7 @@ $ gobuster dir -x php -u http://<target>:1337/ -w .../Discovery/Web-Content/comm
 <figure><img src="../../../../.gitbook/assets/image (13).png" alt=""><figcaption></figcaption></figure>
 
 ```bash
-$ gobuster dir -w .../Discovery/Web-Content/common.txt -u http://<target>:1337/
+$ gobuster dir -w Discovery/Web-Content/common.txt -u http://<target>:1337/
 ```
 
 <figure><img src="../../../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
@@ -43,7 +43,7 @@ After looking through the sitemap in burp suite (refer to the _**burp suite site
 Thus, I decided to further enumerate this directory with a common word list:
 
 ```bash
-$ gobuster dir -x php,js -w .../Discovery/Web-Content/common.txt -u http://<target>:1337/phpmyadmin/js/
+$ gobuster dir -x php,js -w Discovery/Web-Content/common.txt -u http://<target>:1337/phpmyadmin/js/
 ```
 
 **Important options to note:**
@@ -59,6 +59,22 @@ $ gobuster dir -x php,js -w .../Discovery/Web-Content/common.txt -u http://<targ
 ### 2.2 `/javascript` and `/vendor` directory
 
 Looking back at the results from the first enumeration phase (part 1.1 of _Initial Enumeration_), I decided to further enumerate the `/javascript` and `/vendor` directories.
+
+**2.2.1**  `/javascript`&#x20;
+
+```bash
+$ gobuster dir -x php,js -u http://<target>:1337/javascript/ -w Discovery/Web-Content/common.txt 
+```
+
+<figure><img src="../../../../.gitbook/assets/image (15).png" alt=""><figcaption></figcaption></figure>
+
+**2.2.2**  `/vendor`&#x20;
+
+```bash
+$ gobuster dir -x php,js -u http://<target>:1337/vendor/ -w Discovery/Web-Content/common.txt 
+```
+
+<figure><img src="../../../../.gitbook/assets/image (17).png" alt=""><figcaption></figcaption></figure>
 
 
 {% endstep %}
