@@ -1,47 +1,4 @@
-# Hammer
-
-{% embed url="https://tryhackme.com/room/hammer" %}
-
-## **Trying to access port 80**
-
-* failed, port 80 not open
-
-## **Using nmap to discover web application port**
-
-```bash
-$ nmap <target> -p- -v
-...
-port 1137
-...
-```
-
-* found port 1337 (labelled as waste, but is actually running  a HTTP web server)
-
-
-
-## Enumeration
-
-### **Directory discovery**
-
-```bash
-$ gobuster dir -x php -u http://<target>:1337/ -w .../SecLists/Discovery/Web-Content/common.txt
-```
-
-<figure><img src="../../.gitbook/assets/image (13).png" alt=""><figcaption></figcaption></figure>
-
-```bash
-$ gobuster dir -w ../SecLists/Discovery/Web-Content/common.txt -u http://<target>:1337/
-```
-
-<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
-
-_**Interesting directories**_
-
-`/config.php` -> empty page with no interesting source code content
-
-`/javascript` and `/vendor` -> FORBIDDEN
-
-`/phpmyadmin` -> php admin login page
+# /phpmyadmin
 
 ## Exploring the /phpmyadmin page
 
@@ -60,7 +17,7 @@ The other combinations aside from the 1st returned:
 
 `mysqli_real_connect(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: YES)`
 
-_**Interesting information from a script tag within the response from this page**_
+**Interesting information from a script tag in this page**
 
 ```html
 <script data-cfasync="false" type="text/javascript">
@@ -79,8 +36,20 @@ $(function() {AJAX.fireOnload("whitelist.php");AJAX.fireOnload("vendor/sprintf.j
 1. `token:"7935597b257d3e495236647a2d434037"`&#x20;
 2. `PMA_VERSION:"4.9.5deb2"`
 3. `auth_type:"cookie"`
-4. `user:"root"`
-5. `AJAX.fireOnload("whitelist.php");`
+4. `user:"root"`&#x20;
 
 
 
+From this, we gathered a token string, the PMA version, authentication type used in this application, and a username.
+
+> Note: PMA -> PHP My Admin
+
+**Looking for vulnerabilities relating to `PMA version 4.9.5`**.
+
+The version of our target's _phpmyadmin_ falls outside the range of vulnerable versions, which exists before and after **4.9.5**.
+
+_Eg. 4.x before 4.9.5_ and _5.x before 5.0.2_.&#x20;
+
+{% embed url="https://github.com/advisories/GHSA-fcww-8wvc-38q9" %}
+
+&#x20;
