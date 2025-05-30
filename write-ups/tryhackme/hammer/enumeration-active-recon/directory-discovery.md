@@ -76,9 +76,9 @@ $ gobuster dir -x php,js -u http://<target>:1337/vendor/ -w Discovery/Web-Conten
 
 <figure><img src="../../../../.gitbook/assets/image (17).png" alt=""><figcaption></figcaption></figure>
 
-Upon visiting `/vendor/composer`, I was presented with a index listing. Very well, seems like we have found our first entry point!
+Upon visiting `/vendor/composer`, I was presented with a index listing. Very well, it looks like we have found our first entry point!
 
-<figure><img src="../../../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (18).png" alt=""><figcaption></figcaption></figure>
 {% endstep %}
 {% endstepper %}
 
