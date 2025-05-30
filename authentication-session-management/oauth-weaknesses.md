@@ -98,7 +98,7 @@ The _Authorization Code_ can be used to request for an _Access Token._
 
 > Refer to the _Testing for Consent Page Cross-Site Request Forgery_ header in the main link above (**OWASP WSTG-05.1-Testing for OAuth server weaknesses**)
 
-**This attack is possible due to a few potential flaws in the&#x20;**_**Authorization Server**:_
+**Testing for weaknesses in the&#x20;**_**Authorization Server**:_
 
 1. Improper or missing validation of the `state` parameter by the _Authorization Server_.
 2. Predictable or reused`state` parameter value.
@@ -175,10 +175,11 @@ This attack is categorized as a server-side vulnerability as the vulnerability (
 
 > Refer to TryHackMe task 7 for OAuth Vulnerabilities room: [https://tryhackme.com/room/oauthvulnerabilities](https://tryhackme.com/room/oauthvulnerabilities)
 
-**This attack is possible due to a few potential flaws in the&#x20;**_**Client**_**&#x20;application**:
+**Testing for weaknesses in the&#x20;**_**Client**_**&#x20;application**:
 
-1. Improper or missing validation of the `state` parameter by the _Client_ application.
-2. Predictable or reused-+ `state` parameter value.
+1. Missing `state` parameter in the OAuth authorization server URL.
+2. Improper validation of the `state` parameter by the _Client_ application.
+3. Predictable or reused `state` parameter value.
 
 The goal of this CSRF-based attack is to trick a _Client_ application into accepting an _Authorization Code_ tied to an attacker-controlled account, causing the victim's session to be linked to the attacker's OAuth identity.
 
