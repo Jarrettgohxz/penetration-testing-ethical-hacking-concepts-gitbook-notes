@@ -24,18 +24,24 @@ port 1137
 ### **Directory discovery**
 
 ```bash
-$ gobuster dir -x php -u <target>:1337/ -w /user/share/wordlists/SecLists/Discovery/Web-Content/common.txt
+$ gobuster dir -x php -u http://<target>:1337/ -w .../SecLists/Discovery/Web-Content/common.txt
 ```
 
 <figure><img src="../../.gitbook/assets/image (13).png" alt=""><figcaption></figcaption></figure>
 
-**/config.php** -> empty page with no interesting source code content
+```bash
+$ gobuster dir -w ../SecLists/Discovery/Web-Content/common.txt -u http://<target>:1337/
+```
 
-**/javascript** and **/vendor**-> FORBIDDEN
+<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
 
-**/phpmyadmin** -> php admin login page
+_**Interesting directories**_
 
+`/config.php` -> empty page with no interesting source code content
 
+`/javascript` and `/vendor` -> FORBIDDEN
+
+`/phpmyadmin` -> php admin login page
 
 ## Exploring the /phpmyadmin page
 
