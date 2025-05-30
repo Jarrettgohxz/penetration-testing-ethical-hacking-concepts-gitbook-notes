@@ -261,7 +261,7 @@
   * [Silver Platter](write-ups/tryhackme/silver-platter.md)
   * [Light](write-ups/tryhackme/light.md)
   * [Pickle Rick](write-ups/tryhackme/pickle-rick.md)
-  * [Hammer](write-ups/tryhackme/hammer/README.md)
+  * [Hammer](write-ups/tryhackme/hammer.md)
     * [Enumeration (active recon)](write-ups/tryhackme/hammer/enumeration-active-recon/README.md)
       * [Directory discovery](write-ups/tryhackme/hammer/enumeration-active-recon/directory-discovery.md)
       * [/phpmyadmin](write-ups/tryhackme/hammer/enumeration-active-recon/phpmyadmin.md)

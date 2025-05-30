@@ -24,7 +24,7 @@ Given the following configurations:
 
 The following image below displays the output from an `nmap` scan on the host machine (from the guest machine). As we can see, the only service available is on port 53 (_DNS_).
 
-<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 The image below illustrates 3 connections:
 
