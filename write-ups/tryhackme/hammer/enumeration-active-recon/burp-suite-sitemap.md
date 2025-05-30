@@ -4,6 +4,8 @@
 
 > **Target** -> **Site map**
 
+<figure><img src="../../../../.gitbook/assets/image (19).png" alt=""><figcaption></figcaption></figure>
+
 **Interesting directories**
 
 1. `phpmyadmin/js/whitelist.php`
