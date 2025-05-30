@@ -4,7 +4,7 @@
 >
 > The word list path shown in the examples below will be displayed as a redacted relative directory.
 
-## Initial enumeration
+## 1. Initial enumeration
 
 ```bash
 $ gobuster dir -x php -u http://<target>:1337/ -w .../Discovery/Web-Content/common.txt
@@ -12,7 +12,7 @@ $ gobuster dir -x php -u http://<target>:1337/ -w .../Discovery/Web-Content/comm
 
 **Important options to note:**
 
-1. `-x php` : Fuzz with a .`php` extension added to each item in the word list&#x20;
+**1.1**  `-x php` : Fuzz with a .`php` extension added to each item in the word list&#x20;
 
 <figure><img src="../../../../.gitbook/assets/image (13).png" alt=""><figcaption></figcaption></figure>
 
@@ -32,13 +32,15 @@ _**Interesting directories**_
 
 
 
-## Further enumeration
+## 2. Further enumeration
 
-#### `/phpmyadmin/js` directory
+{% stepper %}
+{% step %}
+### 2.1 _`/phpmyadmin` directory_
 
 After looking through the sitemap in burp suite (refer to the _**burp suite sitemap section**_), I discovered an interesting looking directory: `/phpmyadmin/js` . This directory contained a lot of `.js` and `.php` files — as shown from burp suite.
 
-Thus, I decided further enumerate this directory with a common word list.
+Thus, I decided to further enumerate this directory with a common word list:
 
 ```bash
 $ gobuster dir -x php,js -w .../Discovery/Web-Content/common.txt -u http://<target>:1337/phpmyadmin/js/
@@ -51,3 +53,14 @@ $ gobuster dir -x php,js -w .../Discovery/Web-Content/common.txt -u http://<targ
 > Note: specifying 2 extensions will double the runtime as the fuzzer will duplicate the requests
 
 <figure><img src="../../../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+{% endstep %}
+
+{% step %}
+### 2.2 `/javascript` and `/vendor` directory
+
+Looking back at the results from the first enumeration phase (part 1.1 of _Initial Enumeration_), I decided to further enumerate the `/javascript` and `/vendor` directories.
+
+
+{% endstep %}
+{% endstepper %}
+
