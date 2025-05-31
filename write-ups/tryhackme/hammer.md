@@ -17,6 +17,14 @@ port 1137
 
 * found port 1337 (labelled as waste, but is actually running  a HTTP web server)
 
+## **Initial view**
+
+Upon visiting the base URL (`/`), I was presented with a login page.
+
+...
+
+
+
 
 
 

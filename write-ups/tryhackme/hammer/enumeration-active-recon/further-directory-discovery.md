@@ -1,10 +1,10 @@
-# Directory discovery
+# Further directory discovery
 
 > The word lists used in this phase are from Daniel Miessler's seclist: [https://jarrettgxz-sec.gitbook.io/offensive-security-concepts/tools-services/wordlists](https://jarrettgxz-sec.gitbook.io/offensive-security-concepts/tools-services/wordlists).&#x20;
 >
 > The word list path shown in the examples below will be displayed as a redacted relative directory.
 
-## 1. Initial enumeration
+## 1. Enumeration of `/`
 
 ```bash
 $ gobuster dir -x php -u http://<target>:1337/ -w Discovery/Web-Content/common.txt
@@ -76,7 +76,7 @@ $ gobuster dir -x php,js -u http://<target>:1337/vendor/ -w Discovery/Web-Conten
 
 <figure><img src="../../../../.gitbook/assets/image (17).png" alt=""><figcaption></figcaption></figure>
 
-Upon visiting `/vendor/composer`, I was presented with a index listing. Very well, it looks like we have found our first entry point!
+Upon visiting `/vendor/composer`, I was presented with a index listing.&#x20;
 
 <figure><img src="../../../../.gitbook/assets/image (18).png" alt=""><figcaption></figcaption></figure>
 {% endstep %}
