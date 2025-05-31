@@ -51,6 +51,30 @@ There are multiple other use cases where the`FUZZ` keyword can be utilized to fu
 * `-recursion`: Scan recursively
 * `-recursion-depth`: Recursion depth
 
+
+
+**Example**
+
+Given a target http://\<target>.com where we can to discover directories starting with a `rand_` prefix. We can use the following command:
+
+```
+$ ffuf -u http://<target>.com/rand_FUZZ -w <wordlist>.txt
+$ ffuf -u http://<target>.com/rand_FUZZ -w <wordlist>.txt
+```
+
+> Note that by default ffuf matches the following status codes:&#x20;
+>
+> ```
+> 200-299,301,302,307,401,403,405,500
+> ```
+
+For a more streamlined output, we can use the `-mc` or `-fc` options to select the status code to output:
+
+```bash
+$ ffuf ... -mc 200,301,302 # only display the listed codes
+$ ffuf .. -fc 403,404 # do not display the listed codes
+```
+
 {% embed url="https://github.com/ffuf/ffuf" %}
 
 ## gobuster
@@ -81,7 +105,9 @@ Flags:
 
 > NOTE: Gobuster will prefix each item in the word list with a slash (`/`). Thus, it can't be used for certain kinds of fuzzing. Refer below for examples.
 
-Eg. Given that we have a target http://\<target>.com that we wish to fuzz the directory for. We can run the following gobuster commands (using directory/file enumeration mode with `dir`):
+**Example**
+
+Given that we have a target http://\<target>.com that we wish to fuzz the directory for. We can run the following gobuster commands (using directory/file enumeration mode with `dir`):
 
 ```bash
 # (1) Without trailing slash after the target URL
@@ -100,6 +126,8 @@ $ gobuster dir -u http://<target>.com/rand_ -w <wordlist>.txt -v
 ```
 
 However, it will not work since a leading slash will be inserted. For example, even if the path `/rand_js` exists, and the value `js` is present in the word list, gobuster will not catch it since the closest match will only be `/rand_/js`.
+
+To perform this, we can use _**ffuf**_ or _**wfuzz**_ instead.
 
 {% embed url="https://github.com/OJ/gobuster" %}
 
