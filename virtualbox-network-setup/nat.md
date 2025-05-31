@@ -36,7 +36,7 @@ The image below displays the output from 3 commands:
 
 Notice that the response shows that ports _**111**_ and _**631**_ are open, while connection to port _**632**_ is reufsed — port is closed.
 
-<figure><img src="../.gitbook/assets/image (7).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (7) (1).png" alt=""><figcaption></figcaption></figure>
 
 ### Conclusion
 
