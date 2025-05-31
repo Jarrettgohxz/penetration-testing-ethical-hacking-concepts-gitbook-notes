@@ -217,8 +217,8 @@
 
 * [Introduction](tools-services/introduction.md)
 * [Web hacking](tools-services/web-hacking/README.md)
-  * [Password brute-forcing](tools-services/web-hacking/password-brute-forcing.md)
   * [Web fuzzing](tools-services/web-hacking/web-fuzzing.md)
+  * [Password brute-forcing](tools-services/web-hacking/password-brute-forcing.md)
   * [Burp Suite (Community)](tools-services/web-hacking/burp-suite-community.md)
   * [nikto](tools-services/web-hacking/nikto.md)
   * [ZAP (Zed Attack Proxy)](tools-services/web-hacking/zap-zed-attack-proxy.md)

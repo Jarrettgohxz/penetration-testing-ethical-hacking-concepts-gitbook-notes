@@ -39,14 +39,14 @@ $ ffuf -w <path_to_wordlist_1>:FUZZ1,<path_to_wordlist_2>:FUZZ2 -H "content-type
 
 The `FUZZ` keyword will be inserted with values from the word-list during the fuzzing process (refer to basic command example above).
 
-There are multiple other use cases where the`FUZZ`keyword can be utilized to fuzz different input values such as headers, request data, etc. Refer to the various sub-sections under the **WEB EXPLOITATION** section for more examples.
+There are multiple other use cases where the`FUZZ` keyword can be utilized to fuzz different input values such as headers, request data, etc. Refer to the various sub-sections under the [WEB APPLICATION PENETRATION TESTING](https://jarrettgxz-sec.gitbook.io/offensive-security-concepts/web-application-penetration-testing/) section for more examples.
 
 #### Other useful flags
 
 * `-mr`: Match regexp
 * `-d`: Specifies the data to send
 * `-H`: Specifies the headers to send
-* `-fw`,`-fr`, `-fl,` ... : Filter options
+* `-fw`,`-fr`, `-fl`, ... : Filter options
 * `-r`: To follow redirects
 * `-recursion`: Scan recursively
 * `-recursion-depth`: Recursion depth
@@ -78,6 +78,28 @@ $ gobuster fuzz --help
 Flags:
   ...
 ```
+
+> NOTE: Gobuster will prefix each item in the word list with a slash (`/`). Thus, it can't be used for certain kinds of fuzzing. Refer below for examples.
+
+Eg. Given that we have a target http://\<target>.com that we wish to fuzz the directory for. We can run the following gobuster commands (using directory/file enumeration mode with `dir`):
+
+```bash
+# (1) Without trailing slash after the target URL
+$ gobuster dir -u http://<target>.com -w <wordlist>.txt -v
+
+# (2) With a trailing slash after the target URL
+$ gobuster dir -u http://<target>.com/ -w <wordlist>.txt -v
+```
+
+Notice that the first command does not include the trailing slash after the URL. This works since gobuster automatically prefix a slash to each item. However, the command works to if we decide to insert a slash (command 2).
+
+Now, imagine we wish to discover directories with the pattern `/rand_xxxx`, such as `/rand_images`, `/rand_js`, etc. We can try the following gobuster command:
+
+```bash
+$ gobuster dir -u http://<target>.com/rand_ -w <wordlist>.txt -v
+```
+
+However, it will not work since a leading slash will be inserted. For example, even if the path `/rand_js` exists, and the value `js` is present in the word list, gobuster will not catch it since the closest match will only be `/rand_/js`.
 
 {% embed url="https://github.com/OJ/gobuster" %}
 

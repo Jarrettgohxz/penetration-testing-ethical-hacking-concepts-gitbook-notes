@@ -4,6 +4,8 @@ description: getallurls/gau, hawkrawler, gobuster, wfuzz, dirb, dirbuster, ffuf
 
 # Directories/URLs gathering
 
+Refer to the general [Web Fuzzing](https://jarrettgxz-sec.gitbook.io/offensive-security-concepts/tools-services/web-hacking/web-fuzzing) guide for more information on a few selected tools.
+
 ## Common web directories to recon:
 
 1. Robots.txt
@@ -138,7 +140,7 @@ The output shows that the directories: _**assets**_ and _**robots.txt**_, return
 dirb tool
 {% endembed %}
 
-"DIRB is a Web Content Scanner. It looks for existing (and/or hidden) Web Objects. It basically works by launching a dictionary based attack against a web server and analyzing the responses."&#x20;
+> DIRB is a Web Content Scanner. It looks for existing (and/or hidden) Web Objects. It basically works by launching a dictionary based attack against a web server and analyzing the responses.&#x20;
 
 **Basic command:**
 
@@ -175,7 +177,7 @@ GENERATED WORDS: ...
 
 {% embed url="https://www.kali.org/tools/gobuster/" %}
 
-"Gobuster is a tool used to brute-force: URIs (directories and files) in web sites, DNS subdomains (with wildcard support), Virtual Host names on target web servers, ..."
+> Gobuster is a tool used to brute-force: URIs (directories and files) in web sites, DNS subdomains (with wildcard support), Virtual Host names on target web servers, ...
 
 **Basic command:**
 
