@@ -133,7 +133,7 @@ To perform this, we can use _**ffuf**_ or _**wfuzz**_ instead.
 
 ## wfuzz
 
-wfuzz is a web fuzzer that works similarly to _**ffuf**_ in that it uses th&#x65;_**`FUZZ`**_&#x6B;eyword to replace with the payload.
+wfuzz is a web fuzzer that works similarly to _**ffuf**_ in that it uses th&#x65;_**`FUZZ`**_ keyword to replace with the payload.
 
 > **Below shows an example of wfuzz looking for common directories:**
 
@@ -158,6 +158,12 @@ Eg. Filter responses with content-length more than 100 (refer to the usage examp
 ```bash
 $ wfuzz ... --filter "h>100"
 ```
+
+`--hc/hl/hw/hh` : Hide responses with the specified code/lines/words/chars
+
+`--sc/sl/sw/sh` :Show responses with the specified code/lines/words/chars
+
+
 
 {% embed url="https://wfuzz.readthedocs.io/en/latest/user/basicusage.html#fuzzing-paths-and-files" %}
 wfuzz documentation
