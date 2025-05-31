@@ -1,37 +1,8 @@
 # Brute forcing 4-digit code
 
+### Overview of password recovery process
 
-
-
-
-&#x20;
-
-1. Automatic logout (`/reset_password.php`): GET `/logout.php`
-
-<figure><img src="../../../.gitbook/assets/image (28).png" alt=""><figcaption></figcaption></figure>
-
-**Response**
-
-Set-Cookie to `PHPSESSID=deleted`.
-
-<figure><img src="../../../.gitbook/assets/image (29).png" alt=""><figcaption><p>RESPONSE</p></figcaption></figure>
-
-2. From the `Location` header defined in the previous response, send a GET request to `/index.php` with no cookies set.
-
-`GET /index.php HTTP/1.1` (without cookie)&#x20;
-
-<figure><img src="../../../.gitbook/assets/image (26).png" alt=""><figcaption><p>REQUEST</p></figcaption></figure>
-
-**Response**
-
-New `PHPSESSID` in the Set-Cookie
-
-* Retrieve `PHPSESSID: mgj0vc1q4908nel9i695d3mvj8`&#x20;
-* This value will be sent as a cookie in the subsequent requests
-
-<figure><img src="../../../.gitbook/assets/image (31).png" alt=""><figcaption></figcaption></figure>
-
-3. Enter email in the **Reset Password** page
+1. Enter email in the **Reset Password** page
 
 POST `/reset_password.php` (email=tester%40hammer.thm)
 
@@ -64,3 +35,36 @@ If we send an expired cookie, we will get the following response:
 If the cookie is not expired, we will be able to send our recovery code. The image below shows the display for an invalid recovery code.
 
 <figure><img src="../../../.gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
+
+4. Once the cookie expires (window period is over), the application will automatically log the user out.
+
+* Automatic logout: `GET /logout.php`
+
+<figure><img src="../../../.gitbook/assets/image (28).png" alt=""><figcaption></figcaption></figure>
+
+**Response**
+
+Set-Cookie to `PHPSESSID=deleted`.
+
+<figure><img src="../../../.gitbook/assets/image (29).png" alt=""><figcaption><p>RESPONSE</p></figcaption></figure>
+
+5.  From the `Location` header defined in the previous response, send a GET request to `/index.php` with no cookies set.
+
+    `GET /index.php`&#x20;
+
+<figure><img src="../../../.gitbook/assets/image (26).png" alt=""><figcaption><p>REQUEST</p></figcaption></figure>
+
+**Response**
+
+New `PHPSESSID` in the Set-Cookie
+
+* Retrieve `PHPSESSID: mgj0vc1q4908nel9i695d3mvj8`&#x20;
+* This value will be sent as a cookie in the subsequent requests
+
+<figure><img src="../../../.gitbook/assets/image (31).png" alt=""><figcaption><p>RESPONSE</p></figcaption></figure>
+
+
+
+### Findings
+
+...
