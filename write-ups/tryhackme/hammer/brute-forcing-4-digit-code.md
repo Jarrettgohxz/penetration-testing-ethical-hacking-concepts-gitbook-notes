@@ -2,7 +2,7 @@
 
 ### Overview of password recovery process
 
-1. Enter email in the **Reset Password** page
+**(1)** Enter email in the **Reset Password** page
 
 POST `/reset_password.php` (email=tester%40hammer.thm)
 
@@ -14,7 +14,7 @@ POST `/reset_password.php` (email=tester%40hammer.thm)
 
 <figure><img src="../../../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
 
-A `GET /reset_password.php` request will be sent.&#x20;
+**(2)** A `GET /reset_password.php` request will be sent.&#x20;
 
 <figure><img src="../../../.gitbook/assets/image (25).png" alt=""><figcaption></figcaption></figure>
 
@@ -22,7 +22,9 @@ If the cookie is valid (not expired), we will be presented with a form to enter 
 
 <figure><img src="../../../.gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
 
-4. POST recovery code
+**(3)** Enter recovery code
+
+POST `/reset_password.php` with recovery code and **s** parameter defined in the request body.
 
 <figure><img src="../../../.gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure>
 
@@ -42,7 +44,7 @@ A script exist that automatically logs the user out after a set period of time. 
 
 <figure><img src="../../../.gitbook/assets/image (32).png" alt=""><figcaption></figcaption></figure>
 
-4. Once the window period is over (`countdownv <=0`), the cookie will be expired, and the user will be automatically logged out.
+**(4)** Once the window period is over (`countdownv <=0`), the cookie will be expired, and the user will be automatically logged out.
 
 Automatic logout: `GET /logout.php`
 
@@ -54,9 +56,9 @@ Set-Cookie to `PHPSESSID=deleted`.
 
 <figure><img src="../../../.gitbook/assets/image (29).png" alt=""><figcaption><p>RESPONSE</p></figcaption></figure>
 
-5.  From the `Location` header defined in the previous response, send a GET request to `/index.php` with no cookies set.
+**(5)** From the `Location` header defined in the previous response, send a GET request to `/index.php` with no cookies set.
 
-    `GET /index.php`&#x20;
+`GET /index.php`&#x20;
 
 <figure><img src="../../../.gitbook/assets/image (26).png" alt=""><figcaption><p>REQUEST</p></figcaption></figure>
 
