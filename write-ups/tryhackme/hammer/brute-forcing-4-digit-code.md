@@ -36,9 +36,15 @@ If the cookie is not expired, we will be able to send our recovery code. The ima
 
 <figure><img src="../../../.gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
 
-4. Once the cookie expires (window period is over), the application will automatically log the user out.
+A script exist that automatically logs the user out after a set period of time. The value `countdownv` is used as time variable, which appears to be controlled by the s parameter in our request body:
 
-* Automatic logout: `GET /logout.php`
+<figure><img src="../../../.gitbook/assets/image (34).png" alt=""><figcaption></figcaption></figure>
+
+<figure><img src="../../../.gitbook/assets/image (32).png" alt=""><figcaption></figcaption></figure>
+
+4. Once the window period is over (`countdownv <=0`), the cookie will be expired, and the user will be automatically logged out.
+
+Automatic logout: `GET /logout.php`
 
 <figure><img src="../../../.gitbook/assets/image (28).png" alt=""><figcaption></figcaption></figure>
 
