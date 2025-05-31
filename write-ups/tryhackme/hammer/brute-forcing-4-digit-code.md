@@ -1,16 +1,14 @@
 # Brute forcing 4-digit code
 
-POST /reset\_password.php (email=tester%40hammer.thm) ->&#x20;
+
 
 
 
 &#x20;
 
-### General flow after the window (180s) to enter the 4-digit code is over
-
 1. Automatic logout (`/reset_password.php`): GET `/logout.php`
 
-<figure><img src="../../../.gitbook/assets/image (28).png" alt=""><figcaption><p>REQUEST</p></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (28).png" alt=""><figcaption></figcaption></figure>
 
 **Response**
 
@@ -28,7 +26,8 @@ Set-Cookie to `PHPSESSID=deleted`.
 
 New `PHPSESSID` in the Set-Cookie
 
-* This new `PHPSESSID` value can be used to send a POST request to `/reset_password.php` to enter the recovery code (see below).
+* Retrieve `PHPSESSID: mgj0vc1q4908nel9i695d3mvj8`&#x20;
+* This value will be sent as a cookie in the subsequent requests
 
 <figure><img src="../../../.gitbook/assets/image (31).png" alt=""><figcaption></figcaption></figure>
 
@@ -61,8 +60,6 @@ If the cookie is valid (not expired), we will be presented with a form to enter 
 If we send an expired cookie, we will get the following response:
 
 <figure><img src="../../../.gitbook/assets/image (30).png" alt=""><figcaption></figcaption></figure>
-
-To fix this, we need to retrieve a new cookie — refer to step 2.
 
 If the cookie is not expired, we will be able to send our recovery code. The image below shows the display for an invalid recovery code.
 
