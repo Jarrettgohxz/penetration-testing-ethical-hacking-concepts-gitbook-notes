@@ -12,8 +12,6 @@ From a manual inspection of the source code within burp suite, I found a comment
 
 It appears that the directories in this application uses the `hmr_` prefix.
 
-
-
 ## Directory discovery
 
 I proceeded to perform a directory fuzzing with the `hmr_` prefix:
@@ -29,3 +27,7 @@ I visited the `/hmr_css`, `/hmr_images` and `/hmr_js` directories, and was prese
 However, the `/hmr_logs` displayed an `error.logs` file.
 
 <figure><img src="../../../../.gitbook/assets/image (21).png" alt=""><figcaption></figcaption></figure>
+
+From `error.logs`, I found the email address: `tester@hammer.thm`. Very well, now lets try to use this email address on the reset password page.
+
+<figure><img src="../../../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>

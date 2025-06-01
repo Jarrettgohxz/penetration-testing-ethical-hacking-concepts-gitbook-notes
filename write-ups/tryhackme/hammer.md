@@ -19,11 +19,15 @@ port 1137
 
 ## **Initial view**
 
+#### Login page
+
 Upon visiting the base URL (`/`), I was presented with a login page.
 
 ...
 
+#### Reset password page
 
+...
 
 
 
