@@ -1,5 +1,7 @@
 # Brute forcing 4-digit code
 
+Using the email `tester@hammer.thm` we have found from the enumeration phase, we can explore the reset password feature.
+
 ### Overview of password recovery process
 
 **(1)** Enter email in the **Reset Password** page

@@ -35,15 +35,5 @@ port 1137
 
 #### Login page
 
-Upon visiting the base URL (`/`), I was presented with a login page.
-
-...
-
-#### Reset password page
-
-...
-
-
-
-
+Upon visiting the base URL (`/`), I was presented with a login page. Below the form, there is a link to a reset password page that accepts an email address. It appears that we have to find an email address that is used in the application.
 

