@@ -2,7 +2,7 @@
 
 ## Exploring RCE
 
-From the dashboard page (/`dashboard.php`), I tried executing a few common commands such as `whoami`, `id`, `pwd`, etc.
+From the dashboard page (`/dashboard.php`), I tried executing a few common commands such as `whoami`, `id`, `pwd`, etc.
 
 It appears that the application only allows the `ls` command. From the output, I noticed an interesting file: `188ade1.key`.
 
@@ -16,7 +16,7 @@ Visiting the URL at `/188ade1.key` downloads a file with the content:&#x20;
 
 ## Exploiting JWT
 
-Upon analysis of the retrieved JWT token value ([http://jwt.io/](http://jwt.io/)), I noticed that the `kid` field present in the headers. Moreover, I noticed the `role` field in the payload, which controls the user role. The goal will be to change this value to a higher privilege user such as `admin`.
+Upon analysis of the retrieved JWT token value ([http://jwt.io/](http://jwt.io/)), I noticed the `kid` field present in the headers. Moreover, there is a `role` field in the payload, which controls the user role. The goal will be to change this value to a higher privilege user such as `admin`.
 
 Based on the OWASP WSTG testing guide ([https://github.com/OWASP/wstg/blob/master/document/4-Web\_Application\_Security\_Testing/06-Session\_Management\_Testing/10-Testing\_JSON\_Web\_Tokens.md](https://github.com/OWASP/wstg/blob/master/document/4-Web_Application_Security_Testing/06-Session_Management_Testing/10-Testing_JSON_Web_Tokens.md)), I decided to test the JWT based vulnerabilities.
 
