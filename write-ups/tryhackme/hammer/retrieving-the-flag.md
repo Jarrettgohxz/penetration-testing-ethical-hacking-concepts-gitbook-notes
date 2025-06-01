@@ -136,11 +136,11 @@ $ hashcat -m 16500 -a 0 jwt.txt rockyou.txt
 $ hashcat -m 16500 -a 0 jwt.txt scraped-jwt-secrets.txt
 ```
 
-The brute force attempt failed, and we are unable to find the valid signing key.
+The brute force attempt failed, and I was unable to find the valid signing key.
 
 #### Malformed signature
 
-Remove the jwt.encode() line, and retrieve the token from the existing cookies instead. To malform the signature, remove the last character from the token.
+Remove the `jwt.encode()` line, and retrieve the token from the existing cookies instead. To malform the signature, remove the last character from the token.
 
 <pre class="language-python"><code class="lang-python"><strong>token = self.s.cookies.get('token')
 </strong><strong>token = token[:-1] # remove the last character
