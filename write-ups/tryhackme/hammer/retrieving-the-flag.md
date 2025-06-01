@@ -154,7 +154,7 @@ Output:
 
 In this application which uses a symmetric key, the `kid` value defines the path used to look up a value to be used as the signing key.
 
-I attempted to change the kid value to `188ade1.key`, and encode a new JWT with the content of that file.
+I attempted to change the `kid` value to `188ade1.key`, and encode a new JWT with the content of that file.
 
 ```python
  key = '56058354efb3daa97ebab00fabd7a7d7'
