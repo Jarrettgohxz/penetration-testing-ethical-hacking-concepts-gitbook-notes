@@ -254,6 +254,7 @@
   * [General](operational-security-opsec/hardening/general.md)
   * [Oracle VirtualBox](operational-security-opsec/hardening/oracle-virtualbox.md)
   * [Web Browser](operational-security-opsec/hardening/web-browser.md)
+  * [VPN/Proxy](operational-security-opsec/hardening/vpn-proxy.md)
 
 ## Write-ups
 
