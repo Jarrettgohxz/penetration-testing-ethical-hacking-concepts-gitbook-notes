@@ -49,7 +49,7 @@ nameserver ...
 4.  Verify if there are WebRTC, DNS or IP leaks.
 
     * This step presents another method to test for IP leak
-    * Additional tests for WebRTC and DNS should be performed too
+    * Additional tests for WebRTC and DNS leaks should be performed too
 
     Website to run the test: [https://browserleaks.com](https://browserleaks.com/).
 
