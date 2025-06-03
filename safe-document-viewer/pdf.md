@@ -31,13 +31,14 @@ $ firejail --net=none --caps.drop=all --nogroups --noroot  --private=/home/user/
 
 ### Reusable Bash function (`~/.bashrc`)
 
-We can create a Bash function in \~/.bashrc that can be used as a simple command:
+We can create a Bash function in `~/.bashrc` that can be used as a simple command:
 
 ```bash
+# .bashrc
 safeviewpdf() {
    local pdf_path="$1"
    
-    if [ -z $pdf_path" ]; then
+    if [ -z "$pdf_path" ]; then
        echo "Usage: safepdf /absolute_path/to/file.pdf";
     
     elif [ ! -f "$pdf_path" ]; then
@@ -47,6 +48,13 @@ safeviewpdf() {
        firejail --net=none --private="$(dirname "$pdf_path")" --caps.drop=all --nogroups --noroot mupdf "$(basename "$pdf_path")";
        
 }
+```
+
+To call the function:
+
+```bash
+$ source ~/.bashrc
+$ safeviewpdf /absolute_path/to/file.pdf
 ```
 
 {% embed url="https://man7.org/linux/man-pages/man1/firejail.1.html" %}
