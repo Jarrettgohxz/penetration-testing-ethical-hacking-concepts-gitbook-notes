@@ -50,10 +50,17 @@ safeviewpdf() {
 }
 ```
 
-To call the function:
+**To load changes in `~/.bashrc`:**
+
+> Run this command after each update to the function in `~/.bashrc`
 
 ```bash
 $ source ~/.bashrc
+```
+
+**To call the function:**
+
+```sh
 $ safeviewpdf /absolute_path/to/file.pdf
 ```
 
