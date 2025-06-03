@@ -256,6 +256,11 @@
   * [Web Browser](operational-security-opsec/hardening/web-browser.md)
   * [VPN/Proxy](operational-security-opsec/hardening/vpn-proxy.md)
 
+***
+
+* [Safe document viewer](safe-document-viewer/README.md)
+  * [PDF](safe-document-viewer/pdf.md)
+
 ## Write-ups
 
 * [TryHackMe](write-ups/tryhackme/README.md)
