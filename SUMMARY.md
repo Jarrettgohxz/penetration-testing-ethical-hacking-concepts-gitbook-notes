@@ -260,6 +260,7 @@
 
 * [Safe document viewer](safe-document-viewer/README.md)
   * [PDF](safe-document-viewer/pdf.md)
+  * [.docx](safe-document-viewer/.docx.md)
 
 ## Write-ups
 
