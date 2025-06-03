@@ -2,6 +2,10 @@
 
 {% embed url="https://tryhackme.com/room/hammer" %}
 
+**Check out the Medium blog post here:**
+
+{% embed url="https://medium.com/@jarrettgoh.xz/tryhackme-hammer-walkthrough-bypassing-rate-limit-exploiting-jwt-b62bd36de716" %}
+
 ## Overview
 
 This challenge room presents an interesting mix of issues such as information exposed within the source code, and vulnerabilities with authentication mechanisms.
