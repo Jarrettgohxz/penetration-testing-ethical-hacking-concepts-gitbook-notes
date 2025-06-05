@@ -74,3 +74,25 @@ $ vboxmanage natnetwork start --netname "isolate"
 **Create a new NAT network**
 
 If the above solution fails, we can simply create and start a new NAT network (refer to the examples above), before configuring the guest machine to join it. This will remove any issues related to the old network configurations due to potentially outdated settings, etc.
+
+
+
+### Power button
+
+This section outlines the commands that can be used to control the power options for a particular running virtual machine through the terminal.\
+
+
+**List all running virtual machines:**
+
+```bash
+$ vboxmanage list runningvms
+"name_of_vm" {xxxx}
+```
+
+**Power-off the machine:**
+
+```bash
+$ vboxmanage controlvm "name_of_vm" poweroff
+# or
+$ vboxmanage controlvm "name_of_vm" acipowerbutton
+```
