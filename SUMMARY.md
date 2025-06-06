@@ -249,8 +249,15 @@
   * [Note taking on-the-go](tasks-on-the-go/note-taking-on-the-go.md)
   * [Other tips](tasks-on-the-go/other-tips.md)
 * [Practice](practice/README.md)
+  * [Web Application Pentesting](practice/web-application-pentesting/README.md)
+    * [OWASP](practice/web-application-pentesting/owasp/README.md)
+      * [OWASP Juice Shop](practice/web-application-pentesting/owasp/owasp-juice-shop.md)
+      * [OWASP Mutillidae II](practice/web-application-pentesting/owasp/owasp-mutillidae-ii.md)
+      * [OWASP Hackademic](practice/web-application-pentesting/owasp/owasp-hackademic.md)
+    * [Vulnhub](practice/web-application-pentesting/vulnhub/README.md)
+      * [Page](practice/web-application-pentesting/vulnhub/page.md)
+    * [Damn Vulnerable Web Application (DVWA)](practice/web-application-pentesting/damn-vulnerable-web-application-dvwa.md)
   * [Metasploitable 2](practice/metasploitable-2.md)
-  * [TryHackMe](practice/tryhackme.md)
 
 ## Operational Security (OpSec)
 
