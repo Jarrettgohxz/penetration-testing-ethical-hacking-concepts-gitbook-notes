@@ -113,7 +113,9 @@
 * [SSRF](web-application-penetration-testing/ssrf.md)
 * [CSRF](web-application-penetration-testing/csrf.md)
 * [XSS](web-application-penetration-testing/xss.md)
-* [SQL injection](web-application-penetration-testing/sql-injection.md)
+* [SQL injection](web-application-penetration-testing/sql-injection/README.md)
+  * [Practical challenge examples](web-application-penetration-testing/sql-injection/practical-challenge-examples/README.md)
+    * [TryHackMe Advanced SQL Injection](web-application-penetration-testing/sql-injection/practical-challenge-examples/tryhackme-advanced-sql-injection.md)
 
 ***
 
