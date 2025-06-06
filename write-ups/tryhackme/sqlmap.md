@@ -6,11 +6,17 @@ Upon visiting the webpage, I was greeted with a plain page without any useful ex
 
 ### Finding the first directory
 
-...
+I used `gobuster` with a common word list from [Daniel Miessler's list](https://github.com/danielmiessler/SecLists):
+
+```bash
+$ gobuster dir -u http://<target>.com/ -w DanielMiesslerSecLists/Discovery/Web-Content/common.txt
+```
+
+But did not receive any positive results. From the description of the challenge, it appears that this application relates  to "_Blood Donations_". Thus, I tried the directory `/blood`, and it worked.
 
 ### SQL Injection with `sqlmap`
 
-I have found 2 requests within the application that are vulnerable to an SQL injection attack:
+Navigating through the application while behind Burp suite proxy, I found 2 requests within the application that are potentially vulnerable to an SQL injection attack. This is due to the nature of the request being likely to return a value retrieved directly from the database.
 
 1. **`POST /blood/nl-search.php`**
 
