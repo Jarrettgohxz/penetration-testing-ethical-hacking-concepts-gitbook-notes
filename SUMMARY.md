@@ -115,7 +115,9 @@
 * [XSS](web-application-penetration-testing/xss.md)
 * [SQL injection](web-application-penetration-testing/sql-injection/README.md)
   * [Practical challenge examples](web-application-penetration-testing/sql-injection/practical-challenge-examples/README.md)
-    * [TryHackMe Advanced SQL Injection](web-application-penetration-testing/sql-injection/practical-challenge-examples/tryhackme-advanced-sql-injection.md)
+    * [TryHackMe](web-application-penetration-testing/sql-injection/practical-challenge-examples/tryhackme/README.md)
+      * [TryHackMe Burp suite: Repeater room](web-application-penetration-testing/sql-injection/practical-challenge-examples/tryhackme/tryhackme-burp-suite-repeater-room.md)
+      * [TryHackMe Advanced SQL Injection](web-application-penetration-testing/sql-injection/practical-challenge-examples/tryhackme/tryhackme-advanced-sql-injection.md)
 
 ***
 
