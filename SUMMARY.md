@@ -61,7 +61,7 @@
 
 ## Network Reconnaissance & Attacks
 
-* [What is network hacking?](network-reconnaissance-and-attacks/what-is-network-hacking.md)
+* [What is network recon & attacks?](network-reconnaissance-and-attacks/what-is-network-recon-and-attacks.md)
 
 ## 1️⃣ Network live host discovery
 
@@ -114,6 +114,7 @@
 * [CSRF](web-application-penetration-testing/csrf.md)
 * [XSS](web-application-penetration-testing/xss.md)
 * [SQL injection](web-application-penetration-testing/sql-injection/README.md)
+  * [Filter evasion techniques](web-application-penetration-testing/sql-injection/filter-evasion-techniques.md)
   * [Practical challenge examples](web-application-penetration-testing/sql-injection/practical-challenge-examples/README.md)
     * [TryHackMe](web-application-penetration-testing/sql-injection/practical-challenge-examples/tryhackme/README.md)
       * [TryHackMe Burp suite: Repeater room](web-application-penetration-testing/sql-injection/practical-challenge-examples/tryhackme/tryhackme-burp-suite-repeater-room.md)
@@ -255,7 +256,7 @@
       * [OWASP Mutillidae II](practice/web-application-pentesting/owasp/owasp-mutillidae-ii.md)
       * [OWASP Hackademic](practice/web-application-pentesting/owasp/owasp-hackademic.md)
     * [Vulnhub](practice/web-application-pentesting/vulnhub/README.md)
-      * [Page](practice/web-application-pentesting/vulnhub/page.md)
+      * [...](practice/web-application-pentesting/vulnhub/....md)
     * [Damn Vulnerable Web Application (DVWA)](practice/web-application-pentesting/damn-vulnerable-web-application-dvwa.md)
   * [Metasploitable 2](practice/metasploitable-2.md)
 
