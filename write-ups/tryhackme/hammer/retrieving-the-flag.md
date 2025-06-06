@@ -6,7 +6,7 @@ From the dashboard page (`/dashboard.php`), I tried executing a few common comma
 
 It appears that the application only allows the `ls` command. From the output, I noticed an interesting file: `188ade1.key`.
 
-<figure><img src="../../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Visiting the URL at `/188ade1.key` downloads a file with the content:&#x20;
 
@@ -148,7 +148,7 @@ Remove the `jwt.encode()` line, and retrieve the token from the existing cookies
 
 Output:
 
-<figure><img src="../../../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 ### 3. Vulnerable `kid` header value
 
@@ -170,7 +170,7 @@ I attempted to change the `kid` value to `188ade1.key`, and encode a new JWT wit
 
 With the command: `cat /home/ubuntu/flag.txt`, I was able to retrieve the flag!
 
-<figure><img src="../../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (9).png" alt=""><figcaption></figcaption></figure>
 
 We have found the answer to the final question: "_What is the content of the file /home/ubuntu/flag.txt?_": `THM{RUNANYCOMMAND1337}` .
 
