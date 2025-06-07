@@ -104,8 +104,9 @@
 ## Web Application Penetration Testing
 
 * [Introduction](web-application-penetration-testing/introduction.md)
-* [Directories/URLs gathering](web-application-penetration-testing/directories-urls-gathering.md)
-* [Subdomain enumeration](web-application-penetration-testing/subdomain-enumeration.md)
+* [Web Content Discovery](web-application-penetration-testing/web-content-discovery/README.md)
+  * [Directories/URLs gathering](web-application-penetration-testing/web-content-discovery/directories-urls-gathering.md)
+  * [Subdomain enumeration](web-application-penetration-testing/web-content-discovery/subdomain-enumeration.md)
 * [File inclusion & Path traversal](web-application-penetration-testing/file-inclusion-and-path-traversal.md)
 * [Insecure Direct Object Reference (IDOR)](web-application-penetration-testing/insecure-direct-object-reference-idor.md)
 * [Upload vulnerabilities](web-application-penetration-testing/upload-vulnerabilities/README.md)
