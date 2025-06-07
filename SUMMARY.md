@@ -225,6 +225,7 @@
   * [Web fuzzing](tools-services/web-hacking/web-fuzzing.md)
   * [Password brute-forcing](tools-services/web-hacking/password-brute-forcing.md)
   * [Burp Suite (Community)](tools-services/web-hacking/burp-suite-community.md)
+  * [arjun](tools-services/web-hacking/arjun.md)
   * [nikto](tools-services/web-hacking/nikto.md)
   * [ZAP (Zed Attack Proxy)](tools-services/web-hacking/zap-zed-attack-proxy.md)
   * [nuclei](tools-services/web-hacking/nuclei.md)
