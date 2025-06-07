@@ -41,4 +41,10 @@ Allows to modify and resend intercepted requests. Modification of various parame
 
 
 
+### Discovery hidden content
+
+{% embed url="https://portswigger.net/burp/documentation/desktop/testing-workflow/mapping/hidden-content" %}
+
+
+
 {% embed url="https://portswigger.net/burp/documentation/desktop/tools" %}
