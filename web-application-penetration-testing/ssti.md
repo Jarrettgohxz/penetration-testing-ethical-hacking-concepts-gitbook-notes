@@ -22,5 +22,9 @@ If an SSTI attack is successful, it can lead to Remote Code Execution (RCE), ena
 
 {% embed url="https://github.com/vladko312/SSTImap" %}
 
+### Payload list
 
+1. **Swisskyrepo/PayloadAllTheThings**
+
+{% embed url="https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/Server%20Side%20Template%20Injection" %}
 
