@@ -297,6 +297,7 @@
     * [Retrieving the flag](write-ups/tryhackme/hammer/retrieving-the-flag.md)
   * [OWASP Top 10 - 2021 (task 22)](write-ups/tryhackme/owasp-top-10-2021-task-22.md)
   * [sqlmap](write-ups/tryhackme/sqlmap.md)
+  * [Injectics](write-ups/tryhackme/injectics.md)
 * [OverTheWire](write-ups/overthewire/README.md)
   * [Untitled](write-ups/overthewire/untitled.md)
 * [OWASP](write-ups/owasp/README.md)
