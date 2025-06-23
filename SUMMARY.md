@@ -228,6 +228,7 @@
     * [paramspider](tools-services/web-application-pentesting/web-discovery-fuzzing/paramspider.md)
     * [arjun](tools-services/web-application-pentesting/web-discovery-fuzzing/arjun.md)
     * [katana](tools-services/web-application-pentesting/web-discovery-fuzzing/katana.md)
+  * [dirsearch](tools-services/web-application-pentesting/dirsearch.md)
   * [uro](tools-services/web-application-pentesting/uro.md)
   * [Password brute-forcing](tools-services/web-application-pentesting/password-brute-forcing.md)
   * [Burp Suite (Community)](tools-services/web-application-pentesting/burp-suite-community.md)
