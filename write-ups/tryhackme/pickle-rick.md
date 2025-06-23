@@ -34,7 +34,7 @@ _**(1) Basic discovery**_
 gobuster dir -u ... -w .../common.txt
 ```
 
-<figure><img src="../../.gitbook/assets/image (4) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (4) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 From the results, it appears that the `/robots.txt` path exists. Upon visiting, it returns:
 
@@ -75,7 +75,7 @@ PHP is commonly used as the underlying programming language on an Apache web ser
 $ gobuster dir -u http://<target> -x php -w .../common.txt
 ```
 
-<figure><img src="../../.gitbook/assets/image (3) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (3) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 
 
@@ -85,7 +85,7 @@ $ gobuster dir -u http://<target> -x php -w .../common.txt
 $ gobuster dir -u http://<target> -w .../Common-PHP-Filenames.txt
 ```
 
-<figure><img src="../../.gitbook/assets/image (2) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (2) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 It appears that we have found a few `.php` files such as `login.php`, `portal.php` and `denied.php`.&#x20;
 
