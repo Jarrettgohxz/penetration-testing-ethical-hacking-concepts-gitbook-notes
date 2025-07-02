@@ -1,6 +1,10 @@
 # Insecure deserialization
 
-> Serialization is the process of transforming an object's staet into a human readable or binary format (or a mix of both) that can be stored or transmitted and recontstructed as and when required. This is essential for data transfer between different parts of a system or across the network - such as in web applications.
+> Serialization is the process of transforming an object's state into a human readable or binary format (or a mix of both) that can be stored or transmitted and recontstructed as and when required. This is essential for data transfer between different parts of a system or across the network - such as in web applications.
+
+{% embed url="https://tryhackme.com/room/insecuredeserialisation" %}
+
+
 
 For example in PHP using the `serialize()` function, we can convert the fields:
 
