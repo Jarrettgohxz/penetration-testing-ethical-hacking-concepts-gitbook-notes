@@ -4,6 +4,10 @@
 
 {% embed url="https://www.php.net/manual/en/wrappers.php" %}
 
+Refer to my payload list:
+
+{% embed url="https://github.com/Jarrettgohxz/offsec-wordlists/tree/file-inclusion/file-inclusion" %}
+
 PHP comes with many built-in wrappers for various URL-style protocols for use with the filesystem functions such as `fopen()`, `copy()` or even `include()` and `require()`. This can allow an attacker to read file or execute arbitary commands on the system.
 
 The following covers a few simple techniques using PHP wrappers. Refer to _The Hacker Recipe's_ notes above for more examples.&#x20;
