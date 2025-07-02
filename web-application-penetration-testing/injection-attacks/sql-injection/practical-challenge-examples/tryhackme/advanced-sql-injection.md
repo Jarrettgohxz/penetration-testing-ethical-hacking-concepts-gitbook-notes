@@ -1,8 +1,6 @@
-# TryHackMe Advanced SQL Injection
+# Advanced SQL Injection
 
 {% embed url="https://tryhackme.com/room/advancedsqlinjection" %}
-
-
 
 ### Task 4: Filter Evasion Techniques
 
@@ -20,7 +18,7 @@ We can attempt to trick the system into providing us more information, by inject
 
 The following code snippet displays a simple SQLi prevention mechanism where the application simply removes a few important keywords:
 
-<figure><img src="../../../../.gitbook/assets/image (36).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../../.gitbook/assets/image (36).png" alt=""><figcaption></figcaption></figure>
 
 Thus, this causes the final SQL command to not work, as the `OR` keyword will be removed. However, it can be easily bypassed by methods such as URL encoding the payload, or obfuscating the keywords.&#x20;
 
@@ -70,7 +68,7 @@ The following presents a few payloads we can use to bypass the filter mechanism:
 
 1. `' Or '1=1` -> `SELECT * FROM books WHERE book_name = '' Or '1=1'`
 
-<figure><img src="../../../../.gitbook/assets/image (37).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../../.gitbook/assets/image (37).png" alt=""><figcaption></figcaption></figure>
 
 2. `' Or 1=1 oR '` -> `SELECT * FROM books WHERE book_name = '' Or 1=1 oR ''`&#x20;
 3. `' Or 1=1--` -> `SELECT * FROM books WHERE book_name = '' Or 1=1-- '`&#x20;
