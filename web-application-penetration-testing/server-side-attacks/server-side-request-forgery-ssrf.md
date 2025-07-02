@@ -5,7 +5,7 @@ description: >-
   the attacker's choice.
 ---
 
-# SSRF
+# Server-side Request Forgery (SSRF)
 
 ## Methods
 
@@ -38,9 +38,9 @@ White (access) list filtering is a method to control outgoing requests, by denyi
 
 #### 1. Self hosted domain
 
-&#x20;For example, a certain access list requires the requested HTTP URL to begin with a certain value , such as: `domain.com`. This means that only requests to valid URLs such as `http://domain.com/api`will be accepted, while requests to URLs such as: `http://malicious.com` will not.&#x20;
+&#x20;For example, a certain access list requires the requested HTTP URL to begin with a certain value , such as: `domain.com`. This means that only requests to valid URLs such as `http://domain.com/api`will be accepted, while requests to other URLs such as: `http://malicious.com` will not.&#x20;
 
-However, this can be bypassed by hosting a DNS server to resolve a malicious domain with the required starting value, such as: `http://domain.com.malicious.com`. In this case, the value: `domain.com` is the subdomain of the root domain: `malicious.com`, which is controlled by the attacker. Since the domain starts with the required value of `domain.com`, it will be accepted.
+However, this can be bypassed by hosting a record in a DNS server with the entry: `http://domain.com.malicious.com`. In this case, the value: `domain.com` is the subdomain of the root domain `malicious.com`, which is controlled by the attacker. Since the domain starts with the required value of `domain.com`, it will be accepted, and can be configured to resolve to any IP address of choice.
 
 ### Bypass deny list filtering
 
@@ -77,7 +77,7 @@ $ ping 0xa9fea9fe
 
 Hosting a DNS server to resolve controlled subdomains to a specified IP address value will be another method to bypass IP address restrictions.&#x20;
 
-For example a certain deny list includes the localhost addresses. An attacker controlled domain: `https://localhost.malicious.com` can be created to resolve to the localhost address of 1`27.0.0.1.` However, since this particular domain was not specified in the deny list, the request will be sent, and eventually resolved to the localhost address, completely bypassing the deny list.
+For example a certain deny list includes the localhost addresses. An attacker controlled domain: `https://localhost.malicious.com` can be created to resolve to the localhost address of`127.0.0.1.` However, since this particular domain was not specified in the deny list, the request will be allowed, and eventually resolved to the localhost address, completely bypassing the deny list.
 
 This method can be used to bypass IP address restrictions for other addresses besides the localhost, by changing the IP address value in the DNS server.
 
