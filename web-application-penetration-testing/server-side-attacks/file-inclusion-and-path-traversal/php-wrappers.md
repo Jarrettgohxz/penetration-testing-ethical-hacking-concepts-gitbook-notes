@@ -8,8 +8,6 @@ PHP comes with many built-in wrappers for various URL-style protocols for use wi
 
 The following covers a few simple techniques using PHP wrappers. Refer to _The Hacker Recipe's_ notes above for more examples.&#x20;
 
-> Each of the payload will be valid only for some PHP functions, but not for others. Eg. `data://text/plain;base64,...` may be valid for `file_get_contents()`, but not for `include()`.&#x20;
-
 #### `php://filter`&#x20;
 
 Using the option `convert.base64-encode`, which simply base64 encodes the output, we can trick the server into returning the contents of a file in base64 format. Eg. The `/etc/passwd` file.
