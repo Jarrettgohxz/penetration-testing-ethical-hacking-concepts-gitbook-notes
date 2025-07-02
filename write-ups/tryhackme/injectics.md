@@ -6,7 +6,7 @@
 
 #### Zed Attack Proxy (ZAP)
 
-From ZAP, I found the hidden directory `composer.lock`. I found out the application uses _Twig v2.14.0:_
+From ZAP, I found the hidden directory `composer.lock`. From there, I found out that the application uses _Twig v2.14.0:_
 
 <figure><img src="../../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
 
