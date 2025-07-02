@@ -1,6 +1,7 @@
 # Table of contents
 
 * [Introduction](README.md)
+  * [Resources](introduction/resources.md)
 
 ## 💿 Virtualbox network setup
 
@@ -143,7 +144,7 @@
 * [Web app pentesting methodology](web-app-pentesting-methodology.md)
 * [OWASP](owasp/README.md)
   * [OWASP top 10 2021](owasp/owasp-top-10-2021.md)
-  * [OWASP API top 10](owasp/owasp-api-top-10.md)
+  * [OWASP API top 10 2023](owasp/owasp-api-top-10-2023.md)
   * [Web Security Testing Guide (WSTG)](owasp/web-security-testing-guide-wstg.md)
     * [WSTG-ATHZ](owasp/web-security-testing-guide-wstg/wstg-athz/README.md)
       * [WSTG-ATHZ-05 \~ OAuth weaknesses](owasp/web-security-testing-guide-wstg/wstg-athz/wstg-athz-05-oauth-weaknesses.md)
