@@ -31,6 +31,7 @@
   * [maltego](tools/maltego.md)
   * [theHarvester](tools/theharvester.md)
   * [photon](tools/photon.md)
+  * [spiderfoot](tools/spiderfoot.md)
 
 ## 😨 Social Engineering
 
