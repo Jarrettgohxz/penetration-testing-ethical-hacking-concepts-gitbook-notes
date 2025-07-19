@@ -32,5 +32,4 @@ If an SSTI attack is successful, it can lead to Remote Code Execution (RCE), ena
 
 1. **TryHackMe Injectics:**
 
-{% embed url="https://app.gitbook.com/o/I4XKqsVaVRBqzVMRkmze/s/MsAGomcNx5xaB1xFygc9/~/changes/554/write-ups/tryhackme/injectics" %}
-
+{% embed url="https://jarrettgxz-sec.gitbook.io/penetration-testing-ethical-hacking-concepts/write-ups/tryhackme/injectics" %}
