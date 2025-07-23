@@ -40,7 +40,7 @@ app.post("/recommend-activity/:friendId", (req, res) => {
 });
 ```
 
-We can see that the route uses the \_.set() function to modify the `friend` object.&#x20;
+We can see that the route uses the `_.set()` function to modify the `friend` object.&#x20;
 
 {% embed url="https://www.geeksforgeeks.org/javascript/lodash-_-set-method/" %}
 
@@ -50,5 +50,5 @@ This function has the following signature:&#x20;
 _.set(object, path, value)
 ```
 
-&#x20;where the path value can be of the forms: `layer1.layer2` , `layer1.layer2[0].layer3` , etc. This means that we can also supply `__proto__.field`  to poison the object prototype.
+&#x20;where the path value can be of the forms: `layer1.layer2` , `layer1.layer2[0].layer3` , etc. This means that we can also supply `__proto__.field`  to poison the object prototype. In certain version of Lodash, this may work. Fortunately, it appears that they have fixed this vulnerability.
 
