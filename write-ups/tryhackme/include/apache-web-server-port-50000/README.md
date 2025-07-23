@@ -19,12 +19,15 @@ I decided to visit a few interesting looking routes:
 
 #### uploads
 
-...
+![](../../../../.gitbook/assets/image.png)
+
+A single file `profile.png` exists. Perhaps, we can somehow find a way to upload a web shell?
 
 #### templates
 
-...
+<figure><img src="../../../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
 
+There were nothing of interest in this directory.
 
+The other routes will be ignored due to the having no content (size: 0) or forbidden.
 
-The other routes are ignored due to the having no content (size: 0) or forbidden.

@@ -48,16 +48,16 @@ This presents an interesting vulnerability, since we are able to directly manipu
 
 <pre class="language-http"><code class="lang-http"><strong>POST /recommend-activity/1 HTTP/1.1
 </strong>Host: xxx.xxx.xxx.xxx:4000
-User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:128.0) Gecko/20100101 Firefox/128.0
+User-Agent: xxxx
 Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
 Accept-Language: en-US,en;q=0.5
 Accept-Encoding: gzip, deflate, br
 Content-Type: application/x-www-form-urlencoded
 Content-Length: 35
-Origin: http://10.10.233.149:4000
+Origin: http://xxx.xxx.xxx.xxx:4000
 Connection: keep-alive
-Referer: http://10.10.233.149:4000/friend/1
-Cookie: connect.sid=token
+Referer: http://xxx.xxx.xxx.xxx:4000/friend/1
+Cookie: connect.sid=xxxx
 Upgrade-Insecure-Requests: 1
 Priority: u=0, i
 
@@ -87,3 +87,30 @@ However, none of the payloads worked. Instead, I attempted to directly change th
 ```
 
 With this, we are now an admin. Upon navigating to the profile page, I noticed 2 more options on the navigation bar: _**“API”**_ and _**“Settings”**_
+
+### Additional findings
+
+The POST `/signin` route can be changed to `/signup` to create a new user:
+
+#### signin
+
+```http
+POST /signup HTTP/1.1
+Host: xxx.xxx.xxx.xxx:4000
+User-Agent: xxxx
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 33
+Origin: http://xxx.xxx.xxx.xxx:4000
+Connection: keep-alive
+Referer: http://xxx.xxx.xxx.xxx/signin
+Cookie: connect.sid=xxxx
+Upgrade-Insecure-Requests: 1
+Priority: u=0, i
+
+name=newuser&password=newpass
+```
+
+This request creates a new user with the username and password of `newuser` and `newpass`  respectively.

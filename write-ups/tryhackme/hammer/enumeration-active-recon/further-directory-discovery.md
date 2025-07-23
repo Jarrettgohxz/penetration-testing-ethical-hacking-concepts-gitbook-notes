@@ -20,7 +20,7 @@ $ gobuster dir -x php -u http://<target>:1337/ -w Discovery/Web-Content/common.t
 $ gobuster dir -w Discovery/Web-Content/common.txt -u http://<target>:1337/
 ```
 
-<figure><img src="../../../../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 _**Interesting directories**_
 
@@ -52,7 +52,7 @@ $ gobuster dir -x php,js -w Discovery/Web-Content/common.txt -u http://<target>:
 
 > Note: specifying 2 extensions will double the runtime as the fuzzer will duplicate the requests
 
-<figure><img src="../../../../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 {% endstep %}
 
 {% step %}
