@@ -28,7 +28,7 @@ Interesting file found: `composer.json` . The content of the file confirms the p
 
 I found the following comments at the bottom of the source code of the `/` page:
 
-<figure><img src="../../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 After navigating to the `mail.log` file, I found the following note:
 
