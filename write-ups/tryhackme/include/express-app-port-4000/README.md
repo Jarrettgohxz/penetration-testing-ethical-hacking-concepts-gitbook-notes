@@ -12,9 +12,11 @@ From inspection of the network requests, I discovered that the server uses _Expr
 
 Running a simple directory enumeration on port 4000 with `gobuster` , using the [wordlist](https://github.com/danielmiessler/SecLists/blob/master/Discovery/Web-Content/common.txt):
 
+{% code overflow="wrap" %}
 ```sh
 $ gobuster dir -u http://<target>:4000 -w <wordlist>
 ```
+{% endcode %}
 
 <figure><img src="../../../../.gitbook/assets/image (45).png" alt=""><figcaption></figcaption></figure>
 
@@ -92,8 +94,7 @@ With this, we are now an admin. Upon navigating to the profile page, I noticed 2
 
 The POST `/signin` route can be changed to `/signup` to create a new user:
 
-#### signin
-
+{% code title="/signin" %}
 ```http
 POST /signup HTTP/1.1
 Host: xxx.xxx.xxx.xxx:4000
@@ -112,5 +113,6 @@ Priority: u=0, i
 
 name=newuser&password=newpass
 ```
+{% endcode %}
 
 This request creates a new user with the username and password of `newuser` and `newpass`  respectively.

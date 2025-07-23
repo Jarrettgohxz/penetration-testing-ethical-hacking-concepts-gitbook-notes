@@ -11,9 +11,11 @@ We can perform a simple directory enumeration using the [wordlist](https://githu
 * Notice that the `-x php` option is added to the command
 * The authentication details will be set via the `-H "Cookie: PHPSESSID=xxx"` value. The PHPSESSID value can be found from the network inspection of the initial **GET** request to load the webpage.
 
+{% code overflow="wrap" %}
 ```sh
 $ gobuster dir -u http://<target>:50000 -w <wordlist> -x php -H "Cookie: PHPSESSID=xxx"
 ```
+{% endcode %}
 
 I decided to visit a few interesting looking routes:
 
