@@ -8,7 +8,7 @@ I opened Burp suite, and configured my browser to route traffic through the Burp
 
 From inspection of the network requests, I discovered that the server uses _Express_ via the  `X-Powered-By` response headers. Express is a Node.js web framework used to develop web server applications ([https://expressjs.com/](https://expressjs.com/)).
 
-<figure><img src="../../../.gitbook/assets/image (40).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (40).png" alt=""><figcaption></figcaption></figure>
 
 Running a simple directory enumeration on port 4000 with `gobuster` , using the [wordlist](https://github.com/danielmiessler/SecLists/blob/master/Discovery/Web-Content/common.txt):
 
@@ -16,11 +16,11 @@ Running a simple directory enumeration on port 4000 with `gobuster` , using the 
 $ gobuster dir -u http://<target>:4000 -w <wordlist>
 ```
 
-<figure><img src="../../../.gitbook/assets/image (45).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (45).png" alt=""><figcaption></figcaption></figure>
 
 From the enumeration results, the one that stands out is the `/signup` route. I visited the address in the browser, and was faced with the following error:
 
-<figure><img src="../../../.gitbook/assets/image (44).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (44).png" alt=""><figcaption></figcaption></figure>
 
 From this error message, we can learn of a few things:
 
@@ -36,13 +36,13 @@ b)  The root directory of the web application is `/home/ubuntu/include`&#x20;
 
 Moving on, I logged into the application using the `guest:guest` credentials found earlier. I was presented with a page displaying my profile, along with a few of my friends. Navigating to my profile, I was able to view my current details, along with a form to "Recommend an Activity":
 
-<figure><img src="../../../.gitbook/assets/image (46).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (46).png" alt=""><figcaption></figcaption></figure>
 
 
 
 Upon entering the values **test** and **test** to the fields, a new entry appeared on the profile details:
 
-<figure><img src="../../../.gitbook/assets/image (49).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (49).png" alt=""><figcaption></figcaption></figure>
 
 This presents an interesting vulnerability, since we are able to directly manipulate the profile details. The following displays the HTTP POST request:
 
