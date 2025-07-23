@@ -128,8 +128,12 @@ SSH-2.0-OpenSSH_8.2p1 Ubuntu-4ubuntu0.11
 <?php system($_GET['cmd']); ?> # click enter right after
 ```
 
+This method works.
+
 #### Interesting discovery
 
 With the `img` payload value of `#` (`/profile.php?img=#`), we are presented with a status **400** response:
 
 <figure><img src="../../../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+
+Even though this does not allow for any direct exploits, it tells us the hostname: `mail.filepath.lab.`
