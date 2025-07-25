@@ -319,7 +319,7 @@
       * [LFI + path traversal](write-ups/tryhackme/include/apache-web-server-port-50000/lfi-+-path-traversal.md)
     * [Further learning](write-ups/tryhackme/include/further-learning/README.md)
       * [Other access methods](write-ups/tryhackme/include/further-learning/other-access-methods.md)
-      * [Gaining remote shell](write-ups/tryhackme/include/further-learning/gaining-remote-shell.md)
+      * [Gaining remote shell with LFI2RCE](write-ups/tryhackme/include/further-learning/gaining-remote-shell-with-lfi2rce.md)
       * [Inspecting Express app source code](write-ups/tryhackme/include/further-learning/inspecting-express-app-source-code.md)
 * [OverTheWire](write-ups/overthewire/README.md)
   * [Untitled](write-ups/overthewire/untitled.md)
