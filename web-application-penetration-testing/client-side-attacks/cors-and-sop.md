@@ -38,7 +38,7 @@ Consequently, this attack will still succeed even though CORS is properly enforc
 
 Suppose another website with partial CSRF protections (proper CSRF token, but a misconfigured `SameSite` value such as `None` ) , and a misconfigured CORS settings. Now, an attacker can setup a malicious website that runs a script that sends a GET request to the target website, to retrieve the CSRF token from the source code, before including this token in a new POST request to the target website to invoke a state change. Due to the misconfigured CORS settings, the browser allows the script to read the response value with the CSRF token value.
 
-Now, suppose that the `SameSite` value is `Lax` instead, the browser will not include the cookies in POST request, preventing any form of CSRF. However,  an auto-submitting HTML form that performs a top-level navigation action will be able to bypass the `SameSite`  attribute.
+Now, suppose that the `SameSite` value is `Lax` instead, the previous method of exploitation will not work since the browser will not include the cookies in POST request, preventing any form of CSRF. However,  an auto-submitting HTML form that performs a top-level navigation action will be able to bypass the `SameSite`  attribute.
 
 
 
