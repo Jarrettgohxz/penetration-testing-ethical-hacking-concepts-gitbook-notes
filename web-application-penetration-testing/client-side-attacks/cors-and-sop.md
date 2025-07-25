@@ -9,6 +9,10 @@ Specifically, CORS adds flexibility to SOP, by allowing extended access configur
 SOP is a default browser-enforced security policy.
 
 > NOTE: CORS and SOP is **NOT** a protection against cross-origin attacks such as Cross-Site Request Forgery (CSRF). The reason for this is that CORS/SOP prevents Javascript from accessing data loaded from cross-origin requests. However, CSRF simply requires the request to be send (to invoke a state change, etc.) but does not actually require access to the data.
+>
+>
+>
+> Refer to the section **"Possible relations between CORS and CSRF"** for more details on how CORS may actually allow CSRF even with security measures CSRF.
 
 ### Important CORS headers
 
@@ -24,7 +28,15 @@ By default, the `Access-Control-Allow-Origin` header is used to allow requests t
 
 We can allow reading of response value when credentials are sent with the request by setting the `Access-Control-Allow-Credentials` header to _**true**_.
 
+### Possible relations between CORS and CSRF
 
+As noted before, CORS itself does not completely prevent CSRF attacks. Suppose a website implemented proper CORS headers to only allow access to resource to a trusted origin. However, suppose this website failed to enforce proper CSRF security mechanisms (lack of CSRF token and `SameSite=None`). This can be exploited by an attacker to lure the user to a malicous website that runs a malicious script that sends a POST request to another website that the user is currently logged in to. Even with the CORS protection, the server will still process the POST request, and update a certain value in the system, while CORS will merely prevent the script from accessing the response.&#x20;
+
+Consequently, this attack will still succeed even though CORS is properly enforced, simply due to the poor CSRF protections.
+
+#### How can a lack of CORS protection allow for a CSRF attack?
+
+Suppose another website with partial CSRF protections (proper CSRF token, but a misconfigured `SameSite` attribute value - default `SameSite=Lax` such as Chrome) , but a  misconfigured CORS settings. Now, an attacker can setup a malicious website that runs a script that sends a GET request to the target website, to retrieve the CSRF token from the source code, before including this token in a new POST request to the target website to invoke a state change. Due to the misconfigured CORS settings, the browser allows the script to read the response value with the CSRF token value.
 
 
 
