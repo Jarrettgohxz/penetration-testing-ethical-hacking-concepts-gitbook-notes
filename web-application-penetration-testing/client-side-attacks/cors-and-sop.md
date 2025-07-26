@@ -20,7 +20,7 @@ CORS adds flexibility to SOP, by allowing extended access configurations for con
 
 1. `Access-Control-Allow-Origin`&#x20;
 
-This header can be included in the web server's response to control the origins that are allowed to interact with the data via scripts. The `Origin` header will be automatically included by the browser. Only if the origin matches the value returned by the `Access-Control-Allow-Origin` header, will the browser allow the calling script to access the response value.
+This header can be included in the web server's response to control the origins that are allowed to interact with the data via scripts. The `Origin` header will be automatically included by the browser. The server will check if the origin is present in the allowed origins list, return  the `Access-Control-Allow-Origin` header if it matches, else it will not return the header. The browser will decide if  the calling script is allowed to access the response value according to the response from the server.
 
 This header allows other origin values such as `null` or `*` .
 
