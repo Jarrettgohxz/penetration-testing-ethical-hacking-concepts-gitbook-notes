@@ -40,7 +40,7 @@ xx
 
 ### Basic example of an attack
 
-Let's assume that the front-end server prioritizes  `Content-Length` while the  back-end prioritizes `Transfer-Encoding` . A HTTP request can be crafted to exploit the HTTP Request Smuggling vulnerability:
+Let's assume that the front-end server prioritizes  `Content-Length` while the back-end prioritizes `Transfer-Encoding` . A HTTP request can be crafted to exploit the HTTP Request Smuggling vulnerability:
 
 ```http
 POST / HTTP/1.1
@@ -59,5 +59,10 @@ Content-Length: 500
 name=test&query=<payload_position>
 ```
 
-In the following payload, the front-end server will first
+#### Front-end server
 
+In the following payload, the front-end server will first interpret the boundaries based on the `Content-Length` header (value of **140**). This will interpret the entire request up to the end of the data body as a single request, and forward it to the back-end server.
+
+#### Back-end server
+
+The back-end server will interpret the boundaries based on the `Transfer-Encoding` header, and read the first&#x20;

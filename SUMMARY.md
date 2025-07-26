@@ -158,7 +158,9 @@
       * [WSTG-SESS-10 \~ JWT](owasp/web-security-testing-guide-wstg/wstg-sess/wstg-sess-10-jwt.md)
 * [General web knowledge](general-web-knowledge/README.md)
   * [URI standard (RFC 3986)](general-web-knowledge/uri-standard-rfc-3986.md)
-  * [HTTP headers](general-web-knowledge/http-headers.md)
+  * [HTTP headers](general-web-knowledge/http-headers/README.md)
+    * [Exploitable headers](general-web-knowledge/http-headers/exploitable-headers.md)
+    * [Request Smuggling](general-web-knowledge/http-headers/request-smuggling.md)
 
 ## 🛣️ Attacks on routing protocols
 
