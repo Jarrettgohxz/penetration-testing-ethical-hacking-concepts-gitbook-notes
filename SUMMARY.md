@@ -130,6 +130,7 @@
   * [CORS & SOP](web-application-penetration-testing/client-side-attacks/cors-and-sop.md)
   * [CORS vs CSRF](web-application-penetration-testing/client-side-attacks/cors-vs-csrf.md)
   * [Cross-site scripting (XSS)](web-application-penetration-testing/client-side-attacks/cross-site-scripting-xss.md)
+* [HTTP Request Smuggling](web-application-penetration-testing/http-request-smuggling.md)
 * [Web Content Discovery](web-application-penetration-testing/web-content-discovery/README.md)
   * [Directories/URLs gathering](web-application-penetration-testing/web-content-discovery/directories-urls-gathering.md)
   * [Subdomain enumeration](web-application-penetration-testing/web-content-discovery/subdomain-enumeration.md)
