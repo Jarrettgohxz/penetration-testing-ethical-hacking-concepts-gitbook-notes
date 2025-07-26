@@ -10,7 +10,7 @@ CORS adds flexibility to SOP, by allowing extended access configurations for con
 
 
 
-> NOTE: CORS and SOP is **NOT** a protection against cross-origin attacks such as Cross-Site Request Forgery (CSRF). The reason for this is that CORS/SOP prevents Javascript from accessing data loaded from cross-origin requests. However, CSRF simply requires the request to be send (to invoke a state change, etc.) but does not actually require access to the data.
+> NOTE: CORS and SOP is **NOT** a protection against cross-origin attacks such as Cross-Site Request Forgery (CSRF)., and should never be used alone as a defence mechanism against it. The reason for this is that CORS/SOP prevents Javascript from accessing data loaded from cross-origin requests. However, CSRF simply requires the request to be send (to invoke a state change, etc.) but does not actually require access to the data.
 >
 >
 >
@@ -38,9 +38,13 @@ Consequently, this attack will still succeed even though CORS is properly enforc
 
 #### How can a lack of CORS protection allow for a CSRF attack?
 
-Suppose another website with partial CSRF protections (proper CSRF token, but a misconfigured `SameSite` value such as `None` ) , and a misconfigured CORS settings. Now, an attacker can setup a malicious website that runs a script that sends a GET request to the target website, to retrieve the CSRF token from the source code, before including this token in a new POST request to the target website to invoke a state change. Due to the misconfigured CORS settings, the browser allows the script to read the response value with the CSRF token value.
+As mentioned earlier, CORS & SOP alone does not defend against CSRF attacks. However, there may be instances where a lack of CORS protection may actually contribute to making a CSRF attack possible.
 
-Now, suppose that the `SameSite` value is `Lax` instead, the previous method of exploitation will not work since the browser will not include the cookies in POST request, preventing any form of CSRF. However,  an auto-submitting HTML form that performs a top-level navigation action will be able to bypass the `SameSite`  attribute.
+Suppose another website with partial CSRF protections (proper CSRF token, but a misconfigured `SameSite` value such as `None` ) , and a misconfigured CORS settings. Now, an attacker can setup a malicious website that runs a script that sends a GET request to the target website (assume that the CSRF token can be found from the source code), to retrieve the CSRF token from the source code, before including this token in a new POST request to the target website to invoke a state change, effectively bypassing the original CSRF token protection in place. This is due to the misconfigured CORS settings, the browser allows the script to read the response value with the CSRF token value.
+
+The above example illustrates a scenario where the `SameSite` attribute is set to `None` .Now, suppose that the `SameSite` value is `Lax` instead, the previous method of exploitation will not work since the browser will not include the cookies in POST request, preventing any form of CSRF. However,  an auto-submitting HTML form can be used instead, that performs a top-level navigation action, effectively bypassing the `SameSite=Lax` configurations.
+
+> Refer to the section  [CSRF](https://jarrettgxz-sec.gitbook.io/penetration-testing-ethical-hacking-concepts/web-application-penetration-testing/client-side-attacks/csrf) to learn more about the `SameSite` attribute.
 
 
 
