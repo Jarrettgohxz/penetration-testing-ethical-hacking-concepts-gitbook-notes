@@ -335,3 +335,9 @@
 ## AI prompt
 
 * [ChatGPT](ai-prompt/chatgpt.md)
+
+## Windows Active Directory
+
+* [Introduction](windows-active-directory/introduction.md)
+* [Tools](windows-active-directory/tools/README.md)
+  * [Responder](windows-active-directory/tools/responder.md)
