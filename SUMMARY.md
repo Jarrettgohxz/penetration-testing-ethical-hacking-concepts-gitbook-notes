@@ -339,5 +339,7 @@
 ## Windows Active Directory
 
 * [Introduction](windows-active-directory/introduction.md)
+* [Authentication](windows-active-directory/authentication/README.md)
+  * [NetNTLM](windows-active-directory/authentication/netntlm.md)
 * [Tools](windows-active-directory/tools/README.md)
   * [Responder](windows-active-directory/tools/responder.md)
