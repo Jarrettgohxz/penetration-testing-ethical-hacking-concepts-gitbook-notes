@@ -17,9 +17,21 @@ The SMB protocol uses the NetNTLM authentication method, which can be exploited 
 
 The [Responder](https://jarrettgxz-sec.gitbook.io/penetration-testing-ethical-hacking-concepts/windows-active-directory/tools/responder) tool can be used to automatically watch the network, and intercept any name resolution queries, before quickly sending a response packet to the source, while acting as the intended recipient - essentially a race condition situation to see if the spoofed or legitimate response will reach first.
 
-This will trick the server to communicate with the rogue server (running Responder tool) instead of the legitimate device, to capture the NTLM challenge, where we can proceed to crack it and potentially retrieve a user password.
+This will trick the server to communicate with the rogue server (running Responder tool) instead of the legitimate device.
 
+#### Possible exploits for the NetNTLM authentication
 
+1. **Intercept and crack the NetNTLM challenge**
+
+The rogue device will first capture the NTLM challenge, before proceeding to crack it using hashcat:
+
+```sh
+$ hashcat ...
+```
+
+2. **Relaying the challenge**
+
+...
 
 
 
