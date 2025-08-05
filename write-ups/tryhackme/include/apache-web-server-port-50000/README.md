@@ -21,13 +21,13 @@ I decided to visit a few interesting looking routes:
 
 #### uploads
 
-![](<../../../../.gitbook/assets/image (2).png>)
+![](<../../../../.gitbook/assets/image (2) (1).png>)
 
 A single file `profile.png` exists. Perhaps, we can somehow find a way to upload a web shell?
 
 #### templates
 
-<figure><img src="../../../../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 There were nothing of interest in this directory.
 
