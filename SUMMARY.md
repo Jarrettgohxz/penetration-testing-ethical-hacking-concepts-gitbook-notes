@@ -99,7 +99,8 @@
 * [Msfvenom](vulnerability-and-exploitation/msfvenom.md)
 * [Binary Exploitation](vulnerability-and-exploitation/binary-exploitation/README.md)
   * [x86 architecture](vulnerability-and-exploitation/binary-exploitation/x86-architecture.md)
-  * [Buffer Overflow](vulnerability-and-exploitation/binary-exploitation/buffer-overflow.md)
+  * [Buffer Overflow](vulnerability-and-exploitation/binary-exploitation/buffer-overflow/README.md)
+    * [x86](vulnerability-and-exploitation/binary-exploitation/buffer-overflow/x86.md)
   * [Tools](vulnerability-and-exploitation/binary-exploitation/tools/README.md)
     * [gdb, mona, ghidra, ...](vulnerability-and-exploitation/binary-exploitation/tools/gdb-mona-ghidra-....md)
 
