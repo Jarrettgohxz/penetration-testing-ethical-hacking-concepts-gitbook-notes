@@ -19,17 +19,25 @@ The [Responder](https://jarrettgxz-sec.gitbook.io/penetration-testing-ethical-ha
 
 This will trick the server to communicate with the rogue server (running Responder tool) instead of the legitimate device.
 
-#### Possible exploits for the NetNTLM authentication
+### Exploit methods for the NetNTLM authentication
 
-1. **Intercept and crack the NetNTLM challenge**
+#### 1. Intercept and crack the NetNTLM challenge
 
-The rogue device will first capture the NTLM challenge, before proceeding to crack it using hashcat:
+The rogue device will first start a listener to intercept the NTLM challenge:
 
 ```sh
-$ hashcat ...
+$ responder -I <iface>
 ```
 
-2. **Relaying the challenge**
+After retrieving the hash, we can proceed to crack it using hashcat:
+
+```sh
+$ hashcat -m 5600 <hash_file> <password_file> --force
+```
+
+* `-m 5600`: NetNNTLMv2 (Copy paste directly in browser to maintain fragment: [https://hashcat.net/wiki/doku.php?id=hashcat#:\~:text=5600](https://hashcat.net/wiki/doku.php?id=hashcat))
+
+#### 2. Relaying the challenge
 
 ...
 
