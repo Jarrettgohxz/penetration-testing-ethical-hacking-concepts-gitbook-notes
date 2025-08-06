@@ -349,3 +349,4 @@
   * [NetNTLM](windows-active-directory/authentication/netntlm.md)
 * [Tools](windows-active-directory/tools/README.md)
   * [Responder](windows-active-directory/tools/responder.md)
+  * [runas.exe](windows-active-directory/tools/runas.exe.md)
