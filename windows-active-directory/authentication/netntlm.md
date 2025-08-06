@@ -55,7 +55,15 @@ $ hashcat -m 5600 ntlmv2-hash <password_file> --force
 
 #### 2. Relaying the challenge
 
-...
+This method involves performing a Man-in-the-Middle style attack between a user and target server. However, this requires a few conditions to be met for the attack to be relevant:
+
+a. SMB signing disabled
+
+b. The associated user account needs the apprioprate persmissions on the server to access our desired resources - ideally administrative privileges
+
+Thus, this attack is not usually used. The image shown below is taken directly from the TryHackMe's breaching AD room ([https://tryhackme.com/room/breachingad](https://tryhackme.com/room/breachingad)), and can be used to illustrate the overall relay attack flow:
+
+<figure><img src="../../.gitbook/assets/image (54).png" alt=""><figcaption></figcaption></figure>
 
 
 
