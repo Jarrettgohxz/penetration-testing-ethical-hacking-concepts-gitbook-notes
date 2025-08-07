@@ -351,6 +351,7 @@
   * [runas.exe](windows-active-directory/enumeration/runas.exe.md)
   * [Microsoft Management Console (MMC)](windows-active-directory/enumeration/microsoft-management-console-mmc.md)
   * [Command Prompt (cmd)](windows-active-directory/enumeration/command-prompt-cmd.md)
-  * [Powershell](windows-active-directory/enumeration/powershell.md)
+  * [Powershell](windows-active-directory/enumeration/powershell/README.md)
+    * [ObjectClass](windows-active-directory/enumeration/powershell/objectclass.md)
 * [Tools](windows-active-directory/tools/README.md)
   * [Responder](windows-active-directory/tools/responder.md)

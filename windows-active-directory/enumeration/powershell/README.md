@@ -16,6 +16,8 @@ The commands utilized are referred to as `cmdlets` .
 
 **Important option used in the subsequent commands**
 
+> Note that some of the commands (eg. `Get-ADDomain` , etc.) may not support all the options listed below.  Refer to the respective documentation in the official link above for more information, and this list is provided just for a quick reference
+
 a. `-Identity`&#x20;
 
 > Specifies an Active Directory user object.
@@ -52,6 +54,51 @@ PS> GET-ADGroupMember -Identity <groupname> -Server <server>
 
 For a more generic search on any AD objects, we can utilize the `Get-ADObject` cmdlet.
 
+#### Examples
+
+1. Filter by `ObjectClass` , `Name` , etc.
+
+```powershell
+PS> Get-ADObject -Filter 'ObjectClass -eq "container"'
+DistinguishedName                                   Name           
+-----------------                                   ----
+CN=Users,DC=test,DC=com                             Users
+CN=Computers,DC=test,DC=com                         Computers       
+CN=System,DC=test,DC=com                            System
+CN=WinsockServices,CN=System,DC=za,DC=test,DC=com   WinsockServices
+CN=Program Data,DC=za,DC=tryhackme,DC=com           Program Data 
+...
+redacted 
+...
+```
+
+```powershell
+PS> Get-ADObject -Filter 'Name -eq "Computers"'
+DistinguishedName                 Name       ObjectClass         ObjectGUID
+-----------------                 ----       -----------         ----------
+CN=Computers,DC=test,DC=com       Computers  container           xxxx
+OU=Computers,DC=test,DC=com Computers  organizationalUnit  xxxx
+...
+
+PS> Get-ADObject -Filter 'Name -eq "Users"'                                                       
+
+DistinguishedName                             Name      ObjectClass            ObjectGUID
+-----------------                             ----      -----------            ----------
+CN=Users,DC=test,DC=com                       Users     container              xxxx
+CN=Users,CN=Builtin,DC=test,DC=com            Users     group                  xxxx
+OU=Users,OU=Accounts,DC=test,DC=com      Users     organizationalUnit          xxxx
+
+PS> Get-ADObject -Filter 'Name -eq "WinSockServices"'         
+                                                                                                              
+DistinguishedName                                      Name             ObjectClass   ObjectGUID
+-----------------                                      ----             -----------   ----------
+CN=WinsockServices,CN=System,DC=test,DC=com            WinsockServices  container     xxxx
+```
+
+We can even add the `-Properties *` option to view the full list of properties each object has.&#x20;
+
+> Note that the example outputs shown above simply illustrates a hypothetical example that have been slightly modified based on my experiment on a test AD network.
+
 #### 4. Domains
 
 We can use the `Get-ADDomain` cmdlet to retrieve more information about a specific domain:
@@ -62,7 +109,7 @@ PS> GET-ADDomain -Server <server>
 
 ### Examples
 
-1. **Find value of an attribute for a user/group**
+1. **Find value of a property for a user/group**
 
 **Standard command to list all the properties**
 
