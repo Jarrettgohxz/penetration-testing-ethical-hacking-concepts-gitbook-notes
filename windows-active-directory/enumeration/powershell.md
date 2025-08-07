@@ -64,6 +64,8 @@ PS> GET-ADDomain -Server <server>
 
 1. **Find value of an attribute for a user/group**
 
+**Standard command to list all the properties**
+
 ```powershell
 PS> Get-ADUser -Identity <identity> -Server <server> -Properties *
 PS> Get-ADGroup -Identity <identity> -Server <server> -Properties *
@@ -81,8 +83,14 @@ Created          : dd/mm/yyy xx.xx.xx.xx
 ...
 ```
 
+Display only the specified property, along with other default properties:
+
+```powershell
+PS> Get-ADGroup -Identity "Test-Group" -Server xxxx -Properties Created
+```
+
 To retrieve the `Created` attribute only:
 
 ```powershell
-PS> GET-ADGroup -Identity "Test Group" -Server xxxx -Properties Title | Select-Object -ExpandProperty Created
+PS> GET-ADGroup -Identity "Test Group" -Server xxxx -Properties Created | Select-Object -ExpandProperty Created
 ```
