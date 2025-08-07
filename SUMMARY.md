@@ -146,7 +146,7 @@
 ***
 
 * [Authentication/session management](authentication-session-management/README.md)
-  * [OWASP WSTG-SESS-10 \~ JSON Web Token (JWT) ](authentication-session-management/json-web-token-jwt.md)
+  * [OWASP WSTG-SESS-10 \~ JSON Web Token (JWT)](authentication-session-management/json-web-token-jwt.md)
   * [OWASP WSTG-ATHZ-05 \~ OAuth weaknesses](authentication-session-management/oauth-weaknesses.md)
 * [Webshell](webshell.md)
 * [Web API pentesting](web-api-pentesting/README.md)
@@ -239,7 +239,7 @@
       * [Insecure service permission](privilege-escalation/windows/vulnerabilities-exploit/service-misconfigurations/insecure-service-permission.md)
     * [Abusing privileges](privilege-escalation/windows/vulnerabilities-exploit/abusing-privileges.md)
 
-## Ⓜ️ MITRE ATT\&CK&#x20;
+## Ⓜ️ MITRE ATT\&CK
 
 * [Introduction](mitre-att-and-ck/introduction.md)
 
@@ -351,5 +351,6 @@
   * [runas.exe](windows-active-directory/enumeration/runas.exe.md)
   * [Microsoft Management Console (MMC)](windows-active-directory/enumeration/microsoft-management-console-mmc.md)
   * [Command Prompt (cmd)](windows-active-directory/enumeration/command-prompt-cmd.md)
+  * [Powershell](windows-active-directory/enumeration/powershell.md)
 * [Tools](windows-active-directory/tools/README.md)
   * [Responder](windows-active-directory/tools/responder.md)
