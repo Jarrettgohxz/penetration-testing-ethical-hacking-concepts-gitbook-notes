@@ -56,6 +56,10 @@ For a more generic search on any AD objects, we can utilize the `Get-ADObject` c
 
 #### Examples
 
+_Useful reference:_
+
+{% embed url="https://jarrettgxz-sec.gitbook.io/penetration-testing-ethical-hacking-concepts/windows-active-directory/enumeration/powershell/objectclass" %}
+
 1. Filter by `ObjectClass` , `Name` , etc.
 
 ```powershell
