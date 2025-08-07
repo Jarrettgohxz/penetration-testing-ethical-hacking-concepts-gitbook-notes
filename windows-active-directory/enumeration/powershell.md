@@ -54,7 +54,7 @@ PS> GET-ADGroupMember -Identity <groupname> -Server <server>
 
 For a more generic search on any AD objects, we can utilize the `Get-ADObject` cmdlet.
 
-#### Examples
+**Examples using `Get-ADObject`**
 
 _Useful reference:_
 
