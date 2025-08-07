@@ -33,7 +33,7 @@ c. `-Properties`
 #### 1. Users
 
 ```powershell
-PS> GET-ADUser -Identity <username> -Server <server> -Properties <props>
+PS> GET-ADUser -Identity <username> -Server <server> -Properties <properties>
 ```
 
 * `-Properties *`:  to display all the attributes set on the object
@@ -41,8 +41,10 @@ PS> GET-ADUser -Identity <username> -Server <server> -Properties <props>
 #### 2. Groups
 
 ```powershell
-PS> GET-ADGroup -Identity <groupname> -Server <server>
+PS> GET-ADGroup -Identity <groupname> -Server <server> -Properties *
 ```
+
+`-Properties *`:  to display all the attributes set on the object
 
 _**Enumerate group membership**_
 
@@ -128,16 +130,9 @@ PS> GET-ADDomain -Server <server>
 
 ### Examples
 
-1. **Find value of a property for a user/group**
+1. **Find the value of a property for a user/group**
 
-**Standard command to list all the properties**
-
-```powershell
-PS> Get-ADUser -Identity <identity> -Server <server> -Properties *
-PS> Get-ADGroup -Identity <identity> -Server <server> -Properties *
-```
-
-Eg. Find the creation date for the group _**Test Group**_ (`Created` attribute)_:_
+Suppose we want to find the creation date for the group _**Test Group**_ (`Created` attribute)_:_
 
 ```powershell
 # eg. We can first list out all the properties
@@ -149,7 +144,7 @@ Created          : dd/mm/yyy xx.xx.xx.xx
 ...
 ```
 
-Display only the specified property, along with other default properties (automatically included by the command):
+To display only the specified property, along with other default properties (automatically included by the command):
 
 ```powershell
 PS> Get-ADGroup -Identity "Test-Group" -Server xxxx -Properties Created
