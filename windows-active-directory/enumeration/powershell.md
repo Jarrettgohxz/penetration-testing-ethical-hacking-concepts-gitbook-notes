@@ -67,7 +67,8 @@ PS> GET-ADDomain -Server <server>
 1. **Find value of an attribute for a user/group**
 
 <pre class="language-powershell"><code class="lang-powershell"><strong>PS> Get-ADUser -Identity &#x3C;identity> -Server &#x3C;server> -Properties *
-</strong></code></pre>
+</strong>PS> Get-ADGroup -Identity &#x3C;identity> -Server &#x3C;server> -Properties *
+</code></pre>
 
 Eg. Find the value of the _Title_ attribute of _jarrett_:
 
