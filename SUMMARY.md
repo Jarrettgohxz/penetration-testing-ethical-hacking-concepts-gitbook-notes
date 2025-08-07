@@ -345,8 +345,11 @@
 ## Windows Active Directory
 
 * [Introduction](windows-active-directory/introduction.md)
-* [Authentication](windows-active-directory/authentication/README.md)
-  * [NetNTLM](windows-active-directory/authentication/netntlm.md)
+* [Initial Access](windows-active-directory/initial-access/README.md)
+  * [Authentication](windows-active-directory/initial-access/authentication/README.md)
+    * [NetNTLM](windows-active-directory/initial-access/authentication/netntlm.md)
+  * [Microsoft Deployment Toolkit](windows-active-directory/initial-access/microsoft-deployment-toolkit.md)
+  * [Configuration Files](windows-active-directory/initial-access/configuration-files.md)
 * [Enumeration](windows-active-directory/enumeration/README.md)
   * [runas.exe](windows-active-directory/enumeration/runas.exe.md)
   * [Microsoft Management Console (MMC)](windows-active-directory/enumeration/microsoft-management-console-mmc.md)

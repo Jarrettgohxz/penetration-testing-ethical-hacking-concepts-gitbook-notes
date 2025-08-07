@@ -63,7 +63,7 @@ b. The associated user account needs the apprioprate persmissions on the server 
 
 Thus, this attack is not usually used. The image shown below is taken directly from the TryHackMe's breaching AD room ([https://tryhackme.com/room/breachingad](https://tryhackme.com/room/breachingad)), and can be used to illustrate the overall relay attack flow:
 
-<figure><img src="../../.gitbook/assets/image (54).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (54).png" alt=""><figcaption></figcaption></figure>
 
 
 
