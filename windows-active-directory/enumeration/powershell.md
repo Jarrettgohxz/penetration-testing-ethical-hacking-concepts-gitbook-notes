@@ -60,25 +60,29 @@ We can use the `Get-ADDomain` cmdlet to retrieve more information about a specif
 PS> GET-ADDomain -Server <server>
 ```
 
-
-
 ### Examples
 
 1. **Find value of an attribute for a user/group**
 
-<pre class="language-powershell"><code class="lang-powershell"><strong>PS> Get-ADUser -Identity &#x3C;identity> -Server &#x3C;server> -Properties *
-</strong>PS> Get-ADGroup -Identity &#x3C;identity> -Server &#x3C;server> -Properties *
-</code></pre>
-
-Eg. Find the value of the _Title_ attribute of _jarrett_:
-
 ```powershell
-PS> Get-ADUser -Identity jarrett -Server xxxx -Properties Title
+PS> Get-ADUser -Identity <identity> -Server <server> -Properties *
+PS> Get-ADGroup -Identity <identity> -Server <server> -Properties *
 ```
 
-Eg. Find the value of the _whenCreated_ attribute for the group _Test Group_:
+Eg. Find the creation date for the group _**Test Group**_ (`Created` attribute)_:_
 
 ```powershell
-PS> Get-ADGRoup -Identity "Test-Group" -Server xxxx -Properties whenCreated
+# eg. We can first list out all the properties
+PS> GET-ADGroup -Identity "Test Group" -Server xxxx -Properties *
+
+CanonicalName    : ...
+CN               : Test Group
+Created          : dd/mm/yyy xx.xx.xx.xx
+...
 ```
 
+To retrieve the `Created` attribute only:
+
+```powershell
+PS> GET-ADGroup -Identity "Test Group" -Server xxxx -Properties Title | Select-Object -ExpandProperty Created
+```
