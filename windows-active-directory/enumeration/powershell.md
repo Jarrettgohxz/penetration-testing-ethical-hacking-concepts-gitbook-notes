@@ -62,9 +62,32 @@ PS> GET-ADDomain -Server <server>
 
 
 
+### Examples
+
+1. **Find value of an attribute for a user**
+
+<pre class="language-powershell"><code class="lang-powershell"><strong>PS> Get-ADUser -Identity &#x3C;identity> -Server &#x3C;server> -Properties *
+</strong></code></pre>
+
+Eg. Find the value of the _Title_ attribute of _jarrett_:
+
+```powershell
+PS> Get-ADUser -Identity jarrett -Server xxxx -Properties Title
+```
 
 
 
+2. **Find the value of an attribute that is not shown directly**
 
+Eg. Find the value of the _whenCreated_ attribute for the group _Test Group_:
 
+```powershell
+# Eg. List all properties
+PS> Get-ADGRoup -Identity "Test-Group" -Server xxxx -Properties *
+
+# Eg. list specific property: whenCreated
+PS> Get-ADGRoup -Identity "Test-Group" -Server xxxx -Properties whenCreated
+```
+
+3. ...
 
