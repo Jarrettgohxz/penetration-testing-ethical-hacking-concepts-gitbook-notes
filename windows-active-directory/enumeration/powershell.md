@@ -62,6 +62,9 @@ _Useful reference:_
 
 1. Filter by `ObjectClass` , `Name` , etc.
 
+`ObjectClass`
+
+{% code title="" %}
 ```powershell
 PS> Get-ADObject -Filter 'ObjectClass -eq "container"'
 DistinguishedName                                   Name           
@@ -75,6 +78,15 @@ CN=Program Data,DC=za,DC=tryhackme,DC=com           Program Data
 redacted 
 ...
 ```
+{% endcode %}
+
+```powershell
+PS> Get-ADObject -Filter 'ObjectClass -eq "user"'
+PS> Get-ADObject -Filter 'ObjectClass -eq "organizationalUnit"'
+# and many more!
+```
+
+`Name`
 
 ```powershell
 PS> Get-ADObject -Filter 'Name -eq "Computers"'
