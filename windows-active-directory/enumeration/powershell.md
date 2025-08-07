@@ -74,10 +74,10 @@ redacted
 
 ```powershell
 PS> Get-ADObject -Filter 'Name -eq "Computers"'
-DistinguishedName                 Name       ObjectClass         ObjectGUID
------------------                 ----       -----------         ----------
-CN=Computers,DC=test,DC=com       Computers  container           xxxx
-OU=Computers,DC=test,DC=com Computers  organizationalUnit  xxxx
+DistinguishedName                            Name       ObjectClass         ObjectGUID
+-----------------                            ----       -----------         ----------
+CN=Computers,DC=test,DC=com                  Computers  container           xxxx
+OU=Computers,DC=test,DC=com                  Computers  organizationalUnit  xxxx
 ...
 
 PS> Get-ADObject -Filter 'Name -eq "Users"'                                                       
@@ -86,13 +86,16 @@ DistinguishedName                             Name      ObjectClass            O
 -----------------                             ----      -----------            ----------
 CN=Users,DC=test,DC=com                       Users     container              xxxx
 CN=Users,CN=Builtin,DC=test,DC=com            Users     group                  xxxx
-OU=Users,OU=Accounts,DC=test,DC=com      Users     organizationalUnit          xxxx
+OU=Users,OU=Accounts,DC=test,DC=com           Users     organizationalUnit     xxxx
+...
 
 PS> Get-ADObject -Filter 'Name -eq "WinSockServices"'         
                                                                                                               
-DistinguishedName                                      Name             ObjectClass   ObjectGUID
------------------                                      ----             -----------   ----------
-CN=WinsockServices,CN=System,DC=test,DC=com            WinsockServices  container     xxxx
+DistinguishedName                              Name             ObjectClass   ObjectGUID
+-----------------                              ----             -----------   ----------
+CN=WinsockServices,CN=System,DC=test,DC=com    WinsockServices  container     xxxx
+...
+
 ```
 
 We can even add the `-Properties *` option to view the full list of properties each object has.&#x20;
@@ -130,7 +133,7 @@ Created          : dd/mm/yyy xx.xx.xx.xx
 ...
 ```
 
-Display only the specified property, along with other default properties:
+Display only the specified property, along with other default properties (automatically included by the command):
 
 ```powershell
 PS> Get-ADGroup -Identity "Test-Group" -Server xxxx -Properties Created
