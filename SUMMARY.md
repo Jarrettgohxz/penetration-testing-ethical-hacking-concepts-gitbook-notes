@@ -355,5 +355,6 @@
   * [Command Prompt (cmd)](windows-active-directory/enumeration/command-prompt-cmd.md)
   * [Powershell](windows-active-directory/enumeration/powershell.md)
     * [ObjectClass](windows-active-directory/enumeration/powershell/objectclass.md)
+  * [Bloodhound](windows-active-directory/enumeration/bloodhound.md)
 * [Tools](windows-active-directory/tools/README.md)
   * [Responder](windows-active-directory/tools/responder.md)
