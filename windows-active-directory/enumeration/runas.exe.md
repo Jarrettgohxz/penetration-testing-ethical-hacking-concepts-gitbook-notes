@@ -22,7 +22,7 @@ runas.exe /netonly /user:<domain>\<username> <program_to_execute>
 
 > Indicates that the user information specified is for remote access only
 
-This option allows us to perform network connections using a specified account, but prevent authentication against the domain controller
+This option allows us to perform network connections using a specified account.
 
 * `/user`&#x20;
 
