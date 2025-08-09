@@ -6,11 +6,11 @@ From the official Microsoft docs:
 
 > The Active Directory module for Windows PowerShell is a PowerShell module that consolidates a group of cmdlets. You can use these cmdlets to manage your Active Directory domains, Active Directory Lightweight Directory Services (AD LDS) configuration sets, and Active Directory Database Mounting Tool instances in a single, self-contained package.
 >
-> If you don't have the Active Directory module installed on your machine, you need to download the correct Remote Server Administration Tools (RSAT) package for your OS.
+> If you don't have the Active Directory module installed on your machine, you need to download the correct Remote Server Administration Tools (RSAT) package for your OS. Refer to the link below for more information.
+
+{% embed url="https://learn.microsoft.com/en-us/powershell/module/activedirectory/?view=windowsserver2022-ps" %}
 
 The commands utilized are referred to as `cmdlets` .
-
-{% embed url="https://learn.microsoft.com/en-us/powershell/module/activedirectory/get-aduser?view=windowsserver2022-ps" %}
 
 ### AD enumeration
 
