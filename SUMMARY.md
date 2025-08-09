@@ -365,5 +365,6 @@
     * [WinRM](windows-active-directory/lateral-movement-and-pivoting/spawning-remote-processes/winrm.md)
     * [sc](windows-active-directory/lateral-movement-and-pivoting/spawning-remote-processes/sc.md)
     * [schtasks](windows-active-directory/lateral-movement-and-pivoting/spawning-remote-processes/schtasks.md)
+    * [Example](windows-active-directory/lateral-movement-and-pivoting/spawning-remote-processes/example.md)
 * [Tools](windows-active-directory/tools/README.md)
   * [Responder](windows-active-directory/tools/responder.md)
