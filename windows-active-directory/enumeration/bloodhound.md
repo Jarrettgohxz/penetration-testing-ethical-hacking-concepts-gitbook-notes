@@ -24,22 +24,14 @@ There are different types of data collectors for _Bloodhound:_
 
 ### Steps to install Bloodhound on Kali Linux
 
-#### 1. Install Docker Desktop&#x20;
+#### 1. Install Docker&#x20;
 
-{% embed url="https://docs.docker.com/desktop/setup/install/linux/#general-system-requirements" %}
+{% embed url="https://docs.docker.com/engine/install/" %}
 
-a. KVM virtualization support
-
-Ensure that KVM support is enabled. For VirtualBox, this means enabling the _**Enable Nested VT-x/AMD-V**_ settting via _**System**_ -> _**Processor**_ -> **Enable&#x20;**_**Nested VT-x/AMD-V**_
+a. Uninstall old versions (optional)
 
 ```sh
-$ modprobe kvm # load kvm module manually
-
-# load kvm module for the processor (either one)
-$ modprobe kvm_intel
-$ modprobe kvm_amd
-
-$ sudo usermod -aG kvm <username> # add user to the kvm group
+$ for pkg in docker.io docker-doc docker-compose podman-docker containerd runc; do sudo apt-get remove $pkg; done
 ```
 
 b. Setup Docker `apt` repository
@@ -64,22 +56,17 @@ $ sudo apt-get update
 
 > The value for `version_codename` should be replaced with your particular Debian code name such as `Bookworm` , `Bullseye` , etc.
 
-c. Install package
-
-First, we have to download the `.deb` file from the source
-
-> Note: the type of package file to download should be based on your Linux flavor. Refer to the main documentation link at the top to find the download link for your particular flavor.
-
-Next, install it:
+c. Install packages
 
 ```sh
-$ sudo apt-get install ./docker-desktop-amd64.deb
+$ sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 ```
 
-d. Launch Docker desktop
+d. Start the relevant Docker daemon/systemd unit
 
 ```sh
-$ systemctl --user start docker-desktop
+$ sudo systemctl start docker
+$ sudo systemctl start docker.socket
 ```
 
 #### 2. Install Bloodhound CE
@@ -92,5 +79,29 @@ $ wget https://github.com/SpecterOps/bloodhound-cli/releases/latest/download/blo
 
 $ tar -xvzf bloodhound-cli-linux-amd64.tar.gz # replace apprioprately too
 
-$ ./bloodhound-cli install
+$ ./bloodhound-cli install # use with sudo if fails
 ```
+
+### How start BloodHound manually
+
+To save system resources, we can disable the `docker` and `docker.socket` processes, to prevent it from running on system boot.
+
+```sh
+$ sudo systemctl disable docker
+$ sudo systemctl disable docker.socket
+
+# to stop the bloodhound instance
+$ ./bloodhound-cli down
+```
+
+**Manually start BloodHound**
+
+```sh
+$ sudo systemctl start docker
+$ sudo systemctl start docker.socket
+
+# navigate to the directory where the bloodhound-cli binary is stored
+$ ./bloodhound-cli up
+```
+
+After starting BloodHound, we can navigate to the default web interface: [http://127.0.0.1:8080/ui/explore](http://127.0.0.1:8080/ui/explore).
