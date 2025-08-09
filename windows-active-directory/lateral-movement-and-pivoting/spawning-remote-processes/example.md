@@ -124,7 +124,7 @@ PS> sc.exe \\iis.test.com start rvshell
 ```
 {% endcode %}
 
-After performing the following actions, we will retrieve a reverse shell connection from the `msfconsole` session earlier anytime the _IIS_ server starts:
+Now, everytime the _IIS_ server startups, we will retrieve a reverse shell connection from the `msfconsole` session established earlier:
 
 {% code title="iis.test.com (admin)" %}
 ```
