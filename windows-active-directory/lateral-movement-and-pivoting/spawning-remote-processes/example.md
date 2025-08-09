@@ -127,8 +127,7 @@ After performing the following actions, we will retrieve a reverse shell connect
 
 {% code title="iis.test.com (admin)" %}
 ```
-C:\> whoami
-admin
+C:\> 
 ```
 {% endcode %}
 
