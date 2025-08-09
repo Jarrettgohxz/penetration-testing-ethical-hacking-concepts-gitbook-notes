@@ -358,5 +358,6 @@
   * [Bloodhound](windows-active-directory/enumeration/bloodhound/README.md)
     * [Data collectors](windows-active-directory/enumeration/bloodhound/data-collectors/README.md)
       * [Sharphound](windows-active-directory/enumeration/bloodhound/data-collectors/sharphound.md)
+    * [Cypher](windows-active-directory/enumeration/bloodhound/cypher.md)
 * [Tools](windows-active-directory/tools/README.md)
   * [Responder](windows-active-directory/tools/responder.md)
