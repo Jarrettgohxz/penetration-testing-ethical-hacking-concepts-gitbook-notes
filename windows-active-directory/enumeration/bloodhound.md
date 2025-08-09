@@ -79,12 +79,12 @@ $ wget https://github.com/SpecterOps/bloodhound-cli/releases/latest/download/blo
 
 $ tar -xvzf bloodhound-cli-linux-amd64.tar.gz # replace apprioprately too
 
-$ ./bloodhound-cli install # use with sudo if fails
+$ ./bloodhound-cli install # use with sudo if this command fails
 ```
 
 ### How start BloodHound manually
 
-To save system resources, we can disable the `docker` and `docker.socket` processes, to prevent it from running on system boot.
+To save system resources, we can disable the `docker` and `docker.socket` processes to prevent it from automatically running on system boot.
 
 ```sh
 $ sudo systemctl disable docker
