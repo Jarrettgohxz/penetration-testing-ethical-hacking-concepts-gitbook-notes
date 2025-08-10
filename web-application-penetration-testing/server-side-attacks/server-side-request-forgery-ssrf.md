@@ -59,6 +59,8 @@ However, the deny list may only contain the common representations of the specif
 
 **Try to ping the following addresses listed above:**
 
+> There exists multiple variations of the loopback address: 127.0.1.0, 127.0.2.0, etc. Simply, any addresses within the `127.0.0.0/8` subnet range is valid.
+
 ```bash
 # localhost addresses
 $ ping 0
@@ -66,6 +68,9 @@ $ ping 127.1
 $ ping 2130706433
 $ ping 017700000001
 $ ping 0x7f000001
+$ ping 0x7f010000 # 127.1.0.0
+
+$ ping ::1
 
 # "special" address
 $ ping 2852039166
