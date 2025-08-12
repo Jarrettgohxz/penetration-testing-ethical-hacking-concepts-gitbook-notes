@@ -106,9 +106,12 @@ The listener on port **8888** will receive a remote command prompt on `jmp.test.
 
 {% code title="jmp.test.com (admin)" %}
 ```
-C:\Windows/system32> 
+C:\Windows/system32> whoami
+user
 ```
 {% endcode %}
+
+> Notice that the `whoami` command in the new command prompt returns the name of the original user, instead of the admin user. This is because of the `/netonly` command which specifies that the supplied credentials should only be used for network connections, while normal commands will still be as the original user.
 
 #### 4. Start a service (`sc.exe`) on the _IIS_ server that automatically executes the uploaded reverse shell payload
 
@@ -135,7 +138,16 @@ iis
 
 **Additional notes**
 
-Note that it will not work expected if we tried to establish a reverse shell connection from the admin shell directly with `sc.exe` using the `binPath` option:
+_**(1)**_ Access will be denied if we attempt to create the service on the `iis.test.com` server as a normal user:
+
+```powershell
+C:\Users\user> sc.exe ...
+[SC] OpenSCManager FAILED 5:
+
+Access is denied.
+```
+
+_**(2)**_ It will not work expected if we tried to establish a reverse shell connection from the admin shell directly with `sc.exe` using the `binPath` option:
 
 {% code title="jmp.test.com (admin)" overflow="wrap" %}
 ```powershell
