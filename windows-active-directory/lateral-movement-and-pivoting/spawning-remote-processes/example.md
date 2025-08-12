@@ -133,8 +133,13 @@ Now, when the _IIS_ server startups, we will retrieve a reverse shell connection
 ```
 C:\Windows/system32> hostname
 iis
+
+C:\Windows/system32> whoami
+nt authority\system
 ```
 {% endcode %}
+
+> Notice that the `whoami` command now output the system user. This means that we have gained a remote shell as the administrator user!
 
 **Additional notes**
 
