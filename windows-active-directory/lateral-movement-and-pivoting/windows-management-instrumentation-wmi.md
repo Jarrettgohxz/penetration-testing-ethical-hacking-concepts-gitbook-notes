@@ -24,9 +24,19 @@
 
 
 
-3. **Win32\_Product method**
+3. **Operating system classes**
 
-**a. Install method**
+{% embed url="https://learn.microsoft.com/en-us/windows/win32/cimwin32prov/operating-system-classes" %}
+
+**a. Win32\_Process method**
+
+* **Create method**
+
+{% embed url="https://learn.microsoft.com/en-us/windows/win32/cimwin32prov/create-method-in-class-win32-process" %}
+
+**b. Win32\_Product method**
+
+* **Install method**
 
 {% embed url="https://learn.microsoft.com/en-us/previous-versions/windows/desktop/msiprov/install-method-in-class-win32-product?utm_source=chatgpt.com" %}
 
@@ -85,18 +95,41 @@ The following outlines the difference between the **Dcom** and **Wsman** options
 
 **b. New-CimSession**
 
-* `-ComputerName` :&#x20;
-* `-Credential` :
-* `-SessionOption` :
-* `-ErrorAction` :&#x20;
+* `-ComputerName` : Specifies the name of the computer to which to create the CIM session.&#x20;
+* `-Credential` : Specifies a user account that has permission to perform this action.
+  * It can be specified with a range of formats (refer to the official documentation for the full list of formats). In our case, we are using the _PSCredential_ object.
+* `-SessionOption` : Sets advanced options for the new CIM session.
+* `-ErrorAction` :  ...
+
+Now, we can use the `$Session` variable to to perform various WMI actions as an authenticated user.
+
+### Invoke-CimMethod
+
+The `Invoke-CimMethod` can be used to invoke a method of a CIM class. This command will be used for many of the techniques discussed in the below sections. In this section, I will outline a few commonly used options:
+
+a. `-CimSession` : Runs the command using the specified CIM session.
+
+* This will be the `$Session` variable we have created previously
+
+b. `-ClassName` : Specifies the name of the CIM class for which to perform the operation.&#x20;
+
+* Refer to "Operating system classes" in the resources link above
+* The techniques discussed below will utilize the following classes:
+  * **Win32\_Process**
+  * **Win32\_Service**
+  * **Win32\_Product**
+
+c. `-MethodName` : Specifies the name of the CMI method to invoke. This parameter is mandatory and cannot be null or empty.
 
 
 
-### Remote process creation&#x20;
+### Techniques with CIM/VMI
 
-### Creating services remotely
+#### (1) Remote process creation
 
-### Creating scheduled tasks remotely
+#### (2) Creating services remotely
 
-### Installing `.msi` packages
+#### (3) Creating scheduled tasks remotely
+
+#### (4) Installing `.msi` packages
 
