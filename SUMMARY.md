@@ -366,5 +366,6 @@
     * [sc](windows-active-directory/lateral-movement-and-pivoting/spawning-remote-processes/sc.md)
     * [schtasks](windows-active-directory/lateral-movement-and-pivoting/spawning-remote-processes/schtasks.md)
     * [Example](windows-active-directory/lateral-movement-and-pivoting/spawning-remote-processes/example.md)
+  * [Windows Management Instrumentation (WMI)](windows-active-directory/lateral-movement-and-pivoting/windows-management-instrumentation-wmi.md)
 * [Tools](windows-active-directory/tools/README.md)
   * [Responder](windows-active-directory/tools/responder.md)
