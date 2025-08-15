@@ -123,7 +123,14 @@ c. `-MethodName` : Specifies the name of the CMI method to invoke. This paramete
 
 ### Techniques with CIM/VMI
 
-#### (1) Remote process creation
+_**Take note of the following:**_
+
+* `-CimSession $Session` : specifies the session object created earlier
+* `-ClassName Win32_xxxx` : specifies the class
+* The available values that can be provided to the `-Arguments` option will differ based on the class.&#x20;
+  * The available options for the current class can be found from the documentations outlined in the **Resources** section above
+
+#### (1) Remote process creation (`Win32_Process`)
 
 This process uses the following ports:
 
@@ -148,16 +155,55 @@ CommandLine = $Command
 ```
 {% endcode %}
 
-_Take note of the following:_
+#### (2) Creating services remotely (`Win32_Service`)
 
-* `-CimSession $Session` : specifies the session object created earlier
-* `-ClassName Win32_Process` : specifies the class
-* The available values that can be provided to the `-Arguments` option will differ based on the class.&#x20;
-  * The available options for the current class can be found from the [docs](https://learn.microsoft.com/en-us/windows/win32/cimwin32prov/create-method-in-class-win32-process)&#x20;
+This process uses the following ports:
 
-#### (2) Creating services remotely
+* 135/TCP, 49152-65535/TCP (DCERPC)
+* 5985/TCP (WinRM HTTP) or 5986/TCP (WinRM HTTPS)
 
+and requires the specified user to be in the _**Administrators**_ group.
 
+a. Create a service
+
+{% code overflow="wrap" %}
+```powershell
+PS> Invoke-CimMethod -CimSession $Session -ClassName Win32_Service -MethodName Create -Arguments @{
+Name = "servicename";
+DisplayName = "displayname";
+PathName = "payload"; # payload value
+ServiceType = [byte]::Parse("16"); # Win32OwnProcess: Start service in a new process
+StartMode = "Manual" # start with the StartService method (refer below)
+}
+```
+{% endcode %}
+
+b. Retrieve a handle on the service (get the service instance that be specified as an argument to start it later on)
+
+{% embed url="https://learn.microsoft.com/en-us/powershell/module/cimcmdlets/get-ciminstance?view=powershell-7.5" %}
+
+{% code overflow="wrap" %}
+```powershell
+PS> $Service = Get-CimInstance -CimSession $Session -ClassName Win32_Service -filter "Name LIKE 'servicename'"
+```
+{% endcode %}
+
+> Replace 'servicename' with  the apprioprate value
+
+c. Start the service
+
+```powershell
+PS> Invoke-CimMethod -InputObject $Service -Methodname StartService
+```
+
+* `-InputObject` : Specifies a CIM instance object to use as input
+
+d. Stop/delete the service
+
+```powershell
+PS> Invoke-CimMethod -InputObject $Service -MethodName StopService
+PS> Invoke-CimMethod -InputObject $Service -MethodName Delete
+```
 
 
 
