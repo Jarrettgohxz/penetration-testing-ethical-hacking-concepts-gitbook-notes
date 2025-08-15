@@ -121,13 +121,45 @@ b. `-ClassName` : Specifies the name of the CIM class for which to perform the o
 
 c. `-MethodName` : Specifies the name of the CMI method to invoke. This parameter is mandatory and cannot be null or empty.
 
-
-
 ### Techniques with CIM/VMI
 
 #### (1) Remote process creation
 
+This process uses the following ports:
+
+* 135/TCP, 49152-65535/TCP (DCERPC)
+* 5985/TCP (WinRM HTTP) or 5986/TCP (WinRM HTTPS)
+
+and requires the specified user to be in the _**Administrators**_ group.
+
+a. First, we can create a new variable to store the command that we wish to execute on the remote machine:
+
+```powershell
+PS> $Command = "<command_to_execute>"
+```
+
+b. Create a new process with the `Invoke-CimMethod` command:&#x20;
+
+{% code overflow="wrap" %}
+```powershell
+PS> Invoke-CimMethod -CimSession $Session -ClassName Win32_Process -MethodName Create -Arguments @{
+CommandLine = $Command
+} 
+```
+{% endcode %}
+
+_Take note of the following:_
+
+* `-CimSession $Session` : specifies the session object created earlier
+* `-ClassName Win32_Process` : specifies the class
+* The available values that can be provided to the `-Arguments` option will differ based on the class.&#x20;
+  * The available options for the current class can be found from the [docs](https://learn.microsoft.com/en-us/windows/win32/cimwin32prov/create-method-in-class-win32-process)&#x20;
+
 #### (2) Creating services remotely
+
+
+
+
 
 #### (3) Creating scheduled tasks remotely
 
