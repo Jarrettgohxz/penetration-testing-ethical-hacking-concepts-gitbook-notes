@@ -170,7 +170,7 @@ More accurately, this action will actually establish a remote shell on the targe
 
 This is because the service manager expects the executable that is being executed to function as a service executable (perform certain actions), which is different from standard `.exe` files, as with what we have provided. The method we have explored with `msfvenom` works as it encapsulates the payload within a valid service executable.
 
-### 2. Using `schtasks`&#x20;
+### (2) Using `schtasks`&#x20;
 
 #### 1. SSH into the intermediary server, craft the reverse shell payload and upload to the IIS server
 
