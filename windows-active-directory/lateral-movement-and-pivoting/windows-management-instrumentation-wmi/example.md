@@ -57,7 +57,7 @@ PS C:\> $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
 PS C:\> $credential = New-Object System.Management.Automation.PSCredential $username, $securePassword;
 
 PS C:\> $Opt = New-CimSessionOption -Protocol Dcom
-PS C:\> $Session = New-Cimsession -ComputerName iis.test.com -Credential $credential -SessionOption $Opt -ErrorAction Stop 
+PS C:\> $Session = New-CimSession -ComputerName iis.test.com -Credential $credential -SessionOption $Opt -ErrorAction Stop 
 ```
 {% endcode %}
 
