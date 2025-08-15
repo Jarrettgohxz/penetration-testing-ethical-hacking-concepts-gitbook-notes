@@ -65,7 +65,7 @@ $credential = New-Object System.Management.Automation.PSCredential $username, $s
 ```
 {% endcode %}
 
-#### (2) Creating new CIM session
+#### (2) Creating new WMI session
 
 Now, we can establish a WMI session that will be stored in the `$Session` variable. This variable can be supplied to our future commands, allowing us to perform actions as the authenticated user:
 
@@ -83,7 +83,7 @@ $Session = New-CimSession -ComputerName TARGET -Credential $credential -SessionO
 
 The value provided to the `-Protocol` option can be of the following values: **Dcom**, **Wsman**, **Default**.
 
-The following outlines the difference between the **Dcom** and **Wsman** options (information retrieved from the [TryHackMe room](./)):
+The following outlines the difference between the **Dcom** and **Wsman** options (information retrieved from the [TryHackMe room](../)):
 
 1\)  Dcom
 
@@ -205,7 +205,7 @@ PS> Invoke-CimMethod -InputObject $Service -MethodName StopService
 PS> Invoke-CimMethod -InputObject $Service -MethodName Delete
 ```
 
-#### (3) Creating scheduled tasks remotely
+#### (3) Creating scheduled tasks remotely&#x20;
 
 This process uses the following ports:
 
@@ -245,7 +245,7 @@ c. Delete the task
 PS> Unregister-ScheduledTask -CimSession $Session -TaskName "<taskname>"
 ```
 
-#### (4) Installing `.msi` packages
+#### (4) Installing `.msi` packages (`Win32_Product`)
 
 This process uses the following ports:
 
@@ -262,7 +262,7 @@ From the Win32\_Product Install method docs:
 
 > The static **Install** [WMI class](https://learn.microsoft.com/en-us/windows/win32/wmisdk/retrieving-a-class) method installs an associated [**Win32\_Product**](https://learn.microsoft.com/en-us/previous-versions/windows/desktop/msiprov/win32-product) instance using the installation package provided through the _PackageLocation_ parameter, and any supplied command line options.
 
-This means that we are trying to somehow trick the OS into thinking that the `.msi`  is a legitimate product, and attempt to install it:
+Install the `.msi` file:
 
 {% code overflow="wrap" %}
 ```powershell
@@ -274,6 +274,8 @@ AllUsers = $false
 ```
 {% endcode %}
 
-* `PackageLocation` : ...
-* `Options` : ...
-* `AllUsers` : ...
+* `PackageLocation` : Path to the installer package, which is relative to the computer on which the software is being installed and which can be referenced using a Universal Naming Convention (UNC) path.
+* `Options` : Command-line options required for installing the software. Format as `property=setting`. If no options are required, this parameter should be left blank.
+* `AllUsers` : Boolean value that indicates whether the software should be available to all the users on a computer or just the currently logged-on user.
+  * For our case, we will generally want the value to be `$false`
+
