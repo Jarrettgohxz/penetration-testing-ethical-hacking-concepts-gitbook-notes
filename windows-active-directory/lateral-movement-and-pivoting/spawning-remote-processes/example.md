@@ -18,9 +18,11 @@ The first set of AD credential allows us to gain a remote shell session on the i
 
 However, the _IIS_ server does not expose a SSH service. Thus, we need to make use of the session we have on the intermediary server to move laterally to the _IIS_ server (`iis.domain`) using the obtained admin credentials, to gain a remote session with administrative privileges.&#x20;
 
-### (1) Using `sc.exe`
+### (1) Using `sc.exe`&#x20;
 
 {% embed url="https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/cc754599(v=ws.11)" %}
+
+> For some of the sections in this example, we assume that we have the `nc64.exe` present in the system under `C:\tools`.
 
 #### 1. SSH into the intermediary server (with the first set of low-privileged credentials)
 
