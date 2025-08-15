@@ -29,12 +29,12 @@ schtasks /s TARGET /ru "SYSTEM" /create /tn "<taskname>" /tr "<command/payload t
 
 {% code title="schtasks run" %}
 ```powershell
-schtasks /s TARGET /run /tn  "<taskname>" 
+schtasks /s TARGET /run /tn  "<taskname>" /u "<username>" /p "<password>"
 ```
 {% endcode %}
 
 * `/run` : Specify to run task
-* `/s` and `/tn`: Same as schtasks-create
+* `/s` , `/tn`, `/u`  and `/p`: same as schtasks-create
 
 ### Example
 

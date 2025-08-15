@@ -364,7 +364,7 @@
     * [Psexec](windows-active-directory/lateral-movement-and-pivoting/spawning-remote-processes/psexec.md)
     * [WinRM (\*\*pending test)](windows-active-directory/lateral-movement-and-pivoting/spawning-remote-processes/winrm-pending-test.md)
     * [sc](windows-active-directory/lateral-movement-and-pivoting/spawning-remote-processes/sc.md)
-    * [schtasks (\*\*pending test)](windows-active-directory/lateral-movement-and-pivoting/spawning-remote-processes/schtasks-pending-test.md)
+    * [schtasks](windows-active-directory/lateral-movement-and-pivoting/spawning-remote-processes/schtasks.md)
     * [Example](windows-active-directory/lateral-movement-and-pivoting/spawning-remote-processes/example.md)
 * [Tools](windows-active-directory/tools/README.md)
   * [Responder](windows-active-directory/tools/responder.md)
