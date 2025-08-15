@@ -361,7 +361,7 @@
     * [Cypher](windows-active-directory/enumeration/bloodhound/cypher.md)
 * [Lateral movement & Pivoting](windows-active-directory/lateral-movement-and-pivoting/README.md)
   * [Spawning remote processes](windows-active-directory/lateral-movement-and-pivoting/spawning-remote-processes/README.md)
-    * [Psexec (\*\*pending test)](windows-active-directory/lateral-movement-and-pivoting/spawning-remote-processes/psexec-pending-test.md)
+    * [Psexec](windows-active-directory/lateral-movement-and-pivoting/spawning-remote-processes/psexec.md)
     * [WinRM (\*\*pending test)](windows-active-directory/lateral-movement-and-pivoting/spawning-remote-processes/winrm-pending-test.md)
     * [sc](windows-active-directory/lateral-movement-and-pivoting/spawning-remote-processes/sc.md)
     * [schtasks (\*\*pending test)](windows-active-directory/lateral-movement-and-pivoting/spawning-remote-processes/schtasks-pending-test.md)
