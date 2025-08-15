@@ -262,7 +262,7 @@ From the Win32\_Product Install method docs:
 
 > The static **Install** [WMI class](https://learn.microsoft.com/en-us/windows/win32/wmisdk/retrieving-a-class) method installs an associated [**Win32\_Product**](https://learn.microsoft.com/en-us/previous-versions/windows/desktop/msiprov/win32-product) instance using the installation package provided through the _PackageLocation_ parameter, and any supplied command line options.
 
-This means that we can somehow trick the OS into thinking that the `.msi`  is a legitimate product, and attempt to install it:
+This means that we are trying to somehow trick the OS into thinking that the `.msi`  is a legitimate product, and attempt to install it:
 
 {% code overflow="wrap" %}
 ```powershell
@@ -274,6 +274,6 @@ AllUsers = $false
 ```
 {% endcode %}
 
-* `PackageLocation` :
-* `Options` :
-* `AllUsers` :&#x20;
+* `PackageLocation` : ...
+* `Options` : ...
+* `AllUsers` : ...
