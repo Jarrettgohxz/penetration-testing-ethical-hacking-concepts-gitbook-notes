@@ -205,9 +205,75 @@ PS> Invoke-CimMethod -InputObject $Service -MethodName StopService
 PS> Invoke-CimMethod -InputObject $Service -MethodName Delete
 ```
 
-
-
 #### (3) Creating scheduled tasks remotely
+
+This process uses the following ports:
+
+* 135/TCP, 49152-65535/TCP (DCERPC)
+* 5985/TCP (WinRM HTTP) or 5986/TCP (WinRM HTTPS)
+
+and requires the specified user to be in the _**Administrators**_ group.
+
+a. Create the task
+
+{% code overflow="wrap" %}
+```powershell
+# 1. Define the command to execute, along with the related arguments
+PS> $Command = "<command>"
+PS> $Args = "<args>" 
+
+PS> $Action = New-ScheduledTaskAction -CimSession $Session -Execute $Command -Argument $Args
+```
+{% endcode %}
+
+b. Register and start the scheduled task
+
+{% code overflow="wrap" %}
+```powershell
+PS> Register-ScheduledTask -CimSession $Session -Action $Action -User "NT AUTHORITY\SYSTEM" -TaskName "<taskname>"
+
+PS> Start-ScheduledTask -CimSession $Session -TaskName "<taskname>"
+```
+{% endcode %}
+
+* `-User` : Specifies the name of the user account in the context of which Windows runs the task.
+  * The value `NT AUTHORITY\SYSTEM` value refers to the user with highest privilege on the local system
+
+c. Delete the task
+
+```powershell
+PS> Unregister-ScheduledTask -CimSession $Session -TaskName "<taskname>"
+```
 
 #### (4) Installing `.msi` packages
 
+This process uses the following ports:
+
+* 135/TCP, 49152-65535/TCP (DCERPC)
+* 5985/TCP (WinRM HTTP) or 5986/TCP (WinRM HTTPS)
+
+and requires the specified user to be in the _**Administrators**_ group.
+
+For this technique, we attempt to upload a `.msi` file to a target remote machine, before using WMI to install it.
+
+From the Win32\_Product Install method docs:
+
+{% embed url="https://learn.microsoft.com/en-us/previous-versions/windows/desktop/msiprov/install-method-in-class-win32-product" %}
+
+> The static **Install** [WMI class](https://learn.microsoft.com/en-us/windows/win32/wmisdk/retrieving-a-class) method installs an associated [**Win32\_Product**](https://learn.microsoft.com/en-us/previous-versions/windows/desktop/msiprov/win32-product) instance using the installation package provided through the _PackageLocation_ parameter, and any supplied command line options.
+
+This means that we can somehow trick the OS into thinking that the `.msi`  is a legitimate product, and attempt to install it:
+
+{% code overflow="wrap" %}
+```powershell
+PS> Invoke-CimMethod -CimSession $Session -ClassName Win32_Product -MethodName Install -Arguments @{
+PackageLocation = "C:\Windows\<installed_msi>.msi"; 
+Options = ""; 
+AllUsers = $false
+}
+```
+{% endcode %}
+
+* `PackageLocation` :
+* `Options` :
+* `AllUsers` :&#x20;
