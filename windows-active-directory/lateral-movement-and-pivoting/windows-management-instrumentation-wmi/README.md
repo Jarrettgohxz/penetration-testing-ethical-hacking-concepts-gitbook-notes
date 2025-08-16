@@ -134,7 +134,7 @@ _**Take note of the following:**_
 
 > From the official documentation: For security reasons the **Win32\_Process.Create** method cannot be used to start an interactive process remotely.
 
-Due to the security implementation, it appears that this technique does not work as well anymore.
+Due to the security implementation, it appears that this technique may not work on all systems
 
 This process uses the following ports:
 
