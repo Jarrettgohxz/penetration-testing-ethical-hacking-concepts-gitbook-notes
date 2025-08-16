@@ -132,6 +132,10 @@ _**Take note of the following:**_
 
 #### (1) Remote process creation (`Win32_Process`)
 
+> From the official documentation: For security reasons the **Win32\_Process.Create** method cannot be used to start an interactive process remotely.
+
+Due to the security implementation, it appears that this technique does not work as well anymore.
+
 This process uses the following ports:
 
 * 135/TCP, 49152-65535/TCP (DCERPC)
