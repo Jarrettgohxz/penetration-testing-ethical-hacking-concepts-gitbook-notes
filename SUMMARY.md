@@ -371,3 +371,4 @@
     * [Example](windows-active-directory/lateral-movement-and-pivoting/windows-management-instrumentation-wmi/example.md)
 * [Tools](windows-active-directory/tools/README.md)
   * [Responder](windows-active-directory/tools/responder.md)
+  * [mimikatz](windows-active-directory/tools/mimikatz.md)
