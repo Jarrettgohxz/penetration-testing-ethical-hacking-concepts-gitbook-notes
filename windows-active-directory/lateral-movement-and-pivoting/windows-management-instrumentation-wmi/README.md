@@ -40,6 +40,16 @@
 
 {% embed url="https://learn.microsoft.com/en-us/previous-versions/windows/desktop/msiprov/install-method-in-class-win32-product?utm_source=chatgpt.com" %}
 
+**c. Win32\_Service method**
+
+{% embed url="https://learn.microsoft.com/en-us/windows/win32/cimwin32prov/win32-service" %}
+
+**d. ScheduledTasks**
+
+{% embed url="https://learn.microsoft.com/en-us/powershell/module/scheduledtasks/?view=windowsserver2025-ps" %}
+
+
+
 In this section, I will attempt to explain and illustrate how we can utilize the Windows Management Instrumentation (WMI) to perform lateral movement in an AD environment, to the best of my understanding. As this is a relatively new topic to me (as of 15/08/2025), I will try my best to consolidate what I can understand about the various commands and options. The primary resource will be the TryHackMe's "lateral movement and pivoting" room: &#x20;
 
 {% embed url="https://tryhackme.com/room/lateralmovementandpivoting" %}

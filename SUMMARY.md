@@ -364,7 +364,7 @@
   * [Spawning remote processes](windows-active-directory/lateral-movement-and-pivoting/spawning-remote-processes/README.md)
     * [Psexec](windows-active-directory/lateral-movement-and-pivoting/spawning-remote-processes/psexec.md)
     * [WinRM](windows-active-directory/lateral-movement-and-pivoting/spawning-remote-processes/winrm.md)
-    * [sc](windows-active-directory/lateral-movement-and-pivoting/spawning-remote-processes/sc.md)
+    * [sc.exe](windows-active-directory/lateral-movement-and-pivoting/spawning-remote-processes/sc.exe.md)
     * [schtasks](windows-active-directory/lateral-movement-and-pivoting/spawning-remote-processes/schtasks.md)
     * [Example](windows-active-directory/lateral-movement-and-pivoting/spawning-remote-processes/example.md)
   * [Windows Management Instrumentation (WMI)](windows-active-directory/lateral-movement-and-pivoting/windows-management-instrumentation-wmi/README.md)

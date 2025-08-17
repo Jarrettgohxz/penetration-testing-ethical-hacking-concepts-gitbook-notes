@@ -1,4 +1,4 @@
-# sc
+# sc.exe
 
 {% embed url="https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/sc-create" %}
 
@@ -9,6 +9,10 @@
 * 139/TCP (RPC over SMB Named Pipes)
 
 It requires the supplied username and password to be part of the `Administrators` group.
+
+#### Additional note
+
+`sc.exe` connects to the **Service Control Manager,** which is a privileged system process that by default, runs as `NT AUTHORITY\SYSTEM` (highest privileged user in the local system). Thus, a payload executed with the `binPath` option will run as this user, and can provide attackers with the highest privileged shell (if the payload is configured appropriately) - essentially same as a shell as the `root` user in Unix-like systems.
 
 ### Basic commands
 
