@@ -106,7 +106,12 @@ C:\> sc.exe start "rooty"
 ```
 {% endcode %}
 
-Now, ...
+Now, we should receive a shell as the `SYSTEM` user:
+
+```powershell
+C:\> whoami
+nt authority\system
+```
 
 
 
