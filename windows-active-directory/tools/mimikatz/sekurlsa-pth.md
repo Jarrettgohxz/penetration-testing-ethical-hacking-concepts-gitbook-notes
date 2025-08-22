@@ -16,12 +16,12 @@ The `sekurlsa::pth` method performs a **Pass-the-Hash** or **Pass-the-Key** atta
 
 Any external network connections (eg. `schtasks` , `sc.exe` , etc.) executed from that forged logon session will automatically use the injected credentials, giving us access as that particular user on the remote machine.
 
-**a. Using stolen NTLM hash with NetNTLM authentication**
+**a. Using stolen NTLM hash with NetNTLM authentication (**`Pass-the-Hash`**)**
 
 1. When we receive a challenge from the remote server, the injected NTLM hash will be used to create the challenge response&#x20;
 2. Since we are using the NTLM hash of the target user, we can authenticate as that particular user
 
-**b. Using stolen encryption key with Kerberos authentication**
+**b. Using stolen encryption key with Kerberos authentication (**`Pass-the-Key`/`Overpass-the-Hash`**)**
 
 1. Given that we have extracted the Kerberos encryption key, it can be used to encrypt the timestamp that is required for the **TGT** request
 2. The **KDC** will then respond with the **TGT** and a **Session Key**
