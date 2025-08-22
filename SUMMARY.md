@@ -372,7 +372,7 @@
   * [Leveraging alternate authentication materials](windows-active-directory/lateral-movement-and-pivoting/leveraging-alternate-authentication-materials/README.md)
     * [Pass-the-Hash (NTLM)](windows-active-directory/lateral-movement-and-pivoting/leveraging-alternate-authentication-materials/pass-the-hash-ntlm.md)
     * [Pass-the-Ticket (Kerberos)](windows-active-directory/lateral-movement-and-pivoting/leveraging-alternate-authentication-materials/pass-the-ticket-kerberos.md)
-    * [Overpass-the-Hash/Pass-the-Key (Kerberos)](windows-active-directory/lateral-movement-and-pivoting/leveraging-alternate-authentication-materials/overpass-the-hash-kerberos.md)
+    * [Pass-the-Key/Overpass-the-Hash (Kerberos)](windows-active-directory/lateral-movement-and-pivoting/leveraging-alternate-authentication-materials/pass-the-key-overpass-the-hash-kerberos.md)
 * [Tools](windows-active-directory/tools/README.md)
   * [Responder](windows-active-directory/tools/responder.md)
   * [mimikatz](windows-active-directory/tools/mimikatz/README.md)
