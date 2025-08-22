@@ -79,6 +79,8 @@ mimikatz # sekurlsa::pth /user:jarrett.goh /domain:test.domain /ntlm:1b2axxxx /r
 
 We can view the `sekurlsa::pth` module command as equivalent to using the [`runas /netonly`](https://jarrettgxz-sec.gitbook.io/penetration-testing-ethical-hacking-concepts/windows-active-directory/enumeration/runas.exe) command with a hash instead of a password.
 
+{% embed url="https://jarrettgxz-sec.gitbook.io/penetration-testing-ethical-hacking-concepts/windows-active-directory/tools/mimikatz/sekurlsa-pth" %}
+
 ### PtH with Linux
 
 Several tools exists in Linux, with built-in support to perform PtH. The following outlines a few:
