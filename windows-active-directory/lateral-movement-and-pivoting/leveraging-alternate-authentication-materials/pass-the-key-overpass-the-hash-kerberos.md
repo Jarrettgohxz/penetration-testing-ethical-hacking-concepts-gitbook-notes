@@ -33,7 +33,7 @@ c. `aes256`&#x20;
 
 ### Overpass-the-Hash (OPtH)
 
-Notice that when using the `rc4` hash type, the key is equal to the NTLM hash of a user. This means if we have obtained the NTLM hash, we can use it to request a TGT as long as `rc4` is one of the enabled protocols. This particular variant of attack is known as Overpass-the-Hash (OPtH).
+Notice that when using the `rc4` hash type, the key is equal to the NTLM hash of a user. This means if we have obtained the NTLM hash, we can use it to request a TGT as long as `rc4` is one of the enabled protocols. This particular variant of attack is known as _**Overpass-the-Hash**_ (**OPtH**).
 
 
 

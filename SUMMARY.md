@@ -376,4 +376,4 @@
 * [Tools](windows-active-directory/tools/README.md)
   * [Responder](windows-active-directory/tools/responder.md)
   * [mimikatz](windows-active-directory/tools/mimikatz/README.md)
-    * [pass-the-hash](windows-active-directory/tools/mimikatz/pass-the-hash.md)
+    * [sekurlsa::pth](windows-active-directory/tools/mimikatz/sekurlsa-pth.md)
