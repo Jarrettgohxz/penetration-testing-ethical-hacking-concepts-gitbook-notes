@@ -33,13 +33,13 @@ Now that we have injected the ticket, we can perform lateral movements as the in
 
 {% code overflow="wrap" %}
 ```powershell
-C:\> sc.exe xxxx
+C:\> schtasks /RU "SYSTEM" xxxx
 ```
 {% endcode %}
 
 A few basic conditions on the target machine must be in our favor :&#x20;
 
-a. `sc.exe` or any other desired tools are allowed
+a. `schtasks` or any other desired tools are allowed
 
 b. The injected user must be allowed to perform the desired actions (eg. in the `Administrators` group)
 
