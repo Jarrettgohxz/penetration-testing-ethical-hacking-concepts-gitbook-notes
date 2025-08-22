@@ -19,10 +19,10 @@ mimikatz # kerberos::ptt xxxx@test.domain.kirbi
 ```
 {% endcode %}
 
-After running the command, we should retrieve a command prompt session with the injected ticket. We can use the `klist` command to view the injected tickets:
+After running the command, we can exit from the `mimikatz` shell back to the command prompt. We can use the `klist` command to view the injected tickets:
 
 ```powershell
-test\<username>@machine C:\> klist
+C:\> klist
 ```
 
 Note that if we execute the `whoami` command, we will still see the original user we were using before performing the attack, but any commands executed from this session will use the injected credentials.
@@ -33,7 +33,7 @@ Now that we have injected the ticket, we can perform lateral movements as the in
 
 {% code overflow="wrap" %}
 ```powershell
-test\<username>@machine C:\> sc.exe xxxx
+C:\> sc.exe xxxx
 ```
 {% endcode %}
 
