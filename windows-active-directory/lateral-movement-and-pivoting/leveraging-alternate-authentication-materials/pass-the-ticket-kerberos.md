@@ -1,6 +1,6 @@
 # Pass-the-Ticket (Kerberos)
 
-This method aims to extract Kerberos tickets and session keys from _**LSASS**_ memory using mimikatz.. before using the stolen ticket to perform actions as the injected user. This process will usually require us to have _**SYSTEM**_ privileges on the machine.
+This method aims to extract Kerberos tickets and session keys from _**LSASS**_ memory using mimikatz, before using the stolen ticket to perform actions as the injected user. This process will usually require us to have _**SYSTEM**_ privileges on the machine.
 
 We will start off with using mimikatz to extract all the Kerberos tickets present on the local machine:
 

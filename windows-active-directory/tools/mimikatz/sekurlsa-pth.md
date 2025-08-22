@@ -6,8 +6,6 @@
 
 ### Overview of how _Mimikatz_ implements the pass-the-hash technique
 
-I aim to provide a general high-level overview of how the `sekurlsa::pth` module works to allow an attacker to impersonate a user.&#x20;
-
 The `sekurlsa::pth` module allows an attacker to impersonate a user by spawning a new logon session on the local machine, and associating the attacker’s supplied credentials with that session. It will then launch a process specified by the attacker (reverse shell, etc.) under the context of the new forged session.
 
 This entire process happens locally, and no external authentication is performed at this stage. However, subsequent network requests made from the new session will use the injected credentials, allowing us to perform lateral movement and other actions without knowing the actual password.
@@ -16,7 +14,7 @@ This entire process happens locally, and no external authentication is performed
 
 The `sekurlsa::pth` method performs a **Pass-the-Hash** or **Pass-the-Key** attack for NTLM and Kerberos authentication respectively, that depends on the provided options (eg. `/ntlm` , `/rc4` , etc.).
 
-Now, when we start a new command prompt session, we can verify that the injected Kerberos ticket is present using the `klist` command. Any external network connections (eg. `schtasks` , `sc.exe` , etc.) executed from that forged logon session will automatically use the injected credentials, giving us access as that particular user on the remote machine.
+Any external network connections (eg. `schtasks` , `sc.exe` , etc.) executed from that forged logon session will automatically use the injected credentials, giving us access as that particular user on the remote machine.
 
 **a. Using stolen NTLM hash with NetNTLM authentication**
 
@@ -28,6 +26,18 @@ Now, when we start a new command prompt session, we can verify that the injected
 1. Given that we have extracted the Kerberos encryption key, it can be used to encrypt the timestamp that is required for the **TGT** request
 2. The **KDC** will then respond with the **TGT** and a **Session Key**
 3. Subsequently, we can use the retrieved values to request for a **TGS** as the user stored in the Kerberos encryption key in the first step
+
+#### Basic command
+
+{% code overflow="wrap" %}
+```
+mimikatz # sekurlsa::pth /user:<username> /domain:<domain> /<xxxx>:<hash> /run:"<payload>"
+```
+{% endcode %}
+
+* `<xxxx>:hash` can be `/ntlm:<hash>` , `/aes128:<hash>` , etc.
+* `/run` allows us to provide a payload to be executed locally with the injected credentials
+  * this will usually be a reverse shell connection
 
 #### Example
 
