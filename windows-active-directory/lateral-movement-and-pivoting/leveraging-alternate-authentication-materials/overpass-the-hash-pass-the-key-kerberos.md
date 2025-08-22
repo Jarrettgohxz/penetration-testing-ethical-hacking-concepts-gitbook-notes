@@ -1,2 +1,0 @@
-# Overpass-the-Hash (Kerberos)
-
