@@ -4,11 +4,13 @@
 
 {% embed url="https://www.praetorian.com/blog/inside-mimikatz-part2/" %}
 
-### Overview of how `mimikatz` implements the pass-the-hash technique
+### Overview of how _Mimikatz_ implements the pass-the-hash technique
 
 I aim to provide a general high-level overview of how the `sekurlsa::pth` module works to allow an attacker to impersonate a user.&#x20;
 
-Generally, it works by overwriting stored credential material for the current session, or spawn new processes using certain Windows APIs to associate the attacker's provided credentials for that session.&#x20;
+The `sekurlsa::pth` module allows an attacker to impersonate a user by spawning a new logon session on the local machine, and associating the attacker’s supplied credentials with that session. It will then launch a process specified by the attacker (reverse shell, etc.) under the context of the new forged session.
+
+This entire process happens locally, and no external authentication is performed at this stage. However, subsequent network requests made from the new session will use the injected credentials, allowing us to perform lateral movement and other actions without knowing the actual password.
 
 #### Example
 
