@@ -16,6 +16,10 @@
 
 {% embed url="https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/copy" %}
 
+4. `msfvenom`
+
+{% embed url="https://jarrettgxz-sec.gitbook.io/penetration-testing-ethical-hacking-concepts/vulnerability-and-exploitation/msfvenom" %}
+
 ## Backdoor mechanism
 
 It is quite common to find network shares that hosts executable or scripts created by the administrator, that users can use to perform daily tasks. This is useful  for users since they can execute the shared resource without copying or installing it.&#x20;
