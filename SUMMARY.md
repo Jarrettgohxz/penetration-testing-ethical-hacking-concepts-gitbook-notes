@@ -387,6 +387,7 @@
     * [RDP hijacking](windows-active-directory/lateral-movement-and-pivoting/abusing-user-behavior/rdp-hijacking.md)
 * [Exploitation techniques](windows-active-directory/exploitation-techniques/README.md)
   * [Permission delegation](windows-active-directory/exploitation-techniques/permission-delegation.md)
+  * [Kerberos delegation](windows-active-directory/exploitation-techniques/kerberos-delegation.md)
 * [Tools](windows-active-directory/tools/README.md)
   * [Responder](windows-active-directory/tools/responder.md)
   * [mimikatz](windows-active-directory/tools/mimikatz/README.md)
