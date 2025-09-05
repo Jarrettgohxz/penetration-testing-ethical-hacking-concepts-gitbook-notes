@@ -82,6 +82,8 @@ $ tar -xvzf bloodhound-cli-linux-amd64.tar.gz # replace apprioprately too
 $ ./bloodhound-cli install # use with sudo if this command fails
 ```
 
+> The  logincredentials should be displayed as an output after running the install command
+
 ### How start BloodHound manually
 
 To save system resources, we can disable the `docker` and `docker.socket` processes to prevent it from automatically running on system boot.
@@ -105,3 +107,10 @@ $ ./bloodhound-cli up
 ```
 
 After starting BloodHound, we can navigate to the default web interface: [http://127.0.0.1:8080/ui/explore](http://127.0.0.1:8080/ui/explore).
+
+### Reset password
+
+```sh
+$ ./bloodhound-cli resetpwd
+```
+
