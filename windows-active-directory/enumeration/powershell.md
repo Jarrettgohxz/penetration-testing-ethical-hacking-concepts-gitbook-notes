@@ -134,9 +134,11 @@ PS> GET-ADDomain -Server <server>
 
 Eg. Retrieve all OUs:
 
+{% code overflow="wrap" %}
 ```powershell
-PS> Get-ADOrganizationalUnit -Filter *
+PS> Get-ADOrganizationalUnit -Filter 'Name -like "*"' | Format-Table Name, DistinguishedName -A
 ```
+{% endcode %}
 
 ### Examples
 
