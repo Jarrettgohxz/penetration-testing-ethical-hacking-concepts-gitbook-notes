@@ -128,6 +128,16 @@ We can use the `Get-ADDomain` cmdlet to retrieve more information about a specif
 PS> GET-ADDomain -Server <server>
 ```
 
+#### 5. Organizational Units (OUs)
+
+> Gets one or more Active Directory organizational units.
+
+Eg. Retrieve all OUs:
+
+```powershell
+PS> Get-ADOrganizationalUnit -Filter *
+```
+
 ### Examples
 
 1. **Find the value of a property for a user/group**
