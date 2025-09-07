@@ -12,6 +12,10 @@ From the official Microsoft docs:
 
 The commands utilized are referred to as `cmdlets` .
 
+### Additional resource
+
+{% embed url="https://jarrettgxz-sec.gitbook.io/windows/active-directory-ad/active-directory-module" %}
+
 ### AD enumeration
 
 **Important option used in the subsequent commands**
@@ -167,3 +171,4 @@ To retrieve the `Created` attribute only:
 ```powershell
 PS> GET-ADGroup -Identity "Test Group" -Server xxxx -Properties Created | Select-Object -ExpandProperty Created
 ```
+
