@@ -95,7 +95,8 @@
 ## Vulnerability & exploitation
 
 * [Database](vulnerability-and-exploitation/database.md)
-* [Metasploit](vulnerability-and-exploitation/metasploit.md)
+* [Metasploit](vulnerability-and-exploitation/metasploit/README.md)
+  * [Meterpreter](vulnerability-and-exploitation/metasploit/meterpreter.md)
 * [Msfvenom](vulnerability-and-exploitation/msfvenom.md)
 * [Binary Exploitation](vulnerability-and-exploitation/binary-exploitation/README.md)
   * [Computer architecture](vulnerability-and-exploitation/binary-exploitation/computer-architecture/README.md)
