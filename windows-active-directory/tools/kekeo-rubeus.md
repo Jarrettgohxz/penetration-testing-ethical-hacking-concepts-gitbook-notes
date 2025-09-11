@@ -62,7 +62,7 @@ From this command, we will obtain the following:
 1. A TGT for the user specified in `/user`&#x20;
 2. A TGS for the user specified in `/impersonateuser`&#x20;
 
-* Using the [**S4U2self** ](https://learn.microsoft.com/en-us/openspecs/windows_protocols/ms-sfu/02636893-7a1f-4357-af9a-b672e3e3de13)extension: where the service account can use the TGS obtained to authenticate to itself (or more specifically, the service it is running) on behalf of the user specified in `/impersonateuser`&#x20;
+* Using the [**S4U2self** ](https://learn.microsoft.com/en-us/openspecs/windows_protocols/ms-sfu/02636893-7a1f-4357-af9a-b672e3e3de13)extension: the service account can use the TGS obtained to authenticate to itself (or more specifically, the service it is running) on behalf of the user specified in `/impersonateuser`&#x20;
 
 #### b. S4U2proxy
 
