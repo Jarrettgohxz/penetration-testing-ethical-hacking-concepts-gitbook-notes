@@ -77,9 +77,7 @@ C:\> rubeus.exe s4u /ticket:<TGT> /msdsspn:<SPN> /tgs:<TGS>
   * This value must be listed under the `msds-allowedtodelegateto` property for the service account (supplied to the `/user` field in the previous step)
 * `/tgs` : The forwardable ticket retrieved from the previous step (S4U2self ticket for the user specified in `/impersonateuser`_)_
 
-From this command, we will obtain the following:
-
-1. A TGS (for the user specified in `/impersonateuser`) that can be used to authenticate to the service defined in `/mdsspn`.&#x20;
+From this command, we obtain a TGS for the impersonated user (specified in `/impersonateuser`) to the service defined in `/msdsspn`.
 
 Next, we can use the TGS we have obtained to authenticate to the service (defined in `/mdsspn`) as our desired user:
 
