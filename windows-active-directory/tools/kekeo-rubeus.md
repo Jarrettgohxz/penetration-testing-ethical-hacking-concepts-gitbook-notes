@@ -73,7 +73,7 @@ C:\> rubeus.exe s4u /ticket:<TGT> /msdsspn:<SPN> /tgs:<TGS>
 {% endcode %}
 
 * `/ticket` : TGT obtained from the previous step
-* `mdsspn` : Service Principal Name (SPN)
+* `/mdsspn` : Service Principal Name (SPN)
   * This value must be listed under the `msds-allowedtodelegateto` property for the service account (supplied to the `/user` field in the previous step)
 * `/tgs` : The forwardable ticket retrieved from the previous step (S4U2self ticket for the user specified in `/impersonateuser`_)_
 
