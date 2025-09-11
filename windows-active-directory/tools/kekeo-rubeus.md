@@ -79,7 +79,9 @@ C:\> rubeus.exe s4u /ticket:<TGT> /msdsspn:<SPN> /tgs:<TGS>
 
 From this command, we will obtain the following:
 
-1. A TGS (for the user specified in `/impersonateuser` ) that can be used to authenticate to the service defined in `/mdsspn`. We can achieve this with:
+1. A TGS (for the user specified in `/impersonateuser`) that can be used to authenticate to the service defined in `/mdsspn`.&#x20;
+
+Next, we can use the TGS we have obtained to authenticate to the service (defined in `/mdsspn`) as our desired user:
 
 {% embed url="https://github.com/GhostPack/Rubeus?tab=readme-ov-file#ptt" %}
 
