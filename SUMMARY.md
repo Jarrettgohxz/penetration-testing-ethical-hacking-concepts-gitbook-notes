@@ -389,6 +389,7 @@
   * [Responder](windows-active-directory/tools/responder.md)
   * [mimikatz](windows-active-directory/tools/mimikatz/README.md)
     * [sekurlsa::pth](windows-active-directory/tools/mimikatz/sekurlsa-pth.md)
+  * [kekeo/rubeus](windows-active-directory/tools/kekeo-rubeus.md)
   * [Powersploit](windows-active-directory/tools/powersploit.md)
   * [Bloodhound](windows-active-directory/tools/bloodhound/README.md)
     * [Data collectors](windows-active-directory/tools/bloodhound/data-collectors/README.md)
