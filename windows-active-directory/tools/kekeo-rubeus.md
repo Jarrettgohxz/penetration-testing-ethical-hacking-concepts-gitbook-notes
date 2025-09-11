@@ -59,15 +59,35 @@ C:\> rubeus.exe s4u /user:<username> /rc4:<rc4_hash> /impersonateuser:<user_to_i
 
 From this command, we will obtain the following:
 
-1. TGT for the user specified in `/user`&#x20;
-2. TGS for the user specified in `/impersonateuser`&#x20;
+1. A TGT for the user specified in `/user`&#x20;
+2. A TGS for the user specified in `/impersonateuser`&#x20;
 
-* Using the S4U2self extension, where the service account can use the TGS obtained to authenticate to the service its running on behalf of the user specified in `/impersonateuser`&#x20;
+* Using the [**S4U2self** ](https://learn.microsoft.com/en-us/openspecs/windows_protocols/ms-sfu/02636893-7a1f-4357-af9a-b672e3e3de13)extension: where the service account can use the TGS obtained to authenticate to itself (or more specifically, the service it is running) on behalf of the user specified in `/impersonateuser`&#x20;
 
 #### b. S4U2proxy
 
+{% code overflow="wrap" %}
 ```powershell
+C:\> rubeus.exe s4u /ticket:<TGT> /msdsspn:<SPN> /tgs:<TGS>
 ```
+{% endcode %}
+
+* `/ticket` : TGT obtained from the previous step
+* `mdsspn` : Service Principal Name (SPN)
+  * This value must be listed under the `msds-allowedtodelegateto` property for the service account (supplied to the `/user` field in the previous step)
+* `/tgs` : The forwardable ticket retrieved from the previous step (S4U2self ticket for the user specified in `/impersonateuser`_)_
+
+From this command, we will obtain the following:
+
+1. A TGS (for the user specified in `/impersonateuser` ) that can be used to authenticate to the service defined in `/mdsspn`. We can achieve this with:
+
+{% embed url="https://github.com/GhostPack/Rubeus?tab=readme-ov-file#ptt" %}
+
+```powershell
+C:\> rubeus.exe ptt /ticket:TGS
+```
+
+or by supplying the `/ptt` flag to the s4u command.
 
 
 
