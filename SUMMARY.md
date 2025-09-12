@@ -385,6 +385,7 @@
 * [Exploitation techniques](windows-active-directory/exploitation-techniques/README.md)
   * [Permission delegation](windows-active-directory/exploitation-techniques/permission-delegation.md)
   * [Kerberos delegation](windows-active-directory/exploitation-techniques/kerberos-delegation.md)
+  * [Exploiting authentication relay \~ Print Spooler Service](windows-active-directory/exploitation-techniques/exploiting-authentication-relay-print-spooler-service.md)
 * [Tools](windows-active-directory/tools/README.md)
   * [Responder](windows-active-directory/tools/responder.md)
   * [mimikatz](windows-active-directory/tools/mimikatz/README.md)
