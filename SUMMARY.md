@@ -398,3 +398,5 @@
     * [Cypher](windows-active-directory/tools/bloodhound/cypher/README.md)
       * [Useful queries](windows-active-directory/tools/bloodhound/cypher/useful-queries.md)
     * [Icon mapping](windows-active-directory/tools/bloodhound/icon-mapping.md)
+* [Experimentations](windows-active-directory/experimentations/README.md)
+  * [Reverse shell](windows-active-directory/experimentations/reverse-shell.md)
