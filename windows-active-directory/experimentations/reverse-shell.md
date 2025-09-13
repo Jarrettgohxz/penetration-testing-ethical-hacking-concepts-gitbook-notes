@@ -30,7 +30,7 @@ The following outlines the root directory of the "malware" folder&#x20;
 REM Executes a C# script that returns a boolean value that indicates if the current user is in the "Adminstrators" group, before storing the value in the "ISADMIN" env variable
 for /f "delims=" %%a in ('powershell.exe -NoProfile -Command "([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltinRole]::Administrator)"') do set ISADMIN=%%a
 
-REM Echo the value of the "ISADMIN" env variable
+REM Echo the value of the "ISADMIN" env variable (for debugging purposes)
 echo ISADMIN=%ISADMIN%
 
 REM User is not an administrator: EXIT
@@ -58,6 +58,10 @@ exit
 a. `[Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltinRole]::Administrator)`&#x20;
 
 * A C# one-liner which output a boolean value that indicates if the current user is in the "**Administrators**" group
+
+After executing the `shell.cmd` file: Right-click -> "Run as administrator", we will be prompted to allow  administrative permissions to run the script, to which we can simply accept to proceed.&#x20;
+
+Notice that we are not required to authenticate (provide password or any other credentials), as our currently logged in user is an administrator (in the "**Administrators**" group).
 
 #### Catch the shell
 
