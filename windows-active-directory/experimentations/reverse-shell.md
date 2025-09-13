@@ -55,7 +55,7 @@ exit
 ```
 {% endcode %}
 
-a. `[Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltinRole]::Administrator)`&#x20;
+a. `([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltinRole]::Administrator)`&#x20;
 
 * A C# one-liner which output a boolean value that indicates if the current user is in the "**Administrators**" group
 
