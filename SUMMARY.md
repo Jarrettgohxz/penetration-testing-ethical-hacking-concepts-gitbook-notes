@@ -397,3 +397,4 @@
       * [Sharphound](windows-active-directory/tools/bloodhound/data-collectors/sharphound.md)
     * [Cypher](windows-active-directory/tools/bloodhound/cypher/README.md)
       * [Useful queries](windows-active-directory/tools/bloodhound/cypher/useful-queries.md)
+    * [Icon mapping](windows-active-directory/tools/bloodhound/icon-mapping.md)
