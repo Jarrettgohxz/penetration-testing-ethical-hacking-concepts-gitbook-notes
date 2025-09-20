@@ -387,7 +387,7 @@
   * [Kerberos delegation](windows-active-directory/exploitation-techniques/kerberos-delegation.md)
   * [Exploiting authentication relay \~ Print Spooler Service](windows-active-directory/exploitation-techniques/exploiting-authentication-relay-print-spooler-service.md)
   * [Group Policy Objects (GPOs)](windows-active-directory/exploitation-techniques/group-policy-objects-gpos.md)
-  * [Exploiting domain trusts (Kerberos Golden Ticket)](windows-active-directory/exploitation-techniques/exploiting-domain-trusts-kerberos-golden-ticket.md)
+  * [Exploiting domain trusts](windows-active-directory/exploitation-techniques/exploiting-domain-trusts.md)
 * [Tools](windows-active-directory/tools/README.md)
   * [Responder](windows-active-directory/tools/responder.md)
   * [mimikatz](windows-active-directory/tools/mimikatz/README.md)

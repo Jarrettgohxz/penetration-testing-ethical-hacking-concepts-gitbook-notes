@@ -4,7 +4,7 @@
 
 1. **Rubeus**
 
-{% embed url="https://github.com/GhostPack/Rubeus?tab=readme-ov-file#s4u" %}
+{% embed url="https://github.com/GhostPack/Rubeus?tab=readme-ov-file" %}
 
 2. **Kekeo**
 
