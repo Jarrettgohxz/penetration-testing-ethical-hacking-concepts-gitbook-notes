@@ -2,12 +2,8 @@
 
 {% code overflow="wrap" %}
 ```powershell
-mimikatz # kerberos::golden /user:Administrator /domain:<child domain> /sid:S-xxx /service:krbtgt /rc4:<Password hash of krbtgt user> /sids:<SID of Enterprise Admins group> /ptt
+mimikatz # kerberos::golden /sid:S-xxx ...
 ```
 {% endcode %}
 
-a. `/user:Administrator` : ...
-
-b. ...
-
-c. `/service:krbtgt` : specifies that this ticket is a TGT
+Essentially the same as the Mimikatz command to create a Golden Ticket, with the additional `/sids` option to specify the extra SID of the target domain.
