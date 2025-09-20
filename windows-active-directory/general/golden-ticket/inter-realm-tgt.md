@@ -2,7 +2,7 @@
 
 {% code overflow="wrap" %}
 ```powershell
-mimikatz # kerberos::golden /sid:S-xxx ...
+mimikatz # kerberos::golden /sids:xxx ...
 ```
 {% endcode %}
 
