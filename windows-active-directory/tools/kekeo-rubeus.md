@@ -28,7 +28,7 @@ For each of the following sections, I aim to provide the equivalent commands in 
 
 ```powershell
 kekeo # tgt::ask /user:<user> /domain:<domain> /password:<password>
-C:\> rubeus.exe /user:<user> /password:<password>
+C:\> rubeus.exe asktgt /user:<user> /password:<password>
 ```
 
 * For rubeus, if `/password` is used instead of a hash, `/enctype:X` will default to RC4 for the exchange, with `des|aes128|aes256` as options
