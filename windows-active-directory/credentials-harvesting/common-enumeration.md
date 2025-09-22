@@ -32,7 +32,7 @@ For more information on the PSReadline options, we can run the `Get-PSreadlineOp
 
 ### Registry
 
-We can utilize the Windows registry to harvest information using the following commands:
+We can utilize the Windows registry to harvest information. The following command examples can be used to query the registry for the _password_ keyword:
 
 ```powershell
 reg query HKLM /f password /t REG_SZ /s
@@ -44,12 +44,14 @@ a. `HKM`, `HKU`: These values refers to the _keyname_ option which must be speci
 * `HKLM`: **HKEY\_LOCAL\_MACHINE** key which contains configuration information particular to the computer (for any user)
 * &#x20;`HKU`: **HKEY\_USERS** key which contains all the actively loaded user profiles on the computer
 
-> Since we did not specify a remote machine (`\\<computername\` ), the operation will default to the local computer
+> Since we did not specify a remote machine (`\\<computername>\` ), the operation will default to the local computer
 
 b. `/f` : Specifies the data or pattern to search for
 
+* In our case, the pattern we are searching for is _password_
+
 c. `/t` : Specifies registry types to search. Valid types are: **REG\_SZ**, **REG\_MULTI\_SZ**, etc.
 
-* In this case, we specify it as **REG\_SZ**, which is simply a fixed-length text string
+* In ourcase, we specify it as **REG\_SZ**, which is simply a fixed-length text string
 
 d. `/s` : Specifies to query all subkeys and value names recursively
