@@ -388,6 +388,8 @@
   * [Exploiting authentication relay \~ Print Spooler Service](windows-active-directory/exploitation-techniques/exploiting-authentication-relay-print-spooler-service.md)
   * [Group Policy Objects (GPOs)](windows-active-directory/exploitation-techniques/group-policy-objects-gpos.md)
   * [Exploiting domain trusts](windows-active-directory/exploitation-techniques/exploiting-domain-trusts-kerberos-golden-ticket.md)
+* [Credentials harvesting](windows-active-directory/credentials-harvesting/README.md)
+  * [Common enumeration](windows-active-directory/credentials-harvesting/common-enumeration.md)
 * [General](windows-active-directory/general/README.md)
   * [Golden Ticket](windows-active-directory/general/golden-ticket/README.md)
     * [Inter-Realm TGT](windows-active-directory/general/golden-ticket/inter-realm-tgt.md)
