@@ -252,6 +252,8 @@
 ## Ⓜ️ MITRE ATT\&CK
 
 * [Introduction](mitre-att-and-ck/introduction.md)
+* [OS Credential Dumping (T1003)](mitre-att-and-ck/os-credential-dumping-t1003/README.md)
+  * [LSASS memory](mitre-att-and-ck/os-credential-dumping-t1003/lsass-memory.md)
 
 ## 🧰 Tools/services
 
