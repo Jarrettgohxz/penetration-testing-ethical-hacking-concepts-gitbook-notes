@@ -393,6 +393,7 @@
     * [PowerShell history](windows-active-directory/credentials-harvesting/common-enumeration/powershell-history.md)
     * [Registry Hives](windows-active-directory/credentials-harvesting/common-enumeration/registry-hives.md)
     * [Volume Shadow Copy Service](windows-active-directory/credentials-harvesting/common-enumeration/volume-shadow-copy-service.md)
+    * [Local Security Authority Subsystem Service (LSASS)](windows-active-directory/credentials-harvesting/common-enumeration/local-security-authority-subsystem-service-lsass.md)
 * [General](windows-active-directory/general/README.md)
   * [Golden Ticket](windows-active-directory/general/golden-ticket/README.md)
     * [Inter-Realm TGT](windows-active-directory/general/golden-ticket/inter-realm-tgt.md)
