@@ -303,6 +303,17 @@
     * [Damn Vulnerable Web Application (DVWA)](practice/web-application-pentesting/damn-vulnerable-web-application-dvwa.md)
   * [Metasploitable 2](practice/metasploitable-2.md)
 
+## Forensics
+
+* [Steganography](forensics/steganography/README.md)
+  * [Resources](forensics/steganography/resources.md)
+  * [Tools](forensics/steganography/tools/README.md)
+    * [xxd, hexdump](forensics/steganography/tools/xxd-hexdump.md)
+    * [strings](forensics/steganography/tools/strings.md)
+    * [binwalk](forensics/steganography/tools/binwalk.md)
+    * [exiftool](forensics/steganography/tools/exiftool.md)
+    * [stegcracker](forensics/steganography/tools/stegcracker.md)
+
 ## Operational Security (OpSec)
 
 * [Hardening](operational-security-opsec/hardening/README.md)
@@ -389,6 +400,7 @@
   * [Kerberos delegation](windows-active-directory/exploitation-techniques/kerberos-delegation.md)
   * [Exploiting authentication relay \~ Print Spooler Service](windows-active-directory/exploitation-techniques/exploiting-authentication-relay-print-spooler-service.md)
   * [Group Policy Objects (GPOs)](windows-active-directory/exploitation-techniques/group-policy-objects-gpos.md)
+  * [Exploiting Certificates](windows-active-directory/exploitation-techniques/exploiting-certificates.md)
   * [Exploiting domain trusts](windows-active-directory/exploitation-techniques/exploiting-domain-trusts-kerberos-golden-ticket.md)
 * [Credentials harvesting](windows-active-directory/credentials-harvesting/README.md)
   * [PowerShell history](windows-active-directory/credentials-harvesting/powershell-history.md)
@@ -412,14 +424,3 @@
     * [Icon mapping](windows-active-directory/tools/bloodhound/icon-mapping.md)
 * [Experimentations](windows-active-directory/experimentations/README.md)
   * [Reverse shell](windows-active-directory/experimentations/reverse-shell.md)
-
-## Forensics
-
-* [Steganography](forensics/steganography/README.md)
-  * [Resources](forensics/steganography/resources.md)
-  * [Tools](forensics/steganography/tools/README.md)
-    * [xxd, hexdump](forensics/steganography/tools/xxd-hexdump.md)
-    * [strings](forensics/steganography/tools/strings.md)
-    * [binwalk](forensics/steganography/tools/binwalk.md)
-    * [exiftool](forensics/steganography/tools/exiftool.md)
-    * [stegcracker](forensics/steganography/tools/stegcracker.md)
