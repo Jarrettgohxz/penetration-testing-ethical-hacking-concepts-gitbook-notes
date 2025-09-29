@@ -2,173 +2,24 @@
 
 Powershell is an extension to the command prompt, and provides more control over commands.&#x20;
 
-From the official Microsoft docs:
+{% embed url="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7.5" %}
 
-> The Active Directory module for Windows PowerShell is a PowerShell module that consolidates a group of cmdlets. You can use these cmdlets to manage your Active Directory domains, Active Directory Lightweight Directory Services (AD LDS) configuration sets, and Active Directory Database Mounting Tool instances in a single, self-contained package.
->
-> If you don't have the Active Directory module installed on your machine, you need to download the correct Remote Server Administration Tools (RSAT) package for your OS. Refer to the link below for more information.
+{% embed url="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_powershell_exe?view=powershell-5.1" %}
 
-{% embed url="https://learn.microsoft.com/en-us/powershell/module/activedirectory/?view=windowsserver2022-ps" %}
+### Common options&#x20;
 
-The commands utilized are referred to as `cmdlets` .
+1. **Execution policies**
 
-### Additional resource
-
-{% embed url="https://jarrettgxz-sec.gitbook.io/windows/active-directory-ad/active-directory-module" %}
-
-### AD enumeration
-
-**Important option used in the subsequent commands**
-
-> Note that some of the commands (eg. `Get-ADDomain` , etc.) may not support all the options listed below.  Refer to the respective documentation in the official link above for more information, and this list is provided just for a quick reference
-
-a. `-Identity`&#x20;
-
-> Specifies an Active Directory user object.
-
-b. `-Server`
-
-> Specifies the Active Directory Domain Services instance to connect to, by providing one of the following values for a corresponding domain name or directory server.
-
-c. `-Properties`
-
-> Specifies the properties of the output object to retrieve from the server.
-
-#### 1. Users
+> PowerShell's execution policy is a safety feature that controls the conditions under which PowerShell loads configuration files and runs scripts. This feature helps prevent the execution of malicious scripts.
 
 ```powershell
-PS> GET-ADUser -Identity <username> -Server <server> -Properties <properties>
+C:\> powershell -eq Bypass
+C:\> powershell -ex Bypass
 ```
 
-* `-Properties *`:  to display all the attributes set on the object
+* `Bypass`&#x20;
+  * Nothing is blocked and there are no warnings or prompts
+  * This execution policy is designed for configurations in which a PowerShell script is built into a larger application or for configurations in which PowerShell is the foundation for a program that has its own security model
 
-#### 2. Groups
-
-```powershell
-PS> GET-ADGroup -Identity <groupname> -Server <server> -Properties *
-```
-
-`-Properties *`:  to display all the attributes set on the object
-
-_**Enumerate group membership**_
-
-```powershell
-PS> GET-ADGroupMember -Identity <groupname> -Server <server>
-```
-
-#### 3. AD Objects
-
-For a more generic search on any AD objects, we can utilize the `Get-ADObject` cmdlet.
-
-**Examples using `Get-ADObject`**
-
-_Useful reference:_
-
-{% embed url="https://jarrettgxz-sec.gitbook.io/penetration-testing-ethical-hacking-concepts/windows-active-directory/enumeration/powershell/objectclass" %}
-
-1. Filter by `ObjectClass` , `Name` , etc.
-
-`ObjectClass`
-
-{% code title="" %}
-```powershell
-PS> Get-ADObject -Filter 'ObjectClass -eq "container"'
-DistinguishedName                                   Name           
------------------                                   ----
-CN=Users,DC=test,DC=com                             Users
-CN=Computers,DC=test,DC=com                         Computers       
-CN=System,DC=test,DC=com                            System
-CN=WinsockServices,CN=System,DC=za,DC=test,DC=com   WinsockServices
-CN=Program Data,DC=za,DC=tryhackme,DC=com           Program Data 
-...
-redacted 
-...
-```
-{% endcode %}
-
-```powershell
-PS> Get-ADObject -Filter 'ObjectClass -eq "user"'
-PS> Get-ADObject -Filter 'ObjectClass -eq "organizationalUnit"'
-# and many more!
-```
-
-`Name`
-
-```powershell
-PS> Get-ADObject -Filter 'Name -eq "Computers"'
-DistinguishedName                            Name       ObjectClass         ObjectGUID
------------------                            ----       -----------         ----------
-CN=Computers,DC=test,DC=com                  Computers  container           xxxx
-OU=Computers,DC=test,DC=com                  Computers  organizationalUnit  xxxx
-...
-
-PS> Get-ADObject -Filter 'Name -eq "Users"'                                                       
-
-DistinguishedName                             Name      ObjectClass            ObjectGUID
------------------                             ----      -----------            ----------
-CN=Users,DC=test,DC=com                       Users     container              xxxx
-CN=Users,CN=Builtin,DC=test,DC=com            Users     group                  xxxx
-OU=Users,OU=Accounts,DC=test,DC=com           Users     organizationalUnit     xxxx
-...
-
-PS> Get-ADObject -Filter 'Name -eq "WinSockServices"'         
-                                                                                                              
-DistinguishedName                              Name             ObjectClass   ObjectGUID
------------------                              ----             -----------   ----------
-CN=WinsockServices,CN=System,DC=test,DC=com    WinsockServices  container     xxxx
-...
-
-```
-
-We can even add the `-Properties *` option to view the full list of properties each object has.&#x20;
-
-> Note that the example outputs shown above simply illustrates a hypothetical example that have been slightly modified based on my experiment on a test AD network.
-
-#### 4. Domains
-
-We can use the `Get-ADDomain` cmdlet to retrieve more information about a specific domain:
-
-```powershell
-PS> GET-ADDomain -Server <server>
-```
-
-#### 5. Organizational Units (OUs)
-
-> Gets one or more Active Directory organizational units.
-
-Eg. Retrieve all OUs:
-
-{% code overflow="wrap" %}
-```powershell
-PS> Get-ADOrganizationalUnit -Filter 'Name -like "*"' | Format-Table Name, DistinguishedName -A
-```
-{% endcode %}
-
-### Examples
-
-1. **Find the value of a property for a user/group**
-
-Suppose we want to find the creation date for the group _**Test Group**_ (`Created` attribute)_:_
-
-```powershell
-# eg. We can first list out all the properties
-PS> GET-ADGroup -Identity "Test Group" -Server xxxx -Properties *
-
-CanonicalName    : ...
-CN               : Test Group
-Created          : dd/mm/yyy xx.xx.xx.xx
-...
-```
-
-To display only the specified property, along with other default properties (automatically included by the command):
-
-```powershell
-PS> Get-ADGroup -Identity "Test-Group" -Server xxxx -Properties Created
-```
-
-To retrieve the `Created` attribute only:
-
-```powershell
-PS> GET-ADGroup -Identity "Test Group" -Server xxxx -Properties Created | Select-Object -ExpandProperty Created
-```
+Without the `Bypass` option, we will not be allowed to import a module (eg. `PowerView.ps1`) with the `Import-Module` command — to perform any relevant task.
 

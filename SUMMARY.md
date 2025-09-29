@@ -378,6 +378,7 @@
   * [Microsoft Management Console (MMC)](windows-active-directory/enumeration/microsoft-management-console-mmc.md)
   * [Command Prompt (cmd)](windows-active-directory/enumeration/command-prompt-cmd.md)
   * [Powershell](windows-active-directory/enumeration/powershell.md)
+    * [Active Directory Module](windows-active-directory/enumeration/powershell/active-directory-module.md)
     * [Powerview](windows-active-directory/enumeration/powershell/powerview.md)
     * [ObjectClass](windows-active-directory/enumeration/powershell/objectclass.md)
   * [Bloodhound](windows-active-directory/enumeration/bloodhound/README.md)
