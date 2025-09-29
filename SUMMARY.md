@@ -367,7 +367,8 @@
 
 ## Windows Active Directory
 
-* [Introduction](windows-active-directory/introduction.md)
+* [Introduction](windows-active-directory/introduction/README.md)
+  * [Resources](windows-active-directory/introduction/resources.md)
 * [Initial Access](windows-active-directory/initial-access/README.md)
   * [Authentication](windows-active-directory/initial-access/authentication/README.md)
     * [NetNTLM](windows-active-directory/initial-access/authentication/netntlm.md)
