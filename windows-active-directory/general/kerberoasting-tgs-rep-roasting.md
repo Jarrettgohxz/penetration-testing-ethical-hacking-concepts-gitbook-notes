@@ -1,4 +1,4 @@
-# Kerberoasting
+# Kerberoasting (TGS-REP roasting)
 
 {% embed url="https://www.techcrafters.com/portal/en/kb/articles/how-to-list-all-spns-in-a-domain-using-powershell#2__Querying_SPNs" %}
 
@@ -12,7 +12,7 @@
 
 
 
-### Retrieve a list of SPNs in the network
+### (1) Retrieve a list of SPNs in the network
 
 1. `Get-ADServiceAccount` cmdlet
 
@@ -34,7 +34,7 @@ $ impacket-GetUserSPNs -dc-ip <DOMAIN_CONTROLLER> <TARGET>
   * By default, all domain users can read the `servicePrinicpalName` attribute (required by the script)
   * Thus, as long as a valid user account is provided, it will not affect the results of the script
 
-### Retrieve TGS for the SPNs we have found
+### (2) Retrieve TGS for the SPNs we have found
 
 1. &#x20;`impacket-GetUserSPNs` with the `-request-user` flag
 
@@ -74,4 +74,14 @@ Or, we can directly enumerate the SPNs and request for the associated TGS all in
 C:\> Rubeus.exe kerberoast
 ```
 {% endcode %}
+
+### (3) Perform brute-force cracking on the obtained TGS
+
+{% code overflow="wrap" %}
+```powershell
+$ hashcat 
+```
+{% endcode %}
+
+
 
