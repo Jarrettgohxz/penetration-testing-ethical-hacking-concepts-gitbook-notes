@@ -428,5 +428,7 @@
     * [crackmapexec](windows-active-directory/tools/to-explore/crackmapexec.md)
     * [impacket](windows-active-directory/tools/to-explore/impacket/README.md)
       * [smbexec](windows-active-directory/tools/to-explore/impacket/smbexec.md)
+    * [ldapsearch](windows-active-directory/tools/to-explore/ldapsearch.md)
+    * [rpcclient](windows-active-directory/tools/to-explore/rpcclient.md)
 * [Experimentations](windows-active-directory/experimentations/README.md)
   * [Reverse shell](windows-active-directory/experimentations/reverse-shell.md)
