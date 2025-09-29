@@ -419,6 +419,7 @@
 * [General](windows-active-directory/general/README.md)
   * [Golden Ticket](windows-active-directory/general/golden-ticket/README.md)
     * [Inter-Realm TGT](windows-active-directory/general/golden-ticket/inter-realm-tgt.md)
+  * [Kerberoasting](windows-active-directory/general/kerberoasting.md)
 * [Tools](windows-active-directory/tools/README.md)
   * [Responder](windows-active-directory/tools/responder.md)
   * [mimikatz](windows-active-directory/tools/mimikatz/README.md)
