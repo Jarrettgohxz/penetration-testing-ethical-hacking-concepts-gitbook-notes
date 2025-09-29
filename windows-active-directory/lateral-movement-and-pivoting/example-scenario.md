@@ -22,4 +22,4 @@ Let's assume that the Intermediary server have no data that will be interesting 
 
 The first set of AD credential allows us to gain a remote shell session on the intermediary machine (`jmp.domain`), via SSH.&#x20;
 
-However, the _IIS_ server does not expose a SSH service. Thus, we need to make use of the session we have on the intermediary server to move laterally to the _IIS_ server (`iis.domain`) using the obtained admin credentials, to gain a remote session with administrative privileges.&#x20;
+However, the _IIS_ server does not expose a SSH service. Thus, we need to make use of the session we have on the intermediary server to move laterally to the _IIS_ server (`iis.test.com`) using the obtained admin credentials, to gain a remote session with administrative privileges.&#x20;
