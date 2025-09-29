@@ -2,9 +2,13 @@
 
 {% embed url="https://www.techcrafters.com/portal/en/kb/articles/how-to-list-all-spns-in-a-domain-using-powershell#2__Querying_SPNs" %}
 
-{% embed url="https://github.com/GhostPack/Rubeus?tab=readme-ov-file#roasting" %}
+{% embed url="https://www.ibm.com/think/topics/kerberoasting" %}
 
-...
+{% embed url="https://learn.microsoft.com/en-us/powershell/module/activedirectory/get-adserviceaccount?view=windowsserver2025-ps" %}
+
+### What is Kerberoasting?
+
+
 
 
 
@@ -63,7 +67,7 @@ b. `/simple:` roasted hashes will be output to the console, one per line
 
 **Combined command**
 
-Or, we can directly enumerate and request for the TGS for all SPNs:
+Or, we can directly enumerate the SPNs and request for the associated TGS all in one command:
 
 {% code overflow="wrap" %}
 ```powershell
