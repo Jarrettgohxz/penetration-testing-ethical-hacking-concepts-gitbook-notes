@@ -75,7 +75,7 @@ C:\> Rubeus.exe kerberoast
 ```
 {% endcode %}
 
-(3) Perform brute-force cracking on the obtained TGS:
+### (3) Perform dictionary attack on the obtained TGS
 
 ```sh
 $ hashcat -a 0 -m 13100 <path_to_spn_hash> 
