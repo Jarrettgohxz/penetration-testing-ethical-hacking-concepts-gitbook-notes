@@ -377,6 +377,7 @@
   * [Microsoft Management Console (MMC)](windows-active-directory/enumeration/microsoft-management-console-mmc.md)
   * [Command Prompt (cmd)](windows-active-directory/enumeration/command-prompt-cmd.md)
   * [Powershell](windows-active-directory/enumeration/powershell.md)
+    * [Powerview](windows-active-directory/enumeration/powershell/powerview.md)
     * [ObjectClass](windows-active-directory/enumeration/powershell/objectclass.md)
 * [Lateral movement & Pivoting](windows-active-directory/lateral-movement-and-pivoting/README.md)
   * [Example scenario](windows-active-directory/lateral-movement-and-pivoting/example-scenario.md)
