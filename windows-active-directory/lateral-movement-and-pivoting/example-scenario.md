@@ -8,9 +8,9 @@ description: >-
 
 Suppose the following scenario where we have obtained two sets of AD credentials:&#x20;
 
-a. Low privileges (user) to access `jmp.test.com`
+a. Low privileges (**user**) to access `jmp.test.com`
 
-b. A user under the **Domain Admin** group for the domain `test.com`
+b. A user named **admin**, that is under the **Domain Admin** group for the domain `test.com`
 
 Our goal is to obtain a shell session on an _IIS_ server with administrative privileges. There are 2 servers we will be working with:
 
