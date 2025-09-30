@@ -1,4 +1,4 @@
-# LSASS memory
+# LSASS memory (T1003.001)
 
 {% embed url="https://attack.mitre.org/techniques/T1003/001/" %}
 
