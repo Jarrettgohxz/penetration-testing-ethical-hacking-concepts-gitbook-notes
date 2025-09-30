@@ -434,5 +434,7 @@
       * [smbexec](windows-active-directory/tools/to-explore/impacket/smbexec.md)
     * [ldapsearch](windows-active-directory/tools/to-explore/ldapsearch.md)
     * [rpcclient](windows-active-directory/tools/to-explore/rpcclient.md)
+    * [Snaffler](windows-active-directory/tools/to-explore/snaffler.md)
+    * [Seatbelt](windows-active-directory/tools/to-explore/seatbelt.md)
 * [Experimentations](windows-active-directory/experimentations/README.md)
   * [Reverse shell](windows-active-directory/experimentations/reverse-shell.md)
