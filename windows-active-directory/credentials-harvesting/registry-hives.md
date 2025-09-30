@@ -3,8 +3,8 @@
 We can utilize the Windows registry to harvest information. The following command examples can be used to query the registry for the _password_ keyword:
 
 ```powershell
-reg query HKLM /f password /t REG_SZ /s
-reg query HKU /f password /t REG_SZ /s
+reg query HKLM /f <search_pattern> /t REG_SZ /s
+reg query HKU /f <search_pattern> /t REG_SZ /s
 ```
 
 a. `HKM`, `HKU`: These values refers to the _keyname_ option which must be specified
@@ -15,8 +15,6 @@ a. `HKM`, `HKU`: These values refers to the _keyname_ option which must be speci
 > Since we did not specify a remote machine (`\\<computername>\` ), the operation will default to the local computer
 
 b. `/f` : Specifies the data or pattern to search for
-
-* In our case, the pattern we are searching for is _password_
 
 c. `/t` : Specifies registry types to search. Valid types are: **REG\_SZ**, **REG\_MULTI\_SZ**, etc.
 
