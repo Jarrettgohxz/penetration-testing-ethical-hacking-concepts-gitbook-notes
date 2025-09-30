@@ -86,6 +86,7 @@
 * [25 \~ SMTP](network-services-vulnerability-scanning-and-exploitation/25-smtp.md)
 * [53 \~ DNS](network-services-vulnerability-scanning-and-exploitation/53-dns.md)
 * [80/443 \~ HTTP/HTTPS](network-services-vulnerability-scanning-and-exploitation/80-443-http-https.md)
+* [88 \~ Kerberos](3-network-services-vulnerability-scanning-and-exploitation/88-kerberos.md)
 * [110 \~ POP3](network-services-vulnerability-scanning-and-exploitation/110-pop3.md)
 * [111/2049 \~ RPC/NFS](network-services-vulnerability-scanning-and-exploitation/111-2049-rpc-nfs.md)
 * [139/445 \~ SMB](network-services-vulnerability-scanning-and-exploitation/139-445-smb.md)
@@ -253,7 +254,7 @@
 
 * [Introduction](mitre-att-and-ck/introduction.md)
 * [OS Credential Dumping (T1003)](mitre-att-and-ck/os-credential-dumping-t1003/README.md)
-  * [LSASS memory](mitre-att-and-ck/os-credential-dumping-t1003/lsass-memory.md)
+  * [LSASS memory (T1003.001)](mitre-att-and-ck/os-credential-dumping-t1003/lsass-memory-t1003.001.md)
 
 ## 🧰 Tools/services
 
@@ -411,13 +412,13 @@
   * [Group Policy Objects (GPOs)](windows-active-directory/exploitation-techniques/group-policy-objects-gpos.md)
   * [Exploiting Certificates](windows-active-directory/exploitation-techniques/exploiting-certificates.md)
   * [Exploiting domain trusts](windows-active-directory/exploitation-techniques/exploiting-domain-trusts-kerberos-golden-ticket.md)
+  * [Kerberoasting (TGS-REP roasting)](windows-active-directory/exploitation-techniques/kerberoasting-tgs-rep-roasting.md)
+  * [AS-REP roasting](windows-active-directory/exploitation-techniques/as-rep-roasting.md)
 * [Credentials harvesting](windows-active-directory/credentials-harvesting/README.md)
   * [PowerShell history](windows-active-directory/credentials-harvesting/powershell-history.md)
   * [Registry Hives](windows-active-directory/credentials-harvesting/registry-hives.md)
   * [Volume Shadow Copy Service](windows-active-directory/credentials-harvesting/volume-shadow-copy-service.md)
   * [Local Security Authority Subsystem Service (LSASS)](windows-active-directory/credentials-harvesting/local-security-authority-subsystem-service-lsass.md)
-  * [Kerberoasting (TGS-REP roasting)](windows-active-directory/credentials-harvesting/kerberoasting-tgs-rep-roasting.md)
-  * [AS-REP roasting](windows-active-directory/credentials-harvesting/as-rep-roasting.md)
 * [General](windows-active-directory/general/README.md)
   * [Golden Ticket](windows-active-directory/general/golden-ticket/README.md)
     * [Inter-Realm TGT](windows-active-directory/general/golden-ticket/inter-realm-tgt.md)
