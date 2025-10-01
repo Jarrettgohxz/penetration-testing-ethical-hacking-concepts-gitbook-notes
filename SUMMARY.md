@@ -441,3 +441,7 @@
     * [Lazagne](windows-active-directory/tools/to-explore/lazagne.md)
 * [Experimentations](windows-active-directory/experimentations/README.md)
   * [Reverse shell](windows-active-directory/experimentations/reverse-shell.md)
+
+## Group 1
+
+* [Reverse Engineering](group-1/reverse-engineering.md)
