@@ -4,12 +4,14 @@ We can utilize the Windows registry to harvest information. The following comman
 
 ```powershell
 reg query HKLM /f <search_pattern> /t REG_SZ /s
+reg query HKCU /f <search_pattern> /t REG_SZ /s
 reg query HKU /f <search_pattern> /t REG_SZ /s
 ```
 
 a. `HKM`, `HKU`: These values refers to the _keyname_ option which must be specified
 
 * `HKLM`: **HKEY\_LOCAL\_MACHINE** key which contains configuration information particular to the computer (for any user)
+* `HKCU`: **HKEY\_CURRENT\_USER** which Contains the root of the configuration information for the user who is currently logged on. The user's folders, screen colors, and Control Panel settings are stored here. This information is associated with the user's profile.
 * &#x20;`HKU`: **HKEY\_USERS** key which contains all the actively loaded user profiles on the computer
 
 > Since we did not specify a remote machine (`\\<computername>\` ), the operation will default to the local computer
@@ -18,7 +20,7 @@ b. `/f` : Specifies the data or pattern to search for
 
 c. `/t` : Specifies registry types to search. Valid types are: **REG\_SZ**, **REG\_MULTI\_SZ**, etc.
 
-* In ourcase, we specify it as **REG\_SZ**, which is simply a fixed-length text string
+* In this case, we specify it as **REG\_SZ**, which is simply a fixed-length text string
 
 d. `/s` : Specifies to query all subkeys and value names recursively
 
