@@ -170,3 +170,27 @@ To retrieve the `Created` attribute only:
 PS> GET-ADGroup -Identity "Test Group" -Server xxxx -Properties Created | Select-Object -ExpandProperty Created
 ```
 
+### Additional options
+
+1. `Select-Object`&#x20;
+
+Eg. with `Get-ADUser` command:
+
+```powershell
+PS> Get-ADUser -Filter * -Properties * | Select-Object Property1,Property2,...
+
+# eg.
+PS> Get-ADUser -Filter * -Properties * | Select-Object Name,SamAccountName,Description
+description                                              name          samaccountname
+-----------                                              ----          --------------
+Built-in account for administering the computer/domain   Administrator Administrator
+Built-in account for guest access to the computer/domain Guest         Guest
+Key Distribution Center Service Account                  krbtgt        krbtgt
+                                                         
+                                                         test          test-user
+                                                         sshd          sshd
+...
+```
+
+
+
