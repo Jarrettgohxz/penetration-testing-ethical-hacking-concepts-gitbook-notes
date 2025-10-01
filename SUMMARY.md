@@ -420,6 +420,7 @@
   * [Volume Shadow Copy Service](windows-active-directory/credentials-harvesting/volume-shadow-copy-service.md)
   * [Local Security Authority Subsystem Service (LSASS)](windows-active-directory/credentials-harvesting/local-security-authority-subsystem-service-lsass.md)
   * [Local Administrator Password Solution (LAPS)](windows-active-directory/credentials-harvesting/local-administrator-password-solution-laps.md)
+  * [Credentials Manager](windows-active-directory/credentials-harvesting/credentials-manager.md)
 * [General](windows-active-directory/general/README.md)
   * [Golden Ticket](windows-active-directory/general/golden-ticket/README.md)
     * [Inter-Realm TGT](windows-active-directory/general/golden-ticket/inter-realm-tgt.md)
