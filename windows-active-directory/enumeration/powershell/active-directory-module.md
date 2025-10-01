@@ -172,7 +172,7 @@ PS> GET-ADGroup -Identity "Test Group" -Server xxxx -Properties Created | Select
 
 ### Additional options
 
-1. `Select-Object`&#x20;
+1. `Select-Object` (alias: `select`)
 
 Eg. with `Get-ADUser` command:
 
