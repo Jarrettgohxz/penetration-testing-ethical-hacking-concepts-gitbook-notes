@@ -442,6 +442,6 @@
 * [Experimentations](windows-active-directory/experimentations/README.md)
   * [Reverse shell](windows-active-directory/experimentations/reverse-shell.md)
 
-## Group 1
+## Reverse Engineering
 
-* [Reverse Engineering](group-1/reverse-engineering.md)
+* [Resources](reverse-engineering/resources.md)

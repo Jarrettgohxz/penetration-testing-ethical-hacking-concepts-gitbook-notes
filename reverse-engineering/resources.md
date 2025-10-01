@@ -2,9 +2,7 @@
 icon: binary
 ---
 
-# Reverse Engineering
-
-### Resources
+# Resources
 
 1. **Nightmare**
 
