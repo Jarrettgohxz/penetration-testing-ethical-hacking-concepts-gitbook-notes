@@ -18,9 +18,13 @@ NTDS is located in the directory: `C:\Windows\NTDS`, and is encrypted to prevent
 
 #### `ntds.dit`
 
-This file which stands for the New Technology Directory Services Directory Information Tree, is the database for Active Directory Domain Services (AD DS). This database stores directory data such as password hashes and user details for all computer and users objects within the domain, and makes that data available to network users and administrators
+This file which stands for the New Technology Directory Services Directory Information Tree, is the database for Active Directory Domain Services (AD DS). This database stores directory data such as password hashes and user details for all computer and users objects within the domain, and makes that data available to network users and administrators.&#x20;
+
+{% embed url="https://jarrettgxz-sec.gitbook.io/windows/active-directory-ad/domain-service-ad-ds/ntds.dit" %}
 
 ### (1) Local dumping (with no credentials)
+
+> Note that the methods discussed in this section only works with administrator access on the **Domain Controller** (**DC**). This is because we are working with the `ntds.dit` file, which is only present on the **DC**.
 
 This attack can be performed when we have no credentials available, but have administrator access to the Domain Controller (DC).&#x20;
 
