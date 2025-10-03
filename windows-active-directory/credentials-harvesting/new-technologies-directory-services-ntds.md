@@ -45,6 +45,13 @@ PS> ntdsutil.exe 'ac i ntds' 'i' 'create full c:\temp' q q
 ```
 {% endcode %}
 
+* `ac i ntds:` short for ...
+* `i:` short for ...
+* `create full c:\temp:` ...
+* `q q:` short for ...
+
+
+
 We can now view the dumped files in the `c:\temp` directory, and provide the relevant paths to the 3 files listed above (`ntds.dit` and the other 2 registry files) to the **impacket's secretsdump.py** tool to extract the hashes:
 
 {% code overflow="wrap" %}
