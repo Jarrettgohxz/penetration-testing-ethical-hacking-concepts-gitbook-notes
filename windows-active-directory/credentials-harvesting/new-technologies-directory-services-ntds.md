@@ -10,6 +10,8 @@
 
 {% embed url="https://www.semperis.com/blog/ntds-dit-extraction-explained/" %}
 
+{% embed url="https://www.kali.org/tools/impacket/" %}
+
 ### What is NTDS?
 
 New Technologies Directory Services (NTDS) is a database containing all Active Directory data, including objects, attributes, credentials, etc.
@@ -50,16 +52,55 @@ PS> ntdsutil.exe 'ac i ntds' 'i' 'create full c:\temp' q q
 * `create full c:\temp:` ...
 * `q q:` short for ...
 
+We can now view the dumped files in the `c:\temp` directory, with the following structure:
 
+* **Active Directory**
+  * **ntds.dit**&#x20;
+  * **ntds.jfm**
+* **registry**
+  * **SECURITY**
+  * **SYSTEM**
 
-We can now view the dumped files in the `c:\temp` directory, and provide the relevant paths to the 3 files listed above (`ntds.dit` and the other 2 registry files) to the **impacket's secretsdump.py** tool to extract the hashes:
+Next, we can copy the 3 files listed above (`ntds.dit` and the other 2 registry directories: `SYSTEM` and `SECURITY`) to our attacker machine, before using the **impacket's secretsdump.py** tool to extract the hashes:
 
-{% code overflow="wrap" %}
-```powershell
+{% code title="Attacker machine" overflow="wrap" %}
+```sh
+$ impacket-secretsdump -security <path_to_SECURITY> -system <path_to_SYSTEM> -ntds <path_to_ntds.dit> LOCAL
 ```
 {% endcode %}
 
+* `-security`: SECURITY hive to parse
+* `-sam:` SAM hive to parse
+* -`ntds:`NTDS.DIT file to parse
+* Note that the target is `LOCAL`
+
 ### (2) Remote dumping (with credentials)
 
+For the following attack, we require credentials for a user with the following permissions:
 
+a. Replicating Directory Changes
 
+b. Replicating Directory Changes All
+
+c. Replicating Directory Changes in Filtered Set
+
+{% code title="Attacker machine" overflow="wrap" %}
+```sh
+$ impacket-secretsdump -just-dc <TARGET>
+```
+{% endcode %}
+
+* `-just-dc`: Extract only NTDS.DIT data (NTLM hashes and Kerberos\
+  keys)
+
+{% code title="Attacker machine" overflow="wrap" %}
+```sh
+$ impacket-secretsdump -just-dc-ntlm <TARGET>
+```
+{% endcode %}
+
+* `-just-dc-ntlm`: Extract only NTDS.DIT data (NTLM hashes only)
+
+The value for the `<TARGET>` field will be the authenticated user (with the permissions listed above) in the form: `[[domain/]username[:password]@]`,eg. `test.loc/jarrett@x.x.x.x`.&#x20;
+
+Now that we have obtained the hashes, we can either impersonate that user ([pass-the-hash](https://jarrettgxz-sec.gitbook.io/penetration-testing-ethical-hacking-concepts/windows-active-directory/lateral-movement-and-pivoting/leveraging-alternate-authentication-materials/pass-the-hash-ntlm), etc.), or crack the hash using [hashcat](https://jarrettgxz-sec.gitbook.io/penetration-testing-ethical-hacking-concepts/credentials-brute-force-cracking/tools/hashcat), etc. &#x20;
