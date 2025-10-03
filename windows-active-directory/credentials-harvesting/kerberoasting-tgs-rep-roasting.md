@@ -44,7 +44,7 @@ $ impacket-GetUserSPNs -dc-ip <DOMAIN_CONTROLLER> <TARGET> -request-user <SERVIC
 ```
 {% endcode %}
 
-* `-request-user:` Requests TGS for the SPN associated to the user specified (just the username, no domain needed)
+* `-request-user:` Requests TGS for the SPN associated to the service user specified (just the username, no domain needed)
 
 2. `Rubeus.exe`
 

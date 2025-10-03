@@ -8,11 +8,11 @@
 
 {% embed url="https://learn.microsoft.com/en-us/openspecs/windows_protocols/ms-ada2/ad2ce8fa-42a0-4371-ad18-5d1d1c488b22" %}
 
-2. What is Windows LAPS?
+2. **What is Windows LAPS?**
 
 {% embed url="https://learn.microsoft.com/en-us/windows-server/identity/laps/laps-overview" %}
 
-3. Windows LAPS PowerShell cmdlets
+3. **Windows LAPS PowerShell cmdlets**
 
 {% embed url="https://learn.microsoft.com/en-us/windows-server/identity/laps/laps-management-powershell" %}
 
@@ -30,13 +30,19 @@ What is the `ms-Mcs-AdmPwd` attribute?
 
 ...
 
+What is the `admpwd.dll` file?
+
+{% embed url="https://adsecurity.org/?p=3164" %}
+
+
+
 
 
 ### AllExtendedRights
 
 #### 1. What is the "All extended rights" attribute given to an AD organizational unit (OU) under the context of LAPS?
 
-For a given OU with this attribute set, any extended right holders (groups, users, etc.) will be able to read the LAPS password for any machines under that particular OU. Since the LAPS password mostly involves the local administrator account, this means that the rights holder will be able to retrieve the password for that account (stored in the `ms-Mcs-AdmPwd` attribute).
+For a given OU with this attribute set, any extended right holders (groups, users, etc.) will be able to read the LAPS password for any machines under that particular OU. Since the LAPS password mostly involves the local administrator account, this means that the rights holder will be able to retrieve the password for the local administrator (stored in the `ms-Mcs-AdmPwd` attribute).
 
 #### Exploitation steps
 
