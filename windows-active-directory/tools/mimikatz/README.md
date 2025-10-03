@@ -1,5 +1,7 @@
 # mimikatz
 
+{% embed url="https://github.com/gentilkiwi/mimikatz" %}
+
 ### Resources
 
 1. The Hacker Tools

