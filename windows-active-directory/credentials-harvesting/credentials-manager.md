@@ -2,7 +2,7 @@
 
 ### Resources
 
-1. **MITRE ATT$CK**
+1. **MITRE ATT\&CK**
 
 {% embed url="https://attack.mitre.org/techniques/T1555/004/" %}
 
