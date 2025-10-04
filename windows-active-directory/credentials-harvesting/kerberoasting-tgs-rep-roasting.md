@@ -14,14 +14,6 @@ Kerberoasting (also known as **TGS-REP roasting**) relies on the fact that a Tic
 
 ### (1) Retrieve a list of SPNs in the network
 
-`Get-ADServiceAccount` cmdlet
-
-{% code overflow="wrap" %}
-```powershell
-PS> Get-ADServiceAccount -Filter 'ServicePrincipalNames -like "*"' | Select-Object -ExpandProperty ServicePrincipalNames
-```
-{% endcode %}
-
 1. `Get-ADUser` cmdlet
 
 {% code overflow="wrap" %}
@@ -49,6 +41,8 @@ $ impacket-GetUserSPNs -dc-ip <DOMAIN_CONTROLLER> <TARGET>
 * `<TARGET>:` The domain user account to authenticate to the KDC with
   * By default, all domain users can read the `servicePrinicpalName` attribute (required by the script)
   * Thus, as long as a valid user account is provided, it will not affect the results of the script
+
+
 
 ### (2) Retrieve the TGS for the SPNs we have found
 
