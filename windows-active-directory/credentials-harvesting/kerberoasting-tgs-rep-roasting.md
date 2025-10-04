@@ -14,11 +14,27 @@ Kerberoasting (also known as **TGS-REP roasting**) relies on the fact that a Tic
 
 ### (1) Retrieve a list of SPNs in the network
 
-1. `Get-ADServiceAccount` cmdlet
+`Get-ADServiceAccount` cmdlet
 
 {% code overflow="wrap" %}
 ```powershell
 PS> Get-ADServiceAccount -Filter 'ServicePrincipalNames -like "*"' | Select-Object -ExpandProperty ServicePrincipalNames
+```
+{% endcode %}
+
+1. `Get-ADUser` cmdlet
+
+{% code overflow="wrap" %}
+```powershell
+PS> Get-ADUser -Properties ServicePrincipalNames -Filter * | Select Name,ServicePrincipalNames
+
+# more specifically
+# (1)
+PS> Get-ADUser -Properties ServicePrincipalNames -Filter 'ServicePrincipalNames -like "*"' | Select Name,ServicePrincipalNames
+
+# (2)
+PS> Get-ADUser -Properties ServicePrincipalNames -LDAPFilter "(servicePrincipalName=*)" | Select Name,ServicePrincipalNames
+
 ```
 {% endcode %}
 
