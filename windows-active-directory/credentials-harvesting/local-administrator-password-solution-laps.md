@@ -32,7 +32,7 @@ PDF: [https://www.exploit-db.com/docs/english/50680-abusing-laps---paper.pdf?utm
 
 What is the `ms-Mcs-AdmPwd` attribute?
 
-...
+An attribute used by the LAPS feature, that contains a cleartext password (this will usually be the password of the local administrator account).
 
 What is the `admpwd.dll` file?
 
@@ -91,13 +91,8 @@ mimikatz # kerberos::ptt ...
 PS> runas.exe /netonly ...
 ```
 
-Next, we can retrieve the password:
+Next, we can retrieve the password for the local administrator account on the machine given by `<TARGET_COMPUTER>`:
 
 ```powershell
 PS> Get-AdmPwdPassword -ComputerName <TARGET_COMPUTER>
 ```
-
-...
-
-
-
