@@ -28,7 +28,7 @@ _**(2) Game Of Active Directory (GOAD)**_
 
 
 
-_**(3) Spawn Fearie**_
+_**(3) Spawn Faerie**_
 
 {% embed url="https://github.com/tjnull/OSCP-Stuff/tree/master/Active-Directory" %}
 
