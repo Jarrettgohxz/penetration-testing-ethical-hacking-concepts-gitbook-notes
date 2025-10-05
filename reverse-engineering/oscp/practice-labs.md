@@ -7,3 +7,8 @@
 3. LazySysAdmin
 
 {% embed url="https://www.vulnhub.com/entry/lazysysadmin-1,205/" %}
+
+4. Infosec prep: OSCP
+
+{% embed url="https://www.vulnhub.com/entry/infosec-prep-oscp,508/" %}
+
