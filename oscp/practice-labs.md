@@ -12,3 +12,11 @@
 
 {% embed url="https://www.vulnhub.com/entry/infosec-prep-oscp,508/" %}
 
+5. Others
+
+{% embed url="https://oscp-certification.certs-study.com/vulnhub/vulnosv2" %}
+
+
+
+
+

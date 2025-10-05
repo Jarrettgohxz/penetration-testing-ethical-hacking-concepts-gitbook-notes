@@ -91,6 +91,7 @@
 * [111/2049 \~ RPC/NFS](network-services-vulnerability-scanning-and-exploitation/111-2049-rpc-nfs.md)
 * [139/445 \~ SMB](network-services-vulnerability-scanning-and-exploitation/139-445-smb.md)
 * [143 \~ IMAP](network-services-vulnerability-scanning-and-exploitation/143-imap.md)
+* [161 \~ SNMP](3-network-services-vulnerability-scanning-and-exploitation/161-snmp.md)
 * [3389 \~ RDP](network-services-vulnerability-scanning-and-exploitation/3389-rdp.md)
 
 ## Vulnerability & exploitation
@@ -446,5 +447,8 @@
 ## Reverse Engineering
 
 * [Resources](reverse-engineering/resources.md)
-* [🐉 OSCP](reverse-engineering/oscp/README.md)
-  * [Practice labs](reverse-engineering/oscp/practice-labs.md)
+
+## 🐉 OSCP
+
+* [Resources](oscp/resources.md)
+* [Practice labs](oscp/practice-labs.md)
