@@ -32,6 +32,46 @@ $ hashcat -m 16500 -a 0 jwt.txt jwt.secrets.list
 
 {% embed url="https://hashcat.net/wiki/doku.php?id=hashcat" %}
 
+{% embed url="https://hashcat.net/wiki/doku.php?id=example_hashes" %}
+
+
+
+1. **13100 (Kerberos 5, etype 23, TGS-REP)**
+
+```
+$krb5tgs$23$*<SERVICE_USERNAME>$<DOMAIN>$<SPN>@<DOMAIN>*$<HASH_VALUE>
+```
+
+> Notice the value **23** in the first section of the hash: `krb5tgs$23$` , this refers to the **etype 23**
+
+a. `<SERVICE_USERNAME>:` service account username
+
+* eg. `svc-user`
+
+b. `<DOMAIN>:` Domain
+
+* eg. `test.loc`
+
+c. `<SPN>:` Service Principal Name
+
+* eg. `http/mach.test.loc@test.loc`
+
+d. `<HASH_VALUE>:` Rest of the hash value
+
+
+
+2. **19600 (Kerberos 5, etype 17, TGS-REP (AES128-CTS-HMAC-SHA1-96))**
+
+```
+$krb5tgs$17$<SERVICE_USERNAME>$<DOMAIN>$<HASH_VALUE>
+```
+
+3. **19700 (Kerberos 5, etype 18, TGS-REP (AES256-CTS-HMAC-SHA1-96))**
+
+```
+$krb5tgs$18$<SERVICE_USERNAME>$<DOMAIN>$<HASH_VALUE>
+```
+
 #### General documentation page&#x20;
 
 {% embed url="https://hashcat.net/wiki/doku.php?id=hashcat" %}
