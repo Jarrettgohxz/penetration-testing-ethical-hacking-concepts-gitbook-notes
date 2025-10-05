@@ -78,15 +78,14 @@ The `vaultcmd` and `cmdkey` commands does not provide methods to show the passwo
 
 > Ensure to run powershell with the bypass policy
 
-```powershell
-C:\> powershell -ep bypass
-C:\> Import-Module Get-WebCredentials.ps1
-C:\> Get-WebCredentials
-
+<pre class="language-powershell"><code class="lang-powershell">C:\> powershell -ep bypass
+PS C:\> Import-Module ./Get-WebCredentials.ps1
+<strong>PS C:\> Get-WebCredentials
+</strong>
 UserName  Resource             Password     Properties
 --------  --------             --------     ----------
 ...
-```
+</code></pre>
 
 #### 2.3 mimikatz
 
