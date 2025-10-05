@@ -26,3 +26,9 @@ _**(2) Game Of Active Directory (GOAD)**_
 
 {% embed url="https://github.com/Orange-Cyberdefense/GOAD?tab=readme-ov-file" %}
 
+
+
+_**(3) Spawn Fearie**_
+
+{% embed url="https://github.com/tjnull/OSCP-Stuff/tree/master/Active-Directory" %}
+
