@@ -1,7 +1,3 @@
----
-icon: binary
----
-
 # Resources
 
 1. **Nightmare**

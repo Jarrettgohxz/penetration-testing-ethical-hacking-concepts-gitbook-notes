@@ -446,3 +446,5 @@
 ## Reverse Engineering
 
 * [Resources](reverse-engineering/resources.md)
+* [🐉 OSCP](reverse-engineering/oscp/README.md)
+  * [Practice labs](reverse-engineering/oscp/practice-labs.md)
