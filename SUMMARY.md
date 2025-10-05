@@ -372,7 +372,8 @@
 ## Windows Active Directory
 
 * [Introduction](windows-active-directory/introduction/README.md)
-  * [Resources](windows-active-directory/introduction/resources.md)
+  * [Practice rooms/labs](windows-active-directory/introduction/practice-rooms-labs.md)
+  * [Learning](windows-active-directory/introduction/learning.md)
 * [Initial Access](windows-active-directory/initial-access/README.md)
   * [Authentication](windows-active-directory/initial-access/authentication/README.md)
     * [NetNTLM](windows-active-directory/initial-access/authentication/netntlm.md)
