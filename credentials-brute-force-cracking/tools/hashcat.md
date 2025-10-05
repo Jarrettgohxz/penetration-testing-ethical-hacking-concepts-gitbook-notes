@@ -38,7 +38,7 @@ $ hashcat -m 16500 -a 0 jwt.txt jwt.secrets.list
 
 1. **13100**&#x20;
 
-* **Kerberos 5, etype 23, TGS-REP)**
+* **Kerberos 5, etype 23, TGS-REP (RC4-HMAC)**
 
 ```
 $krb5tgs$23$*<SERVICE_USERNAME>$<DOMAIN>$<SPN>@<DOMAIN>*$<HASH_VALUE>
