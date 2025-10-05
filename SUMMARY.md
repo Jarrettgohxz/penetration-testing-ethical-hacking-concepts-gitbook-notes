@@ -430,6 +430,7 @@
   * [mimikatz](windows-active-directory/tools/mimikatz/README.md)
     * [sekurlsa::pth](windows-active-directory/tools/mimikatz/sekurlsa-pth.md)
   * [kekeo/rubeus](windows-active-directory/tools/kekeo-rubeus.md)
+  * [Lazagne](windows-active-directory/tools/lazagne.md)
   * [TO explore](windows-active-directory/tools/to-explore/README.md)
     * [enum4linux](windows-active-directory/tools/to-explore/enum4linux.md)
     * [crackmapexec](windows-active-directory/tools/to-explore/crackmapexec.md)
@@ -439,7 +440,6 @@
     * [rpcclient](windows-active-directory/tools/to-explore/rpcclient.md)
     * [Snaffler](windows-active-directory/tools/to-explore/snaffler.md)
     * [Seatbelt](windows-active-directory/tools/to-explore/seatbelt.md)
-    * [Lazagne](windows-active-directory/tools/to-explore/lazagne.md)
 * [Experimentations](windows-active-directory/experimentations/README.md)
   * [Reverse shell](windows-active-directory/experimentations/reverse-shell.md)
 
