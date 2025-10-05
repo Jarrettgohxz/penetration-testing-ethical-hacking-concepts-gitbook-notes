@@ -1,6 +1,6 @@
 # Hashcat
 
-Cracking examples
+### Examples
 
 1. _**JSON Web Tokens (JWT)**_
 
