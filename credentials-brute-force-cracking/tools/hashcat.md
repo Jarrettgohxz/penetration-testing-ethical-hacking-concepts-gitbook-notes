@@ -36,7 +36,9 @@ $ hashcat -m 16500 -a 0 jwt.txt jwt.secrets.list
 
 
 
-1. **13100 (Kerberos 5, etype 23, TGS-REP)**
+1. **13100**&#x20;
+
+* **Kerberos 5, etype 23, TGS-REP)**
 
 ```
 $krb5tgs$23$*<SERVICE_USERNAME>$<DOMAIN>$<SPN>@<DOMAIN>*$<HASH_VALUE>
@@ -44,33 +46,43 @@ $krb5tgs$23$*<SERVICE_USERNAME>$<DOMAIN>$<SPN>@<DOMAIN>*$<HASH_VALUE>
 
 > Notice the value **23** in the first section of the hash: `krb5tgs$23$` , this refers to the **etype 23**
 
-a. `<SERVICE_USERNAME>:` service account username
+a. `<SERVICE_USERNAME>`: service account username
 
 * eg. `svc-user`
 
-b. `<DOMAIN>:` Domain
+b. `<DOMAIN>`: Domain
 
 * eg. `test.loc`
 
-c. `<SPN>:` Service Principal Name
+c. `<SPN>`: Service Principal Name
 
 * eg. `http/mach.test.loc@test.loc`
 
-d. `<HASH_VALUE>:` Rest of the hash value
+d. `<HASH_VALUE>`: Rest of the hash value
 
 
 
-2. **19600 (Kerberos 5, etype 17, TGS-REP (AES128-CTS-HMAC-SHA1-96))**
+2. **19600**&#x20;
+
+* **Kerberos 5, etype 17, TGS-REP (AES128-CTS-HMAC-SHA1-96)**
 
 ```
 $krb5tgs$17$<SERVICE_USERNAME>$<DOMAIN>$<HASH_VALUE>
 ```
 
-3. **19700 (Kerberos 5, etype 18, TGS-REP (AES256-CTS-HMAC-SHA1-96))**
+> Notice the value **17** in the first section of the hash: `krb5tgs$17$` , this refers to the **etype 17**
+
+
+
+3. **19700**&#x20;
+
+* **Kerberos 5, etype 18, TGS-REP (AES256-CTS-HMAC-SHA1-96)**
 
 ```
 $krb5tgs$18$<SERVICE_USERNAME>$<DOMAIN>$<HASH_VALUE>
 ```
+
+> Notice the value **18** in the first section of the hash: `krb5tgs$18$` , this refers to the **etype 18**
 
 #### General documentation page&#x20;
 
