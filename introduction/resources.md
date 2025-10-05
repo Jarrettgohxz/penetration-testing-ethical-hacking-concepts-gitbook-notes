@@ -11,3 +11,8 @@
 3. Exploit notes
 
 {% embed url="https://exploit-notes.hdks.org/" %}
+
+4. Hackviser
+
+{% embed url="https://hackviser.com/tactics" %}
+
