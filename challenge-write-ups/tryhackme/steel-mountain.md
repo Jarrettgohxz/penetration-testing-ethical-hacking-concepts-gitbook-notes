@@ -130,5 +130,10 @@ PS> sc qc <servicename>
 ```
 {% endcode %}
 
-
+```powershell
+C:\> icacls C:\
+C:\> icacls "C:\Program Files.exe"
+C:\> icacls "C:\Program Files (x86)\IObit"
+C:\> icacls "C:\Program Files (x86)\IObit\Advanced SystemCare\ASCService.exe"
+```
 
