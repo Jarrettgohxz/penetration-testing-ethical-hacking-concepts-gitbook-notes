@@ -357,6 +357,7 @@
       * [Other access methods](challenge-write-ups/tryhackme/include/further-learning/other-access-methods.md)
       * [Gaining remote shell with LFI2RCE](challenge-write-ups/tryhackme/include/further-learning/gaining-remote-shell-with-lfi2rce.md)
       * [Inspecting Express app source code](challenge-write-ups/tryhackme/include/further-learning/inspecting-express-app-source-code.md)
+  * [Steel Mountain](challenge-write-ups/tryhackme/steel-mountain.md)
   * [To complete](challenge-write-ups/tryhackme/to-complete/README.md)
     * [Rooms](challenge-write-ups/tryhackme/to-complete/rooms.md)
 * [OverTheWire](challenge-write-ups/overthewire/README.md)
