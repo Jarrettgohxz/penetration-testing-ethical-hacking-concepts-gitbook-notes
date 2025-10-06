@@ -250,6 +250,9 @@
       * [Unquoted service path](privilege-escalation/windows/vulnerabilities-exploit/service-misconfigurations/unquoted-service-path.md)
       * [Insecure service permission](privilege-escalation/windows/vulnerabilities-exploit/service-misconfigurations/insecure-service-permission.md)
     * [Abusing privileges](privilege-escalation/windows/vulnerabilities-exploit/abusing-privileges.md)
+    * [Tools](privilege-escalation/windows/vulnerabilities-exploit/tools/README.md)
+      * [PowerUp.ps1](privilege-escalation/windows/vulnerabilities-exploit/tools/powerup.ps1.md)
+      * [WinPeas.exe](privilege-escalation/windows/vulnerabilities-exploit/tools/winpeas.exe.md)
 
 ## Ⓜ️ MITRE ATT\&CK
 
