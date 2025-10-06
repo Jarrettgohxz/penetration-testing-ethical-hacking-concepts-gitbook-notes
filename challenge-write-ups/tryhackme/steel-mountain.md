@@ -2,6 +2,12 @@
 
 {% embed url="https://tryhackme.com/room/steelmountain" %}
 
+{% embed url="https://05t3.github.io/posts/Steel-Mountain/" %}
+
+{% embed url="https://medium.com/@weifeng.c01/tryhackme-ctf-steel-mountain-1ac394c030dd" %}
+
+{% embed url="https://blog.razrsec.uk/steel-mountain-walkthrough/" %}
+
 ### Initial access
 
 ...
@@ -114,5 +120,15 @@ msf6> run
 
 ### Privilege escalation
 
-...
+#### Enumeration
+
+{% code overflow="wrap" %}
+```powershell
+PS> Get-Service *
+PS> Get-CimInstance Win32_Service -Filter *
+PS> sc qc <servicename>
+```
+{% endcode %}
+
+
 
