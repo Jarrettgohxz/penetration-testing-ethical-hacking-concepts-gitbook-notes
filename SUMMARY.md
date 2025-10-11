@@ -3,16 +3,22 @@
 * [Introduction](README.md)
   * [Resources](introduction/resources.md)
 
-## 💿 Virtualbox network setup
+## 💿 Virtual Machines
 
-* [What is VirtualBox?](virtualbox-network-setup/what-is-virtualbox.md)
-* [NAT](virtualbox-network-setup/nat.md)
-* [NAT network](virtualbox-network-setup/nat-network.md)
-* [Bridged adapter](virtualbox-network-setup/bridged-adapter.md)
-* [Internal network](virtualbox-network-setup/internal-network.md)
-* [pfSense](virtualbox-network-setup/pfsense.md)
-* [vboxmanage](virtualbox-network-setup/vboxmanage.md)
-* [Overview](virtualbox-network-setup/overview.md)
+* [VirtualBox](virtual-machines/virtualbox/README.md)
+  * [What is VirtualBox?](virtual-machines/virtualbox/what-is-virtualbox.md)
+  * [vboxmanage](virtual-machines/virtualbox/vboxmanage.md)
+  * [pfSense](virtual-machines/virtualbox/pfsense.md)
+  * [Network setup](virtual-machines/virtualbox/network-setup/README.md)
+    * [NAT](virtual-machines/virtualbox/network-setup/nat.md)
+    * [NAT network](virtual-machines/virtualbox/network-setup/nat-network.md)
+    * [Bridged adapter](virtual-machines/virtualbox/network-setup/bridged-adapter.md)
+    * [Internal network](virtual-machines/virtualbox/network-setup/internal-network.md)
+    * [Overview](virtual-machines/virtualbox/network-setup/overview.md)
+* [VMware](virtual-machines/vmware/README.md)
+  * [Network setup](virtual-machines/vmware/network-setup/README.md)
+    * [Host-only networking](virtual-machines/vmware/network-setup/host-only-networking.md)
+* [Network bridge](virtual-machines/network-bridge.md)
 
 ## 🕵️ OSINT
 
@@ -458,4 +464,5 @@
 ## 🐉 OSCP
 
 * [Resources](oscp/resources.md)
-* [Practice labs](oscp/practice-labs.md)
+* [Practice labs](oscp/practice-labs/README.md)
+  * [Vulnhub](oscp/practice-labs/vulnhub.md)
