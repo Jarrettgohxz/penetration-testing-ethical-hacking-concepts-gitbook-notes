@@ -7,7 +7,9 @@
 
 * [VirtualBox](virtual-machines/virtualbox/README.md)
   * [What is VirtualBox?](virtual-machines/virtualbox/what-is-virtualbox.md)
-  * [vboxmanage](virtual-machines/virtualbox/vboxmanage.md)
+  * [vboxmanage](virtual-machines/virtualbox/vboxmanage/README.md)
+    * [NAT network](virtual-machines/virtualbox/vboxmanage/nat-network.md)
+    * [Host-only network](virtual-machines/virtualbox/vboxmanage/host-only-network.md)
   * [pfSense](virtual-machines/virtualbox/pfsense.md)
   * [Network setup](virtual-machines/virtualbox/network-setup/README.md)
     * [NAT](virtual-machines/virtualbox/network-setup/nat.md)
