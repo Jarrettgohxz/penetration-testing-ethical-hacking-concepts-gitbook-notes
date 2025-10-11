@@ -2,6 +2,12 @@
 
 {% embed url="https://www.geeksforgeeks.org/computer-networks/what-is-bridge-in-computer-network-types-uses-functions-differences/" %}
 
+{% embed url="https://wiki.archlinux.org/title/Network_bridge" %}
+
+{% embed url="http://developers.redhat.com/blog/2018/10/22/introduction-to-linux-interfaces-for-virtual-networking#bridge" %}
+
+{% embed url="https://www.baeldung.com/linux/bridging-network-interfaces" %}
+
 ### What is a network bridge?
 
 A network bridge is a networking device in a network that is used to connect multiple LANs to a larger LAN.
@@ -39,12 +45,15 @@ sudo ip link set up dev vmnet8
 
 * Enable both the **vboxnet1** and **vmnet1** interfaces
 
-### Verify the master configuration
+### Verify the bridge configuration
 
 {% code overflow="wrap" %}
 ```sh
 $ ip link show <iface> 
-xxx: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 ... master <master-iface>
+xxx: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 ... master <master-iface> # noticen the text master <master-iface>
+
+# OR
+$ bridge link
 ```
 {% endcode %}
 
