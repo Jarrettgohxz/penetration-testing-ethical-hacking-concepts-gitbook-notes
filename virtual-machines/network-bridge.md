@@ -53,7 +53,16 @@ $ sudo ip link set dev <iface> nomaster
 
 Suppose we want to create a network bridge (on a host OS) to bridge 2 host-only networks (from both VirtualBox and VMware). The method above of simply making the bridge interface the master of the 2 host-only interfaces will not work, since the host-only interfaces are fundamentally isolated, and the layer 2 packets (which the network bridge depends upon) will not leave the respective host-only interfaces.
 
-#### TAP interface
+#### (1) Routing & forwarding configurations
+
+```shell
+$ sudo ip route add xxxx via xxxx
+...
+```
+
+
+
+#### (2) TAP interface
 
 {% embed url="https://www.baeldung.com/linux/create-check-network-interface" %}
 
