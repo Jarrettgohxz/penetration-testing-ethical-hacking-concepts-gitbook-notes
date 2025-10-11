@@ -23,7 +23,7 @@ $ vboxmanage hostonlyif create
 $ sudo ip link set <vboxnet-iface> up
 ```
 
-#### View create interfaces
+#### View created interfaces
 
 ```sh
 $ vboxmanage list hostonlyifs
