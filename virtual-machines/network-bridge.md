@@ -14,7 +14,7 @@ A network bridge is a networking device in a network that is used to connect mul
 
 ### Creating a virtual network bridge
 
-In this setup, we discuss how we can connect 2 **host-only networks** (from both VirtualBox and VMware)  through a network bridge.
+In this setup, we discuss how we can connect 2 interfaces:&#x20;
 
 ```sh
 # (1) 
@@ -30,20 +30,6 @@ sudo ip link set up dev vboxnet0
 sudo ip link set up dev vmnet8
 
 ```
-
-#### Step 1
-
-* Create a bridge named **bridge-iface**
-* Enable the bridge&#x20;
-
-#### Step 2
-
-* Suppose that the interface from _VirtualBox_ and _VMware_ are named **vboxnet1** and **vmnet1** respectively
-* Link both the interfaces to the bridge (acting as the _master_ device)
-
-#### Step 3
-
-* Enable both the **vboxnet1** and **vmnet1** interfaces
 
 ### Verify the bridge configuration
 
@@ -62,4 +48,14 @@ $ bridge link
 ```sh
 $ sudo ip link set dev <iface> nomaster
 ```
+
+### Create virtual network bridge between 2 host-only VM interfaces
+
+Suppose we want to create a network bridge (on a host OS) to bridge 2 host-only networks (from both VirtualBox and VMware). The method above of simply making the bridge interface the master of the 2 host-only interfaces will not work, since the host-only interfaces are fundamentally isolated, and the layer 2 packets (which the network bridge depends upon) will not leave the respective host-only interfaces.
+
+#### TAP interface
+
+{% embed url="https://www.baeldung.com/linux/create-check-network-interface" %}
+
+I would like to experiment with a TAP interface instead ...
 
