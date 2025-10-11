@@ -10,6 +10,7 @@
   * [vboxmanage](virtual-machines/virtualbox/vboxmanage/README.md)
     * [NAT network](virtual-machines/virtualbox/vboxmanage/nat-network.md)
     * [Host-only network](virtual-machines/virtualbox/vboxmanage/host-only-network.md)
+    * [dhcpserver](virtual-machines/virtualbox/vboxmanage/dhcpserver.md)
   * [pfSense](virtual-machines/virtualbox/pfsense.md)
   * [Network setup](virtual-machines/virtualbox/network-setup/README.md)
     * [NAT](virtual-machines/virtualbox/network-setup/nat.md)
