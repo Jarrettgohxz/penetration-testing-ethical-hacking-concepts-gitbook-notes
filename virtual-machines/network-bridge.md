@@ -56,6 +56,9 @@ Suppose we want to create a network bridge (on a host OS) to bridge 2 host-only 
 #### (1) Routing & forwarding configurations
 
 ```shell
+# on the host OS
+$ sudo sysctl -w net.ipv4.ip_forward=1
+
 $ sudo ip route add xxxx via xxxx
 ...
 ```
