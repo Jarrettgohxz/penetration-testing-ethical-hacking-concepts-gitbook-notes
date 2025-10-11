@@ -39,5 +39,18 @@ sudo ip link set up dev vmnet8
 
 * Enable both the **vboxnet1** and **vmnet1** interfaces
 
+### Verify the master configuration
 
+{% code overflow="wrap" %}
+```sh
+$ ip link show <iface> 
+xxx: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 ... master <master-iface>
+```
+{% endcode %}
+
+### Remove master configuration
+
+```sh
+$ sudo ip link set dev <iface> nomaster
+```
 
