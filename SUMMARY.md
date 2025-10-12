@@ -234,6 +234,11 @@
   * [bash](post-exploitation/gaining-shell/bash.md)
   * [PHP](post-exploitation/gaining-shell/php.md)
 * [Repository](post-exploitation/repository.md)
+* [Lateral movement & Pivoting](post-exploitation/lateral-movement-and-pivoting/README.md)
+  * [Tools](post-exploitation/lateral-movement-and-pivoting/tools/README.md)
+    * [Ligolo-ng](post-exploitation/lateral-movement-and-pivoting/tools/ligolo-ng.md)
+    * [SSH (reverse tunnel)](post-exploitation/lateral-movement-and-pivoting/tools/ssh-reverse-tunnel.md)
+  * [SSH vs Ligolo-ng](post-exploitation/lateral-movement-and-pivoting/ssh-vs-ligolo-ng.md)
 
 ## Privilege escalation
 
