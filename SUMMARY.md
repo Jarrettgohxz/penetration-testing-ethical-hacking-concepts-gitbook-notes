@@ -451,6 +451,7 @@
   * [kekeo/rubeus](windows-active-directory/tools/kekeo-rubeus.md)
   * [Lazagne](windows-active-directory/tools/lazagne.md)
   * [TO explore](windows-active-directory/tools/to-explore/README.md)
+    * [NetExec](windows-active-directory/tools/to-explore/netexec.md)
     * [enum4linux](windows-active-directory/tools/to-explore/enum4linux.md)
     * [crackmapexec](windows-active-directory/tools/to-explore/crackmapexec.md)
     * [impacket](windows-active-directory/tools/to-explore/impacket/README.md)
@@ -459,6 +460,9 @@
     * [rpcclient](windows-active-directory/tools/to-explore/rpcclient.md)
     * [Snaffler](windows-active-directory/tools/to-explore/snaffler.md)
     * [Seatbelt](windows-active-directory/tools/to-explore/seatbelt.md)
+* [Methodology](windows-active-directory/methodology/README.md)
+  * [Enumeration](windows-active-directory/methodology/enumeration.md)
+  * [Lateral Movement & Pivoting](windows-active-directory/methodology/lateral-movement-and-pivoting.md)
 * [Experimentations](windows-active-directory/experimentations/README.md)
   * [Reverse shell](windows-active-directory/experimentations/reverse-shell.md)
 
