@@ -88,6 +88,7 @@
 * [What is network port scan/services enumeration?](network-port-scan-services-enumeration/what-is-network-port-scan-services-enumeration.md)
 * [nmap](network-port-scan-services-enumeration/nmap.md)
 * [netcat](network-port-scan-services-enumeration/netcat.md)
+* [rustscan](2-network-port-scan-services-enumeration/rustscan.md)
 
 ## 3️⃣ Network services vulnerability scanning & exploitation
 
