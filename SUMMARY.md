@@ -119,6 +119,8 @@
 
 ## Binary Exploitation
 
+* [Assembly](binary-exploitation/assembly/README.md)
+  * [Resources](binary-exploitation/assembly/resources.md)
 * [Computer architecture](binary-exploitation/computer-architecture/README.md)
   * [Instruction Set Architecture (ISA)](binary-exploitation/computer-architecture/instruction-set-architecture-isa/README.md)
     * [x86 (32-bit)](binary-exploitation/computer-architecture/instruction-set-architecture-isa/x86-architecture.md)
