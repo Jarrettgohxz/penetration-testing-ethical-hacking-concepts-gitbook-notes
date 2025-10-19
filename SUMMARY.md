@@ -111,26 +111,28 @@
 * [Metasploit](vulnerability-and-exploitation/metasploit/README.md)
   * [Meterpreter](vulnerability-and-exploitation/metasploit/meterpreter.md)
 * [Msfvenom](vulnerability-and-exploitation/msfvenom.md)
-* [Binary Exploitation](vulnerability-and-exploitation/binary-exploitation/README.md)
-  * [Computer architecture](vulnerability-and-exploitation/binary-exploitation/computer-architecture/README.md)
-    * [Instruction Set Architecture (ISA)](vulnerability-and-exploitation/binary-exploitation/computer-architecture/instruction-set-architecture-isa/README.md)
-      * [x86 (32-bit)](vulnerability-and-exploitation/binary-exploitation/computer-architecture/instruction-set-architecture-isa/x86-architecture.md)
-      * [x64 (64-bit)](vulnerability-and-exploitation/binary-exploitation/computer-architecture/instruction-set-architecture-isa/x64-64-bit.md)
-      * [ARM32](vulnerability-and-exploitation/binary-exploitation/computer-architecture/instruction-set-architecture-isa/arm32.md)
-      * [ARM64/AArch64](vulnerability-and-exploitation/binary-exploitation/computer-architecture/instruction-set-architecture-isa/arm64-aarch64.md)
-    * [Memory Organization](vulnerability-and-exploitation/binary-exploitation/computer-architecture/memory-organization/README.md)
-      * [General memory layout](vulnerability-and-exploitation/binary-exploitation/computer-architecture/memory-organization/general-memory-layout.md)
-    * [System-Level Architecture](vulnerability-and-exploitation/binary-exploitation/computer-architecture/system-level-architecture/README.md)
-      * [User vs Kernel space](vulnerability-and-exploitation/binary-exploitation/computer-architecture/system-level-architecture/user-vs-kernel-space.md)
-  * [Buffer Overflow](vulnerability-and-exploitation/binary-exploitation/buffer-overflow/README.md)
-    * [x86 (32-bit)](vulnerability-and-exploitation/binary-exploitation/buffer-overflow/x86.md)
-  * [Tools](vulnerability-and-exploitation/binary-exploitation/tools/README.md)
-    * [gdb, mona, ghidra, ...](vulnerability-and-exploitation/binary-exploitation/tools/gdb-mona-ghidra-....md)
 
 ***
 
 * [Misconfigurations](misconfigurations/README.md)
   * [.DS\_Store](misconfigurations/.ds_store.md)
+
+## Binary Exploitation
+
+* [Computer architecture](binary-exploitation/computer-architecture/README.md)
+  * [Instruction Set Architecture (ISA)](binary-exploitation/computer-architecture/instruction-set-architecture-isa/README.md)
+    * [x86 (32-bit)](binary-exploitation/computer-architecture/instruction-set-architecture-isa/x86-architecture.md)
+    * [x64 (64-bit)](binary-exploitation/computer-architecture/instruction-set-architecture-isa/x64-64-bit.md)
+    * [ARM32](binary-exploitation/computer-architecture/instruction-set-architecture-isa/arm32.md)
+    * [ARM64/AArch64](binary-exploitation/computer-architecture/instruction-set-architecture-isa/arm64-aarch64.md)
+  * [Memory Organization](binary-exploitation/computer-architecture/memory-organization/README.md)
+    * [General memory layout](binary-exploitation/computer-architecture/memory-organization/general-memory-layout.md)
+  * [System-Level Architecture](binary-exploitation/computer-architecture/system-level-architecture/README.md)
+    * [User vs Kernel space](binary-exploitation/computer-architecture/system-level-architecture/user-vs-kernel-space.md)
+* [Buffer Overflow](binary-exploitation/buffer-overflow/README.md)
+  * [x86 (32-bit)](binary-exploitation/buffer-overflow/x86.md)
+* [Tools](binary-exploitation/tools/README.md)
+  * [gdb, mona, ghidra, ...](binary-exploitation/tools/gdb-mona-ghidra-....md)
 
 ## Web Exploitation
 
