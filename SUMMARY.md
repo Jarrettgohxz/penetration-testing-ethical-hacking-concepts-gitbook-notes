@@ -193,7 +193,7 @@
     * [Request Smuggling](general-web-knowledge/http-headers/request-smuggling.md)
 * [Methodology](methodology/README.md)
   * [to split into sections](methodology/web-app-pentesting-methodology.md)
-  * [Reconnaisance/Enumeration](methodology/reconnaisance-enumeration.md)
+  * [Reconnaissance/Enumeration](methodology/reconnaissance-enumeration.md)
   * [Initial access/Exploitation](methodology/initial-access-exploitation.md)
   * [Post exploitation/Privilege escalation](methodology/post-exploitation-privilege-escalation.md)
 

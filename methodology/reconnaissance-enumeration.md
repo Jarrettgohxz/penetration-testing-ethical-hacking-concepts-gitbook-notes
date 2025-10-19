@@ -1,4 +1,4 @@
-# Reconnaisance/Enumeration
+# Reconnaissance/Enumeration
 
 {% stepper %}
 {% step %}
@@ -12,8 +12,8 @@
 
 * Intercept all HTTP traffic with BurpSuite
 * Inspect the traffic and look for any interesting values:
-  * HTTP request/response headers
-  * Query parameters
+  * HTTP request/response headers (`Server` , `X-xxx` , etc.)
+  * Query parameter
   * Request data
 * **Target -> Sitemap**
 
@@ -41,10 +41,20 @@ $
 {% endstep %}
 
 {% step %}
+### Vulnerability scanning
+
+nikto, ZAP, etc.
+
+
+{% endstep %}
+
+{% step %}
 ### Additional enumeration
 
 The following additional enumeration can be performed in the event that we are unable to find any useful information from the first few steps.
 
-...
+paramspider, arjun, katana, etc. and any other open source web pentesting tools...
+
+
 {% endstep %}
 {% endstepper %}
