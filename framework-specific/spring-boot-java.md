@@ -10,6 +10,10 @@
 
 {% embed url="https://medium.com/@kivir/what-i-learned-from-fuzzing-98-000-random-spring-boot-servers-for-aws-s3-keys-3a24faa38721" %}
 
+{% embed url="https://blog.1nf1n1ty.team/hacktricks/network-services-pentesting/pentesting-web/spring-actuators" %}
+
+
+
 ### Enumeration
 
 1. **Directory traversal**
@@ -19,3 +23,19 @@
 ```sh
 $ gobuster dir -u <target> -w spring-boot.txt
 ```
+
+2. **Additional endpoints**
+
+```
+h2-console
+...
+```
+
+
+
+### Vulnerabilities
+
+Certain versions of nginx + spring boot are vulnerable to an ACL list bypass attack:
+
+{% embed url="https://blog.1nf1n1ty.team/hacktricks/pentesting-web/proxy-waf-protections-bypass#spring-boot" %}
+
