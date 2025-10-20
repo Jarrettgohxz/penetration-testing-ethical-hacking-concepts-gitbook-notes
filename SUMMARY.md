@@ -196,6 +196,8 @@
   * [HTTP headers](general-web-knowledge/http-headers/README.md)
     * [Exploitable headers](general-web-knowledge/http-headers/exploitable-headers.md)
     * [Request Smuggling](general-web-knowledge/http-headers/request-smuggling.md)
+* [Framework specific](framework-specific/README.md)
+  * [Spring Boot (Java)](framework-specific/spring-boot-java.md)
 * [Methodology](methodology/README.md)
   * [to split into sections](methodology/web-app-pentesting-methodology.md)
   * [Reconnaissance/Enumeration](methodology/reconnaissance-enumeration.md)
