@@ -14,13 +14,17 @@
 
 {% embed url="https://www.baeldung.com/java-h2-executing-sql-scripts" %}
 
-#### 2. SQL to RCE
+#### 2. Exploit H2 database
+
+{% embed url="https://www.code-intelligence.com/blog/cve-jdbc-mysql-driver-rce-unauthorized-read-write-access" %}
 
 {% embed url="https://sqlwiki.netspi.com/attackQueries/executingOSCommands/#mysql" %}
 
 {% embed url="https://dev.mysql.com/doc/refman/8.4/en/select-into.html" %}
 
 {% embed url="https://dev.mysql.com/doc/refman/8.4/en/string-functions.html#function_load-file" %}
+
+
 
 #### 3. Others
 
