@@ -14,7 +14,7 @@
 
 {% embed url="https://www.baeldung.com/java-h2-executing-sql-scripts" %}
 
-#### 2. Exploit H2 database
+#### 2. Exploitation
 
 {% embed url="https://www.code-intelligence.com/blog/cve-jdbc-mysql-driver-rce-unauthorized-read-write-access" %}
 
@@ -25,6 +25,14 @@
 {% embed url="https://dev.mysql.com/doc/refman/8.4/en/string-functions.html#function_load-file" %}
 
 {% embed url="https://github.com/Avento/CVE-2023-21971_Analysis" %}
+CVE-2023-21971 Explanation
+{% endembed %}
+
+{% embed url="https://dev.mysql.com/doc/connector-j/en/connector-j-connp-props-connection.html#cj-conn-prop_propertiesTransform" %}
+"propertiesTransform" description
+{% endembed %}
+
+
 
 #### 3. Others
 
@@ -35,6 +43,13 @@
 {% embed url="https://stackoverflow.com/questions/3833578/linux-command-for-extracting-war-file" %}
 
 
+
+> Relevant Google dork terms to search:
+
+```
+DriverManager.getConnection RCE
+h2 database getconnection "propertiesTransform"
+```
 
 ### Analysis of the configuration files
 
