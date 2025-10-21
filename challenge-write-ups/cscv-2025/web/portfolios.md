@@ -107,19 +107,19 @@ From the `internalController.class`  file we have analyzed previously, we see th
 
 Notice that the `fullUrl` variable is crafted from an input that we can control. This variable is used as an  argument to the `DriverManager.getConnection()` function.&#x20;
 
-With this, we have an interesting attack vector. However, remember that the `/internal/testConnection` route returns a 403 error?&#x20;
+With this, we have an interesting attack vector. However, remember that the `/internal/testConnection` route returns a 403 error? Read on to understand how we can bypass this restriction.
 
 #### 2.1 nginx + spring boot
 
 {% embed url="https://blog.1nf1n1ty.team/hacktricks/pentesting-web/proxy-waf-protections-bypass#spring-boot" %}
 
-From enumeration, we can identify that the Nginx is running on version 1.20.2 (_**Server**_ field from the HTTP response headers). Fortunately for us, that particular version of Nginx has a character bypass vulnerability such that it doesn't remove a certain few characters (during normalization), which are removed by the Spring boot server. The characters are:
+From enumeration, we can identify that the Nginx is running on version 1.20.2 (_**Server**_ field from the HTTP response headers). Fortunately for us, that particular version of Nginx has a character bypass vulnerability which results from the Nginx WAF not removing a certain few characters (during normalization), but will be removed by the Spring boot server. The characters are:
 
 ```
 \x09, ;
 ```
 
-Hence, if we send a request to the `/internal/testConnection\0x09` or `/internal/testConnection;` routes, it will successfully bypass the Nginx filters, and be forwarded to the Spring boot server which will remove the specified bypass characters. This will allow us to send a request to the `/internal/testConnection` route as if the Nginx filter is not present.
+Hence, if we send a request to the `/internal/testConnection\0x09` or `/internal/testConnection;` routes, it will successfully bypass the Nginx filters. This will allow us to send a request to the `/internal/testConnection` route as if the Nginx filter is not present.
 
 #### 2.2 Exploiting the unsanitized input to the `.getConnection()` function
 
