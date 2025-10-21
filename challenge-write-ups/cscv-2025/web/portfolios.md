@@ -178,9 +178,7 @@ Eg.&#x20;
 
 {% code overflow="wrap" %}
 ```
-username=sa&password=;DB_CLOSE_DELAY=-1;
-...
-propertiesTransform=com.example.MyArbitraryClass"
+username=sa;password=;DB_CLOSE_DELAY=-1;propertiesTransform=com.example.MyArbitraryClass"
 ```
 {% endcode %}
 
