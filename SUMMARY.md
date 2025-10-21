@@ -402,6 +402,11 @@
 * [OWASP](challenge-write-ups/owasp/README.md)
   * [OWASP Juice Shop](challenge-write-ups/owasp/owasp-juice-shop.md)
   * [OWASP WebGoat](challenge-write-ups/owasp/owasp-webgoat.md)
+* [CSCV 2025](challenge-write-ups/cscv-2025/README.md)
+  * [Web](challenge-write-ups/cscv-2025/web/README.md)
+    * [PortfolioS](challenge-write-ups/cscv-2025/web/portfolios.md)
+    * [ZC-1](challenge-write-ups/cscv-2025/web/zc-1.md)
+  * [Pwn](challenge-write-ups/cscv-2025/pwn.md)
 
 ## AI prompt
 
