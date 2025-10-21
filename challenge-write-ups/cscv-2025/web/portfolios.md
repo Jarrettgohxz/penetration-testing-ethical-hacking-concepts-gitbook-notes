@@ -144,6 +144,8 @@ Hence, if we send a request to the `/internal/testConnection\0x09` or `/internal
 
 #### 2.2 Exploiting the unsanitized input to the `.getConnection()` function
 
+#### 2.2.1 SQL statements
+
 > Refer to the links above for more information regarding H2 database, and how to execute SQL commands, and escalate to RCE from there
 
 {% code overflow="wrap" %}
@@ -165,4 +167,24 @@ SELECT load_file("/etc/passwd") from information_schema
 * `DB_CLOSE_DELAY = -1`&#x20;
 
 > This option ensures the database remains open as long as the Java Virtual Machine (JVM) is running. It prevents it from closing automatically when the last connection is closed. By default, the database closes when the last connection is terminated. The default value is zero. However, it’s essential to shut down the database with a shutdown command to avoid potential memory leaks.
+
+#### 2.2.2 `propertiesTransform`
+
+...
+
+We can insert the `propertiesTransform` field into the payload:
+
+Eg.&#x20;
+
+{% code overflow="wrap" %}
+```
+username=sa&password=;DB_CLOSE_DELAY=-1&propertiesTransform=com.example.MyArbitraryClass"
+```
+{% endcode %}
+
+In this case, we can create the `com.example.MyArbitraryClass` class, to perform RCE. We can use the payload to craft an SQL command (`INIT` field):
+
+```sql
+SELECT ... OUTFILE /path/to/MyArbitaryClass.java
+```
 
