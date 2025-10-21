@@ -24,7 +24,7 @@
 
 {% embed url="https://dev.mysql.com/doc/refman/8.4/en/string-functions.html#function_load-file" %}
 
-
+{% embed url="https://github.com/Avento/CVE-2023-21971_Analysis" %}
 
 #### 3. Others
 
