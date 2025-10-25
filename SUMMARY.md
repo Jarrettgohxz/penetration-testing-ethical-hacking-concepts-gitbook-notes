@@ -122,6 +122,7 @@
 * [General readings](binary-exploitation/general-readings.md)
 * [Assembly](binary-exploitation/assembly/README.md)
   * [Common](binary-exploitation/assembly/common.md)
+  * [Examples](binary-exploitation/assembly/examples.md)
   * [x86 assembly (32-bit)](binary-exploitation/assembly/x86-assembly-32-bit/README.md)
     * [Resources](binary-exploitation/assembly/x86-assembly-32-bit/resources.md)
 * [Computer architecture](binary-exploitation/computer-architecture/README.md)
