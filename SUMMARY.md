@@ -140,7 +140,7 @@
   * [x86 (32-bit)](binary-exploitation/buffer-overflow/x86.md)
 * [Tools](binary-exploitation/tools/README.md)
   * [Overview](binary-exploitation/tools/gdb-mona-ghidra-.../README.md)
-    * [GDB](binary-exploitation/tools/gdb-mona-ghidra-.../gdb.md)
+    * [GDB-gef](binary-exploitation/tools/gdb-mona-ghidra-.../gdb-gef.md)
   * [Linux tools](binary-exploitation/tools/linux-tools.md)
 
 ## Web Exploitation
