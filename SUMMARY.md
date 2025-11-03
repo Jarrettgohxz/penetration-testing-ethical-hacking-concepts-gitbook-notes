@@ -143,6 +143,10 @@
     * [GDB-gef](binary-exploitation/tools/gdb-mona-ghidra-.../gdb-gef.md)
   * [Linux tools](binary-exploitation/tools/linux-tools.md)
 
+## IoT exploitation
+
+* [Resource](iot-exploitation/resource.md)
+
 ## Web Exploitation
 
 * [Introduction](web-exploitation/introduction.md)
@@ -500,10 +504,6 @@
   * [Lateral Movement & Pivoting](windows-active-directory/methodology/lateral-movement-and-pivoting.md)
 * [Experimentations](windows-active-directory/experimentations/README.md)
   * [Reverse shell](windows-active-directory/experimentations/reverse-shell.md)
-
-## Reverse Engineering
-
-* [Resources](reverse-engineering/resources.md)
 
 ## 🐉 OSCP
 
