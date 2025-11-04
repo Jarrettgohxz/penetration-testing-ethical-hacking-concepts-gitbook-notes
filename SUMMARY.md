@@ -145,7 +145,7 @@
 
 ## Hardware Exploitation
 
-* [Resource](hardware-exploitation/resource.md)
+* [Resource](iot-exploitation/resource.md)
 * [Techniques](hardware-exploitation/techniques/README.md)
   * [UART shell](hardware-exploitation/techniques/uart-shell.md)
   * [Firmware reverse engineering/analysis](hardware-exploitation/techniques/firmware-reverse-engineering-analysis.md)
