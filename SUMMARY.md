@@ -143,9 +143,12 @@
     * [GDB-gef](binary-exploitation/tools/gdb-mona-ghidra-.../gdb-gef.md)
   * [Linux tools](binary-exploitation/tools/linux-tools.md)
 
-## IoT exploitation
+## Hardware Exploitation
 
-* [Resource](iot-exploitation/resource.md)
+* [Resource](hardware-exploitation/resource.md)
+* [Techniques](hardware-exploitation/techniques/README.md)
+  * [UART shell](hardware-exploitation/techniques/uart-shell.md)
+  * [Firmware reverse engineering/analysis](hardware-exploitation/techniques/firmware-reverse-engineering-analysis.md)
 
 ## Web Exploitation
 
