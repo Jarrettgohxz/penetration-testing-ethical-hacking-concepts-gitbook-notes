@@ -44,6 +44,14 @@ $
 $
 ```
 
+#### Interesting directories
+
+{% embed url="https://github.com/OWASP/wstg/blob/master/document/4-Web_Application_Security_Testing/01-Information_Gathering/03-Review_Webserver_Metafiles_for_Information_Leakage.md" %}
+
+1. `robots.txt`&#x20;
+2. `sitemap.xml`&#x20;
+3.
+
 ...
 
 
