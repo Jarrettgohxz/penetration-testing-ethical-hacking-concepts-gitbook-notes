@@ -148,7 +148,9 @@
 * [Resource](iot-exploitation/resource.md)
 * [Techniques](hardware-exploitation/techniques/README.md)
   * [UART shell](hardware-exploitation/techniques/uart-shell.md)
-  * [Firmware reverse engineering/analysis](hardware-exploitation/techniques/firmware-reverse-engineering-analysis.md)
+  * [Firmware](hardware-exploitation/techniques/firmware/README.md)
+    * [Firmware extraction](hardware-exploitation/techniques/firmware/firmware-extraction.md)
+    * [Firmware reverse engineering/analysis](hardware-exploitation/techniques/firmware/firmware-reverse-engineering-analysis.md)
 
 ## Web Exploitation
 
