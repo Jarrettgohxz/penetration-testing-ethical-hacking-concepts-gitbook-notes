@@ -8,7 +8,7 @@
 
 * Look for any leaked information: usernames, passwords, credentials, etc.
 
-### 2. HTTP traffic inspection (BurpSuite)
+### 2. API inspection (BurpSuite)
 
 #### **2.1 Intercept all HTTP traffic with BurpSuite**
 
