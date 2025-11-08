@@ -215,8 +215,8 @@
 * [Methodology](methodology/README.md)
   * [to split into sections](methodology/web-app-pentesting-methodology.md)
   * [Reconnaissance/Enumeration](methodology/reconnaissance-enumeration.md)
-  * [Initial access/Exploitation](methodology/initial-access-exploitation.md)
-  * [Post exploitation/Privilege escalation](methodology/post-exploitation-privilege-escalation.md)
+  * [Exploitation/initial access](methodology/exploitation-initial-access.md)
+  * [Post exploitation/priviesc](methodology/post-exploitation-priviesc.md)
 
 ## 🛣️ Attacks on routing protocols
 
