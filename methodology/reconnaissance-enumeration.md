@@ -10,12 +10,21 @@
 
 #### 2. HTTP traffic inspection (BurpSuite)
 
-* Intercept all HTTP traffic with BurpSuite
-* Inspect the traffic and look for any interesting values:
-  * HTTP request/response headers (`Server` , `X-xxx` , etc.)
-  * Query parameter
-  * Request data
-* **Target -> Sitemap**
+**2.1 Intercept all HTTP traffic with BurpSuite**
+
+* Walk-through the website manually
+  * **Target -> Sitemap** to view the generated sitemap
+
+**2.2 Inspect the traffic and look for any interesting values that can be injected or manipulated**&#x20;
+
+a. HTTP request/response headers
+
+* `Server` , `X-Powered-By`: leak of server technology and version
+* Other `X-xxx` type headers
+
+b. Query parameter
+
+c. Request data
 
 
 {% endstep %}
@@ -35,13 +44,13 @@ $
 $
 ```
 
-
+...
 
 
 {% endstep %}
 
 {% step %}
-### Vulnerability scanning
+### Automated vulnerability scanning
 
 nikto, ZAP, etc.
 
@@ -53,7 +62,7 @@ nikto, ZAP, etc.
 
 The following additional enumeration can be performed in the event that we are unable to find any useful information from the first few steps.
 
-paramspider, arjun, katana, etc. and any other open source web pentesting tools...
+paramspider, arjun, katana, etc. and any other open source automated web pentesting tools...
 
 
 {% endstep %}
