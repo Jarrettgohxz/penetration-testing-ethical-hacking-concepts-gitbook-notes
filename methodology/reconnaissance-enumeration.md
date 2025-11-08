@@ -4,18 +4,18 @@
 {% step %}
 ### Basic manual enumeration
 
-#### 1. Source code review
+### 1. Source code review
 
 * Look for any leaked information: usernames, passwords, credentials, etc.
 
-#### 2. HTTP traffic inspection (BurpSuite)
+### 2. HTTP traffic inspection (BurpSuite)
 
-**2.1 Intercept all HTTP traffic with BurpSuite**
+#### **2.1 Intercept all HTTP traffic with BurpSuite**
 
 * Walk-through the website manually
   * **Target -> Sitemap** to view the generated sitemap
 
-**2.2 Inspect the traffic and look for any interesting values that can be injected or manipulated**&#x20;
+#### **2.2 Inspect the traffic and look for any interesting values that can be injected or manipulated**&#x20;
 
 a. HTTP request/response headers
 
