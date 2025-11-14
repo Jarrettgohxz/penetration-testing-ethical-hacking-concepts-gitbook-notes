@@ -60,7 +60,15 @@ $
 {% step %}
 ### Automated vulnerability scanning
 
+#### 3.1 Nessus
+
+{% embed url="https://www.tenable.com/products/nessus/nessus-essentials" %}
+
+
+
 nikto, ZAP, etc.
+
+
 
 
 {% endstep %}
