@@ -151,6 +151,7 @@
   * [Firmware](hardware-exploitation/techniques/firmware/README.md)
     * [Firmware extraction](hardware-exploitation/techniques/firmware/firmware-extraction.md)
     * [Firmware reverse engineering/analysis](hardware-exploitation/techniques/firmware/firmware-reverse-engineering-analysis.md)
+  * [Research ideas](hardware-exploitation/techniques/research-ideas.md)
 
 ## Web Exploitation
 
