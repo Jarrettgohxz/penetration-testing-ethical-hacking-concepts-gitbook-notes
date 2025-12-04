@@ -204,8 +204,7 @@ Now that we have found the dashboard page, and have the apprioprate cookies set 
 
 Through the proof-of-concept detailed in the link above, I iterated through the URL with different ID values. I found that the ID value of _**6**_ displays the SSH credentials:
 
-`http://10.10.105.62:8080/silverpeas/RSILVERMAIL/jsp/ReadMessage.jsp?ID=6`\
-
+`http://10.10.105.62:8080/silverpeas/RSILVERMAIL/jsp/ReadMessage.jsp?ID=6`<br>
 
 **Testing the results with wfuzz:**
 
@@ -276,8 +275,7 @@ _**Match status codes 200-209**_
 $ ffuf -mc 200,209 ...
 ```
 
-This option does not work. It seems that a positive response also returns the same status code as the negative responses.\
-
+This option does not work. It seems that a positive response also returns the same status code as the negative responses.<br>
 
 _**Filter regular expression patterns present in response**_
 

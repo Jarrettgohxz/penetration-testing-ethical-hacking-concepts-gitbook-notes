@@ -147,6 +147,7 @@
 
 * [Resource](iot-exploitation/resource.md)
 * [Techniques](hardware-exploitation/techniques/README.md)
+  * [Identification of hardware components](hardware-exploitation/techniques/identification-of-hardware-components.md)
   * [UART shell](hardware-exploitation/techniques/uart-shell.md)
   * [Firmware](hardware-exploitation/techniques/firmware/README.md)
     * [Firmware extraction](hardware-exploitation/techniques/firmware/firmware-extraction.md)

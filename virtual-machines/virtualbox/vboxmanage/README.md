@@ -47,8 +47,7 @@ If the above solution fails, we can simply create and start a new NAT network (r
 
 ### Power button
 
-This section outlines the commands that can be used to control the power options for a particular running virtual machine through the terminal.\
-
+This section outlines the commands that can be used to control the power options for a particular running virtual machine through the terminal.<br>
 
 **List all running virtual machines:**
 
