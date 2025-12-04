@@ -145,7 +145,8 @@
 
 ## Hardware Exploitation
 
-* [Resource](iot-exploitation/resource.md)
+* [Resource](hardware-exploitation/resource/README.md)
+  * [Information about hardware devices](hardware-exploitation/resource/information-about-hardware-devices.md)
 * [Toolkit](hardware-exploitation/toolkit.md)
 * [Techniques](hardware-exploitation/techniques/README.md)
   * [Identification of hardware components](hardware-exploitation/techniques/identification-of-hardware-components.md)
