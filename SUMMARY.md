@@ -146,6 +146,7 @@
 ## Hardware Exploitation
 
 * [Resource](iot-exploitation/resource.md)
+* [Toolkit](hardware-exploitation/toolkit.md)
 * [Techniques](hardware-exploitation/techniques/README.md)
   * [Identification of hardware components](hardware-exploitation/techniques/identification-of-hardware-components.md)
   * [UART shell](hardware-exploitation/techniques/uart-shell.md)
