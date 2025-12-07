@@ -138,6 +138,8 @@
     * [User vs Kernel space](binary-exploitation/computer-architecture/system-level-architecture/user-vs-kernel-space.md)
 * [Buffer Overflow](binary-exploitation/buffer-overflow/README.md)
   * [x86 (32-bit)](binary-exploitation/buffer-overflow/x86.md)
+* [Reverse Engineering](reverse-engineering-binary-exploitation/reverse-engineering/README.md)
+  * [Helithumper RE](reverse-engineering-binary-exploitation/reverse-engineering/helithumper-re.md)
 * [Tools](binary-exploitation/tools/README.md)
   * [Overview](binary-exploitation/tools/gdb-mona-ghidra-.../README.md)
     * [GDB-gef](binary-exploitation/tools/gdb-mona-ghidra-.../gdb-gef.md)
