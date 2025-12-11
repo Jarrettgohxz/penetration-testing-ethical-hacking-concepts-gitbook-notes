@@ -123,6 +123,7 @@
 * [Resources](reverse-engineering-binary-exploitation/resources.md)
 * [General knowledge](reverse-engineering-binary-exploitation/general-knowledge/README.md)
   * [PIE](reverse-engineering-binary-exploitation/general-knowledge/pie.md)
+  * [\_\_libc\_start\_main and \_start](reverse-engineering-binary-exploitation/general-knowledge/__libc_start_main-and-_start.md)
 * [Assembly](binary-exploitation/assembly/README.md)
   * [Common](binary-exploitation/assembly/common.md)
   * [Examples](binary-exploitation/assembly/examples.md)
