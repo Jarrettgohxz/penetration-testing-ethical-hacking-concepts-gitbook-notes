@@ -119,8 +119,10 @@
 
 ## Reverse Engineering/Binary Exploitation
 
-* [General readings](binary-exploitation/general-readings.md)
+* [Readings](reverse-engineering-binary-exploitation/readings.md)
 * [Resources](reverse-engineering-binary-exploitation/resources.md)
+* [General knowledge](reverse-engineering-binary-exploitation/general-knowledge/README.md)
+  * [PIE](reverse-engineering-binary-exploitation/general-knowledge/pie.md)
 * [Assembly](binary-exploitation/assembly/README.md)
   * [Common](binary-exploitation/assembly/common.md)
   * [Examples](binary-exploitation/assembly/examples.md)
