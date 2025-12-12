@@ -141,6 +141,8 @@
   * [System-Level Architecture](binary-exploitation/computer-architecture/system-level-architecture/README.md)
     * [User vs Kernel space](binary-exploitation/computer-architecture/system-level-architecture/user-vs-kernel-space.md)
 * [Buffer Overflow](binary-exploitation/buffer-overflow/README.md)
+  * [Stack-based overflow](reverse-engineering-binary-exploitation/buffer-overflow/stack-based-overflow/README.md)
+    * [Csaw 2018 Quals Boi](reverse-engineering-binary-exploitation/buffer-overflow/stack-based-overflow/csaw-2018-quals-boi.md)
   * [x86 (32-bit)](binary-exploitation/buffer-overflow/x86.md)
 * [Reverse Engineering](reverse-engineering-binary-exploitation/reverse-engineering/README.md)
   * [Identifying the "main" function](reverse-engineering-binary-exploitation/reverse-engineering/identifying-the-main-function.md)
