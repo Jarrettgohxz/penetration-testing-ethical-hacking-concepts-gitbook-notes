@@ -19,10 +19,11 @@
     * [Internal network](virtual-machines/virtualbox/network-setup/internal-network.md)
     * [Host-only networking](virtual-machines/virtualbox/network-setup/host-only-networking.md)
     * [Overview](virtual-machines/virtualbox/network-setup/overview.md)
-* [VMware](virtual-machines/vmware/README.md)
-  * [Network setup](virtual-machines/vmware/network-setup/README.md)
-    * [Virtual interfaces](virtual-machines/vmware/network-setup/virtual-interfaces.md)
-    * [Host-only networking](virtual-machines/vmware/network-setup/host-only-networking.md)
+* [VMware Workstation](virtual-machines/vmware-workstation/README.md)
+  * [Network setup](virtual-machines/vmware-workstation/network-setup/README.md)
+    * [Virtual interfaces](virtual-machines/vmware-workstation/network-setup/virtual-interfaces.md)
+    * [Host-only networking](virtual-machines/vmware-workstation/network-setup/host-only-networking.md)
+  * [Force power-off (hard)](virtual-machines/vmware-workstation/force-power-off-hard.md)
 
 ## 🕵️ OSINT
 
