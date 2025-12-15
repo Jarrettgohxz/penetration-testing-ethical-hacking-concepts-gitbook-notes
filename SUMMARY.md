@@ -152,7 +152,8 @@
   * [CSAW'19: beleaf](reverse-engineering-binary-exploitation/reverse-engineering/csaw19-beleaf.md)
 * [Tools](binary-exploitation/tools/README.md)
   * [Overview](binary-exploitation/tools/gdb-mona-ghidra-.../README.md)
-    * [GDB-gef](binary-exploitation/tools/gdb-mona-ghidra-.../gdb-gef.md)
+    * [GDB-gef](reverse-engineering-binary-exploitation/tools/gdb-mona-ghidra-.../gdb-gef/README.md)
+      * [Stack view (x64)](reverse-engineering-binary-exploitation/tools/gdb-mona-ghidra-.../gdb-gef/stack-view-x64.md)
   * [Linux tools](binary-exploitation/tools/linux-tools.md)
 
 ## Hardware Exploitation

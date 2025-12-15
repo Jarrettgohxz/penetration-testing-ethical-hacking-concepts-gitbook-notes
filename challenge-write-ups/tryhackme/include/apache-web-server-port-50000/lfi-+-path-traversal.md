@@ -48,7 +48,7 @@ $ ffuf -w /<wordlist> -u http://<target>:50000/profile.php?img=FUZZ -H "Cookie: 
 
 The payload: `....//....//....//....//....//....//....//....//....//etc/passwd` was found to work:
 
-<figure><img src="../../../../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 This provides us the following information:
 
@@ -134,6 +134,6 @@ This method works.
 
 With the `img` payload value of `#` (`/profile.php?img=#`), we are presented with a status **400** response:
 
-<figure><img src="../../../../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Even though this does not allow for any direct exploits, it tells us the hostname: `mail.filepath.lab.`

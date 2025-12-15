@@ -10,7 +10,7 @@ POST `/reset_password.php` (email=tester%40hammer.thm)
 
 > NOTE: this request must be performed before attempting to POST the recovery code (refer to step 3)&#x20;
 
-<figure><img src="../../../.gitbook/assets/image (2) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (2) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 **Response**
 
@@ -197,7 +197,7 @@ bruteforce.start()
 
 After running the script, we found the valid code!&#x20;
 
-<figure><img src="../../../.gitbook/assets/image (2) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (2) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Now, we have to manually insert the `PHPSESSID` value into our web browser cookies. Upon navigating to the reset password page, we can enter the found code, before being able to set a new password.
 

@@ -85,7 +85,7 @@ $ gobuster dir -u http://<target> -x php -w .../common.txt
 $ gobuster dir -u http://<target> -w .../Common-PHP-Filenames.txt
 ```
 
-<figure><img src="../../.gitbook/assets/image (2) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (2) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 It appears that we have found a few `.php` files such as `login.php`, `portal.php` and `denied.php`.&#x20;
 
