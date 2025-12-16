@@ -126,7 +126,7 @@
   * [PIE](reverse-engineering-binary-exploitation/general-knowledge/pie.md)
   * [\_\_libc\_start\_main and \_start](reverse-engineering-binary-exploitation/general-knowledge/__libc_start_main-and-_start.md)
   * [stack canary](reverse-engineering-binary-exploitation/general-knowledge/stack-canary.md)
-  * [Endianness & stack growth](reverse-engineering-binary-exploitation/general-knowledge/endianness-and-stack-growth.md)
+  * [Endianness, stack growth (GDB & Ghidra experiments)](reverse-engineering-binary-exploitation/general-knowledge/endianness-stack-growth-gdb-and-ghidra-experiments.md)
 * [Assembly](binary-exploitation/assembly/README.md)
   * [Common](binary-exploitation/assembly/common.md)
   * [Examples](binary-exploitation/assembly/examples.md)
