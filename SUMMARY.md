@@ -123,9 +123,12 @@
 * [Readings](reverse-engineering-binary-exploitation/readings.md)
 * [Resources](reverse-engineering-binary-exploitation/resources.md)
 * [General knowledge](reverse-engineering-binary-exploitation/general-knowledge/README.md)
-  * [PIE](reverse-engineering-binary-exploitation/general-knowledge/pie.md)
+  * [Security features](reverse-engineering-binary-exploitation/general-knowledge/security-features/README.md)
+    * [PIE](reverse-engineering-binary-exploitation/general-knowledge/security-features/pie.md)
+    * [stack canary](reverse-engineering-binary-exploitation/general-knowledge/security-features/stack-canary.md)
+    * [Relocation Read-Only (RELRO)](reverse-engineering-binary-exploitation/general-knowledge/security-features/relocation-read-only-relro.md)
+    * [No eXecute (NX)](reverse-engineering-binary-exploitation/general-knowledge/security-features/no-execute-nx.md)
   * [\_\_libc\_start\_main and \_start](reverse-engineering-binary-exploitation/general-knowledge/__libc_start_main-and-_start.md)
-  * [stack canary](reverse-engineering-binary-exploitation/general-knowledge/stack-canary.md)
   * [Endianness, stack growth (GDB & Ghidra experiments)](reverse-engineering-binary-exploitation/general-knowledge/endianness-stack-growth-gdb-and-ghidra-experiments.md)
 * [Assembly](binary-exploitation/assembly/README.md)
   * [Common](binary-exploitation/assembly/common.md)
@@ -154,6 +157,7 @@
 * [Tools](binary-exploitation/tools/README.md)
   * [Overview](binary-exploitation/tools/gdb-mona-ghidra-.../README.md)
     * [GDB-gef](reverse-engineering-binary-exploitation/tools/gdb-mona-ghidra-.../gdb-gef.md)
+    * [pwntools](reverse-engineering-binary-exploitation/tools/gdb-mona-ghidra-.../pwntools.md)
   * [Linux tools](binary-exploitation/tools/linux-tools.md)
 
 ## Hardware Exploitation
