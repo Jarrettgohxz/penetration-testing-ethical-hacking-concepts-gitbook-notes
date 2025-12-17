@@ -156,7 +156,8 @@
   * [CSAW'19: beleaf](reverse-engineering-binary-exploitation/reverse-engineering/csaw19-beleaf.md)
 * [Tools](binary-exploitation/tools/README.md)
   * [Overview](binary-exploitation/tools/gdb-mona-ghidra-.../README.md)
-    * [GDB-gef](reverse-engineering-binary-exploitation/tools/gdb-mona-ghidra-.../gdb-gef.md)
+    * [GDB (gef)](reverse-engineering-binary-exploitation/tools/gdb-mona-ghidra-.../gdb-gef.md)
+    * [Ghidra](reverse-engineering-binary-exploitation/tools/gdb-mona-ghidra-.../ghidra.md)
     * [pwntools](reverse-engineering-binary-exploitation/tools/gdb-mona-ghidra-.../pwntools.md)
   * [Linux tools](binary-exploitation/tools/linux-tools.md)
 
