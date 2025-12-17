@@ -30,6 +30,6 @@ However, the `/hmr_logs` displayed an `error.logs` file.
 
 From the `error.logs` file, I found the email address: `tester@hammer.thm`. Very well, now lets use this email address on the reset password page.
 
-<figure><img src="../../../../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 > Refer to the _**Brute forcing 4-digit code**_ section for the new step.
