@@ -138,7 +138,7 @@
 * [Computer architecture](binary-exploitation/computer-architecture/README.md)
   * [Instruction Set Architecture (ISA)](binary-exploitation/computer-architecture/instruction-set-architecture-isa/README.md)
     * [x86 (32-bit)](binary-exploitation/computer-architecture/instruction-set-architecture-isa/x86-architecture.md)
-    * [x64/(64-bit)](binary-exploitation/computer-architecture/instruction-set-architecture-isa/x64-64-bit.md)
+    * [x64 (64-bit)](binary-exploitation/computer-architecture/instruction-set-architecture-isa/x64-64-bit.md)
     * [x86 (32-bit) VS x64 (64-bit)](binary-exploitation/computer-architecture/instruction-set-architecture-isa/x86-32-bit-vs-x64-64-bit.md)
     * [ARM32](binary-exploitation/computer-architecture/instruction-set-architecture-isa/arm32.md)
     * [ARM64/AArch64](binary-exploitation/computer-architecture/instruction-set-architecture-isa/arm64-aarch64.md)
