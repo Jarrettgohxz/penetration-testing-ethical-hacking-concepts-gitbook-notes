@@ -131,6 +131,7 @@
   * [\_\_libc\_start\_main and \_start](reverse-engineering-binary-exploitation/general-knowledge/__libc_start_main-and-_start.md)
   * [Endianness, stack growth (GDB & Ghidra experiments)](reverse-engineering-binary-exploitation/general-knowledge/endianness-stack-growth-gdb-and-ghidra-experiments.md)
 * [Assembly](binary-exploitation/assembly/README.md)
+  * [Common x86/x64 assembly](reverse-engineering-binary-exploitation/assembly/common-x86-x64-assembly.md)
   * [x86 assembly (32-bit)](binary-exploitation/assembly/x86-assembly-32-bit/README.md)
     * [Common](reverse-engineering-binary-exploitation/assembly/x86-assembly-32-bit/common.md)
     * [Examples](reverse-engineering-binary-exploitation/assembly/x86-assembly-32-bit/examples.md)
