@@ -160,7 +160,8 @@
   * [Overview](binary-exploitation/tools/gdb-mona-ghidra-.../README.md)
     * [GDB (gef)](reverse-engineering-binary-exploitation/tools/gdb-mona-ghidra-.../gdb-gef.md)
     * [Ghidra](reverse-engineering-binary-exploitation/tools/gdb-mona-ghidra-.../ghidra.md)
-    * [pwntools](reverse-engineering-binary-exploitation/tools/gdb-mona-ghidra-.../pwntools.md)
+    * [wntools](reverse-engineering-binary-exploitation/tools/gdb-mona-ghidra-.../wntools.md)
+    * [Python3](reverse-engineering-binary-exploitation/tools/gdb-mona-ghidra-.../python3.md)
   * [Linux tools](binary-exploitation/tools/linux-tools.md)
 
 ## Hardware Exploitation
