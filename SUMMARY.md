@@ -180,7 +180,12 @@
     * [Firmware extraction](hardware-exploitation/techniques/firmware/firmware-extraction.md)
     * [Firmware reverse engineering/analysis](hardware-exploitation/techniques/firmware/firmware-reverse-engineering-analysis.md)
   * [System enumeration](hardware-exploitation/techniques/system-enumeration.md)
-  * [Research ideas](hardware-exploitation/techniques/research-ideas.md)
+
+***
+
+* [Research ideas](research-ideas.md)
+* [Past experiments](past-experiments/README.md)
+  * [HUAWEI EchoLife HG8244H](past-experiments/huawei-echolife-hg8244h.md)
 
 ## Web Exploitation
 
