@@ -21,6 +21,11 @@
 
 * Makes the soldering work easier by removing metal oxide layers
 
+2. Soldering lead
+
+* 63/37 or 60/40 Tin/Lead (_Sn/Pb_)
+* Melts at 183 degree-celsius
+
 ## 2. Basics of soldering
 
 ...&#x20;
