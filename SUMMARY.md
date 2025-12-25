@@ -183,6 +183,8 @@
 
 ***
 
+* [Other important skills](other-important-skills/README.md)
+  * [Soldering](other-important-skills/soldering.md)
 * [Research ideas](research-ideas.md)
 * [Past experiments](past-experiments/README.md)
   * [HUAWEI EchoLife HG8244H](past-experiments/huawei-echolife-hg8244h.md)
