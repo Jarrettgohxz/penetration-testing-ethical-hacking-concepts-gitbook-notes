@@ -188,6 +188,7 @@
 * [Research ideas](research-ideas.md)
 * [Past experiments](past-experiments/README.md)
   * [HUAWEI EchoLife HG8244H](past-experiments/huawei-echolife-hg8244h.md)
+  * [Linksys E1200(V2)](past-experiments/linksys-e1200-v2.md)
 
 ## Web Exploitation
 
