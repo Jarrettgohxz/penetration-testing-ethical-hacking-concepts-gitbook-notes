@@ -53,7 +53,27 @@ v2.0.11.001\_us.tar.gz
 
 ## 2. Hardware overview
 
-...
+<figure><img src="../.gitbook/assets/image (108).png" alt=""><figcaption></figcaption></figure>
+
+### 2.1 Identifying Ground points
+
+By looking at the PCB, we can identify a few potential candidates for the Ground points:
+
+<figure><img src="../.gitbook/assets/image (107).png" alt=""><figcaption></figcaption></figure>
+
+We can use the digital multimeter in continuity mode to test the GND points, which can be identified when a "beep" sound is heard.
+
+{% file src="../.gitbook/assets/GND.mkv" %}
+
+### 2.2 Identifying UART pins (TX, RX, GND, 3.3V)
+
+{% file src="../.gitbook/assets/UART pins identification _SHORT.mkv" %}
+
+
+
+### 2.3 Taking a closer look at TX+RX
+
+{% file src="../.gitbook/assets/UART TX+RX _SHORT.mkv" %}
 
 
 
