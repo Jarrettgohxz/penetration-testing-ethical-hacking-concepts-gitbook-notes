@@ -71,19 +71,26 @@ We can use the digital multimeter in continuity mode to test the GND points, whi
 
 ### 2.2 Identifying UART pins (TX, RX, GND, 3.3V)
 
-{% file src="../.gitbook/assets/UART pins identification.mp4" %}
+In the following video, I demonstrate how to identify the pins on the UART Interface using the digital multimeter:
 
+{% embed url="https://667177664-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FMsAGomcNx5xaB1xFygc9%2Fuploads%2F8UH2mkQKjDprzRA22r7G%2FUART%20pins%20identification.mp4?alt=media&token=fa0683b2-e21c-483b-8a54-d9b19fa7011f" %}
 
+The following outlines the characteristics of each pin:
 
-
+1. **TX**: fluctuates from 2.5 to 3.3V
+2. **RX**: fluctuates slightly before stabilizing at 3.3V
+3. **GND**: drops and stabilizes at 0.00V
+4. **3.3V**: fluctuates slightly before stabilizing at 3.3V (more erratic fluctuation that **RX**)
 
 ### 2.3 Taking a closer look at TX+RX
 
-{% file src="../.gitbook/assets/UART TX+RX.mp4" %}
+In the following video, we focus on the voltage values of the TX and RX pins right after the router is powered ON:
 
+{% embed url="https://667177664-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FMsAGomcNx5xaB1xFygc9%2Fuploads%2F5t6CcV0JCLTz7Nt2Uknv%2FUART%20TX%2BRX.mp4?alt=media&token=cf040256-2a42-4af6-ab81-6f6b5c4dbcfa" %}
 
+### 2.4 UART pins
 
-
+<figure><img src="../.gitbook/assets/image (110).png" alt=""><figcaption></figcaption></figure>
 
 ## 3. System enumeration (external)
 
