@@ -61,9 +61,19 @@ By looking at the PCB, we can identify a few potential candidates for the Ground
 
 <figure><img src="../.gitbook/assets/image (107).png" alt=""><figcaption></figcaption></figure>
 
-We can use the digital multimeter in continuity mode to test the GND points, which can be identified when a "beep" sound is heard.
+We can use the digital multimeter in continuity mode to test the GND points, which can be identified when a "beep" sound is heard:
 
 {% file src="../.gitbook/assets/GND.mkv" %}
+
+
+
+{% embed url="https://667177664-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FMsAGomcNx5xaB1xFygc9%2Fuploads%2FEP8gc5c6rMQZVgJemE7h%2FGND.mkv?alt=media&token=28ddd935-8099-4ea3-a1be-b4f869afba50" %}
+
+{% file src="../.gitbook/assets/GND (1).mkv" %}
+
+
+
+
 
 ### 2.2 Identifying UART pins (TX, RX, GND, 3.3V)
 
