@@ -188,7 +188,12 @@
 * [Research ideas](research-ideas.md)
 * [Past experiments](past-experiments/README.md)
   * [HUAWEI EchoLife HG8244H](past-experiments/huawei-echolife-hg8244h.md)
-  * [Linksys E1200(V2)](past-experiments/linksys-e1200-v2.md)
+  * [Linksys E1200(V2)](past-experiments/linksys-e1200-v2/README.md)
+    * [1. Initial research](past-experiments/linksys-e1200-v2/1.-initial-research.md)
+    * [2. Hardware overview](past-experiments/linksys-e1200-v2/2.-hardware-overview.md)
+    * [3. System enumeration (external)](past-experiments/linksys-e1200-v2/3.-system-enumeration-external.md)
+    * [4. System enumeration (via shell)](past-experiments/linksys-e1200-v2/4.-system-enumeration-via-shell.md)
+    * [5. Reverse engineering (exploit development)](past-experiments/linksys-e1200-v2/5.-reverse-engineering-exploit-development.md)
 
 ## Web Exploitation
 
