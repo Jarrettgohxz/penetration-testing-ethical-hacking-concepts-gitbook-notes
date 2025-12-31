@@ -115,6 +115,8 @@ From the image, we can see the [DHCP DORA ](https://www.pynetlabs.com/what-is-dh
 * `<host>` will be the IP address of the local gateway (eg. **192.168.1.1**)
 * The following scan types outlined below will be performed on both the LAN ("Ethernet") and WAN  ("Internet") interfaces of the router
 
+<figure><img src="../.gitbook/assets/image (115).png" alt=""><figcaption></figcaption></figure>
+
 #### 3.2.1 TCP scan
 
 ```shellscript
