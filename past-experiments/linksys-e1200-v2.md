@@ -187,5 +187,82 @@ Refer to the following links for more information on the Nmap options:
 
 ## 4. System enumeration (via shell)
 
+### 4.1 General enumeration
+
 ...
+
+```shellscript
+$ uname -u
+$ uname -m
+$ 
+```
+
+### 4.2 `httpd` binary (CVE)
+
+...
+
+
+
+## 5. Reverse engineering (exploit development)
+
+Given the information we have gathered from the previous section, I will attempt to perform reverse engineering to replicate the steps taken to discover the CVE, and potentially escalate it to RCE.
+
+### 5.1  Ghidra
+
+...
+
+### 5.2 `gdb`, `gdbserver`
+
+{% embed url="https://docs.hex-rays.com/user-guide/debugger/remote-debugging/remote-gdb-debugger/debugging-with-gdbserver" %}
+
+{% embed url="https://gcc.gnu.org/onlinedocs/gcc-4.8.5/gnat_ugn_unw/Remote-Debugging-using-gdbserver.html" %}
+
+#### 5.1.1 Compile `gdb` for target
+
+To start off, we have to compile GDB for our target architecture `xxxx`, as found from the previous enumeration step:
+
+```shellscript
+$ 
+```
+
+#### 5.1.2 `gdbserver` on target router
+
+Next, we can run `gdbserver` on the target router:
+
+```shellscript
+$  gdbserver localhost:<port> <program>
+
+# eg. 
+$ gdbserver localhost:8888 /path/to/httpd
+```
+
+Alternatively, launch from PID of a running program:
+
+```shellscript
+$  gdbserver localhost:<port> --attach <PID_of_program>
+
+# eg.
+$ pidof httpd
+$  gdbserver localhost:8888 --attach <PID>
+```
+
+#### 5.1.3 Connect to remote target from host machine
+
+* To debug (using `gdb`) from the host machine:
+
+```shellscript
+$ gdb
+gdb> target remote <host>:<port>
+
+# eg.
+gdb> target remote 8.8.8.8:8888
+```
+
+
+
+### 5.3 xxxx
+
+...
+
+
 
