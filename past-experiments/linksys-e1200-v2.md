@@ -177,15 +177,19 @@ $ sudo nmap -sC -sV -sS -sU -p T:80,U:53,1900 -n -Pn --max-retries 1 192.168.1.1
 
 ```
 
-
-
 #### 3.2.5 WAN interface scan results
 
 Since the WAN interface of the router typically acts as a DHCP client, rather than a server, it will not be able to lease an IP address to our host. To fix this, we can run a DHCP server (`dnsmasq`), and configure a static IP address on our host:
 
 ```shellscript
-$ dnsmasq ...
+$ vim /etc/dnsmasq.conf
+interface=<iface>
+dhcp-range=<dhcp_start_range>,<dhcp_end_range>,<lease_time>
 
+$ sudo systemctl restart dnsmasq.service
+```
+
+```shellscript
 $ sudo ip link add addr <static_IP_addr> dev <iface>
 
 # eg.
@@ -197,7 +201,21 @@ enx123
 $ sudo ip link add addr 192.168.1.88 dev enx123
 ```
 
-...
+**Results**
+
+```shellscript
+# 3.2.1 TCP scan
+
+```
+
+```shellscript
+# 3.2.2 UDP scan
+
+```
+
+```shellscript
+# 3.2.3 Targeted TCP+UDP scan
+```
 
 
 
@@ -278,8 +296,6 @@ gdb> target remote <host>:<port>
 # eg.
 gdb> target remote 8.8.8.8:8888
 ```
-
-
 
 ### 5.3 xxxx
 
