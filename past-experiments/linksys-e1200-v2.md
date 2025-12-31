@@ -11,13 +11,19 @@ The following displays a few Google dork queries I used to discover the CVEs rel
 "linksys" "e1200" cve site:nist.gov "overflow"
 ```
 
-The following are found CVEs (non-exhaustive) for the firmware version **E1200\_v2.0.11.001\_us.tar.gz**, with the last 4 being stack-based buffer overflow:
+The following are the found CVEs (non-exhaustive) for the firmware version **E1200\_v2.0.11.001\_us.tar.gz**.
+
+**a. `httpd` binary**
 
 1. [https://nvd.nist.gov/vuln/detail/CVE-2025-60689](https://nvd.nist.gov/vuln/detail/CVE-2025-60689)
 2. [https://nvd.nist.gov/vuln/detail/CVE-2025-60690](https://nvd.nist.gov/vuln/detail/CVE-2025-60690)
 3. [https://nvd.nist.gov/vuln/detail/CVE-2025-60691](https://nvd.nist.gov/vuln/detail/CVE-2025-60691)
-4. [https://nvd.nist.gov/vuln/detail/CVE-2025-60692](https://nvd.nist.gov/vuln/detail/CVE-2025-60692)
-5. [https://nvd.nist.gov/vuln/detail/CVE-2025-60693](https://nvd.nist.gov/vuln/detail/CVE-2025-60693)
+4. [https://nvd.nist.gov/vuln/detail/CVE-2025-60693](https://nvd.nist.gov/vuln/detail/CVE-2025-60693)
+5. [https://nvd.nist.gov/vuln/detail/CVE-2025-60694](https://nvd.nist.gov/vuln/detail/CVE-2025-60694)
+
+**b. `libshared.so` library**
+
+1. [https://nvd.nist.gov/vuln/detail/CVE-2025-60692](https://nvd.nist.gov/vuln/detail/CVE-2025-60692)
 
 ### 1.2 FCC
 
@@ -193,7 +199,6 @@ Refer to the following links for more information on the Nmap options:
 
 ```shellscript
 $ uname -u
-$ uname -m
 $ 
 ```
 
