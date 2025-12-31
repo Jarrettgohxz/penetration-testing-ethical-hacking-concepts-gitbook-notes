@@ -113,22 +113,15 @@ From the image, we can see the [DHCP DORA ](https://www.pynetlabs.com/what-is-dh
 ### 3.2 Network services scan (Nmap)
 
 * `<host>` will be the IP address of the local gateway (eg. **192.168.1.1**)
+* The following scan types outlined below will be performed on both the LAN ("Ethernet") and WAN  ("Internet") interfaces of the router
 
-### TCP scan
+#### 3.2.1 TCP scan
 
 ```shellscript
 $ sudo nmap -sS -p- -T4 -n -Pn  <host>
 ```
 
-#### LAN
-
-_\[...insert TCP scan results]_
-
-#### WAN
-
-_\[...insert TCP scan results]_
-
-### UDP scan
+#### 3.2.2 UDP scan
 
 ```shellscript
 $ sudo nmap -sU -F -T4 -n -Pn --max-retries 1 <host>
@@ -141,9 +134,7 @@ Hence, the following flags can be used to make the UDP scan more efficient::
 1. &#x20;`--max-retries` is important to cap the max retransmission for UDP scans
 2. `-F` scans fewer ports
 
-_\[...insert UDP scan results]_
-
-#### Limitations of the UDP scan
+**Limitations of the UDP scan**
 
 Notice that this particular UDP scan did not return port 67, which is used in the DHCP process discussed earlier. We can perform another scan to confirm that this port is open:
 
@@ -151,15 +142,7 @@ Notice that this particular UDP scan did not return port 67, which is used in th
 $ sudo nmap -sU -p67 -n -Pn <host>
 ```
 
-#### LAN
-
-_\[...insert UDP -p67 scan results]_
-
-#### WAN
-
-_\[...insert UDP -p67 scan results]_
-
-### Targeted TCP+UDP scan
+#### 3.2.3 Targeted TCP+UDP scan
 
 Now that we have discovered the open TCP and UDP ports, we can perform a targeted scan on the found ports. This will involve the following additional scan types:
 
@@ -175,13 +158,46 @@ $ sudo nmap -sC -sV -sS -sU -p T:80,U:53,1900 -n -Pn --max-retries 1 192.168.1.1
 ```
 {% endcode %}
 
-#### LAN
+#### 3.2.4 LAN interface scan results
 
-_\[...insert combined scan results]_
+```shellscript
+# 3.2.1 TCP scan
 
-#### WAN
+```
 
-_\[...insert combined scan results]_
+```shellscript
+# 3.2.2 UDP scan
+
+```
+
+```shellscript
+# 3.2.3 Targeted TCP+UDP scan
+
+```
+
+
+
+#### 3.2.5 WAN interface scan results
+
+Since the WAN interface of the router typically acts as a DHCP client, rather than a server, it will not be able to lease an IP address to our host. To fix this, we can run a DHCP server (`dnsmasq`), and configure a static IP address on our host:
+
+```shellscript
+$ dnsmasq ...
+
+$ sudo ip link add addr <static_IP_addr> dev <iface>
+
+# eg.
+$ ifconfig
+...
+enx123
+...
+
+$ sudo ip link add addr 192.168.1.88 dev enx123
+```
+
+...
+
+
 
 Refer to the following links for more information on the Nmap options:
 
