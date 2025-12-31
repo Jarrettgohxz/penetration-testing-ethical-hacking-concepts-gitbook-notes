@@ -106,9 +106,7 @@ An ethernet cable will be used to connect the "Ethernet" port of the router and 
 
 Right after the ethernet cable is plugged in, a bunch of network traffic starts flowing on the Wireshark screen. The particular type of traffic of interest would be **DHCP:**
 
-_\[...insert wireshark view]_
-
-
+<figure><img src="../.gitbook/assets/image (113).png" alt=""><figcaption></figcaption></figure>
 
 From the image, we can see the [DHCP DORA ](https://www.pynetlabs.com/what-is-dhcp/)process: Discover, Offer, Request, ACK.
 
