@@ -194,6 +194,7 @@
     * [3. System enumeration (external)](past-experiments/linksys-e1200-v2/3.-system-enumeration-external.md)
     * [4. System enumeration (via shell)](past-experiments/linksys-e1200-v2/4.-system-enumeration-via-shell.md)
     * [5. Reverse engineering (exploit development)](past-experiments/linksys-e1200-v2/5.-reverse-engineering-exploit-development.md)
+    * [6. Post exploitation (persistence)](past-experiments/linksys-e1200-v2/6.-post-exploitation-persistence.md)
 
 ## Web Exploitation
 
