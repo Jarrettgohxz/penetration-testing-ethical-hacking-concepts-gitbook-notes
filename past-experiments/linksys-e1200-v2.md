@@ -217,7 +217,7 @@ Given the information we have gathered from the previous section, I will attempt
 
 {% embed url="https://gcc.gnu.org/onlinedocs/gcc-4.8.5/gnat_ugn_unw/Remote-Debugging-using-gdbserver.html" %}
 
-#### 5.1.1 Compile `gdb` for target
+#### 5.2.1 Compile `gdb` for target
 
 To start off, we have to compile GDB for our target architecture `xxxx`, as found from the previous enumeration step:
 
@@ -225,7 +225,7 @@ To start off, we have to compile GDB for our target architecture `xxxx`, as foun
 $ 
 ```
 
-#### 5.1.2 `gdbserver` on target router
+#### 5.2.2 `gdbserver` on target router
 
 Next, we can run `gdbserver` on the target router:
 
@@ -246,7 +246,7 @@ $ pidof httpd
 $  gdbserver localhost:8888 --attach <PID>
 ```
 
-#### 5.1.3 Connect to remote target from host machine
+#### 5.2.3 Connect to remote target from host machine
 
 * To debug (using `gdb`) from the host machine:
 
