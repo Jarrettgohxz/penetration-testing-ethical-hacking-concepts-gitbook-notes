@@ -171,6 +171,7 @@
   * [Additional](hardware-exploitation/resource/additional.md)
   * [General](hardware-exploitation/resource/general.md)
   * [Walkthroughs](hardware-exploitation/resource/walkthroughs.md)
+  * [CVE discovery](hardware-exploitation/resource/cve-discovery.md)
 * [Toolkit](hardware-exploitation/toolkit.md)
 * [Techniques](hardware-exploitation/techniques/README.md)
   * [Identification of hardware components](hardware-exploitation/techniques/identification-of-hardware-components.md)
