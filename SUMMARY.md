@@ -192,10 +192,11 @@
   * [Linksys E1200(V2)](past-experiments/linksys-e1200-v2/README.md)
     * [1. Initial research](past-experiments/linksys-e1200-v2/1.-initial-research.md)
     * [2. Hardware overview](past-experiments/linksys-e1200-v2/2.-hardware-overview.md)
-    * [3. System enumeration (external)](past-experiments/linksys-e1200-v2/3.-system-enumeration-external.md)
-    * [4. System enumeration (via shell)](past-experiments/linksys-e1200-v2/4.-system-enumeration-via-shell.md)
-    * [5. Reverse engineering (exploit development)](past-experiments/linksys-e1200-v2/5.-reverse-engineering-exploit-development.md)
-    * [6. Post exploitation (persistence)](past-experiments/linksys-e1200-v2/6.-post-exploitation-persistence.md)
+    * [3. Proof-of-Concept (PoC) testing](past-experiments/linksys-e1200-v2/3.-proof-of-concept-poc-testing.md)
+    * [4. System enumeration (external)](past-experiments/linksys-e1200-v2/4.-system-enumeration-external.md)
+    * [5. System enumeration (via shell)](past-experiments/linksys-e1200-v2/5.-system-enumeration-via-shell.md)
+    * [6. Reverse engineering (exploit development)](past-experiments/linksys-e1200-v2/6.-reverse-engineering-exploit-development.md)
+    * [7. Post exploitation (persistence)](past-experiments/linksys-e1200-v2/7.-post-exploitation-persistence.md)
 
 ## Web Exploitation
 
