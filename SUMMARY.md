@@ -161,7 +161,7 @@
   * [Overview](binary-exploitation/tools/gdb-mona-ghidra-.../README.md)
     * [GDB (gef)](reverse-engineering-binary-exploitation/tools/gdb-mona-ghidra-.../gdb-gef.md)
     * [Ghidra](reverse-engineering-binary-exploitation/tools/gdb-mona-ghidra-.../ghidra.md)
-    * [wntools](reverse-engineering-binary-exploitation/tools/gdb-mona-ghidra-.../wntools.md)
+    * [pwntools](reverse-engineering-binary-exploitation/tools/gdb-mona-ghidra-.../pwntools.md)
     * [Python3](reverse-engineering-binary-exploitation/tools/gdb-mona-ghidra-.../python3.md)
   * [Linux tools](binary-exploitation/tools/linux-tools.md)
 
