@@ -1,5 +1,7 @@
 # Linksys E1200(V2)
 
+<figure><img src="../../.gitbook/assets/image (123).png" alt=""><figcaption></figcaption></figure>
+
 ## Learning outcomes
 
 
