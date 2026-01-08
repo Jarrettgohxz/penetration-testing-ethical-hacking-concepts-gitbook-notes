@@ -144,6 +144,7 @@
     * [x86 (32-bit) VS x64 (64-bit)](binary-exploitation/computer-architecture/instruction-set-architecture-isa/x86-32-bit-vs-x64-64-bit.md)
     * [ARM32](binary-exploitation/computer-architecture/instruction-set-architecture-isa/arm32.md)
     * [ARM64/AArch64](binary-exploitation/computer-architecture/instruction-set-architecture-isa/arm64-aarch64.md)
+    * [MIPS (32-bit)](reverse-engineering-binary-exploitation/computer-architecture/instruction-set-architecture-isa/mips-32-bit.md)
   * [Memory Organization](binary-exploitation/computer-architecture/memory-organization/README.md)
     * [General memory layout](binary-exploitation/computer-architecture/memory-organization/general-memory-layout.md)
   * [System-Level Architecture](binary-exploitation/computer-architecture/system-level-architecture/README.md)
@@ -195,7 +196,9 @@
     * [3. Proof-of-Concept (PoC) testing](past-experiments/linksys-e1200-v2/3.-proof-of-concept-poc-testing.md)
     * [4. System enumeration (external)](past-experiments/linksys-e1200-v2/4.-system-enumeration-external.md)
     * [5. System enumeration (via shell)](past-experiments/linksys-e1200-v2/5.-system-enumeration-via-shell.md)
-    * [6. Reverse engineering (exploit development)](past-experiments/linksys-e1200-v2/6.-reverse-engineering-exploit-development.md)
+    * [6. Reverse engineering (exploit development)](past-experiments/linksys-e1200-v2/6.-reverse-engineering-exploit-development/README.md)
+      * [Miscellaneous](past-experiments/linksys-e1200-v2/6.-reverse-engineering-exploit-development/miscellaneous.md)
+      * [Exploit research](past-experiments/linksys-e1200-v2/6.-reverse-engineering-exploit-development/exploit-research.md)
     * [7. Post exploitation (persistence)](past-experiments/linksys-e1200-v2/7.-post-exploitation-persistence.md)
 
 ## Web Exploitation
