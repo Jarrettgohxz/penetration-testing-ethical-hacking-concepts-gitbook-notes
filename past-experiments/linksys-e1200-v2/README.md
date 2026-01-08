@@ -37,13 +37,14 @@
 
 * Boot logs
 * Firmware and OS versions, along with other useful information&#x20;
-* Information gathering of a vulnerable binary
+* Information gathering on a vulnerable binary
 
 
 
 5. Reverse engineering + exploit development of a vulnerable binary
 
-* Simple techniques to reclaim memory space and transfer files between device and host
+* Simple techniques to reclaim memory space on the device
+* &#x20;Transfer files between device and host
 * Exploit tools and techniques: pwn, Ghidra, GDB + gdbserver, objdump, etc.
 * Demonstration of the steps taken to generate the final working payload
 
