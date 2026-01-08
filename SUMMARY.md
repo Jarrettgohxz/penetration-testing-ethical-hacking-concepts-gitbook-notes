@@ -189,7 +189,6 @@
   * [Soldering](other-important-skills/soldering.md)
 * [Research ideas](research-ideas.md)
 * [Past experiments](past-experiments/README.md)
-  * [HUAWEI EchoLife HG8244H](past-experiments/huawei-echolife-hg8244h.md)
   * [Linksys E1200(V2)](past-experiments/linksys-e1200-v2/README.md)
     * [1. Initial research](past-experiments/linksys-e1200-v2/1.-initial-research.md)
     * [2. Hardware overview](past-experiments/linksys-e1200-v2/2.-hardware-overview.md)

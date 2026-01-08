@@ -1,3 +1,0 @@
-# HUAWEI EchoLife HG8244H
-
-...
