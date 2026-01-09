@@ -9,10 +9,10 @@
 1. Techniques to gather information on a hardware without physical access to the device itself
 
 * Google dork
+  * Release notes, firmware download
+  * Known CVEs&#x20;
+  * PoCs for found CVEs
 * FCC
-* Release notes, firmware download
-* Known CVEs&#x20;
-* PoCs for found CVEs
 
 
 
@@ -25,7 +25,7 @@
 
 
 
-3. Interacting with basic networking services&#x20;
+3. Interacting with basic networking services on the device
 
 * DHCP
 * Nmap scan
@@ -41,16 +41,22 @@
 
 
 
-5. Reverse engineering + exploit development of a vulnerable binary
+5. Techniques to interact with the device
 
 * Simple techniques to reclaim memory space on the device
 * &#x20;Transfer files between device and host
-* Exploit tools and techniques: pwn, Ghidra, GDB + gdbserver, objdump, etc.
+
+
+
+6. Understanding of the _MIPS_ architecture & assembly + reverse engineering and exploit development of a vulnerable binary (from a known CVE)
+
+* Understand the vulnerability from the CVE description
+* Work with exploit tools and techniques: pwn, Ghidra, GDB + gdbserver, objdump, etc.
 * Demonstration of the steps taken to generate the final working payload for _remote-code execution_
 
 
 
-6. **Bonus section**: persistence techniques from a real-world perspective
+7. **Bonus section**: persistence techniques from a real-world perspective
 
 * "backdoor" access that can be remotely accessed
 
