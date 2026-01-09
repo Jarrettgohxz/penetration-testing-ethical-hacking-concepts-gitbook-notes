@@ -17,6 +17,8 @@ description: Project started on 4 Dec 2025
   * Known CVEs&#x20;
   * PoCs for found CVEs
 * FCC
+  * Internal photos
+  * Identifying presence of UART interfaces
 
 
 
@@ -52,7 +54,7 @@ description: Project started on 4 Dec 2025
 
 
 
-6. Understanding of the _MIPS_ architecture & assembly + reverse engineering and exploit development of a vulnerable binary (from a known CVE)
+6. Understanding of the _MIPS_ architecture & assembly + reverse engineering and stack-based buffer overflow exploit development of a vulnerable binary (from a known CVE)
 
 * Understand the vulnerability from the CVE description
 * Work with exploit tools and techniques: pwn, Ghidra, GDB + gdbserver, objdump, etc.
