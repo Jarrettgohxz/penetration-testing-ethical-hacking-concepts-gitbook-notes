@@ -6,7 +6,7 @@
 
 
 
-1. Various techniques to gather information on a hardware without physical access to the device itself
+1. Techniques to gather information on a hardware without physical access to the device itself
 
 * Google dork
 * FCC
@@ -46,7 +46,7 @@
 * Simple techniques to reclaim memory space on the device
 * &#x20;Transfer files between device and host
 * Exploit tools and techniques: pwn, Ghidra, GDB + gdbserver, objdump, etc.
-* Demonstration of the steps taken to generate the final working payload
+* Demonstration of the steps taken to generate the final working payload for _remote-code execution_
 
 
 
