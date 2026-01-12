@@ -200,7 +200,9 @@
     * [5. System enumeration (via shell)](past-experiments/linksys-e1200-v2/5.-system-enumeration-via-shell.md)
     * [6. Reverse engineering (exploit development)](past-experiments/linksys-e1200-v2/6.-reverse-engineering-exploit-development/README.md)
       * [Miscellaneous](past-experiments/linksys-e1200-v2/6.-reverse-engineering-exploit-development/miscellaneous.md)
-      * [Exploit research](past-experiments/linksys-e1200-v2/6.-reverse-engineering-exploit-development/exploit-research.md)
+      * [Exploit research](past-experiments/linksys-e1200-v2/6.-reverse-engineering-exploit-development/exploit-research/README.md)
+        * [CVE-2025-60690](past-experiments/linksys-e1200-v2/6.-reverse-engineering-exploit-development/exploit-research/cve-2025-60690.md)
+        * [CVE-2025-60691](past-experiments/linksys-e1200-v2/6.-reverse-engineering-exploit-development/exploit-research/cve-2025-60691.md)
     * [7. Post exploitation (persistence)](past-experiments/linksys-e1200-v2/7.-post-exploitation-persistence.md)
 
 ## Web Exploitation
