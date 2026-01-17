@@ -54,15 +54,21 @@ description: Project started on 4 Dec 2025
 
 
 
-6. Understanding of the _MIPS_ architecture & assembly + reverse engineering and stack-based buffer overflow exploit development of a vulnerable binary (from a known CVE)
+6. Research of a vulnerable binary (from a known CVE)
 
 * Understand the vulnerability from the CVE description
-* Work with exploit tools and techniques: pwn, Ghidra, GDB + gdbserver, objdump, etc.
-* Demonstration of the steps taken to generate the final working payload for _remote-code execution_
+* Perform source code and HTTP traffic analysis
+* Perform fuzzing, and analysis of the results to aid us in finding the _entry point_ of the vulnerability
 
 
 
-7. **Bonus section**: persistence techniques from a real-world perspective
+7. Understand the _MIPS_ architecture & assembly + reverse engineering and stack-based buffer overflow research&#x20;
+   * Work with exploit tools and techniques: pwn, Ghidra, GDB + gdbserver, objdump, etc.
+   * Demonstration of the steps taken to generate the final working payload (exploiting the stack-based buffer overflow vulnerability) for _remote-code execution_
+
+
+
+8. **Bonus section**: persistence techniques from a real-world perspective
 
 * "backdoor" access that can be remotely accessed
 
