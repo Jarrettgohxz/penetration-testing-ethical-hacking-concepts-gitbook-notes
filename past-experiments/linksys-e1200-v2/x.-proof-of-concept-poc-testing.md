@@ -1,4 +1,8 @@
-# 3. Proof-of-Concept (PoC) testing
+---
+hidden: true
+---
+
+# x. Proof-of-Concept (PoC) testing
 
 In this section, we will be observing the behavior of the stack-based buffer overflow vulnerability present on the Linksys E1200 V2 router.&#x20;
 
