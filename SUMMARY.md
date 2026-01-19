@@ -197,7 +197,7 @@
     * [2. Hardware overview](past-experiments/linksys-e1200-v2/2.-hardware-overview.md)
     * [x. Proof-of-Concept (PoC) testing](past-experiments/linksys-e1200-v2/x.-proof-of-concept-poc-testing.md)
     * [3. Networking](past-experiments/linksys-e1200-v2/3.-networking.md)
-    * [4. System enumeration (via shell)](past-experiments/linksys-e1200-v2/4.-system-enumeration-via-shell.md)
+    * [4. Enumeration](past-experiments/linksys-e1200-v2/4.-enumeration.md)
     * [5. Reverse engineering (exploit development)](past-experiments/linksys-e1200-v2/5.-reverse-engineering-exploit-development/README.md)
       * [Miscellaneous](past-experiments/linksys-e1200-v2/5.-reverse-engineering-exploit-development/miscellaneous.md)
       * [Exploit research](past-experiments/linksys-e1200-v2/5.-reverse-engineering-exploit-development/exploit-research/README.md)
