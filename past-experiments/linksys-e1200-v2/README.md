@@ -62,13 +62,29 @@ description: Project started on 4 Dec 2025
 
 
 
-7. Understand the _MIPS_ architecture & assembly + reverse engineering and stack-based buffer overflow research&#x20;
-   * Work with exploit tools and techniques: pwn, Ghidra, GDB + gdbserver, objdump, etc.
-   * Demonstration of the steps taken to generate the final working payload (exploiting the stack-based buffer overflow vulnerability) for _remote-code execution_
+7. Understand constraints and limitations of working with embedded devices, and explore workarounds to develop a working setup for reverse engineering + binary exploitation&#x20;
+
+* Patch the binary with custom instructions to control the program flow (breakpoints, infinite loops, etc.)
+* Manual SIGSTOP signal to force a "pause"
 
 
 
-8. **Bonus section**: persistence techniques from a real-world perspective
+8. Understand the _MIPS_ architecture & assembly + reverse engineering and stack-based buffer overflow research&#x20;
+
+* Work with exploit tools and techniques: pwn, Ghidra, GDB + gdbserver, objdump, etc.
+* Utilize our understanding of the MIPS architecture/assembly to analyse register, memory contents, and many more important concepts
+* Demonstration of the steps taken to generate the final working payload (exploiting the stack-based buffer overflow vulnerability) for _remote-code execution_
+
+
+
+9. Hands on experience working with well-known industry-standard application and tools that covers a wide range of tasks in a typical pentesting workflow
+
+* nmap, nc, cURL,wget, gdb/gdbserver, dd, etc.
+* Ghidra, Wireshark
+
+
+
+10. **Bonus section**: persistence techniques from a real-world perspective
 
 * "backdoor" access that can be remotely accessed
 
