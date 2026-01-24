@@ -202,7 +202,8 @@
       * [Miscellaneous](past-experiments/linksys-e1200-v2/5.-reverse-engineering-exploit-development/miscellaneous.md)
       * [Exploit research](past-experiments/linksys-e1200-v2/5.-reverse-engineering-exploit-development/exploit-research/README.md)
         * [CVE-2025-60690](past-experiments/linksys-e1200-v2/5.-reverse-engineering-exploit-development/exploit-research/cve-2025-60690.md)
-        * [CVE-2025-60691](past-experiments/linksys-e1200-v2/5.-reverse-engineering-exploit-development/exploit-research/cve-2025-60691.md)
+        * [CVE-2025-60691](past-experiments/linksys-e1200-v2/5.-reverse-engineering-exploit-development/exploit-research/cve-2025-60691/README.md)
+          * [apply\_cgi disasssembly](past-experiments/linksys-e1200-v2/5.-reverse-engineering-exploit-development/exploit-research/cve-2025-60691/apply_cgi-disasssembly.md)
     * [6. Post exploitation (persistence)](past-experiments/linksys-e1200-v2/6.-post-exploitation-persistence.md)
 
 ## Web Exploitation
