@@ -152,6 +152,8 @@
   * [System-Level Architecture](binary-exploitation/computer-architecture/system-level-architecture/README.md)
     * [User vs Kernel space](binary-exploitation/computer-architecture/system-level-architecture/user-vs-kernel-space.md)
 * [Buffer Overflow](binary-exploitation/buffer-overflow/README.md)
+  * [Bypass techniques](reverse-engineering-binary-exploitation/buffer-overflow/bypass-techniques/README.md)
+    * [ROP](reverse-engineering-binary-exploitation/buffer-overflow/bypass-techniques/rop.md)
   * [Stack-based overflow](reverse-engineering-binary-exploitation/buffer-overflow/stack-based-overflow/README.md)
     * [Csaw 2018 Quals Boi (64-bit)](reverse-engineering-binary-exploitation/buffer-overflow/stack-based-overflow/csaw-2018-quals-boi.md)
     * [Tamu19 pwn1 (32-bit)](reverse-engineering-binary-exploitation/buffer-overflow/stack-based-overflow/tamu19-pwn1.md)
