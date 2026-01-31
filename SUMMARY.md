@@ -201,6 +201,7 @@
     * [5. Reverse engineering (exploit development)](past-experiments/linksys-e1200-v2/5.-reverse-engineering-exploit-development/README.md)
       * [Miscellaneous](past-experiments/linksys-e1200-v2/5.-reverse-engineering-exploit-development/miscellaneous.md)
       * [Exploit research](past-experiments/linksys-e1200-v2/5.-reverse-engineering-exploit-development/exploit-research/README.md)
+        * [Readings](past-experiments/linksys-e1200-v2/5.-reverse-engineering-exploit-development/exploit-research/readings.md)
         * [CVE-2025-60690](past-experiments/linksys-e1200-v2/5.-reverse-engineering-exploit-development/exploit-research/cve-2025-60690.md)
         * [CVE-2025-60691](past-experiments/linksys-e1200-v2/5.-reverse-engineering-exploit-development/exploit-research/cve-2025-60691.md)
           * [apply\_cgi disasssembly](past-experiments/linksys-e1200-v2/5.-reverse-engineering-exploit-development/exploit-research/cve-2025-60691/apply_cgi-disasssembly.md)
