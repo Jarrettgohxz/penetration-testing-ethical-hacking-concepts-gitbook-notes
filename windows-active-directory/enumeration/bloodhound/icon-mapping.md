@@ -4,5 +4,5 @@
 
 In this section, I aim to provide a quick mapping of each icon to the node type for quick reference.
 
-<figure><img src="../../../.gitbook/assets/image (5) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (5) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
