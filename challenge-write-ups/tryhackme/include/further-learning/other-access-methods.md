@@ -13,7 +13,7 @@ $ hydra -l charles -P <wordlist> -t 6 ssh://<host>
 ```
 {% endcode %}
 
-<figure><img src="../../../../.gitbook/assets/image (2) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (2) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 I found the password _**123456**_ for both usernames `joshua` and `charles`. We can now SSH with the usernames and gain a remote shell:
 
