@@ -204,7 +204,7 @@
         * [source code+disassembly repository](hardware-exploitation/research-projects/linksys-e1200-v2/5.-reverse-engineering-exploit-development/exploit-research/source-code+disassembly-repository.md)
         * [CVE-2025-60690](hardware-exploitation/research-projects/linksys-e1200-v2/5.-reverse-engineering-exploit-development/exploit-research/cve-2025-60690.md)
         * [CVE-2025-60691](hardware-exploitation/research-projects/linksys-e1200-v2/5.-reverse-engineering-exploit-development/exploit-research/cve-2025-60691.md)
-    * [6. Post exploitation (persistence)](hardware-exploitation/research-projects/linksys-e1200-v2/6.-post-exploitation-persistence.md)
+    * [6. Post exploitation & Persistence](hardware-exploitation/research-projects/linksys-e1200-v2/6.-post-exploitation-and-persistence.md)
 
 ## Web Exploitation
 
