@@ -44,7 +44,7 @@ If we send an expired cookie, we will get the following response:
 
 If the cookie is not expired, we will be able to send our recovery code. The image below shows the display for an invalid recovery code.
 
-<figure><img src="../../../.gitbook/assets/image (6) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (6) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 **(4)** Once the window period is over (`countdownv <=0`), the cookie will be expired, and the user will be automatically logged out.
 
