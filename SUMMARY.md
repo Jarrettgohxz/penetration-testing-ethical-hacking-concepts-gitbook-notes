@@ -205,6 +205,7 @@
         * [CVE-2025-60690](hardware-exploitation/research-projects/linksys-e1200-v2/5.-reverse-engineering-+-exploit-development/exploit-research/cve-2025-60690.md)
         * [CVE-2025-60691](hardware-exploitation/research-projects/linksys-e1200-v2/5.-reverse-engineering-+-exploit-development/exploit-research/cve-2025-60691.md)
     * [6. Post exploitation & Persistence](hardware-exploitation/research-projects/linksys-e1200-v2/6.-post-exploitation-and-persistence.md)
+    * [7. Further research](hardware-exploitation/research-projects/linksys-e1200-v2/7.-further-research.md)
 
 ## Web Exploitation
 
