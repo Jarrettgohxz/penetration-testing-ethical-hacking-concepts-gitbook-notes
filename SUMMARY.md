@@ -209,6 +209,7 @@
 
 ## Web Exploitation
 
+* [Resources](web-exploitation/resources.md)
 * [Introduction](web-exploitation/introduction.md)
 * [Injection attacks](web-exploitation/injection-attacks/README.md)
   * [SSTI](web-exploitation/injection-attacks/ssti.md)
