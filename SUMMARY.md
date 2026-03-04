@@ -207,6 +207,10 @@
     * [6. Post exploitation & Persistence](hardware-exploitation/research-projects/linksys-e1200-v2/6.-post-exploitation-and-persistence.md)
     * [7. Further research](hardware-exploitation/research-projects/linksys-e1200-v2/7.-further-research.md)
 
+## Wireless Pentesting
+
+* [Resources](wireless-pentesting/resources.md)
+
 ## Web Exploitation
 
 * [Resources](web-exploitation/resources.md)
