@@ -203,6 +203,7 @@
         * [CVE-2025-60690](hardware-exploitation/research-projects/linksys-e1200-v2/5.-reverse-engineering-+-exploit-development/cves-research/cve-2025-60690.md)
         * [CVE-2025-60691](hardware-exploitation/research-projects/linksys-e1200-v2/5.-reverse-engineering-+-exploit-development/cves-research/cve-2025-60691.md)
       * [Additional](hardware-exploitation/research-projects/linksys-e1200-v2/5.-reverse-engineering-+-exploit-development/additional/README.md)
+        * [Memory layout](hardware-exploitation/research-projects/linksys-e1200-v2/5.-reverse-engineering-+-exploit-development/additional/memory-layout.md)
         * [Readings](hardware-exploitation/research-projects/linksys-e1200-v2/5.-reverse-engineering-+-exploit-development/additional/readings.md)
         * [source code+disassembly repository](hardware-exploitation/research-projects/linksys-e1200-v2/5.-reverse-engineering-+-exploit-development/additional/source-code+disassembly-repository.md)
     * [6. Post exploitation & Persistence](hardware-exploitation/research-projects/linksys-e1200-v2/6.-post-exploitation-and-persistence.md)
