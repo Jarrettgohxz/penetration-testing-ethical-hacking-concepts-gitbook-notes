@@ -253,6 +253,11 @@
   * [OWASP WSTG-SESS-10 \~ JSON Web Token (JWT)](web-exploitation/authentication-session-management/json-web-token-jwt.md)
   * [OWASP WSTG-ATHZ-05 \~ OAuth weaknesses](web-exploitation/authentication-session-management/oauth-weaknesses.md)
 
+## Payload obfuscation techniques
+
+* [Resources](payload-obfuscation-techniques/resources.md)
+* [Techniques](payload-obfuscation-techniques/techniques.md)
+
 ***
 
 * [Webshell](webshell.md)
