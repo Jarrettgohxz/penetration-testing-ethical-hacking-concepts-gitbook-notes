@@ -104,3 +104,14 @@ The following command executes `cat /etc/passwd`
   * Or, if the command hangs due to the `cat` command having no arguments, we can attempt to read an invalid file:  `cat x ; whoami # >> /var/www/log`&#x20;
   * Or flush the error for cleaner output:  `cat x 2>/dev/null ; whoami # >> /var/www/log`&#x20;
 
+
+
+11. Starting shell command with a backslash
+
+* prevents running an alias, and forces the default binary to run instead
+* may be used to bypass security implementations and controls
+
+`curl -x POST` ⇒ `\curl -X POST ...`
+
+{% embed url="https://stackoverflow.com/questions/15691977/why-start-a-shell-command-with-a-backslash" %}
+
