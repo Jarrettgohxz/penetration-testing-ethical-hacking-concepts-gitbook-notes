@@ -178,7 +178,7 @@
   * [General](hardware-exploitation/resource/general.md)
   * [Walkthroughs](hardware-exploitation/resource/walkthroughs.md)
   * [CVE discovery](hardware-exploitation/resource/cve-discovery.md)
-  * [Firmware/Manual download](hardware-exploitation/resource/firmware-manual-download.md)
+  * [Firmware download](hardware-exploitation/resource/firmware-download.md)
 * [Toolkit](hardware-exploitation/toolkit.md)
 * [Techniques](hardware-exploitation/techniques/README.md)
   * [Identification of hardware components](hardware-exploitation/techniques/identification-of-hardware-components.md)
