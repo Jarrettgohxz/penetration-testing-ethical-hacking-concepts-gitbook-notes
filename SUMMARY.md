@@ -186,7 +186,8 @@
     * [Resources](hardware-exploitation/techniques/uart-shell/resources.md)
   * [Firmware](hardware-exploitation/techniques/firmware/README.md)
     * [Firmware extraction](hardware-exploitation/techniques/firmware/firmware-extraction.md)
-    * [Firmware reverse engineering/analysis](hardware-exploitation/techniques/firmware/firmware-reverse-engineering-analysis.md)
+    * [Firmware reversing/analysis](hardware-exploitation/techniques/firmware/firmware-reversing-analysis.md)
+    * [Firmware emulation](hardware-exploitation/techniques/firmware/firmware-emulation.md)
   * [System enumeration](hardware-exploitation/techniques/system-enumeration.md)
 * [Other important skills](hardware-exploitation/other-important-skills/README.md)
   * [Soldering](hardware-exploitation/other-important-skills/soldering.md)
@@ -209,6 +210,8 @@
         * [source code+disassembly repository](hardware-exploitation/research-projects/linksys-e1200-v2/5.-reverse-engineering-+-exploit-development/additional/source-code+disassembly-repository.md)
     * [6. Post exploitation & Persistence](hardware-exploitation/research-projects/linksys-e1200-v2/6.-post-exploitation-and-persistence.md)
     * [7. Further research](hardware-exploitation/research-projects/linksys-e1200-v2/7.-further-research.md)
+
+## Firmware reversing
 
 ## Group 1
 
