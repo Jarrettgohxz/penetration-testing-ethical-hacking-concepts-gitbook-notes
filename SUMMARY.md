@@ -178,6 +178,7 @@
   * [General](hardware-exploitation/resource/general.md)
   * [Walkthroughs](hardware-exploitation/resource/walkthroughs.md)
   * [CVE discovery](hardware-exploitation/resource/cve-discovery.md)
+  * [Firmware/Manual download](hardware-exploitation/resource/firmware-manual-download.md)
 * [Toolkit](hardware-exploitation/toolkit.md)
 * [Techniques](hardware-exploitation/techniques/README.md)
   * [Identification of hardware components](hardware-exploitation/techniques/identification-of-hardware-components.md)
@@ -208,6 +209,8 @@
         * [source code+disassembly repository](hardware-exploitation/research-projects/linksys-e1200-v2/5.-reverse-engineering-+-exploit-development/additional/source-code+disassembly-repository.md)
     * [6. Post exploitation & Persistence](hardware-exploitation/research-projects/linksys-e1200-v2/6.-post-exploitation-and-persistence.md)
     * [7. Further research](hardware-exploitation/research-projects/linksys-e1200-v2/7.-further-research.md)
+
+## Group 1
 
 ## Wireless Pentesting
 
