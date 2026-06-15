@@ -22,7 +22,7 @@ Simulation of an ethical hack attack on IoT system&#x20;
 The IoT hacker's handbook
 {% endfile %}
 
-> Access with NTUSG account
+> Access with NTUSG account. ACCESS WITHOUT A VPN CONNECTION!
 
 {% embed url="https://learning.oreilly.com/library/view/the-hardware-hacking/9781098129835/f01.xhtml" %}
 
