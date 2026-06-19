@@ -16,9 +16,8 @@ $ sudo apt install build-essential liblzma-dev liblzo2-dev zlib1g-dev
 # Clone from source
 $ git clone 
 https://github.com/devttys0/sasquatch.git
-
 $ cd sasquatch
-$ cd squashfs4.3/squashfs-tools/sasquatch
+
 $ EXTRA_CFLAGS="-fcommon -Wno-error=misleading-indentation -Wno-error=address-of-packed-member -Wno-error=dangling-pointer" ./build.sh
 
 $ which sasquatch
