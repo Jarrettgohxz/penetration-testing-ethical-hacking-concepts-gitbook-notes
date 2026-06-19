@@ -10,6 +10,10 @@ Fortunately, `sasquatch` provides a method to identify and adapt to changing com
 
 {% code title="" %}
 ```bash
+# Install dependencies
+$ sudo apt install build-essential liblzma-dev liblzo2-dev zlib1g-dev
+
+# Clone from source
 $ git clone 
 https://github.com/devttys0/sasquatch.git
 
