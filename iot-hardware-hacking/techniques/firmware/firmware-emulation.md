@@ -15,8 +15,8 @@ $ git clone --recursive https://github.com/pr0v3rbs/FirmAE
 # Install dependencies (binwalk, sasquatch)
 $ git clone https://github.com/devttys0/sasquatch.git
 $ cd sasquatch
-$ cd squashfs4.3/squashfs-tools/sasquatch
-	$ EXTRA_CFLAGS="-fcommon -Wno-error=misleading-indentation -Wno-error=address-of-packed-member -Wno-error=dangling-pointer" ./build.sh
+
+$ EXTRA_CFLAGS="-fcommon -Wno-error=misleading-indentation -Wno-error=address-of-packed-member -Wno-error=dangling-pointer" ./build.sh
 
 $ which sasquatch 
 /usr/local/bin/sasquatch
