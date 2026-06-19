@@ -14,8 +14,7 @@ Fortunately, `sasquatch` provides a method to identify and adapt to changing com
 $ sudo apt install build-essential liblzma-dev liblzo2-dev zlib1g-dev
 
 # Clone from source
-$ git clone 
-https://github.com/devttys0/sasquatch.git
+$ git clone https://github.com/devttys0/sasquatch.git
 $ cd sasquatch
 
 $ EXTRA_CFLAGS="-fcommon -Wno-error=misleading-indentation -Wno-error=address-of-packed-member -Wno-error=dangling-pointer" ./build.sh
