@@ -54,9 +54,9 @@ kmsg       loop6      mtd2       mtdblock3  random     urandom
   * non-volatile RAM
   * stores runtime configuration variables<br>
 
-To get our hands on the entire firmware (bootloader, kernel, root FS, nvram), we have to extract: `mtd0ro`, `mtd1ro` and `mtd3ro`
+To get our hands on the entire firmware (bootloader, kernel, root FS, nvram), we have to extract: `mtdblock0`, `mtdblock1` and `mtdblock3`
 
-Before we proceed, we have to download the `busybox-mipsel` tool to access the `dd` and `nc` tools that are not natively avaiable on this router
+Before we proceed, we have to download the `busybox-mipsel` tool to access the `dd` and `nc` tools that are not available natively on this router
 
 {% code title="Main machine (hosting busybox-mipsel)" %}
 ```shellscript
@@ -66,23 +66,19 @@ $ python3 -m http.server 8888
 ```
 {% endcode %}
 
-
-
 {% code title="Linksys E1200" %}
 ```console
-# ls
-busybox-mipsel
-$ python3 -m http.server 8888
+# wget http://[IP]:8888/busybox-mipsel -O /tmp/busybox-mipsel
+# chmod +x /tmp/busybox-mipsel
+# /tmp/busybox-mipsel dd --help
 ```
 {% endcode %}
 
-
-
 **From the UART console (Linksys E1200):**
 
-<pre class="language-console"><code class="lang-console"><strong># dd if=/dev/mtdblock0 | nc [IP] [PORT] # captures boot
-</strong># dd if=/dev/mtdblock1 | nc [IP] [PORT]  # captures linux+RootFS
-# dd if=/dev/mtdblock3 | nc [IP] [PORT]  # captures nvram
+<pre class="language-console"><code class="lang-console"><strong># /tmp/busybox-mipsel dd if=/dev/mtdblock0 | /tmp/busybox-mipsel nc [IP] [PORT] # captures boot
+</strong># /tmp/busybox-mipsel dd if=/dev/mtdblock1 | /tmp/busybox-mipsel nc [IP] [PORT]  # captures linux+RootFS
+# /tmp/busybox-mipsel dd if=/dev/mtdblock3 | /tmp/busybox-mipsel nc [IP] [PORT]  # captures nvram
 </code></pre>
 
 **From the main machine:**
@@ -91,6 +87,9 @@ $ python3 -m http.server 8888
 $ nc -lp [PORT] > boot.bin
 $ nc -lp [PORT] > linux+rootFS.bin
 $ nc -lp [PORT] > nvram.bin
+
+# combine
+$ cat boot.bin linux+rootFS.bin nvram.bin > linskys_e1200_fw2.0.02.bin
 ```
 
 
