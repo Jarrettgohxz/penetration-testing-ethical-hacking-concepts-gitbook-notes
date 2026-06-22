@@ -20,6 +20,7 @@
     * [Host-only networking](virtual-machines/virtualbox/network-setup/host-only-networking.md)
     * [Overview](virtual-machines/virtualbox/network-setup/overview.md)
 * [VMware Workstation](virtual-machines/vmware-workstation/README.md)
+  * [Install](virtual-machines/vmware-workstation/install.md)
   * [Network setup](virtual-machines/vmware-workstation/network-setup/README.md)
     * [Virtual interfaces](virtual-machines/vmware-workstation/network-setup/virtual-interfaces.md)
     * [Host-only networking](virtual-machines/vmware-workstation/network-setup/host-only-networking.md)
