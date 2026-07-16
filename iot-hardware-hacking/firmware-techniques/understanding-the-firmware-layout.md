@@ -16,6 +16,7 @@ A full firmware `(.bin`, `.img`) file contains multiple layers:
 2. **TRX firmware header**
 
 * contains a checksum value that changes whenever the kernel or filesystem is modified
+* [reference](https://jarrettgxz-sec.gitbook.io/penetration-testing-ethical-hacking-concepts/iot-hardware-hacking/firmware-techniques/firmware-mod-kit#extract-modify-build)
 
 3. **Kernel**
 4. **Root filesystem**
