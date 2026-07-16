@@ -2,12 +2,22 @@
 
 ## Full firmware image `(.bin)`
 
+> This will be the image we use when flashing directly on the physical hardware chip
+
 A full firmware `(.bin`, `.img`) file contains multiple layers:
 
-1. LZMA compressed data
-2. TRX firmware header
-3. Kernel
-4. SquashFS filesystem (or others eg. **jefferson**, **cramfs**, etc.)
+1. **Bootloader**, paddings or custom instructions
+
+* LZMA compressed data
+
+2. **TRX firmware header**
+
+* checksum
+
+3. **Kernel**
+4. **SquashFS filesystem** (or others eg. **jefferson**, **cramfs**, etc.)
+
+* Linux filesystem
 
 Let's take a look at a simple example at a [firmware](https://github.com/Jarrettgohxz/iot.tools/releases/download/linksys-e1200-fw-v2.0.02/linksys_e1200_fw2.0.02.bin) file that I have extracted directly from the **Linksys E1200 router**:
 
@@ -51,9 +61,9 @@ We notice 4 distinct portions from the `binwalk` output:
   * the `binwalk --extract` command with the **unsquashfs** tool (installed by default on most Linux systems), will fail
   * we will need the [Sasquatch](https://jarrettgxz-sec.gitbook.io/penetration-testing-ethical-hacking-concepts/iot-hardware-hacking/techniques/firmware/firmware-reversing-analysis#setup-sasquatch) tool for this
 
+### Analysis of the MIPS instructions (top portion of the firmware)
 
-
-
+First, we use the `dd` tool to extract 80 bytes (20 instructions) from the start of the firmware. Next, we use the `mipsel-linux-gnu-objdump` tool to read the MIPS disassembly code
 
 {% code title="" %}
 ```bash
@@ -64,11 +74,9 @@ $ dd if=linksys_e1200_fw2.0.02.bin of=linkys-e1200-fw2.0.0.2-RAW-FIRST-FEW-BYTES
 
 
 $ mipsel-linux-gnu-objdump -D -b binary -m mips:isa32 -EL linkys-e1200-fw2.0.0.2-RAW-FIRST-FEW-BYTES.bin
+
 linkys-e1200-fw2.0.0.2.bin-RAW-FIRST-FEW-BYTES:     file format binary
-
-
 Disassembly of section .data:
-
 00000000 <.data>:
    0:   3c12b800        lui     s2,0xb800
    4:   24075350        li      a3,21328
@@ -96,13 +104,13 @@ Disassembly of section .data:
 
 
 
-
-
 ## Extracted/operational/logical firmware image `(.trx)`
+
+> This will be the image we use for [emulation](https://jarrettgxz-sec.gitbook.io/penetration-testing-ethical-hacking-concepts/iot-hardware-hacking/techniques/firmware/firmware-emulation), or that is provided as an image to the web UI firmware upgrade page
 
 ### Example 1 (Linksys E1200)
 
-Referring to the same full firmware image from Linksys router before, we can carve away the top portion, to provide a functional image (that can be directly flashed on the device, emulated or provided as an image to the web UI firmware upgrade page):
+Referring to the same full firmware image from Linksys router before, we can carve away the top portion, to provide a functional image:
 
 > We can use the `dd` (disk-duplicator) command to carve the functional portions in to a new file (`linksys_e1200_fw2.0.02_carved.trx`)
 
@@ -119,9 +127,9 @@ $ dd if=linksys_e1200_fw2.0.02.bin \
 
 The extracted firmware `(linksys_e1200_fw2.0.02_carved.trx`) file will only contain the bottom 3 portions extracted from the full firmware (`.bin`) image:
 
-1. TRX firmware header
-2. Kernel
-3. SquashFS filesystem (or others eg. **jefferson**, **cramfs**, etc.)
+1. `0x0`: TRX firmware header
+2. `0x1C`: Kernel
+3. `0x14F7FC`: SquashFS filesystem (or others eg. **jefferson**, **cramfs**, etc.)
 
 {% code title="" %}
 ```bash
@@ -139,22 +147,30 @@ DECIMAL       HEXADECIMAL     DESCRIPTION
 
 
 
-
-
-OTHER POINTS
-
-1. checking TRX firmware header checksum after modifications (firmware-mod-kit) and before - should change
-2. show steps to extract bootloader (from .bin) to covert to .trx and EXPLAIN
-
 ### Example 2 (D-Link DIR815)
 
 Let's take another example on the [D-Link DIR815 ](https://github.com/Jarrettgohxz/iot.tools/releases/download/dlink-dir815A1-v1.03b01/dlink-dir815A1-v1.03b01.bin)router:
 
 {% code title="" %}
 ```bash
-$
+$ binwalk DIR815A1_FW103b01.bin
+
+DECIMAL       HEXADECIMAL     DESCRIPTION
+--------------------------------------------------------------------------------
+0             0x0             DLOB firmware header, boot partition: "dev=/dev/mtdblock/2"
+108           0x6C            LZMA compressed data, properties: 0x5D, dictionary size: 33554432 bytes, uncompressed size: 3017436 bytes
+983148        0xF006C         PackImg section delimiter tag, little endian size: 15738880 bytes; big endian size: 2682880 bytes
+983180        0xF008C         Squashfs filesystem, little endian, version 4.0, compression:lzma, size: 2682341 bytes, 1519 inodes, blocksize: 524288 bytes, created: 2012-03-09 10:16:45
 ```
 {% endcode %}
 
+Firmware portions:
 
+1. `0x0`: **DLOB firmware header**
+
+* propritary D-Link wrapper
+* contains a checksum value
+
+2. `0x6C`: **Kernel**
+3. `0xF008C`: **SquashFS filesystem**
 
