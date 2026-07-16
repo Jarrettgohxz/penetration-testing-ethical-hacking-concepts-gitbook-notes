@@ -15,8 +15,7 @@ A full firmware `(.bin`, `.img`) file contains multiple layers:
 
 2. **TRX firmware header**
 
-* checksum
-* changes when the Kernel or filesystem is modified
+* contains a checksum value that changes whenever the kernel or filesystem is modified
 
 3. **Kernel**
 4. **Root filesystem**
