@@ -8,7 +8,7 @@
 
 {% embed url="https://github.com/Jarrettgohxz/firmware-mod-kit" %}
 
-## `Installation`
+## Installation
 
 {% code title="" %}
 ```bash
@@ -44,10 +44,11 @@ $ ./build-firmware.sh -nopad -min
 ```
 {% endcode %}
 
-* builds the content in **fmk/rootfs**
+* builds the content in **fmk**
+  * this is the default output directory from `extract-firmware.sh`
 * output to **fmk/new-firmware.bin**
 
-> notes extracted directly from Github repo
+> The notes below are extracted directly from source
 
 The optional `-nopad` switch will instruct build-firmware.sh to NOT pad the firmware up to its original size.
 
@@ -57,5 +58,20 @@ The optional `-min` switch will use the maximum squashfs block size of 1MB. This
 
 Let's take a look at a simple example of how we can extract filesystem from a firmware, modify it, and build it back into a functional version
 
+{% code title="" %}
+```bash
+# extract
+$ ./extract-firwmare.sh FIRMWARE.bin
+$ cd fmk/rootfs
+ls 
+www bin etc ...
 
+# modify FS
+$ cd www && touch test.txt
+
+# build 
+$ ./build-firmware.sh
+$ file fmk/new-firmware.bin
+```
+{% endcode %}
 
