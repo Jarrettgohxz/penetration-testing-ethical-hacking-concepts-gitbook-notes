@@ -186,6 +186,7 @@
   * [UART shell](iot-hardware-hacking/techniques/uart-shell/README.md)
     * [Resources](iot-hardware-hacking/techniques/uart-shell/resources.md)
   * [Firmware](iot-hardware-hacking/techniques/firmware/README.md)
+    * [Firmware layout](iot-hardware-hacking/techniques/firmware/firmware-layout.md)
     * [Firmware extraction](iot-hardware-hacking/techniques/firmware/firmware-extraction.md)
     * [Firmware reversing/analysis](iot-hardware-hacking/techniques/firmware/firmware-reversing-analysis.md)
     * [Firmware emulation](iot-hardware-hacking/techniques/firmware/firmware-emulation.md)
