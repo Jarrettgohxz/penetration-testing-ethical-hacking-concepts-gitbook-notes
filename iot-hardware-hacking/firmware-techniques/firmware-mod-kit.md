@@ -75,3 +75,18 @@ $ file fmk/new-firmware.bin
 ```
 {% endcode %}
 
+The firmware header will differ between the original and modified firmware:
+
+{% code title="" %}
+```bash
+$ hexdump -C -n 28 FIRMWARE.bin
+00000000  48 44 52 30 00 80 6b 00  79 b5 5f e3 00 00 01 00  |HDR0..k.y._.....|
+00000010  1c 00 00 00 fc f7 14 00  00 00 00 00              |............|
+0000001c 
+
+$ hexdump -C -n 28 fmk/new-firmware.bin
+00000000  48 44 52 30 00 80 6b 00  79 b5 5f e3 00 00 01 00  |HDR0..k.y._.....|
+00000010  1c 00 00 00 fc f7 14 00  00 00 00 00              |............|
+0000001c 
+```
+{% endcode %}
