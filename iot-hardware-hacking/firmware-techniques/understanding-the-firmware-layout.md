@@ -6,18 +6,23 @@
 
 A full firmware `(.bin`, `.img`) file contains multiple layers:
 
-1. **Bootloader**, paddings or custom instructions
+1. **Hardware initialization layer**
 
-* LZMA compressed data
+* **Paddings/custom instructions**: uncompressed assembly instructions or paddings
+* **Bootloader**: compressed data (eg. LZMA)
+* will usually be constant between different firmware versions for the same router model (not affected by changes to the kernel or filesystem)
+  * it is usually statically stored on the physical device's non-volatile memory
 
 2. **TRX firmware header**
 
 * checksum
+* changes when the Kernel or filesystem is modified
 
 3. **Kernel**
-4. **SquashFS filesystem** (or others eg. **jefferson**, **cramfs**, etc.)
+4. **Root filesystem**
 
-* Linux filesystem
+* eg. SquashFS, jefferson, cramfs
+* contains the standard Linux directory tree
 
 Let's take a look at a simple example at a [firmware](https://github.com/Jarrettgohxz/iot.tools/releases/download/linksys-e1200-fw-v2.0.02/linksys_e1200_fw2.0.02.bin) file that I have extracted directly from the **Linksys E1200 router**:
 
@@ -34,7 +39,7 @@ DECIMAL       HEXADECIMAL     DESCRIPTION
 ```
 {% endcode %}
 
-<figure><img src="../../../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
 
 We notice 4 distinct portions from the `binwalk` output:
 
@@ -42,7 +47,7 @@ We notice 4 distinct portions from the `binwalk` output:
 
 * raw SPI flash dumps (padding bytes or custom MIPS assembly code) - `0x0` to `0xB673`
   * refer to the notes below to view the custom MIPS assembly code
-* bootloader (for initialization of the system) - `0xB674` to `0x3FFF`
+* bootloader (for initialization of the system) - `0xB674` to `0x3FFF`&#x20;
 
 2. `0x40000`: **TRX firmware header**
 
@@ -102,8 +107,6 @@ Disassembly of section .data:
 ```
 {% endcode %}
 
-
-
 ## Extracted/operational/logical firmware image `(.trx)`
 
 > This will be the image we use for [emulation](https://jarrettgxz-sec.gitbook.io/penetration-testing-ethical-hacking-concepts/iot-hardware-hacking/techniques/firmware/firmware-emulation), or that is provided as an image to the web UI firmware upgrade page
@@ -143,7 +146,7 @@ DECIMAL       HEXADECIMAL     DESCRIPTION
 ```
 {% endcode %}
 
-<figure><img src="../../../.gitbook/assets/image (200).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (200).png" alt=""><figcaption></figcaption></figure>
 
 
 
