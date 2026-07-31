@@ -39,7 +39,7 @@ DECIMAL       HEXADECIMAL     DESCRIPTION
 ```
 {% endcode %}
 
-<figure><img src="../../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (2) (1).png" alt=""><figcaption></figcaption></figure>
 
 We notice 4 distinct portions from the `binwalk` output:
 
