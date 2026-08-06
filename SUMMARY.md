@@ -214,6 +214,7 @@
         * [Memory layout](iot-hardware-hacking/research-projects/linksys-e1200-v2/5.-reverse-engineering-+-exploit-development/additional/memory-layout.md)
         * [Readings](iot-hardware-hacking/research-projects/linksys-e1200-v2/5.-reverse-engineering-+-exploit-development/additional/readings.md)
         * [source code+disassembly repository](iot-hardware-hacking/research-projects/linksys-e1200-v2/5.-reverse-engineering-+-exploit-development/additional/source-code+disassembly-repository.md)
+        * [libc-ropgadget.txt](iot-hardware-hacking/research-projects/linksys-e1200-v2/5.-reverse-engineering-+-exploit-development/additional/libc-ropgadget.txt.md)
     * [6. Post exploitation & Persistence](iot-hardware-hacking/research-projects/linksys-e1200-v2/6.-post-exploitation-and-persistence.md)
     * [7. Further research](iot-hardware-hacking/research-projects/linksys-e1200-v2/7.-further-research.md)
 
