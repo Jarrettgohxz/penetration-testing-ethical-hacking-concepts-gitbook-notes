@@ -502,6 +502,7 @@
     * [PortfolioS](challenge-write-ups/cscv-2025/web/portfolios.md)
     * [ZC-1](challenge-write-ups/cscv-2025/web/zc-1.md)
   * [Pwn](challenge-write-ups/cscv-2025/pwn.md)
+* [CTF Cheatsheet](challenge-write-ups/ctf-cheatsheet.md)
 
 ## AI prompt
 
