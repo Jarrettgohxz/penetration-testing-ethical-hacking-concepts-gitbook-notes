@@ -66,12 +66,16 @@ $ sudo ./run.sh -c auto FIRMWARE.bin
 $ sudo ./run.sh -d auto FIRMWARE.bin
 ```
 
+<figure><img src="../../.gitbook/assets/image (241).png" alt=""><figcaption></figcaption></figure>
+
+
+
 ### 4. View logs
 
 The log files can be found under the `scratch/xxxx` folder, where `xxxx` is a unique ID for each run
 
 {% code overflow="wrap" %}
-```
+```bash
 $ cd scratch/xxxx
 $ ls
 makeNetwork.log qemu.initial.serial.log qemu.final.serial.log
