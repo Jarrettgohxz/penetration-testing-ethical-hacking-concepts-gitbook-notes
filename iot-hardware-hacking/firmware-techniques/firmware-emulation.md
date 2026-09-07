@@ -27,7 +27,8 @@ $ which sasquatch
 
 1. `download.sh`, `install.sh`, `init.sh`,
 
-<pre class="language-bash"><code class="lang-bash"># Run download.sh script
+```bash
+# Run download.sh script
 $ ./download.sh 
 
 # Run install.sh script. 
@@ -35,24 +36,80 @@ $ ./install.sh
 
 # Run init.sh script 
 $ ./init.sh
+```
 
-<strong># Check + Run  emulation
-</strong>$ sudo ./run.sh -c &#x3C;brand> &#x3C;firmware>
-$ sudo ./run.sh -r &#x3C;brand> &#x3C;firmware>
+### 3. Start emulation
 
-# Auto “brand”
+<pre class="language-bash"><code class="lang-bash"><strong># Check + Run  emulation
+</strong>$ sudo ./run.sh -c &#x3C;brand> &#x3C;firmware> # check (best practice to ensure emulation goes smoothly)
+$ sudo ./run.sh -r &#x3C;brand> &#x3C;firmware> # run without debugging 
+
+# Auto “brand” 
 $ sudo ./run.sh -r auto &#x3C;firmware>
 
 # User/Kernel level debugging
-$ sudo ./run.sh -d &#x3C;brand> &#x3C;firmware>
+$ sudo ./run.sh -d &#x3C;brand> &#x3C;firmware> # user-level debugging (shell, gdbserver, etc.)
 $ sudo ./run.sh -b &#x3C;brand> &#x3C;firmware>
 </code></pre>
 
-**Example**
+**Example workflow**
+
+A common workflow is set the brand as `auto`:
+
+1. Run firmware emulation checks (`-c` flag)
+2. Run user-level debuggin (`-d` flag)
+
+* **option 2**: shell (debug console)
 
 ```bash
-$ sudo ./run.sh -d auto firmware_file.bin
+$ sudo ./run.sh -c auto FIRMWARE.bin
+$ sudo ./run.sh -d auto FIRMWARE.bin
 ```
+
+### 4. View logs
+
+The log files can be found under the `scratch/xxxx` folder, where `xxxx` is a unique ID for each run
+
+{% code overflow="wrap" %}
+```
+$ cd scratch/xxxx
+$ ls
+makeNetwork.log qemu.initial.serial.log qemu.final.serial.log
+...
+```
+{% endcode %}
+
+**4.1 Useful log files**
+
+1. `makeNetwork.log`
+2. `qemu.initial.serial.log`
+3. `qemu.final.serial.log`
+
+### 5. Cleanup&#x20;
+
+> In the event that the process halts/freezes, and we are forced to use ctrl+c or ctrl+z to stop it, we have to manually cleanup the processes/files left behind&#x20;
+
+{% code overflow="wrap" %}
+```bash
+$ ./util/cleanup.sh # from root firmware-mod-kit directory
+$ sudo rm -rf scratch/xxxx
+
+# clean up process
+$ sudo -pkill -f firmae
+
+# qclean up qemu process
+$ pgrep -a qemu
+QEMU-ID
+$ sudo -pkill -f -9 QEMU-ID
+
+# network interfaces
+$ ifconfig
+$ sudo ip link delete tapX # if any tapX interfaces still exist 
+
+```
+{% endcode %}
+
+
 
 ### Resources
 
