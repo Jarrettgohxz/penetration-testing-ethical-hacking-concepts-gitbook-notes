@@ -82,8 +82,10 @@ makeNetwork.log qemu.initial.serial.log qemu.final.serial.log
 **4.1 Useful log files**
 
 1. `makeNetwork.log`
-2. `qemu.initial.serial.log`
-3. `qemu.final.serial.log`
+2. `makeImage.log`
+3. `qemu.initial.serial.log`
+4. `qemu.final.serial.log`
+5. `emulation.log`
 
 ### 5. Cleanup&#x20;
 
