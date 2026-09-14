@@ -12,11 +12,11 @@ $ nmap -sS -n -Pn -v <target>
 
 The following displays the output from the scan:
 
-<figure><img src="../../../.gitbook/assets/image (39).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (38).png" alt=""><figcaption></figcaption></figure>
 
-As we can see, there are multiple ports open, which is really exciting for us 🤤.&#x20;
+As we can see, there are multiple ports open, which is really exciting for us 🤤.
 
-The first service that I would like to find would be HTTP, which relates to a web application. Since the common HTTP(S) ports (**80** and **443**) are not open, we have to enumerate through each of the found ports to find the one that serves the content.&#x20;
+The first service that I would like to find would be HTTP, which relates to a web application. Since the common HTTP(S) ports (**80** and **443**) are not open, we have to enumerate through each of the found ports to find the one that serves the content.
 
 We can manually visit each port from the browser. However, some security-enhanced ones such as Firefox may block non-standard ports. Alternatively, we can use the `curl` tool to test it too:
 
@@ -24,4 +24,4 @@ We can manually visit each port from the browser. However, some security-enhance
 $ curl http://<target>:<port>
 ```
 
-Ports _**4000**_ and _**50000**_ are found to return valid HTTP content (headers and body), this indicates that a web application is present.&#x20;
+Ports _**4000**_ and _**50000**_ are found to return valid HTTP content (headers and body), this indicates that a web application is present.

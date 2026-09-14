@@ -185,8 +185,8 @@
   * [5. Setting up the lab research environment](iot-hardware-hacking/iot-hacking-roadmap/5.-setting-up-the-lab-research-environment.md)
   * [6. Firmware reverse engineering & analysis](iot-hardware-hacking/iot-hacking-roadmap/6.-firmware-reverse-engineering-and-analysis.md)
   * [7. Vulnerability research + Exploit development](iot-hardware-hacking/iot-hacking-roadmap/7.-vulnerability-research-+-exploit-development.md)
-  * [8.   Putting it all together: Final lab challenge!](iot-hardware-hacking/iot-hacking-roadmap/8.-putting-it-all-together-final-lab-challenge.md)
-  * [9.  Additional practice: IoT hacking labs + writeups](iot-hardware-hacking/iot-hacking-roadmap/9.-additional-practice-iot-hacking-labs-+-writeups.md)
+  * [8. Putting it all together: Final lab challenge!](iot-hardware-hacking/iot-hacking-roadmap/8.-putting-it-all-together-final-lab-challenge.md)
+  * [9. Additional practice: IoT hacking labs + writeups](iot-hardware-hacking/iot-hacking-roadmap/9.-additional-practice-iot-hacking-labs-+-writeups.md)
 * [🔥 Advanced IoT Hacking Topics](iot-hardware-hacking/advanced-iot-hacking-topics.md)
 * [Resource](iot-hardware-hacking/resource/README.md)
   * [Additional](iot-hardware-hacking/resource/additional.md)
@@ -235,7 +235,10 @@
 ## iotsec.tools
 
 * [Introduction](iotsec.tools/introduction.md)
-* [Documentation](iotsec.tools/documentation.md)
+* [Quick start](iotsec.tools/quick-start.md)
+* [Commands](iotsec.tools/commands/README.md)
+  * [help](iotsec.tools/commands/help.md)
+  * [firmwares](iotsec.tools/commands/firmwares.md)
 
 ## Wireless Pentesting
 

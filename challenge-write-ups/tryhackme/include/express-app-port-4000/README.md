@@ -1,12 +1,12 @@
 # Express app (port 4000)
 
-Upon visiting the page, we are presented with a login page with a note to sign in as `guest:guest`.&#x20;
+Upon visiting the page, we are presented with a login page with a note to sign in as `guest:guest`.
 
-### Enumeration&#x20;
+### Enumeration
 
 I opened Burp suite, and configured my browser to route traffic through the Burp proxy.
 
-From inspection of the network requests, I discovered that the server uses _Express_ via the  `X-Powered-By` response headers. Express is a Node.js web framework used to develop web server applications ([https://expressjs.com/](https://expressjs.com/)).
+From inspection of the network requests, I discovered that the server uses _Express_ via the `X-Powered-By` response headers. Express is a Node.js web framework used to develop web server applications ([https://expressjs.com/](https://expressjs.com/)).
 
 <figure><img src="../../../../.gitbook/assets/image (40).png" alt=""><figcaption></figcaption></figure>
 
@@ -22,7 +22,7 @@ $ gobuster dir -u http://<target>:4000 -w <wordlist>
 
 From the enumeration results, the one that stands out is the `/signup` route. I visited the address in the browser, and was faced with the following error:
 
-<figure><img src="../../../../.gitbook/assets/image (44).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (41).png" alt=""><figcaption></figcaption></figure>
 
 From this error message, we can learn of a few things:
 
@@ -30,17 +30,13 @@ a) The application uses a certain type of server-side rendered templating engine
 
 * Eg. Common Node.js engines includes: `.ejs`, `.pug`, etc.
 
-b)  The root directory of the web application is `/home/ubuntu/include`&#x20;
+b) The root directory of the web application is `/home/ubuntu/include`
 
-* The application is ran as the user `ubuntu` &#x20;
-
-
+* The application is ran as the user `ubuntu`
 
 Moving on, I logged into the application using the `guest:guest` credentials found earlier. I was presented with a page displaying my profile, along with a few of my friends. Navigating to my profile, I was able to view my current details, along with a form to "Recommend an Activity":
 
 <figure><img src="../../../../.gitbook/assets/image (46).png" alt=""><figcaption></figcaption></figure>
-
-
 
 Upon entering the values **test** and **test** to the fields, a new entry appeared on the profile details:
 
@@ -71,13 +67,13 @@ I sent the request to the Burp Repeater, and attempted a prototype pollution att
 1. `proto.polluted`
 2. `constructor.prototype.polluted`
 3. `__proto__['polluted']`
-4. `__proto__.constructor.prototype.polluted`&#x20;
-5. `['__proto__'].polluted`&#x20;
+4. `__proto__.constructor.prototype.polluted`
+5. `['__proto__'].polluted`
 6. `['__proto__']['pollluted']`
 7. `constructor['prototype'].polluted`
 8. `constructor['prototype']['polluted']`
 9. `['constructor']['prototype'].polluted`
-10. `['constructor']['prototype']['polluted']`&#x20;
+10. `['constructor']['prototype']['polluted']`
 
 However, none of the payloads worked. Instead, I attempted to directly change the `isAdmin` field to `true` , but ended up changing the value to the literal string `"true"` . To get around this, I changed the content-type to `application/json` and tried the same request with the following payload:
 
@@ -115,4 +111,4 @@ name=newuser&password=newpass
 ```
 {% endcode %}
 
-This request creates a new user with the username and password of `newuser` and `newpass`  respectively.
+This request creates a new user with the username and password of `newuser` and `newpass` respectively.

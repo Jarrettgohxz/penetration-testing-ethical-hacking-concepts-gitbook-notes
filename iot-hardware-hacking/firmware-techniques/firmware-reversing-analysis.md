@@ -28,7 +28,7 @@ $ which sasquatch
 ### Binwalk
 
 * No option: simply show the sections
-* `-e` / `--extract`  Automatically extract known file types
+* `-e` / `--extract` Automatically extract known file types
 
 #### NO option
 
@@ -41,7 +41,7 @@ $ binwalk DIR815A1_FW103b01.bin
 ```
 {% endcode %}
 
-<figure><img src="../../.gitbook/assets/image (197).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (196).png" alt=""><figcaption></figcaption></figure>
 
 We can see the following sections of the binary:
 
@@ -67,15 +67,8 @@ We will know be able to access the file system via the `squashfs-root` directory
 
 <figure><img src="../../.gitbook/assets/image (199).png" alt=""><figcaption></figcaption></figure>
 
-
-
 ### Resources
 
 {% embed url="https://github.com/attify/firmware-analysis-toolkit" %}
 
 {% embed url="https://www.youtube.com/watch?v=GIU4yJn2-2A" %}
-
-
-
-
-

