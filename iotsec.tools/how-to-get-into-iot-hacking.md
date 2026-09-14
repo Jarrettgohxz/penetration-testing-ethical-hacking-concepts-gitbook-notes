@@ -57,20 +57,22 @@ I have curated a step-to-step guide on IoT hacking, along with useful learning r
 * **Lab challenge**&#x20;
   * ... (coming soon!)
 
+> Take note that the all the content covered in the next few steps can be performed through a firmware emulation (debug shell console) without access to a physical device. However, feel free to work on a physical device too if you have access to one!
 
 
-4. **IoT software/system reconnaissance (via UART debug console)**
+
+4. **IoT software/system reconnaissance (via debug console)**
 
 * **Purpose**: To gather information regarding the software components (where most vulnerabilities are found)
 * How to analyze the device boot logs to gather information and find potential vulnerabilities
 * How to investigate running processes and look for potentially vulnerable binaries
-* **Case study**: Investigating a command injection vulnerability via the boot logs
+* **Case study**: Investigating a command injection vulnerability on the Linksys E1200 v2 router (recconnaissance from the boot logs)
 
 
 
 5. **Setting up the lab research environment**
 
-* **Purpose**: To create a stable and efficient security research environment
+* **Purpose**: To create a stable and efficient IoT security research environment
 * How to transfer files between device and host to load additional binaries (eg. `busybox-mipsel`)
 * How to setup and additional console access (Dropbear SSH server)
 * How to setup for dynamic binary analysis (GDB + gdbserver)
