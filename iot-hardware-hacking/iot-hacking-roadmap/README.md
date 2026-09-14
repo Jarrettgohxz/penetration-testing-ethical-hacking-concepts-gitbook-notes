@@ -38,7 +38,7 @@ I have curated a step-to-step guide on IoT hacking, along with useful learning r
 * What is emulation?&#x20;
 * What are the different types of emulation (firmware, binary).
 * Why is this helpful in IoT security research?
-* How to obtain the firmware image
+* How to obtain the firmware image (covered in detail in the advanced topics)
 * How to perform complete firmware emulation with FirmAE
 * How to perform binary emulation with QEMU
 
@@ -120,4 +120,12 @@ I have curated a step-to-step guide on IoT hacking, along with useful learning r
 
 
 
-2. **Wireless (Bluetooth) attacks** (coming soon!)
+2. **Advanced Raspberry Pi usage**
+
+* How to use Raspberry Pi as an IoT hacking bridge between device and host (your machine)
+* How to use Raspberry Pi as an UART/JTAG interface
+* How to emulate physical environment with firmware emulation on a Raspberry Pi
+
+
+
+3. **Wireless (Bluetooth) attacks** (coming soon!)
