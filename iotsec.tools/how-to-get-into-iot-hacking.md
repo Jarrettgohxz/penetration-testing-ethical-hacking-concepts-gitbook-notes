@@ -64,6 +64,7 @@ I have curated a step-to-step guide on IoT hacking, along with useful learning r
 * **Purpose**: To gather information regarding the software components (where most vulnerabilities are found)
 * How to analyze the device boot logs to gather information and find potential vulnerabilities
 * How to investigate running processes and look for potentially vulnerable binaries
+* **Case study**: Investigating a command injection vulnerability via the boot logs
 
 
 
