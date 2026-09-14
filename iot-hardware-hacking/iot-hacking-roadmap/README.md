@@ -83,6 +83,7 @@ I have curated a step-to-step guide on IoT hacking, along with useful learning r
 * How to set custom breakpoints on a binary file with binary patching (to bypass hardware limitations)
 * **Case study 1:** Command injection on Linksys E1200 v2 router ([CVE-2025-60689](https://github.com/Jarrettgohxz/CVE-research/tree/main/Linksys/E1200-V2/CVE-2025-60689), [CVE-2025-34037](https://github.com/Jarrettgohxz/CVE-research/tree/main/Linksys/E-series/CVE-2025-34037))
 * **Case study 2**: Stack buffer-overflow on Linksys E1200 v2 router ([CVE-2025-60690](https://github.com/Jarrettgohxz/CVE-research/tree/main/Linksys/E1200-V2/CVE-2025-60690))
+* **Case study 3**: Command injection on D-Link DIR-815 router
 * **Lab challenge**&#x20;
   * ... (coming soon!)
 
