@@ -49,7 +49,7 @@ I have curated a step-to-step guide on IoT hacking, along with useful learning r
 
 * How to transfer files between device and host to load additional binaries (eg. `busybox-mipsel`)
 * How to setup and additional console access (Dropbear SSH server)
-* How to setup for dynamic binary analysis (`GDB` + `gdbserver`)
+* How to setup for dynamic binary analysis (GDB + gdbserver)
 
 
 
@@ -62,17 +62,49 @@ I have curated a step-to-step guide on IoT hacking, along with useful learning r
 
 5. **Vulnerability research + Exploit development**
 
-* **Case study 1:** Command injection (CVE-2025-60689, CVE-2025-34037)
-* **Case study 2**: Stack buffer-overflow (CVE-2025-60690)
+* How to perform static/dynamic binary analysis with Ghidra and GDB+gdbserver
+* **Case study 1:** Command injection on Linksys E1200 v2 router ([CVE-2025-60689](https://github.com/Jarrettgohxz/CVE-research/tree/main/Linksys/E1200-V2/CVE-2025-60689), [CVE-2025-34037](https://github.com/Jarrettgohxz/CVE-research/tree/main/Linksys/E-series/CVE-2025-34037))
+* **Case study 2**: Stack buffer-overflow on Linksys E1200 v2 router ([CVE-2025-60690](https://github.com/Jarrettgohxz/CVE-research/tree/main/Linksys/E1200-V2/CVE-2025-60690))
 
 
 
 6. **Hardware emulation + Exploit testing**
 
 * How to perform firmware emulation with FirmAE
-* How to perform binary emulation with QEMU<br>
+* How to perform binary emulation with QEMU
+
+
 
 7. **IoT hacking labs + writeups**
 
 * Compiled writeups from Picoctf, TryHackMe, Vulnhub, and custom challenges created by me (coming soon!)
 * OWASP Iot GOAT
+
+## Advanced IoT Hacking Topics&#x20;
+
+1. **Advanced firmware techniques**
+
+* **Firmware reverse engineering & analysis**
+  * How to retrieve the Linux filesystem from firmware images
+  * How to perform analysis to uncover hidden vulnerabilities&#x20;
+* **Firmware emulation**
+  * How to emulate a physical device environment without physical access
+* **Firmware modification & re-flashing**
+  * How to insert custom logic into firmware images and flash it back onto the physical memory chip for persistence
+* **Case study 1**: How to create a persistent backdoor (rootkit) on the device by modifiying original firmware image
+  * startup binary hijacking
+  * NVRAM, bootloader corruption - for persistence across factory resets
+* **Case study 2**: How to create a persistent backdoor (rootkit) on the device by modifiying an open-source firmware image
+* **Firmware extraction:** How to retrieve firmware image from the physical device
+  * UART debug console: Linux device blocks
+  * Specialized hardware tools (eg. CH341A, Raspberry Pi)
+  * Official vendor webpage
+
+
+
+2. **Wireless (Bluetooth) attacks** (coming soon!)
+
+
+
+
+
