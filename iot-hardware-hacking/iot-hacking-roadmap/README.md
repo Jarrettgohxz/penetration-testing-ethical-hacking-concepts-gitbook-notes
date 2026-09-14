@@ -126,7 +126,9 @@ I have curated a step-to-step guide on IoT hacking, along with useful learning r
 
 * How to use Raspberry Pi as an IoT hacking bridge between device and host (your machine)
 * How to use Raspberry Pi as an UART/JTAG interface
-* How to emulate physical environment with firmware emulation on a Raspberry Pi
+* How to emulate physical environment on a Raspberry Pi
+  * Bare-metal OS flashing (requires compilation for ARM)
+  * Firmware emulation
 
 
 
