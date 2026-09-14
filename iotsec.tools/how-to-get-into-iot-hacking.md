@@ -18,8 +18,9 @@ I have curated a step-to-step guide on IoT hacking, along with useful learning r
 
 **Overview of learning content:**
 
-1. **Open-Source Intelligence (OSINT)** techniques to gather information on a device without physical access
+1. **IoT Reconnaissance/Information gathering**&#x20;
 
+* **Open-Source Intelligence (OSINT)** techniques to gather information on a device without physical access
 * Google dorking
 * Federal Communications Commission (FCC) - provides useful data on devices
   * Internal hardware images
