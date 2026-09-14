@@ -175,6 +175,17 @@
 
 ## IoT/hardware hacking
 
+* [How to get into IoT hacking?](iot-hardware-hacking/how-to-get-into-iot-hacking.md)
+* [🛣️ IoT Hacking Roadmap](iot-hardware-hacking/iot-hacking-roadmap/README.md)
+  * [1. IoT reconnaissance/Information gathering (OSINT)](iot-hardware-hacking/iot-hacking-roadmap/1.-iot-reconnaissance-information-gathering-osint.md)
+  * [2. Hardware interactions & debug console access (UART)](iot-hardware-hacking/iot-hacking-roadmap/2.-hardware-interactions-and-debug-console-access-uart.md)
+  * [3. Firmware/Binary emulation](iot-hardware-hacking/iot-hacking-roadmap/3.-firmware-binary-emulation.md)
+  * [4. IoT software/system enumeration (via debug console)](iot-hardware-hacking/iot-hacking-roadmap/4.-iot-software-system-enumeration-via-debug-console.md)
+  * [5. Setting up the lab research environment](iot-hardware-hacking/iot-hacking-roadmap/5.-setting-up-the-lab-research-environment.md)
+  * [6. Firmware reverse engineering & analysis](iot-hardware-hacking/iot-hacking-roadmap/6.-firmware-reverse-engineering-and-analysis.md)
+  * [7. Vulnerability research + Exploit development](iot-hardware-hacking/iot-hacking-roadmap/7.-vulnerability-research-+-exploit-development.md)
+  * [8.   Putting it all together: Final lab challenge!](iot-hardware-hacking/iot-hacking-roadmap/8.-putting-it-all-together-final-lab-challenge.md)
+  * [9.  Additional practice: IoT hacking labs + writeups](iot-hardware-hacking/iot-hacking-roadmap/9.-additional-practice-iot-hacking-labs-+-writeups.md)
 * [Resource](iot-hardware-hacking/resource/README.md)
   * [Additional](iot-hardware-hacking/resource/additional.md)
   * [General](iot-hardware-hacking/resource/general.md)
@@ -221,7 +232,8 @@
 
 ## iotsec.tools
 
-* [How to get into IoT hacking?](iotsec.tools/how-to-get-into-iot-hacking.md)
+* [Introduction](iotsec.tools/introduction.md)
+* [Documentation](iotsec.tools/documentation.md)
 
 ## Wireless Pentesting
 
