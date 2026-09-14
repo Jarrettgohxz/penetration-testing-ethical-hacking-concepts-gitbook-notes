@@ -180,7 +180,7 @@
   * [1. IoT reconnaissance/Information gathering (OSINT)](iot-hardware-hacking/iot-hacking-roadmap/1.-iot-reconnaissance-information-gathering-osint.md)
   * [2. Hardware interactions & debug console access (UART)](iot-hardware-hacking/iot-hacking-roadmap/2.-hardware-interactions-and-debug-console-access-uart.md)
   * [3. Firmware/Binary emulation](iot-hardware-hacking/iot-hacking-roadmap/3.-firmware-binary-emulation.md)
-  * [4. IoT software/system enumeration (via debug console)](iot-hardware-hacking/iot-hacking-roadmap/4.-iot-software-system-enumeration-via-debug-console.md)
+  * [4. IoT software/system enumeration](iot-hardware-hacking/iot-hacking-roadmap/4.-iot-software-system-enumeration.md)
   * [5. Setting up the lab research environment](iot-hardware-hacking/iot-hacking-roadmap/5.-setting-up-the-lab-research-environment.md)
   * [6. Firmware reverse engineering & analysis](iot-hardware-hacking/iot-hacking-roadmap/6.-firmware-reverse-engineering-and-analysis.md)
   * [7. Vulnerability research + Exploit development](iot-hardware-hacking/iot-hacking-roadmap/7.-vulnerability-research-+-exploit-development.md)

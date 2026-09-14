@@ -46,11 +46,13 @@ I have curated a step-to-step guide on IoT hacking, along with useful learning r
 
 
 
-4. **IoT software/system reconnaissance (via debug console)**
+4. **IoT software/system reconnaissance**
 
 * **Purpose**: To gather information regarding the software components (where most vulnerabilities are found)
 * How to analyze the device boot logs to gather information and find potential vulnerabilities
-* How to investigate running processes and look for potentially vulnerable binaries
+* How to investigate running network services and look for potentially vulnerable processes
+  * Direct debug console enumeration
+  * Nmap scripts&#x20;
 * **Case study**: Investigating a command injection vulnerability on the Linksys E1200 v2 router (recconnaissance from the boot logs)
 
 
