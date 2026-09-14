@@ -1,0 +1,110 @@
+---
+description: Project started on 4 Dec 2025
+---
+
+# Linksys E1200(V2)
+
+<figure><img src="../../../.gitbook/assets/image (123).png" alt=""><figcaption></figcaption></figure>
+
+<div align="center" data-full-width="true"><figure><img src="../../../.gitbook/assets/rasbpi (1).png" alt=""><figcaption></figcaption></figure></div>
+
+## 1. Resources
+
+{% embed url="https://github.com/Jarrettgohxz/CVE-research/tree/main/Linksys/E1200-V2" %}
+
+## 2. Learning outcomes
+
+1. OSINT techniques to gather information on a hardware without physical access to the device itself
+
+* Google dork
+  * Known CVEs (CVE-2025-60690, CVE-2025-60691, etc.)
+* FCC
+  * Internal photos
+  * Identifying presence of UART interfaces
+* Other useful information
+  * Firmware download
+  * End-of-Life (EoL) and End-of-Support (EoS) dates
+  * Release notes
+
+
+
+2. Hardware interactions & UART shell
+
+* Identifying potential UART and GND points (visual inspection)
+* Using the digital multimeter:
+  * Identify GND points
+  * Identify specific UART pins
+* Gaining a shell console&#x20;
+
+
+
+3. Interacting with basic networking services on the device
+
+* DHCP
+* Nmap scan
+* cURL, Netcat, etc.
+
+
+
+4. System enumeration
+
+* Boot logs (UART console)
+* Firmware and OS versions, along with other useful information&#x20;
+
+
+
+5. Techniques to interact with the device
+
+* Simple techniques to reclaim memory space on the device
+* Transfer files between device and host
+* Provide additional access to the shell (dropbear SSH server)
+
+
+
+6. Research of a vulnerable binary (**CVE-2025-60690**)
+
+* Understand the vulnerability from the CVE description
+* Perform source code and HTTP traffic analysis
+* Perform fuzzing, and analysis of the results to aid us in finding the _entry point_ of the vulnerability
+
+
+
+7. Understand constraints and limitations of working with embedded devices, and explore workarounds to develop a working setup for reverse engineering + binary exploitation&#x20;
+
+* Patch the binary with custom "breakpoint" instructions to control the program flow&#x20;
+* Manual SIGSTOP signal to force a "pause"
+
+
+
+8. Understand the _MIPS_ architecture & assembly&#x20;
+
+* Work with exploit tools and techniques: pwn, Ghidra, GDB + gdbserver, objdump, etc.
+* Utilize our understanding of the MIPS architecture/assembly to analyse register, memory contents, and many more important concepts
+
+
+
+9. Reverse engineering and stack-based buffer overflow research&#x20;
+
+* Demonstration of the steps taken to craft an initial payload to overwrite the return address and invoke a _denial-of-service (DoS)_
+* Utilize GDB to analyse the crash, and build towards our final RCE payload&#x20;
+
+
+
+10. Craft the final working RCE payload (**CVE-2025-60690**)
+
+* Understand common roadblocks such as stack layout constraints and bad characters, and how we can overcome these challenges with creative workarounds
+* Craft the final payload to escalate the _controlled-crash_ into _Remote-Code Execution (RCE)_
+
+
+
+11. Overall hands on experience working with well-known industry-standard application and tools that covers a wide range of tasks in a typical pentesting workflow
+
+* **Network**: nmap, netcat, cURL,wget, Wireshark, etc.
+* **Reversing + binary exploitation**: Ghidra, gdb/gdbserver, dd, etc.
+
+
+
+12. **Bonus section**: post-exploitation + persistence techniques from a real-world perspective
+
+* ...
+

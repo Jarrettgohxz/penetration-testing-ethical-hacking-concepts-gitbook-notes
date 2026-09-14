@@ -1,0 +1,22 @@
+# Identification of hardware components
+
+
+
+1. [https://www.youtube.com/watch?v=HuCbr2588-w](https://www.youtube.com/watch?v=HuCbr2588-w)
+
+<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+
+2. [https://www.youtube.com/watch?v=YPcOwKtRuDQ](https://www.youtube.com/watch?v=YPcOwKtRuDQ)
+
+**2.1 UART**
+
+<figure><img src="../../.gitbook/assets/image (82).png" alt=""><figcaption></figcaption></figure>
+
+<figure><img src="../../.gitbook/assets/image (5) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+
+**2.2 SPI Flash Chip**
+
+<figure><img src="../../.gitbook/assets/image (83).png" alt=""><figcaption></figcaption></figure>
+
+
+

@@ -1,0 +1,132 @@
+# Firmware download
+
+### 1. General
+
+#### 1.1 Public FTP (for most brands and models)
+
+{% embed url="http://ftp.ufanet.ru/pub/firmware/" %}
+
+#### 1.2 Others
+
+{% code title="google dork" %}
+```
+site:sourceforge.net <model>
+
+# eg.
+site:sourceforge.net linksys e1200
+```
+{% endcode %}
+
+### 2. Linksys
+
+#### 2.1 Firmware download
+
+The firmware were found to be available at the following URL structures:
+
+```
+https://downloads.linksys.com/downloads/FW_MODELNAME_VERSION_RELEASEDATE.bin
+https://downloads.linksys.com/support/assets/firmware/FW_MODELNAME_VERSION_RELEASEDATE.bin
+```
+
+
+
+With this information, we can craft the wayback machine CDX APIs to find firmware links that are not indexed anymore on the public internet:
+
+```
+https://web.archive.org/cdx/search/cdx?url=downloads.linksys.com/downloads/*&filter=original:.*MODELNAME.*(bin|img)$&collapse=urlkey&output=text 
+https://web.archive.org/cdx/search/cdx?url=downloads.linksys.com/support/assets/firmware/*&filter=original:.*MODELNAME.*(bin|img)$&collapse=urlkey&output=text 
+
+```
+
+`.*` : To match any values&#x20;
+
+`(bin|img)$`: To match the `bin` or `img` file extension (at the end of the URL). Linksys firmware files commonly has these prefixes
+
+`collapse=urlkey`: Tells the API to only show one entry per unique URL
+
+`output=text`: formats the results as a simple, newline-separated plaintext table
+
+#### 2.2 Forums
+
+{% embed url="https://www.linksysinfo.org/index.php?forums/linksys-official-firmware.32/" %}
+
+### 3. D-Link
+
+#### 3.1 General for most models
+
+* User manual
+
+{% embed url="https://tsd.dlink.com.tw/" %}
+
+* Firmware&#x20;
+
+{% code title="google dork" %}
+```
+intitle:"index of" ("dlink" OR "d-link") firmware
+```
+{% endcode %}
+
+{% embed url="https://ftp.dlink.ru/pub" %}
+
+{% embed url="https://ftp.dlink.com.tr/pub" %}
+
+#### 3.2 Finding specific models
+
+```
+intitle:"index of" ("NAME-VARIATION1 OR NAME-VARIATION2) firmware
+
+# eg. 
+intitle:"index of" ("dir-815" OR "dir815") firmware
+```
+
+`("dir-815" OR "dir815")`: 2 patterns are given to the query since the name may be presented as either on the webpage
+
+### 4. TP-Link
+
+#### 4.1 Official download&#x20;
+
+{% embed url="https://www.tp-link.com/sg/support/download/" %}
+
+Does not contain firmware for legacy models. Refer to the next few sections instead.
+
+#### 4.2 General for most models
+
+{% embed url="http://ftp.ufanet.ru/pub/firmware/Tp-Link/" %}
+
+#### 4.3 Finding specific models
+
+{% code title="google dork" %}
+```
+intitle:"index of" ("tplink" OR "tp-link") firmware ("MODELNAME1" OR "MODELNAME2")
+
+# to be more precise
+intitle:"index of" ("tplink" OR "tp-link") firmware ("MODELNAME1*zip" OR "MODELNAME2*zip")
+
+# eg. 
+intitle:"index of" ("tplink" OR "tp-link") firmware ("wdr4300" OR "wr743nd")
+intitle:"index of" ("tplink" OR "tp-link") firmware ("wdr4300*zip" OR "wr743nd*zip")
+```
+{% endcode %}
+
+The zip file extension is used since the firmware files provided by the official links were found to be a zip file
+
+
+
+Many of the top results shows the open source non-official firmware(**Gluon**)
+
+* **Gluon** is an open-source configuration framework built on top of **OpenWrt**
+
+
+
+We can use the following query to filter the results:
+
+{% code title="modified google dork to filter "guon"" %}
+```
+intitle:"index of" ("tplink" OR "tp-link") firmware ("wdr4300" OR "wr743nd") -gluon 
+```
+{% endcode %}
+
+### 5. ASUS
+
+### 6. Vivotek
+

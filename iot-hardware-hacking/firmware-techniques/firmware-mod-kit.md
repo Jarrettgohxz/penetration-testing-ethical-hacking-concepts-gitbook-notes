@@ -1,0 +1,92 @@
+# firmware-mod-kit
+
+**Source:**
+
+{% embed url="https://github.com/rampagex/firmware-mod-kit" %}
+
+**Fork** (if for whatever reasons, they removed the source):
+
+{% embed url="https://github.com/Jarrettgohxz/firmware-mod-kit" %}
+
+## Installation
+
+{% code title="" %}
+```bash
+# clone from source
+$ git clone https://github.com/Jarrettgohxz/firmware-mod-kit.git
+$ cd firmware-mod-kit
+
+# install dependencies
+$ sudo apt-get install git build-essential zlib1g-dev liblzma-dev python3-magic autoconf python-is-python3
+```
+{% endcode %}
+
+## `extract-firmware.sh`
+
+* extracts root filesystem from a firmware image (similar to `binwalk`)
+
+{% code title="" %}
+```bash
+$ ./extract-firmware.sh FIRMWARE.trx
+```
+{% endcode %}
+
+* extracts to **fmk/rootfs**
+
+## `build-firmware.sh`
+
+{% code title="" %}
+```bash
+$ ./build-firmware.sh 
+
+# options
+$ ./build-firmware.sh -nopad -min
+```
+{% endcode %}
+
+* builds the content in **fmk**
+  * this is the default output directory from `extract-firmware.sh`
+* output to **fmk/new-firmware.bin**
+
+> The notes below are extracted directly from source
+
+The optional `-nopad` switch will instruct build-firmware.sh to NOT pad the firmware up to its original size.
+
+The optional `-min` switch will use the maximum squashfs block size of 1MB. This will decrease the firmware image size at the cost of additional CPU and RAM resources utilized on the target device. Do not use this switch unless you must. This is a very large block size for embedded systems. The original firmware squashfs block size is preserved on rebuild, and the original block size should be the one used unless you are sure you know what you're doing. Too large a block size may appear to work fine, but runtime performance of the firmware may suffer in all or some loads.
+
+## Extract, modify, build
+
+Let's take a look at a simple example of how we can extract filesystem from a firmware, modify it, and build it back into a functional version
+
+{% code title="" %}
+```bash
+# extract
+$ ./extract-firwmare.sh FIRMWARE.trx
+$ cd fmk/rootfs
+ls 
+www bin etc ...
+
+# modify FS
+$ cd www && touch test.txt
+
+# build 
+$ ./build-firmware.sh
+$ file fmk/new-firmware.bin
+```
+{% endcode %}
+
+The firmware header will differ between the original and modified firmware:
+
+{% code title="" %}
+```bash
+$ hexdump -C -n 28 FIRMWARE.trx
+00000000  48 44 52 30 00 80 6b 00  55 7e 84 88 00 00 01 00  |HDR0..k.U~......|
+00000010  1c 00 00 00 fc f7 14 00  00 00 00 00              |............|
+0000001c
+
+$ hexdump -C -n 28 fmk/new-firmware.bin
+00000000  48 44 52 30 00 80 6b 00  79 b5 5f e3 00 00 01 00  |HDR0..k.y._.....|
+00000010  1c 00 00 00 fc f7 14 00  00 00 00 00              |............|
+0000001c 
+```
+{% endcode %}

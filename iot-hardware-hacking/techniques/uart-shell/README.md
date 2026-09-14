@@ -1,0 +1,141 @@
+# UART shell
+
+{% embed url="https://tcm-sec.com/getting-started-with-iot-hardware-hacking-uart/" %}
+
+Most hardware devices exposes a "debug interface" shell via a UART port. This can allow us to gain access to a configured shell on the device, and my directly provide us with root access at times.
+
+## 1. Identify Ground points
+
+The first and most important step will be to identify the Ground (GND) points (apart from the one on the UART interface). For this, we need a digital multimeter with the _continuity mode_ function
+
+> **IMPORTANT**: **NEVER** use the _continuity mode_ on a powered board
+
+1. Turn the digital multimeter to continuity mode ![](<../../../.gitbook/assets/image (4) (1) (1) (1) (1) (1) (1) (1).png>)
+
+
+
+2. Touch both probes (**black** and **red** probes connected to **COM** and **mAΩA** respectively)
+
+> The middle and right slots in the image below
+
+<div align="left"><figure><img src="../../../.gitbook/assets/image (99).png" alt=""><figcaption></figcaption></figure></div>
+
+* “Beep” sound should be heard
+
+
+
+3. <mark style="color:red;">**\*\***</mark>Turn **OFF** the power source to the board/device
+
+
+
+4. Identify potential Ground points
+
+* Pin labels with “GND” or “0V”
+* "metal shielded" components&#x20;
+  * USB&#x20;
+  * Any other components with visible silver metal casing
+
+<figure><img src="../../../.gitbook/assets/b.png" alt=""><figcaption></figcaption></figure>
+
+> In the image above, we can see silver metal casing on the left middle and the large gold-plated rings towards the middle of the board (circled with blue outline)
+
+* The component on the left is likely an Electromagnetic Interference (EMI) shield around a Wi-Fi chip or something similar, while the other are for grounding towards the casing of the device itself
+* We might think that the USB casing on the middle right of the image will be one of the GND points. However, by testing with the continuity mode on the digital multimeter, this doesn't seem to be the case
+
+{% embed url="https://files.gitbook.com/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FMsAGomcNx5xaB1xFygc9%2Fuploads%2FOH7s5Qr8cyNGxWhdHNiO%2F2025-12-25%2012-16-50.mp4?alt=media&token=d4b15ae7-c816-4ae7-ab64-527aadf74ecb" %}
+
+> In the video above, I demonstrate the how to test for GND points using a digital multimeter
+
+* Each of the probes are placed on potential GND points
+  * First, each probe are placed on the metal casing (left middle) and each one of the large gold-plated rings (middle of the board) respectively -> "beep" sound is heard -> both are GND points
+  * Second, the probes are placed one on each of the gold-plated rings -> "beep" sound is heard -> both are GND points
+  * Finally, the probes are placed on the USB casing (right middle) and rotated between the previously found GND points -> NO "beep" is heard -> USB casing is NOT a GND point<br>
+
+
+
+5. Touch both probes to 2 different potential Ground points
+
+* If a “Beep” is heard -> both are Ground points
+
+## 2. Identify UART interface
+
+We can use the following methods to find potential UART interface candidates:
+
+**a. Labels on the hardware itself**
+
+* "UART"
+* "TX RX GND VCC"
+
+<figure><img src="../../../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption><p>image from tcm-sec.com</p></figcaption></figure>
+
+**b. Visual appearance**
+
+If there are no obvious labels on the device, we can still identify an UART interface by observing the following patterns
+
+* 4-5 gold-plated _**hole**_ or _**oval/circular shaped**_ portions aligned in a neat row
+
+<figure><img src="../../../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+
+
+
+<figure><img src="../../../.gitbook/assets/image (99) (1).png" alt=""><figcaption><p><a href="https://www.youtube.com/watch?v=R82pt4rLhBQ">https://www.youtube.com/watch?v=R82pt4rLhBQ</a></p></figcaption></figure>
+
+## 3. Identifying GND, TX, RX pins on the UART&#x20;
+
+> IMPORTANT: ensure that the test leads (probe) of the multimeter does not contact 2 pins of the UART interface at the same time!
+
+After finding a potential UART candidate, we have to identify the TX, RX and GND pins to enable us to provide proper connections with our external adapter that connects to our computer, and to also prevent frying the components on the board
+
+For the steps below, place the black (connected to **COM**) on the Ground point found earlier. Switch multimeter to continuity mode ![](<../../../.gitbook/assets/image (4) (1) (1) (1) (1) (1) (1) (1).png>)
+
+**a. GND**
+
+* The first step will be to identify the GND on the UART
+* With the black probe inserted into the **COM** on the multimeter, place the red probe (connected to **mAΩA**) on each of the UART pins
+  * The GND pin can be identified when a "beep" sound is heard
+
+For the TX and RX pins, we have to switch the multimeter to DC voltage mode ![](<../../../.gitbook/assets/image (103).png>). Place the red probe (connected to **mAΩA**) on the rest of the unidentified pins&#x20;
+
+We can identify the specific pins based on the value shown on the digital multimeter as described below:
+
+**b. TX**
+
+* Fluctuating voltage value in the range of 2+V to 3.3V
+
+**c. RX**
+
+* Stable voltage value of 0 or around 3.3V
+* Might display slight fluctuations when the device boots up
+
+**d. VCC (Power pin)**
+
+* Stable 3.3V or 5V, without any fluctuations
+* Not needed for UART connection
+
+
+
+## 4. Getting a shell
+
+### 4.1 Identifying the device name
+
+* We can use the following commands to discover the device name, commonly in the format: `ttyUSBX`&#x20;
+
+```shellscript
+$ usb-devices | grep -i uart
+$ dmesg | grep -i <product_name>
+```
+
+### 4.2 Connect to shell
+
+* Any of the following commands can be used to access the shell
+* We have to supply the following values to each command:
+  * The baud rate (speed of communication). Common values are: **9600** and **115200**
+  * Device file name in the format `/dev/<device_name>`
+  * Optionally, the output file to write logs
+
+```shellscript
+$ picocom -b <baud_rate> /dev/<device_name>
+$ minicom -b <baud_rate> -D /dev/device_name> -C <output_file>
+$ screen /dev/<devicen_name> <baud_rate>
+```
+
