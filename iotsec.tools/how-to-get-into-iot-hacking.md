@@ -25,12 +25,13 @@ I have curated a step-to-step guide on IoT hacking, along with useful learning r
 * Federal Communications Commission (FCC) - provides useful data on devices
   * Internal hardware images
   * Identify presence of serial console/JTAG interfaces (for debug console access)
-*   Other useful information
-
-    * Firmware download
-    * End-of-Life (EoL) and End-of-Support (EoS) dates
-    * Release notes
-    * Online forums
+* Other useful information
+  * Firmware download
+  * End-of-Life (EoL) and End-of-Support (EoS) dates
+  * Release notes
+  * Online forums
+* **Lab challenge**&#x20;
+  * FCC (link coming soon!)
 
 
 
@@ -45,37 +46,61 @@ I have curated a step-to-step guide on IoT hacking, along with useful learning r
 
 
 
-3. **Setting up the lab research environment**
+3. **Firmware/Binary emulation**
 
+* **Purpose**: To perform research without access to a physical device
+* What is emulation?&#x20;
+* What are the different types of emulation (firmware, binary).
+* Why is this helpful in IoT security research?
+* How to perform complete firmware emulation with FirmAE
+* How to perform binary emulation with QEMU
+* **Lab challenge**&#x20;
+  * ... (coming soon!)
+
+
+
+4. **IoT software/system reconnaissance (via UART debug console)**
+
+* **Purpose**: To gather information regarding the software components (where most vulnerabilities are found)
+* How to analyze the device boot logs to gather information and find potential vulnerabilities
+* How to investigate running processes and look for potentially vulnerable binaries
+
+
+
+5. **Setting up the lab research environment**
+
+* **Purpose**: To create a stable and efficient security research environment
 * How to transfer files between device and host to load additional binaries (eg. `busybox-mipsel`)
 * How to setup and additional console access (Dropbear SSH server)
 * How to setup for dynamic binary analysis (GDB + gdbserver)
 
 
 
-4. **System enumeration (via UART debug console)**
-
-* How to analyze the device boot logs to gather information and find potential vulnerabilities
-* How to investigate running processes and look for potentially vulnerable binaries
-
-
-
-5. **Vulnerability research + Exploit development**
+6. **Vulnerability research + Exploit development**
 
 * How to perform static/dynamic binary analysis with Ghidra and GDB+gdbserver
+  * Setting up on FirmAE
+  * Setting up on the physical device (via UART console)
+* How to set custom breakpoints on a binary file with binary patching (to bypass hardware limitations)
 * **Case study 1:** Command injection on Linksys E1200 v2 router ([CVE-2025-60689](https://github.com/Jarrettgohxz/CVE-research/tree/main/Linksys/E1200-V2/CVE-2025-60689), [CVE-2025-34037](https://github.com/Jarrettgohxz/CVE-research/tree/main/Linksys/E-series/CVE-2025-34037))
 * **Case study 2**: Stack buffer-overflow on Linksys E1200 v2 router ([CVE-2025-60690](https://github.com/Jarrettgohxz/CVE-research/tree/main/Linksys/E1200-V2/CVE-2025-60690))
+* **Lab challenge**&#x20;
+  * ... (coming soon!)
 
 
 
-6. **Hardware emulation + Exploit testing**
+7. **Putting it all together: Final lab challenge!**
 
-* How to perform firmware emulation with FirmAE
-* How to perform binary emulation with QEMU
+* Combine your knowledge from all the previous sections on provided firmware image:
+  * Peform firmware emulation&#x20;
+  * Perform software recconnaissance via the UART debug console
+  * Load additional binary tools for vulnerability research
+  * Investigate the command injection vulnerability
+  * Craft the final exploit to achieve remote-code execution and a root shell!
 
 
 
-7. **IoT hacking labs + writeups**
+8. **Additional practice: IoT hacking labs + writeups**
 
 * Compiled writeups from Picoctf, TryHackMe, Vulnhub, and custom challenges created by me (coming soon!)
 * OWASP Iot GOAT
@@ -87,8 +112,6 @@ I have curated a step-to-step guide on IoT hacking, along with useful learning r
 * **Firmware reverse engineering & analysis**
   * How to retrieve the Linux filesystem from firmware images
   * How to perform analysis to uncover hidden vulnerabilities&#x20;
-* **Firmware emulation**
-  * How to emulate a physical device environment without physical access
 * **Firmware modification & re-flashing**
   * How to insert custom logic into firmware images and flash it back onto the physical memory chip for persistence
 * **Case study 1**: How to create a persistent backdoor (rootkit) on the device by modifiying original firmware image
