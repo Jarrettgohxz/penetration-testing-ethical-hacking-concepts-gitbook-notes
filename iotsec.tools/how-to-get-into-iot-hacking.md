@@ -52,6 +52,7 @@ I have curated a step-to-step guide on IoT hacking, along with useful learning r
 * What is emulation?&#x20;
 * What are the different types of emulation (firmware, binary).
 * Why is this helpful in IoT security research?
+* How to obtain the firmware image
 * How to perform complete firmware emulation with FirmAE
 * How to perform binary emulation with QEMU
 * **Lab challenge**&#x20;
@@ -79,7 +80,14 @@ I have curated a step-to-step guide on IoT hacking, along with useful learning r
 
 
 
-6. **Vulnerability research + Exploit development**
+6. **Firmware reverse engineering & analysis**
+
+* How to retrieve the Linux filesystem from the firmware
+* How to perform analysis to uncover hidden vulnerabilities&#x20;
+
+
+
+7. **Vulnerability research + Exploit development**
 
 * How to perform static/dynamic binary analysis with Ghidra and GDB+gdbserver
   * Setting up on FirmAE
@@ -92,7 +100,7 @@ I have curated a step-to-step guide on IoT hacking, along with useful learning r
 
 
 
-7. **Putting it all together: Final lab challenge!**
+8. **Putting it all together: Final lab challenge!**
 
 * Combine your knowledge from all the previous sections on provided firmware image:
   * Peform firmware emulation&#x20;
@@ -103,7 +111,7 @@ I have curated a step-to-step guide on IoT hacking, along with useful learning r
 
 
 
-8. **Additional practice: IoT hacking labs + writeups**
+9. **Additional practice: IoT hacking labs + writeups**
 
 * Compiled writeups from Picoctf, TryHackMe, Vulnhub, and custom challenges created by me (coming soon!)
 * OWASP Iot GOAT
@@ -112,9 +120,6 @@ I have curated a step-to-step guide on IoT hacking, along with useful learning r
 
 1. **Advanced firmware techniques**
 
-* **Firmware reverse engineering & analysis**
-  * How to retrieve the Linux filesystem from firmware images
-  * How to perform analysis to uncover hidden vulnerabilities&#x20;
 * **Firmware modification & re-flashing**
   * How to insert custom logic into firmware images and flash it back onto the physical memory chip for persistence
 * **Case study 1**: How to create a persistent backdoor (rootkit) on the device by modifiying original firmware image
