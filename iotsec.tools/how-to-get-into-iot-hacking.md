@@ -55,8 +55,6 @@ I have curated a step-to-step guide on IoT hacking, along with useful learning r
 * How to obtain the firmware image
 * How to perform complete firmware emulation with FirmAE
 * How to perform binary emulation with QEMU
-* **Lab challenge**&#x20;
-  * ... (coming soon!)
 
 > Take note that the all the content covered in the next few steps can be performed through a firmware emulation (debug shell console) without access to a physical device. However, feel free to work on a physical device too if you have access to one!
 
@@ -84,6 +82,8 @@ I have curated a step-to-step guide on IoT hacking, along with useful learning r
 
 * How to retrieve the Linux filesystem from the firmware
 * How to perform analysis to uncover hidden vulnerabilities&#x20;
+* **Lab challenge**&#x20;
+  * ... (coming soon!)
 
 
 
@@ -104,10 +104,11 @@ I have curated a step-to-step guide on IoT hacking, along with useful learning r
 
 * Combine your knowledge from all the previous sections on provided firmware image:
   * Peform firmware emulation&#x20;
-  * Perform software recconnaissance via the emulated debug console
+  * Perform software reconnaissance via the emulated debug console
   * Load additional binary tools&#x20;
   * Investigate the command injection vulnerability
-  * Craft the final exploit to achieve remote-code execution and a root shell!
+  * Craft the final exploit, and test it on the emulated environemnt to achieve remote-code execution and a shell!
+  * Run the exploit on the lab server and retrieve the flag!
 
 
 
