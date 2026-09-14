@@ -219,6 +219,10 @@
     * [6. Post exploitation & Persistence](iot-hardware-hacking/research-projects/linksys-e1200-v2/6.-post-exploitation-and-persistence.md)
     * [7. Further research](iot-hardware-hacking/research-projects/linksys-e1200-v2/7.-further-research.md)
 
+## iotsec.tools
+
+* [How to get into IoT hacking?](iotsec.tools/how-to-get-into-iot-hacking.md)
+
 ## Wireless Pentesting
 
 * [Resources](wireless-pentesting/resources.md)
