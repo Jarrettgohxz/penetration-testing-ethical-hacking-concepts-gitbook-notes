@@ -14,17 +14,8 @@ I read a bunch of research articles, watched a bunch of YouTube videos, and expe
 
 ## How to get started?
 
-I have curated a beginner step-by-step guide on IoT hacking. After you have build your fundamentals, you may proceed to research and experiemnt on different classes of vulnerabilities  on devices you own. **Remember to always practice your hacking skills/research on a device you own, ethically!**
+A foundation in computer networking, basic Python scripting, Linux command-line wil be required from the [Fundamental Ethical Hacking Concepts](https://jarrettgxz-sec.gitbook.io/penetration-testing-ethical-hacking-concepts/iot-hardware-hacking/fundamental-ethical-hacking-concepts) course.&#x20;
 
-### Useful prerequisites
+After you have build the fundamentals, you can proceed with the [step-by-step guide](https://jarrettgxz-sec.gitbook.io/penetration-testing-ethical-hacking-concepts/iot-hardware-hacking/iot-hacking-roadmap) on IoT hacking. Once you have built up the confidence in IoT hacking, you may proceed to research and experiment on different classes of vulnerabilities, on devices you own.&#x20;
 
-A foundation in computer networking, basic Python scripting, Linux command-line and the willpower to press on when things get tough!
-
-
-
-
-
-
-
-
-
+> **Remember to always practice your hacking skills/research on a device you own, ethically!**
