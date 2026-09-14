@@ -2,9 +2,9 @@
 
 I have curated a step-to-step guide on IoT hacking, along with useful learning resources such as custom labs/challenges, video guides and cheatsheet.&#x20;
 
-**Overview of learning content:**
 
-1. **IoT Reconnaissance/Information gathering**&#x20;
+
+## **1. IoT Reconnaissance/Information gathering**&#x20;
 
 * **Open-Source Intelligence (OSINT)** techniques to gather information on a device without physical access
 * Google dorking
@@ -21,7 +21,7 @@ I have curated a step-to-step guide on IoT hacking, along with useful learning r
 
 
 
-2. **Hardware interactions & debug console access (UART)**
+## **2. Hardware interactions & debug console access (UART)**
 
 * What is UART?
 * Interacting with the hardware to map out the electrical UART components
@@ -32,7 +32,7 @@ I have curated a step-to-step guide on IoT hacking, along with useful learning r
 
 
 
-3. **Firmware/Binary emulation**
+## **3. Firmware/Binary emulation**
 
 * **Purpose**: To perform research without access to a physical device
 * What is emulation?&#x20;
@@ -46,7 +46,7 @@ I have curated a step-to-step guide on IoT hacking, along with useful learning r
 
 
 
-4. **IoT software/system reconnaissance**
+## **4. IoT software/system enumeration**
 
 * **Purpose**: To gather information regarding the software components (where most vulnerabilities are found)
 * How to analyze the device boot logs to gather information and find potential vulnerabilities
@@ -57,7 +57,7 @@ I have curated a step-to-step guide on IoT hacking, along with useful learning r
 
 
 
-5. **Setting up the lab research environment**
+## **5. Setting up the lab research environment**
 
 * **Purpose**: To create a stable and efficient IoT security research environment
 * How to transfer files between device and host to load additional binaries (eg. `busybox-mipsel`)
@@ -66,7 +66,7 @@ I have curated a step-to-step guide on IoT hacking, along with useful learning r
 
 
 
-6. **Firmware reverse engineering & analysis**
+## **6. Firmware reverse engineering & analysis**
 
 * How to retrieve the Linux filesystem from the firmware
 * How to perform analysis to uncover hidden vulnerabilities&#x20;
@@ -75,7 +75,7 @@ I have curated a step-to-step guide on IoT hacking, along with useful learning r
 
 
 
-7. **Vulnerability research + Exploit development**
+## **7. Vulnerability research + Exploit development**
 
 * How to perform static/dynamic binary analysis with Ghidra and GDB+gdbserver
   * Setting up on FirmAE
@@ -88,7 +88,7 @@ I have curated a step-to-step guide on IoT hacking, along with useful learning r
 
 
 
-8. **Putting it all together: Final lab challenge!**
+## **8. Putting it all together: Final lab challenge!**
 
 * Combine your knowledge from all the previous sections on provided firmware image:
   * Peform firmware emulation&#x20;
@@ -100,36 +100,8 @@ I have curated a step-to-step guide on IoT hacking, along with useful learning r
 
 
 
-9. **Additional practice: IoT hacking labs + writeups**
+## **9. Additional practice: IoT hacking labs + writeups**
 
 * Compiled writeups from Picoctf, TryHackMe, Vulnhub, and custom challenges created by me (coming soon!)
 * OWASP Iot GOAT
 
-## Advanced IoT Hacking Topics&#x20;
-
-1. **Advanced firmware techniques**
-
-* **Firmware modification & re-flashing**
-  * How to insert custom logic into firmware images and flash it back onto the physical memory chip for persistence
-* **Case study 1**: How to create a persistent backdoor (rootkit) on the device by modifiying original firmware image
-  * startup binary hijacking
-  * NVRAM, bootloader corruption - for persistence across factory resets
-* **Case study 2**: How to create a persistent backdoor (rootkit) on the device by modifiying an open-source firmware image
-* **Firmware extraction:** How to retrieve firmware image from the physical device
-  * UART debug console: Linux device blocks
-  * Specialized hardware tools (eg. CH341A, Raspberry Pi)
-  * Official vendor webpage
-
-
-
-2. **Advanced Raspberry Pi usage**
-
-* How to use Raspberry Pi as an IoT hacking bridge between device and host (your machine)
-* How to use Raspberry Pi as an UART/JTAG interface
-* How to emulate physical environment on a Raspberry Pi
-  * Bare-metal OS flashing (requires compilation for ARM)
-  * Firmware emulation
-
-
-
-3. **Wireless (Bluetooth) attacks** (coming soon!)
