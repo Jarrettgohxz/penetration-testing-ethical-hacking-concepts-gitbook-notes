@@ -94,8 +94,8 @@ I have curated a step-to-step guide on IoT hacking, along with useful learning r
 
 * Combine your knowledge from all the previous sections on provided firmware image:
   * Peform firmware emulation&#x20;
-  * Perform software recconnaissance via the UART debug console
-  * Load additional binary tools for vulnerability research
+  * Perform software recconnaissance via the emulated debug console
+  * Load additional binary tools&#x20;
   * Investigate the command injection vulnerability
   * Craft the final exploit to achieve remote-code execution and a root shell!
 
