@@ -34,19 +34,20 @@ I have curated a step-to-step guide on IoT hacking, along with useful learning r
 
 
 
-2. **Hardware interactions & UART debug console access**
+2. **Hardware interactions & debug console access (UART)**
 
-* Interacting with the hardware to map out the electrical components (UART, JTAG, etc.)
+* What is UART?
+* Interacting with the hardware to map out the electrical UART components
 * How to use the digital multimeter to:
   * Identify GND points
   * Identify specific UART pins
-* Gaining a debug shell console (`picocom`) for further research on the software portion of the device
+* How to gain a debug shell console (`picocom`) for further research on the software portion of the device
 
 
 
 3. **Setting up the lab research environment**
 
-* How to transfer files between device and host to load additional binaries
+* How to transfer files between device and host to load additional binaries (eg. `busybox-mipsel`)
 * How to setup and additional console access (Dropbear SSH server)
 * How to setup for dynamic binary analysis (`GDB` + `gdbserver`)
 
@@ -54,8 +55,8 @@ I have curated a step-to-step guide on IoT hacking, along with useful learning r
 
 4. **System enumeration (via UART debug console)**
 
-* How to transfer files between device and host to load additional binaries (eg. `busybox-mipsel`)
-* How to setup an additional console access (Dropbear SSH server)
+* How to analyze the device boot logs to gather information and find potential vulnerabilities
+* How to investigate running processes and look for potentially vulnerable binaries
 
 
 
@@ -75,8 +76,3 @@ I have curated a step-to-step guide on IoT hacking, along with useful learning r
 
 * Compiled writeups from Picoctf, TryHackMe, Vulnhub, and custom challenges created by me (coming soon!)
 * OWASP Iot GOAT
-
-
-
-
-
