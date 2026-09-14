@@ -6,7 +6,7 @@ I have curated a step-to-step guide on IoT hacking, along with useful learning r
 
 ## **1. IoT Reconnaissance/Information gathering**&#x20;
 
-* **Open-Source Intelligence (OSINT)** techniques to gather information on a device without physical access
+* What is **Open-Source Intelligence (OSINT)** techniques, and how it can be used to gather information on a device without physical access
 * Google dorking
 * Federal Communications Commission (FCC) - provides useful data on devices
   * Internal hardware images
@@ -35,6 +35,7 @@ I have curated a step-to-step guide on IoT hacking, along with useful learning r
 ## **3. Firmware/Binary emulation**
 
 * **Purpose**: To perform research without access to a physical device
+* What is a firmware image, and binary file?
 * What is emulation?&#x20;
 * What are the different types of emulation (firmware, binary).
 * Why is this helpful in IoT security research?
@@ -46,9 +47,10 @@ I have curated a step-to-step guide on IoT hacking, along with useful learning r
 
 
 
-## **4. IoT software/system enumeration**
+## **4. IoT software system enumeration**
 
 * **Purpose**: To gather information regarding the software components (where most vulnerabilities are found)
+* What is enumeration, and how can it be done on the software system?
 * How to analyze the device boot logs to gather information and find potential vulnerabilities
 * How to investigate running network services and look for potentially vulnerable processes
   * Direct debug console enumeration
@@ -68,6 +70,8 @@ I have curated a step-to-step guide on IoT hacking, along with useful learning r
 
 ## **6. Firmware reverse engineering & analysis**
 
+* **Purpose**: To extract useful data from the firmware image
+* What is reverse engineering?
 * How to retrieve the Linux filesystem from the firmware
 * How to perform analysis to uncover hidden vulnerabilities&#x20;
 * **Lab challenge**&#x20;
@@ -77,6 +81,7 @@ I have curated a step-to-step guide on IoT hacking, along with useful learning r
 
 ## **7. Vulnerability research + Exploit development**
 
+* Introduction to Ghidra and GDB/gdbserver&#x20;
 * How to perform static/dynamic binary analysis with Ghidra and GDB+gdbserver
   * Setting up on FirmAE
   * Setting up on the physical device (via UART console)
