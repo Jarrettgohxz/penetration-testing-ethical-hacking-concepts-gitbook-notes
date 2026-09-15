@@ -35,7 +35,7 @@ $ iotsec.tools
 
 #### help
 
-```shellscript
+```
 $ iotsec.tools --help
 Usage: iotsec.tools [OPTIONS]
 
