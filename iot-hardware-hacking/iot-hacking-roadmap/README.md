@@ -65,9 +65,7 @@ I have curated a step-to-step guide on IoT hacking, along with useful learning r
 * **Lab challenge**
   * ... (coming soon!)
 
-
-
-## **8. Common IoT vulnerability classes**
+## **7. Common IoT vulnerability classes**
 
 * What is OS command injection?
 * What is stack buffer-overflow?
@@ -75,7 +73,7 @@ I have curated a step-to-step guide on IoT hacking, along with useful learning r
 * **Case study 2**: Stack buffer-overflow on Linksys E1200 v2 router ([CVE-2025-60690](https://github.com/Jarrettgohxz/CVE-research/tree/main/Linksys/E1200-V2/CVE-2025-60690))
 * **Case study 3**: Command injection on D-Link DIR-815 router
 
-## **7. IoT vulnerability research + Exploit development**
+## **8. IoT vulnerability research + Exploit development**
 
 * Introduction to Ghidra and GDB/gdbserver
 * How to perform reverse engineering (static binary analysis) with Ghidra
@@ -89,7 +87,7 @@ I have curated a step-to-step guide on IoT hacking, along with useful learning r
 * **Lab challenge**
   * ... (coming soon!)
 
-## **8. Putting it all together: Final lab challenge!**
+## **9. Putting it all together: Final lab challenge!**
 
 * Combine your knowledge from all the previous sections on provided firmware image:
   * Peform firmware emulation
@@ -99,7 +97,7 @@ I have curated a step-to-step guide on IoT hacking, along with useful learning r
   * Craft the final exploit, and test it on the emulated environemnt to achieve remote-code execution and a shell!
   * Run the exploit on the lab server and retrieve the flag!
 
-## **9. Additional practice: IoT hacking labs + writeups**
+## **10. Additional practice: IoT hacking labs + writeups**
 
 * Compiled writeups from Picoctf, TryHackMe, Vulnhub, and custom challenges created by me (coming soon!)
 * OWASP Iot GOAT
