@@ -1,6 +1,6 @@
 # 🔥 Advanced IoT Hacking Topics
 
-## &#x20;1. **Advanced firmware techniques**
+## 1. **Advanced firmware techniques**
 
 * **Firmware modification & re-flashing**
   * How to insert custom logic into firmware images and flash it back onto the physical memory chip for persistence
@@ -13,19 +13,19 @@
   * Specialized hardware tools (eg. CH341A, Raspberry Pi)
   * Official vendor webpage
 
-
-
 ## **2. Advanced Raspberry Pi usage**
 
 * How to use Raspberry Pi as an IoT hacking bridge between device and host (your machine)
+  * How to setup SSH on Raspberry Pi and connect to it remotely (without an additional monitor screen)
 * How to use Raspberry Pi as an UART/JTAG interface
 * How to emulate physical environment on a Raspberry Pi
   * Bare-metal OS flashing (requires compilation for ARM)
   * Firmware emulation
 
+## **3. Man-in-the-Middle (MitM) attacks (coming soon!)**
 
+* ARP, DNS spoofing
 
-## **3. Wireless (Bluetooth) attacks** (coming soon!)
+## **4. Wireless (Bluetooth) attacks** (coming soon!)
 
 ...
-
