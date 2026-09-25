@@ -8,22 +8,30 @@ This content provides an introduction to prerequisite knowledge required in the 
 
 ## **1. Fundamental cybersecurity terminologies**
 
-* OSINT, reconnaissance, information gathering
-* exploit, payload, binary
-* CVE, zero-day
+* **Purpose**: To introduce the foundational cybersecurity knowledge required for the subsequents sections&#x20;
+* **You will learn about**:
+  * OSINT, Reconnaissance, Information gathering
+  * Common Vulnerability and Exposures (CVEs), Zero-days
+  * Binary, Exploits, Payload
 
-## **2. Computer networking**
+## **2. Computer networking concepts**
 
-* HTTP (web interface)
-* SSH (used for port forwarding in post exploitation)
-* TCP client/listener
-* reverse shells
+* **Purpose**: To introduce essential computer networking concepts that will be encountered not only in IoT hacking, but in everyday cybersecurity research
+* **You will learn about**:
+  * IP addressing and subnets
+  * Domain Name System (DNS)
+  * HyperText Transfer Protocol (HTTP) used by web servers
+  * Secure SHell (SSH) used for connecting to remote servers and for port forwarding
+  * TCP reverse shells
 
 ## 3. Linux fundamentals
 
+* Why learn Linux?
+  * wide usage in servers, most common system found on IoT/embedded devices
+* how to setup a Linux VM (VMWare) for Windows users
 * filesystem (etc, dev, usr, sbin, etc.)
 * basic commands
-* ls, ps w, netstat -tln, pgrep, etc.
+  * ls, ps w, netstat -tln, pgrep, etc.
 
 ## 4. Introduction to MIPS assembly
 
