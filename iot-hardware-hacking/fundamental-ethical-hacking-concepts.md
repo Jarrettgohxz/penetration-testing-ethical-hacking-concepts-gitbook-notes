@@ -46,8 +46,8 @@ This content provides an introduction to prerequisite knowledge required in the 
 2. Linux filesystem
 
 * Common naming shortcuts: `~`, `/`
-* Folders: `etc`, `dev`, `usr`, `sbin`
-* Files: `/etc/shadow`, `/etc/hosts`, `~/.netrc`
+* Folders: `etc`, `tmp`, `bin`, `sbin`
+* Files: `/etc/init.d`, `/etc/shadow`, `~/.netrc`, `/etc/init.d/rcS`
 
 
 
