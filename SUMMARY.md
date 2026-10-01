@@ -238,6 +238,7 @@
 * [Quick start](iotsec.tools/quick-start.md)
 * [Commands](iotsec.tools/commands/README.md)
   * [help](iotsec.tools/commands/help.md)
+  * [shell, $](iotsec.tools/commands/shell-usd.md)
   * [firmwares](iotsec.tools/commands/firmwares.md)
 
 ## Wireless Pentesting
