@@ -38,6 +38,9 @@ This content provides an introduction to prerequisite knowledge required in the 
 
 1. How to setup a Linux virtual machine (Ubuntu on VMWare)&#x20;
 
+* [https://www.techpowerup.com/download/vmware-workstation-pro/](https://www.techpowerup.com/download/vmware-workstation-pro/)
+* ...
+
 
 
 2. Linux filesystem
