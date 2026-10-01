@@ -21,6 +21,8 @@ This content provides an introduction to prerequisite knowledge required in the 
 
 * **Purpose**: To introduce essential computer networking concepts that will be encountered not only in IoT hacking, but in everyday cybersecurity research
 
+{% embed url="https://www.youtube.com/@Jarrettgxz" %}
+
 **You will learn about**:
 
 * IPv4 addresses
@@ -42,10 +44,10 @@ This content provides an introduction to prerequisite knowledge required in the 
 
 **Additional tools**
 
-* **Wget**
+* _Wget_
   * Learn how to send HTTP requests
   * Commonly used to retrieve files from external sources&#x20;
-* **Netcat**
+* _Netcat_
   * Learn how to send TCP requests&#x20;
 
 **Lab practice**
@@ -56,9 +58,11 @@ Practice your skills on a simulated router environment! Talk to the Discord bot 
 iotsec.tools> labs 1
 ```
 
+**Solutions**
+
 <details>
 
-<summary>Solution</summary>
+<summary>Try it out yourself first!</summary>
 
 ```
 iotsec.tools> $ wget ...
@@ -66,10 +70,6 @@ iotsec.tools> $ dhclient ...
 ```
 
 </details>
-
-
-
-## <mark style="color:red;">**--— COMING SOON! -----—**</mark>&#x20;
 
 ## 3. Linux fundamentals
 
@@ -81,6 +81,10 @@ iotsec.tools> $ dhclient ...
   * Files: `/etc/shadow`, `/etc/hosts`, `~/.netrc`, and more!
 * Basic commands
   * `ls`, `ps w`, `netstat`, `pgrep`, and more!
+
+
+
+## <mark style="color:red;">**--— COMING SOON! -----—**</mark>&#x20;
 
 ## 4. Introduction to MIPS assembly
 
