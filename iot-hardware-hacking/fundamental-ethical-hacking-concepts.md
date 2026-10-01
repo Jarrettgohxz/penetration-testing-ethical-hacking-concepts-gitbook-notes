@@ -36,7 +36,7 @@ This content provides an introduction to prerequisite knowledge required in the 
 
 **Topic overview**:
 
-1. How to setup a Linux virtual machine (Ubuntu on VMWare) for Windows users
+1. How to setup a Linux virtual machine (Ubuntu on VMWare)&#x20;
 
 
 
