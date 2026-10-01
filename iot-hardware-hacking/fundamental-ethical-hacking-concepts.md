@@ -80,7 +80,7 @@ iotsec.tools> $ dhclient ...
 
 
 
-## <mark style="color:red;">**--— COMING SOON! -----—**</mark>&#x20;
+## <mark style="color:red;">**---COMING SOON! (CONTENT LISTED BELOW)—**</mark>&#x20;
 
 ## 4. Introduction to MIPS assembly
 
