@@ -26,7 +26,13 @@ This content provides an introduction to prerequisite knowledge required in the 
 * Exploits: ...&#x20;
 * Payload: ...
 
-## **2.** Linux Fundamentals
+## **2. `iotsec.tools` framework**
+
+**...**
+
+
+
+## **3.** Linux Fundamentals
 
 **Purpose**: To introduce the Linux operating system&#x20;
 
@@ -47,7 +53,7 @@ This content provides an introduction to prerequisite knowledge required in the 
 
 * Common naming shortcuts: `~`, `/`
 * Folders: `etc`, `tmp`, `bin`, `sbin`
-* Files: `/etc/init.d`, `/etc/shadow`, `~/.netrc`, `/etc/init.d/rcS`
+* Files: `/etc/init.d`, `/etc/shadow`, `/etc/rc.d`, `/etc/init.d/rcS`
 
 
 
@@ -87,7 +93,7 @@ chall-1@lab> ps w | grep 22
 
 
 
-## **3. Computer Networking Concepts**
+## **4. Computer Networking Concepts**
 
 **Purpose**: To introduce essential computer networking concepts that will be encountered not only in IoT hacking, but in everyday cybersecurity research
 
@@ -173,7 +179,7 @@ chall-2@lab> tshark ...
 
 ## <mark style="color:red;">**---COMING SOON! (CONTENT LISTED BELOW)—**</mark>&#x20;
 
-## 4. Introduction to MIPS Assembly
+## 5. Introduction to MIPS Assembly
 
 * **Purpose**: ...
 * what is assembly?
@@ -183,11 +189,11 @@ chall-2@lab> tshark ...
 * stack structure, registers, delay slots, etc.
 * basic instructions: sw, lw, move, addiu, etc.
 
-## 5. MIPS Binary Reverse Engineering & Analysis for IoT Hacking (Ghidra)
+## 6. MIPS Binary Reverse Engineering & Analysis for IoT Hacking (Ghidra)
 
 * common instructions on function call: restore ra, etc. -> how overwriting it hijacks function file
 
-## 6. MIPS Binary Exploitation for IoT Hacking (GDB/gdbserver)
+## 7. MIPS Binary Exploitation for IoT Hacking (GDB/gdbserver)
 
 * introduce basic stack buffer-overflow techniques
 * **Lab challenge**
