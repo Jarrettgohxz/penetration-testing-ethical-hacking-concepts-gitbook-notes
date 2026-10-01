@@ -25,9 +25,10 @@ This content provides an introduction to prerequisite knowledge required in the 
   * Common naming shortcuts: `~`, `/`
   * Folders: `etc`, `dev`, `usr`, `sbin`, and more!
   * Files: `/etc/shadow`, `/etc/hosts`, `~/.netrc`, and more!
-* Installing tools & packages (`apt`)
-* Basic commands
-  * `ls`, `ps w`, `netstat`, `pgrep`, and more!
+* Getting comfortable on the command-line (terminal)
+  * Installing tools & packages (`apt`)
+  * Basic commands: `ls`, `ps w`, `netstat`, `pgrep`, and more!
+  * Keyboard shortcuts (ctrl+A, ctrl+E)
 
 ## **3. Computer Networking Concepts**
 
