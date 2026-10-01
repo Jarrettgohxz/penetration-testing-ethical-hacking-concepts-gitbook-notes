@@ -1,5 +1,7 @@
 # 🔥 Advanced IoT Hacking Topics
 
+## <mark style="color:red;">**--— COMING SOON! -----—**</mark>&#x20;
+
 ## 1. **Advanced firmware techniques**
 
 * **Firmware modification & re-flashing**

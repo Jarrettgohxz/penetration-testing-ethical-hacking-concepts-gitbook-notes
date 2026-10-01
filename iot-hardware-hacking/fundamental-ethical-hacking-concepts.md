@@ -8,7 +8,7 @@ This content provides an introduction to prerequisite knowledge required in the 
 
 ## **1. Fundamental cybersecurity terminologies**
 
-* **Purpose**: To introduce the foundational cybersecurity knowledge required for the subsequents sections&#x20;
+* **Purpose**: To introduce the foundational cybersecurity knowledge required for the subsequent sections&#x20;
 
 **You will learn about**:
 
@@ -22,7 +22,7 @@ This content provides an introduction to prerequisite knowledge required in the 
 
 **You will learn about**:
 
-* IP addressing and subnets
+* IP addresses
   * How do devices on a network find each other to communicate?&#x20;
 * TCP vs UDP communications
 * Dynamic Host Configuration Protocol (DHCP)
@@ -31,8 +31,6 @@ This content provides an introduction to prerequisite knowledge required in the 
   * Learn about the network protocol used by web servers
 * Ports & services
   * How to investigate them with Nmap?
-* Domain Name System (DNS)
-  * Learn about how domain/host names are resolved to IP addresses
 
 **Additional tools**
 
@@ -40,6 +38,16 @@ This content provides an introduction to prerequisite knowledge required in the 
   * Learn how to send HTTP requests to retrieve files
 * **Netcat**
   * Learn how to send TCP requests&#x20;
+
+**Lab practice**
+
+Practice your skills on a simulated router environment! Talk to the Discord (xxxx) to access the challenge files. Alternatively, you can access it directly in the `iotsec.tools` CLI interface:
+
+```shellscript
+iotsec.tools> labs <ID> # TO FILL IN!
+```
+
+## <mark style="color:red;">**--— COMING SOON! -----—**</mark>&#x20;
 
 ## 3. Linux fundamentals
 

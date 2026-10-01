@@ -1,5 +1,7 @@
 # 🛣️ IoT Hacking Roadmap
 
+## <mark style="color:red;">**--— COMING SOON! -----—**</mark>&#x20;
+
 I have curated a step-to-step guide on IoT hacking, along with useful learning resources such as custom labs/challenges, video guides and cheatsheet.
 
 ## **1. IoT Reconnaissance/Information gathering**
