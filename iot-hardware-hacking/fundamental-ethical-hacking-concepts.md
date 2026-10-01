@@ -1,4 +1,5 @@
 ---
+hidden: true
 icon: toolbox
 ---
 
@@ -30,7 +31,8 @@ This content provides an introduction to prerequisite knowledge required in the 
 * HyperText Transfer Protocol (HTTP)
   * Learn about the network protocol used by web servers
 * Ports & services
-  * How to investigate them with Nmap?
+  * What is a port and service?
+  * How to investigate open ports/services with Nmap?
 
 **Additional tools**
 
@@ -46,6 +48,19 @@ Practice your skills on a simulated router environment! Talk to the Discord bot 
 ```shellscript
 iotsec.tools> labs 1
 ```
+
+<details>
+
+<summary>Solution</summary>
+
+```
+iotsec.tools> $ wget ...
+iotsec.tools> $ dhclient ...
+```
+
+</details>
+
+
 
 ## <mark style="color:red;">**--— COMING SOON! -----—**</mark>&#x20;
 
