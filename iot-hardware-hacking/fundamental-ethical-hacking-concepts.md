@@ -95,7 +95,7 @@ chall-1@lab> ps w | grep 22
 
 ## **4. Computer Networking Concepts**
 
-**Purpose**: To introduce essential computer networking concepts that will be encountered not only in IoT hacking, but in everyday cybersecurity research
+**Purpose**: To introduce essential computer networking concepts that will be encountered in both IoT hacking, and everyday cybersecurity research
 
 {% embed url="https://www.youtube.com/@Jarrettgxz" %}
 
