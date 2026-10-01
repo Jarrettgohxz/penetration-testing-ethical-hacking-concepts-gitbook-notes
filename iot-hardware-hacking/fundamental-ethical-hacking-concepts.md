@@ -28,9 +28,21 @@ This content provides an introduction to prerequisite knowledge required in the 
 
 ## **2. `iotsec.tools` framework**
 
-**...**
+`iotsec.tools` is a security research framework I have built to ease the workflow of IoT pentesting. It includes multiple wrapper around popular tools for IoT security research workflows:
 
+* Firmware-related research (firmware reverse engineering, analysis, emulation)
+* Binary-related research (binary reverse engineering, analysis, emulation/debugger and exploit development)
+* OSINT research (Google dork, FCC - covered in the later chapters)
+* Automated network services enumeration (nmap scripts)
 
+**Other features:**
+
+1. LLM chatbot that can help with explaining usage of the tool, summarizing outputs, or for general queries
+2. Access to a repository of firmware files for IoT research
+3. Integration with `learn.iotsec.tools` learning platform&#x20;
+
+* Access to dashboard (skills, progress, report)
+* Access to custom lab challenges files and flag submissions
 
 ## **3.** Linux Fundamentals
 
