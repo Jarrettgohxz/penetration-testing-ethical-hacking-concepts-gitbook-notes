@@ -23,21 +23,27 @@ This content provides an introduction to prerequisite knowledge required in the 
 
 **You will learn about**:
 
-* IP addresses
+* IPv4 addresses
   * How do devices on a network find each other to communicate?&#x20;
-* TCP vs UDP communications
+* Transmission Control Protocol (TCP) vs User Datagram Protocol (UDP) communications
+  * **TCP**: for reliable and stable communication where data integrity is important
+  * **UDP**: for fast communication where speed is important
 * Dynamic Host Configuration Protocol (DHCP)
-  * How devices connected to a router retrieves an IP address?
+  * How devices connected to a router retrieve an IP address?
+  * Learn how to use the `ip` tool to identify your new IP address
 * HyperText Transfer Protocol (HTTP)
   * Learn about the network protocol used by web servers
 * Ports & services
   * What is a port and service?
   * How to investigate open ports/services with Nmap?
 
+> This is a a common attack vector for IoT devices
+
 **Additional tools**
 
 * **Wget**
-  * Learn how to send HTTP requests to retrieve files
+  * Learn how to send HTTP requests
+  * Commonly used to retrieve files from external sources&#x20;
 * **Netcat**
   * Learn how to send TCP requests&#x20;
 
