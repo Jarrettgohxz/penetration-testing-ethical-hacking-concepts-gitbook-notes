@@ -7,7 +7,7 @@ icon: toolbox
 
 This content provides an introduction to prerequisite knowledge required in the [IoT Hacking Roadmap](https://jarrettgxz-sec.gitbook.io/penetration-testing-ethical-hacking-concepts/iot-hardware-hacking/iot-hacking-roadmap) course.
 
-## **1. Fundamental cybersecurity terminologies**
+## **1. Fundamental Cybersecurity Terminologies**
 
 * **Purpose**: To introduce the foundational cybersecurity knowledge required for the subsequent sections&#x20;
 
@@ -17,7 +17,19 @@ This content provides an introduction to prerequisite knowledge required in the 
 * Common Vulnerability and Exposures (CVEs), Zero-days
 * Binary, Exploits, Payload
 
-## **2. Computer networking concepts**
+## **2.** Linux Fundamentals
+
+* **Purpose**: To introduce the Linux operating system used widely in IoT/embedded systems
+* How to setup a Linux VM (Ubuntu on VMWare) for Windows users
+* Filesystem
+  * Common naming shortcuts: `~`, `/`
+  * Folders: `etc`, `dev`, `usr`, `sbin`, and more!
+  * Files: `/etc/shadow`, `/etc/hosts`, `~/.netrc`, and more!
+* Installing tools & packages (`apt`)
+* Basic commands
+  * `ls`, `ps w`, `netstat`, `pgrep`, and more!
+
+## **3. Computer Networking Concepts**
 
 * **Purpose**: To introduce essential computer networking concepts that will be encountered not only in IoT hacking, but in everyday cybersecurity research
 
@@ -92,22 +104,11 @@ iotsec.tools> $ dhclient ...
 
 </details>
 
-## 3. Linux fundamentals
-
-* **Purpose**: To introduce the Linux operating system used widely in IoT/embedded systems
-* How to setup a Linux VM (Ubuntu on VMWare) for Windows users
-* Filesystem
-  * Common naming shortcuts: `~`, `/`
-  * Folders: `etc`, `dev`, `usr`, `sbin`, and more!
-  * Files: `/etc/shadow`, `/etc/hosts`, `~/.netrc`, and more!
-* Basic commands
-  * `ls`, `ps w`, `netstat`, `pgrep`, and more!
-
 
 
 ## <mark style="color:red;">**---COMING SOON! (CONTENT LISTED BELOW)—**</mark>&#x20;
 
-## 4. Introduction to MIPS assembly
+## 4. Introduction to MIPS Assembly
 
 * **Purpose**: ...
 * what is assembly?
@@ -117,11 +118,11 @@ iotsec.tools> $ dhclient ...
 * stack structure, registers, delay slots, etc.
 * basic instructions: sw, lw, move, addiu, etc.
 
-## 5. MIPS binary reverse engineering & analysis for IoT hacking (Ghidra)
+## 5. MIPS Binary Reverse Engineering & Analysis for IoT Hacking (Ghidra)
 
 * common instructions on function call: restore ra, etc. -> how overwriting it hijacks function file
 
-## 6. MIPS binary exploitation for IoT hacking (GDB/gdbserver)
+## 6. MIPS Binary Exploitation for IoT Hacking (GDB/gdbserver)
 
 * introduce basic stack buffer-overflow techniques
 * **Lab challenge**
