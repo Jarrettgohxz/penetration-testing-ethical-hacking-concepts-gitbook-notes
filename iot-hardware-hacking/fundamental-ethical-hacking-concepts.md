@@ -9,7 +9,7 @@ This content provides an introduction to prerequisite knowledge required in the 
 
 ## **1. Fundamental Cybersecurity Terminologies**
 
-* **Purpose**: To introduce the foundational cybersecurity knowledge required for the subsequent sections&#x20;
+**Purpose**: To introduce the foundational cybersecurity knowledge required for the subsequent sections&#x20;
 
 **You will learn about**:
 
@@ -19,20 +19,63 @@ This content provides an introduction to prerequisite knowledge required in the 
 
 ## **2.** Linux Fundamentals
 
-* **Purpose**: To introduce the Linux operating system used widely in IoT/embedded systems
-* How to setup a Linux VM (Ubuntu on VMWare) for Windows users
-* Filesystem
-  * Common naming shortcuts: `~`, `/`
-  * Folders: `etc`, `dev`, `usr`, `sbin`, and more!
-  * Files: `/etc/shadow`, `/etc/hosts`, `~/.netrc`, and more!
-* Getting comfortable on the command-line (terminal)
-  * Installing tools & packages (`apt`)
-  * Basic commands: `ls`, `ps w`, `netstat`, `pgrep`, and more!
-  * Keyboard shortcuts (ctrl+A, ctrl+E)
+**Purpose**: To introduce the Linux operating system&#x20;
+
+* Used widely in IoT/embedded systems
+
+**Topic overview**:
+
+1. How to setup a Linux virtual machine (Ubuntu on VMWare) for Windows users
+
+
+
+2. Linux filesystem
+
+* Common naming shortcuts: `~`, `/`
+* Folders: `etc`, `dev`, `usr`, `sbin`
+* Files: `/etc/shadow`, `/etc/hosts`, `~/.netrc`
+
+
+
+3. Getting comfortable with the command-line (terminal)
+
+* Installing tools & packages (`apt`)
+* Basic commands: `ls`, `cat`, `ps w`, `netstat`, `pgrep`
+* Keyboard shortcuts (ctrl+A, ctrl+E)
+
+
+
+**Lab practice**
+
+Practice your skills on a simulated Linux environment! Talk to the Discord bot (xxxx) to access the challenge files. Alternatively, you can access the challenge directly from the `iotsec.tools` CLI interface:
+
+```shellscript
+iotsec.tools> labs 1
+```
+
+\
+**Solutions**
+
+<details>
+
+<summary>Try it out yourself first!</summary>
+
+```shellscript
+chall-1@lab> cat ~/flag.txt
+chall-1@lab> cat /etc/shadow
+#...
+
+chall-1@lab> ps w | grep 22
+# ...
+```
+
+</details>
+
+
 
 ## **3. Computer Networking Concepts**
 
-* **Purpose**: To introduce essential computer networking concepts that will be encountered not only in IoT hacking, but in everyday cybersecurity research
+**Purpose**: To introduce essential computer networking concepts that will be encountered not only in IoT hacking, but in everyday cybersecurity research
 
 {% embed url="https://www.youtube.com/@Jarrettgxz" %}
 
@@ -40,7 +83,7 @@ This content provides an introduction to prerequisite knowledge required in the 
 
 * nc, ip, dhclient, wget, nmap, wireshark, iotsec.tools
 
-**You will learn about**:
+**Topic overview:**
 
 1. IPv4 addresses
 
@@ -89,7 +132,7 @@ This content provides an introduction to prerequisite knowledge required in the 
 Practice your skills on a simulated router environment! Talk to the Discord bot (xxxx) to access the challenge files. Alternatively, you can access the challenge directly from the `iotsec.tools` CLI interface:
 
 ```shellscript
-iotsec.tools> labs 1
+iotsec.tools> labs 2
 ```
 
 **Solutions**
@@ -98,9 +141,16 @@ iotsec.tools> labs 1
 
 <summary>Try it out yourself first!</summary>
 
-```
-iotsec.tools> $ wget ...
-iotsec.tools> $ dhclient ...
+```shellscript
+chall-2@lab> nmap
+
+chall-2@lab> dhclient ...
+chall-2@lab> ip addr
+
+chall-2@lab> wget ...
+
+chall-2@lab> tshark ...
+
 ```
 
 </details>
