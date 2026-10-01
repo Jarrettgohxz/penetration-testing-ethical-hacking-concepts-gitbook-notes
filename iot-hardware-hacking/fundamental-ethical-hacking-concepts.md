@@ -42,14 +42,6 @@ This content provides an introduction to prerequisite knowledge required in the 
 
 > This is a a common attack vector for IoT devices
 
-**Additional tools**
-
-* _Wget_
-  * Learn how to send HTTP requests
-  * Commonly used to retrieve files from external sources&#x20;
-* _Netcat_
-  * Learn how to send TCP requests&#x20;
-
 **Lab practice**
 
 Practice your skills on a simulated router environment! Talk to the Discord bot (xxxx) to access the challenge files. Alternatively, you can access the challenge directly from the `iotsec.tools` CLI interface:
