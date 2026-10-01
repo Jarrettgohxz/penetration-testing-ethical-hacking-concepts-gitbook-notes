@@ -11,17 +11,28 @@ This content provides an introduction to prerequisite knowledge required in the 
 
 **Purpose**: To introduce the foundational cybersecurity knowledge required for the subsequent sections&#x20;
 
-**You will learn about**:
+> Note that you do not need to memorize these concepts, but just grasp a general understanding of it. It will all make sense eventually as you explore more in this field!
+>
+> You may refer back to this page when you encounter any unfamiliar terms in the future chapters
 
-* OSINT, Reconnaissance, Information gathering
-* Common Vulnerability and Exposures (CVEs), Zero-days
-* Binary, Exploits, Payload
+**Key concepts**:
+
+* OSINT: ...
+* Reconnaissance: ...
+* Information gathering:  ...
+* Common Vulnerability and Exposures (CVEs): ...
+* Zero-days: ...
+* Binary: ...
+* Exploits: ...&#x20;
+* Payload: ...
 
 ## **2.** Linux Fundamentals
 
 **Purpose**: To introduce the Linux operating system&#x20;
 
 * Used widely in IoT/embedded systems
+
+{% embed url="https://www.youtube.com/@Jarrettgxz" %}
 
 **Topic overview**:
 
