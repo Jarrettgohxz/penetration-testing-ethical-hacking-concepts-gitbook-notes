@@ -30,7 +30,8 @@ This content provides an introduction to prerequisite knowledge required in the 
   * **UDP**: for fast communication where speed is important
 * Dynamic Host Configuration Protocol (DHCP)
   * How devices connected to a router retrieve an IP address?
-  * Learn how to use the `ip` tool to identify your new IP address
+  * Learn how to use the `dhclient` tool to retrieve an IP address from the DHCP server
+  * Learn how to use the `ip` tool to view the network configurations
 * HyperText Transfer Protocol (HTTP)
   * Learn about the network protocol used by web servers
 * Ports & services
