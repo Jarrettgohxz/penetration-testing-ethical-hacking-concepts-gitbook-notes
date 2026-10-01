@@ -28,7 +28,11 @@ This content provides an introduction to prerequisite knowledge required in the 
 
 ## **2. `iotsec.tools` framework**
 
-`iotsec.tools` is a security research framework I have built to ease the workflow of IoT pentesting. It includes multiple wrapper around popular tools for IoT security research workflows:
+`iotsec.tools` is a security research framework I have built to ease the workflow of IoT pentesting&#x20;
+
+> Pending development ...
+
+It will include multiple wrapper around popular tools for IoT security research workflows:
 
 * Firmware-related research (firmware reverse engineering, analysis, emulation)
 * Binary-related research (binary reverse engineering, analysis, emulation/debugger and exploit development)
