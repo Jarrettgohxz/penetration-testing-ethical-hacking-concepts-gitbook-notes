@@ -41,10 +41,10 @@ This content provides an introduction to prerequisite knowledge required in the 
 
 **Lab practice**
 
-Practice your skills on a simulated router environment! Talk to the Discord (xxxx) to access the challenge files. Alternatively, you can access it directly in the `iotsec.tools` CLI interface:
+Practice your skills on a simulated router environment! Talk to the Discord bot (xxxx) to access the challenge files. Alternatively, you can access the challenge directly from the `iotsec.tools` CLI interface:
 
 ```shellscript
-iotsec.tools> labs <ID> # TO FILL IN!
+iotsec.tools> labs 1
 ```
 
 ## <mark style="color:red;">**--— COMING SOON! -----—**</mark>&#x20;
