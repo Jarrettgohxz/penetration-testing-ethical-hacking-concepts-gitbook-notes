@@ -5,13 +5,20 @@
 * Clone the Github repository
 * Give execute permissions and execute the `init.sh` script
 
+{% code overflow="wrap" %}
 ```shellscript
+#  $ curl -fsSL https://iotsec.tools/install.sh | sh
+
+
+# contained in install.sh ##
 $ git clone https://github.com/Jarrettgohxz/iotsec.tools
 $ cd iotsec.tools
 
 $ sudo chmod +x init.sh
 $ ./init.sh
+####
 ```
+{% endcode %}
 
 This script will perform the following:
 
