@@ -89,7 +89,7 @@ It will include multiple wrapper around popular tools for IoT security research 
 Practice your skills on a simulated Linux environment! Talk to the Discord bot (xxxx) to access the challenge files. Alternatively, you can access the challenge directly from the `iotsec.tools` CLI interface:
 
 ```shellscript
-iotsec.tools> labs 1
+iotsec.tools> labs linux
 ```
 
 \
@@ -100,11 +100,11 @@ iotsec.tools> labs 1
 <summary>Try it out yourself first!</summary>
 
 ```shellscript
-chall-1@lab> cat ~/flag.txt
-chall-1@lab> cat /etc/shadow
+linux@labs> cat ~/flag.txt
+linux@labs> cat /etc/shadow
 #...
 
-chall-1@lab> ps w | grep 22
+linux@labs> ps w | grep 22
 # ...
 ```
 
@@ -171,7 +171,7 @@ chall-1@lab> ps w | grep 22
 Practice your skills on a simulated router environment! Talk to the Discord bot (xxxx) to access the challenge files. Alternatively, you can access the challenge directly from the `iotsec.tools` CLI interface:
 
 ```shellscript
-iotsec.tools> labs 2
+iotsec.tools> labs network
 ```
 
 **Solutions**
@@ -181,14 +181,12 @@ iotsec.tools> labs 2
 <summary>Try it out yourself first!</summary>
 
 ```shellscript
-chall-2@lab> nmap
+network@labs> nmap
 
-chall-2@lab> dhclient ...
-chall-2@lab> ip addr
+network@labs> dhclient ...
+network@labs> ip addr
 
-chall-2@lab> wget ...
-
-chall-2@lab> tshark ...
+network@labs> wget ...
 
 ```
 
