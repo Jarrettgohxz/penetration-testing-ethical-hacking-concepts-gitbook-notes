@@ -25,12 +25,15 @@ This content provides an introduction to prerequisite knowledge required in the 
 * Binary: ...
 * Exploits: ...&#x20;
 * Payload: ...
+* Backdoor:&#x20;
 
 ## **2. `iotsec.tools` framework**
 
-`iotsec.tools` is a security research framework I have built to ease the workflow of IoT pentesting&#x20;
+`iotsec.tools` is a security research framework to ease the workflow of IoT pentesting&#x20;
 
 > Pending development ...
+
+{% embed url="https://www.youtube.com/@Jarrettgxz" %}
 
 It will include multiple wrapper around popular tools for IoT security research workflows:
 
