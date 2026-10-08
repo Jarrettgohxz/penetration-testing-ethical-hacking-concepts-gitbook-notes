@@ -3,7 +3,7 @@ hidden: true
 icon: toolbox
 ---
 
-# Fundamental Ethical Hacking Concepts for IoT Hackers
+# Fundamental Concepts for IoT Hackers
 
 This content provides an introduction to prerequisite knowledge required in the [IoT Hacking Roadmap](https://jarrettgxz-sec.gitbook.io/penetration-testing-ethical-hacking-concepts/iot-hardware-hacking/iot-hacking-roadmap) course.
 
@@ -205,13 +205,3 @@ network@labs> wget ...
 * little/big endianness
 * stack structure, registers, delay slots, etc.
 * basic instructions: sw, lw, move, addiu, etc.
-
-## 6. MIPS Binary Reverse Engineering & Analysis for IoT Hacking (Ghidra)
-
-* common instructions on function call: restore ra, etc. -> how overwriting it hijacks function file
-
-## 7. MIPS Binary Exploitation for IoT Hacking (GDB/gdbserver)
-
-* introduce basic stack buffer-overflow techniques
-* **Lab challenge**
-  * example on an emulated MIPS binary
