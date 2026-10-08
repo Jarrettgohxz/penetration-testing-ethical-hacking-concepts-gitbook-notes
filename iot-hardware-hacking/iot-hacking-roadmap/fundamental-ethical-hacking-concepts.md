@@ -1,9 +1,4 @@
----
-hidden: true
-icon: toolbox
----
-
-# Fundamental Concepts for IoT Hackers
+# Prerequisite for IoT Hacking
 
 This content provides an introduction to prerequisite knowledge required in the [IoT Hacking Roadmap](https://jarrettgxz-sec.gitbook.io/penetration-testing-ethical-hacking-concepts/iot-hardware-hacking/iot-hacking-roadmap) course.
 
