@@ -28,8 +28,6 @@ https://downloads.linksys.com/downloads/FW_MODELNAME_VERSION_RELEASEDATE.bin
 https://downloads.linksys.com/support/assets/firmware/FW_MODELNAME_VERSION_RELEASEDATE.bin
 ```
 
-
-
 With this information, we can craft the wayback machine CDX APIs to find firmware links that are not indexed anymore on the public internet:
 
 ```
@@ -38,7 +36,7 @@ https://web.archive.org/cdx/search/cdx?url=downloads.linksys.com/support/assets/
 
 ```
 
-`.*` : To match any values&#x20;
+`.*` : To match any values
 
 `(bin|img)$`: To match the `bin` or `img` file extension (at the end of the URL). Linksys firmware files commonly has these prefixes
 
@@ -58,7 +56,7 @@ https://web.archive.org/cdx/search/cdx?url=downloads.linksys.com/support/assets/
 
 {% embed url="https://tsd.dlink.com.tw/" %}
 
-* Firmware&#x20;
+* Firmware
 
 {% code title="google dork" %}
 ```
@@ -69,6 +67,8 @@ intitle:"index of" ("dlink" OR "d-link") firmware
 {% embed url="https://ftp.dlink.ru/pub" %}
 
 {% embed url="https://ftp.dlink.com.tr/pub" %}
+
+{% embed url="https://legacyfiles.us.dlink.com/" %}
 
 #### 3.2 Finding specific models
 
@@ -83,7 +83,7 @@ intitle:"index of" ("dir-815" OR "dir815") firmware
 
 ### 4. TP-Link
 
-#### 4.1 Official download&#x20;
+#### 4.1 Official download
 
 {% embed url="https://www.tp-link.com/sg/support/download/" %}
 
@@ -110,17 +110,13 @@ intitle:"index of" ("tplink" OR "tp-link") firmware ("wdr4300*zip" OR "wr743nd*z
 
 The zip file extension is used since the firmware files provided by the official links were found to be a zip file
 
-
-
 Many of the top results shows the open source non-official firmware(**Gluon**)
 
 * **Gluon** is an open-source configuration framework built on top of **OpenWrt**
 
-
-
 We can use the following query to filter the results:
 
-{% code title="modified google dork to filter "guon"" %}
+{% code title="modified google dork to filter " %}
 ```
 intitle:"index of" ("tplink" OR "tp-link") firmware ("wdr4300" OR "wr743nd") -gluon 
 ```
@@ -129,4 +125,3 @@ intitle:"index of" ("tplink" OR "tp-link") firmware ("wdr4300" OR "wr743nd") -gl
 ### 5. ASUS
 
 ### 6. Vivotek
-
