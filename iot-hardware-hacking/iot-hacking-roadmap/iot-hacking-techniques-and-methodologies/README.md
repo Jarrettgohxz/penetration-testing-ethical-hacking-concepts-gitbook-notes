@@ -14,26 +14,26 @@ View the **full video series** here:
 
 ## **1. IoT information gathering (OSINT)**
 
-**Purpose**: To understand how to gather information on an IoT device using **Open-Source Intelligence (OSINT)** techniques without physical access&#x20;
-
-**Topic overview**:
-
-Purpose: To gather intelligence on an IoT device using Open-Source Intelligence (OSINT) techniques without physical access or direct interaction with the target
+**Purpose**: To gather intelligence on an IoT device using Open-Source Intelligence (OSINT) techniques without physical access or direct interaction with the target
 
 **Topic Overview**
 
-1. **Google Dorking** (Search engine research)
-   *   Utilize search operators to locate publicly available pages:
+1. **Search Engine**
 
-       * Firmware download links
-       * Technical documentation (eg. hardware datasheets, CPU model, software architecture)
-       * Known vulnerabilities/CVEs and public proof-of-concept (PoC) references
-       * End-of-Life (EoL) and End-of-Support (EoS) lifecycle dates
-       * Release notes, vendor patch histories
-       * Public discussion forums, user manuals
+* Standard keyword search terms to locate publicly available pages for broad searching
+* **Google dork**: Advanced search operators for precise searching
+*   Information we can gather:
+
+    * Firmware download links
+    * Technical documentation (eg. hardware datasheets, CPU model, software architecture)
+    * Known vulnerabilities/CVEs and public proof-of-concept (PoC) references
+    * End-of-Life (EoL) and End-of-Support (EoS) lifecycle dates
+    * Release notes, vendor patch histories
+    * Public discussion forums, user manuals
 
 
-2. **Regulatory Database** (**FCC**: Federal Communications Commission)
+
+1. **Regulatory Database** (**FCC**: Federal Communications Commission)
    * Query regulatory filings to inspect hardware details before acquiring physical access:
      * Internal hardware images to identify component layouts and potential debug interfaces (e.g., UART)
      * External images
@@ -51,7 +51,7 @@ Purpose: To gather intelligence on an IoT device using Open-Source Intelligence 
 
 **Lab exercise**
 
-* ...
+*
 
 
 
