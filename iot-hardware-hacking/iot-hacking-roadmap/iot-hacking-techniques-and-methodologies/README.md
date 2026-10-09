@@ -1,23 +1,56 @@
-# IoT Hacking Techniques
+# IoT Hacking Techniques & Methodologies
 
-## <mark style="color:red;">**--— COMING SOON! -----—**</mark>&#x20;
+I have curated a roadmap for those who wants to get started in IoT hacking. It contains everything I have learnt while researching on the [Linksys E1200](https://jarrettgxz-sec.gitbook.io/penetration-testing-ethical-hacking-concepts/iot-hardware-hacking/research-projects/linksys-e1200-v2) v2 router, along with many other mini IoT security projects I have worked on along the way.
 
-I have curated a step-to-step guide on IoT hacking, along with useful learning resources such as custom labs/challenges, video guides and cheatsheet.
+I have provided useful learning resources such as custom labs/challenges for some topics. I aim to release a video for each topic on a weekly basis. You may follow me on Instagram for updates:
 
-## **1. IoT Reconnaissance/Information gathering**
+[https://www.instagram.com/jarrettgxz](https://www.instagram.com/jarrettgxz)
 
-* What is **Open-Source Intelligence (OSINT)** techniques, and how it can be used to gather information on a device without physical access
-* Google dorking
-* Federal Communications Commission (FCC) - provides useful data on devices
-  * Internal hardware images
-  * Identify presence of serial console/JTAG interfaces (for debug console access)
-* Other useful information
-  * Firmware download
-  * End-of-Life (EoL) and End-of-Support (EoS) dates
-  * Release notes
-  * Online forums
-* **Lab challenge**
-  * FCC (link coming soon!)
+
+
+View the **full video series** here:
+
+{% embed url="https://www.youtube.com/playlist?list=PLalE6jh-kg58" %}
+
+## **1. IoT information gathering (OSINT)**
+
+**Purpose**: To understand how to gather information on an IoT device using **Open-Source Intelligence (OSINT)** techniques without physical access&#x20;
+
+**Topic overview**:
+
+1. **Google dorking**
+
+*   Utilize powerful Google search patterns to find information about devices
+
+    * Firmware download
+    * Technical documentation (eg. CPU model, software architecture, etc.)
+    * Known vulnerabilites/CVEs, with potential proof-of-concept scripts
+    * End-of-Life (EoL) and End-of-Support (EoS) dates
+    * Release notes
+    * Online forums
+
+
+
+2. **Federal Communications Commission (FCC)**
+
+*   An online documentation that provides useful data on devices such as:
+
+    * Internal hardware image, to identify presence of electrical components that will provide us with an entry point (eg. UART serial console)
+
+
+
+3. **Database query**&#x20;
+
+* exploit-db
+* cve.org
+
+
+
+**Lab exercise**
+
+* ...
+
+Linksys E1200 v2 router research [reference](https://jarrettgxz-sec.gitbook.io/penetration-testing-ethical-hacking-concepts/iot-hardware-hacking/research-projects/linksys-e1200-v2/1.-initial-research-osint)
 
 ## **2. Hardware interactions & debug console access (UART)**
 
