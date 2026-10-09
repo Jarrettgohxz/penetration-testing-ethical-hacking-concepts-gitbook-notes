@@ -18,31 +18,34 @@ View the **full video series** here:
 
 **Topic overview**:
 
-1. **Google dorking**
+Purpose: To gather intelligence on an IoT device using Open-Source Intelligence (OSINT) techniques without physical access or direct interaction with the target
 
-*   Utilize powerful Google search patterns to find information about devices
+**Topic Overview**
 
-    * Firmware download
-    * Technical documentation (eg. CPU model, software architecture, etc.)
-    * Known vulnerabilites/CVEs, with potential proof-of-concept scripts
-    * End-of-Life (EoL) and End-of-Support (EoS) dates
-    * Release notes
-    * Online forums
+1. **Google Dorking** (Search engine research)
+   *   Utilize search operators to locate publicly available pages:
 
-
-
-2. **Federal Communications Commission (FCC)**
-
-*   An online documentation that provides useful data on devices such as:
-
-    * Internal hardware image, to identify presence of electrical components that will provide us with an entry point (eg. UART serial console)
+       * Firmware download links
+       * Technical documentation (eg. hardware datasheets, CPU model, software architecture)
+       * Known vulnerabilities/CVEs and public proof-of-concept (PoC) references
+       * End-of-Life (EoL) and End-of-Support (EoS) lifecycle dates
+       * Release notes, vendor patch histories
+       * Public discussion forums, user manuals
 
 
+2. **Regulatory Database** (**FCC**: Federal Communications Commission)
+   * Query regulatory filings to inspect hardware details before acquiring physical access:
+     * Internal hardware images to identify component layouts and potential debug interfaces (e.g., UART)
+     * External images
 
-3. **Database query**&#x20;
 
-* exploit-db
-* cve.org
+
+3. **Vulnerability & Exploit Databases**
+
+* Aggregate public threat intelligence information across repositories:
+  * CVE repositories (eg. cve.org, nvd.nist.gov) for standardized vulnerability information
+  * Public exploit archives (eg. Exploit-DB) and community research portals
+  * Open-source code repositories (eg. GitHub) for technical writeups
 
 
 
@@ -50,7 +53,11 @@ View the **full video series** here:
 
 * ...
 
-Linksys E1200 v2 router research [reference](https://jarrettgxz-sec.gitbook.io/penetration-testing-ethical-hacking-concepts/iot-hardware-hacking/research-projects/linksys-e1200-v2/1.-initial-research-osint)
+
+
+**Linksys E1200 v2 router research reference**
+
+{% embed url="https://jarrettgxz-sec.gitbook.io/penetration-testing-ethical-hacking-concepts/iot-hardware-hacking/research-projects/linksys-e1200-v2" %}
 
 ## **2. Hardware interactions & debug console access (UART)**
 

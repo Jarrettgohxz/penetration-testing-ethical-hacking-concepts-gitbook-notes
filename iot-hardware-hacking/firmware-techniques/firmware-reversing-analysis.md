@@ -1,8 +1,8 @@
-# Firmware reversing/analysis
+# Firmware unpacking + reversing/analysis
 
 ### Setup (`sasquatch`)
 
-The `sasquatch` binary is needed to extract content from a **Squashfs** filesystem. Usually, this can be performed with the `unsquashfs` binary installed by default. However, `unsquashfs` will not work with non-standard, modified **Squashfs** filesystem that are commonly used by vendors.
+The `sasquatch` binary is needed to unpack the **Squashfs** filesystem from a firmware. Usually, this can be performed with the `unsquashfs` binary installed by default. However, `unsquashfs` will not work with non-standard, modified **Squashfs** filesystem that are commonly used by vendors.
 
 Fortunately, `sasquatch` provides a method to identify and adapt to changing compression headers, algorithms, block size or magic bytes, etc.
 

@@ -206,7 +206,7 @@
   * [Understanding the firmware layout](iot-hardware-hacking/firmware-techniques/understanding-the-firmware-layout.md)
   * [Firmware download](iot-hardware-hacking/firmware-techniques/firmware-download.md)
   * [Firmware extraction](iot-hardware-hacking/firmware-techniques/firmware-extraction.md)
-  * [Firmware reversing/analysis](iot-hardware-hacking/firmware-techniques/firmware-reversing-analysis.md)
+  * [Firmware unpacking + reversing/analysis](iot-hardware-hacking/firmware-techniques/firmware-reversing-analysis.md)
   * [firmware-mod-kit](iot-hardware-hacking/firmware-techniques/firmware-mod-kit.md)
   * [Firmware emulation](iot-hardware-hacking/firmware-techniques/firmware-emulation.md)
   * [Firmare backdoor](iot-hardware-hacking/firmware-techniques/firmare-backdoor.md)
