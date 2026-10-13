@@ -152,7 +152,7 @@ Learners will be provided with a simulated Linux router environment. More inform
 
 Practice your skills on a simulated Linux router environment:
 
-{% file src="../../.gitbook/assets/linux-router-lab.run" %}
+{% file src="../../.gitbook/assets/linux-router-lab (1).run" %}
 
 ```shellscript
 $ ./linux-router-lab.run
