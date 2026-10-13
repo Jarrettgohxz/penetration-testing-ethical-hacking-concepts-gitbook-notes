@@ -44,15 +44,7 @@ This content provides an introduction to prerequisite knowledge required in the 
 
 _**2.1 Windows**_
 
-**Option 1:** Install pre-built image (contains the file to setup the lab challenge environment - refer below)
-
-* ... (**username, password -> `linux-router-lab`, `linux-router-lab`**)
-
-**Option 2:** Manually install Ubuntu (without lab challenge files)
-
 * Visit [https://ubuntu.com/download/desktop](https://ubuntu.com/download/desktop) and download the file under "Intel or AMD 64-bit architecture"
-
-
 
 _**2.2 MacOS**_
 
@@ -60,40 +52,26 @@ _**2.2 MacOS**_
 
 
 
-3. **Load/Create downloaded Ubuntu image**
+3. **Installation of downloaded Ubuntu image**&#x20;
 
-**3.1 Open the VirtualBox application**
+**Open the VirtualBox application**
 
 <figure><img src="../../.gitbook/assets/image (13).png" alt=""><figcaption></figcaption></figure>
 
-**3.2 Perform each step according to the route you have taken in the previous step:**
+* Select the "New" option
 
-*   Using pre-built image (Windows option 1)
-
-    * Select the "Add" option
-    * Select the downloaded `.ova` file from previous step and select "Start"
-    * The Ubuntu virtual machine should now be loaded
-
-
-*   Manual installation (Windows option 2 and MacOS)&#x20;
-
-    * Select the "New" option
-    * Proceed with the installation steps listed below
-
-
-
-    **Installation steps (Manual installation - 64bit Ubuntu 26.04)**&#x20;
-
-    * Name: any name of choice
-    * Folder: select a folder of choice (note that I am running from a Linux host so the folder naming is different from Windows)
-    * ISO Image: select the downloaded `.iso` file from previous step
-    * Type: Linux
-    * Subtype: Ubuntu
-    * Version: Ubuntu (64-bit)
-
-    > Check the "Skip Unattended Installation" option
+**Installation steps**
 
 <figure><img src="../../.gitbook/assets/image (15).png" alt=""><figcaption></figcaption></figure>
+
+* **Name**: any name of choice
+* **Folder**: select a folder of choice (note that I am running from a Linux host so the folder naming is different from Windows)
+* **ISO Image**: select the downloaded `.iso` file from previous step
+* **Type**: Linux
+* **Subtype**: Ubuntu
+* **Version**: Ubuntu (64-bit)
+
+> Check the "Skip Unattended Installation" option (NOT yet checked in the image above)
 
 Move through with the installation steps. Select "Install Ubuntu" and proceed with the defaults
 
