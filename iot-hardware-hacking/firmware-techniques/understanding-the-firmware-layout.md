@@ -26,7 +26,7 @@ A full firmware `(.bin`, `.img`) file contains multiple layers:
 
 Let's take a look at a simple example at a [firmware](https://github.com/Jarrettgohxz/iot.tools/releases/download/linksys-e1200-fw-v2.0.02/linksys_e1200_fw2.0.02.bin) file that I have extracted directly from the **Linksys E1200 router**:
 
-{% code title="Output from "binwalk"" %}
+{% code title="Output from " %}
 ```shellscript
 $ binwalk linksys_e1200_fw2.0.02.bin
 
@@ -39,7 +39,7 @@ DECIMAL       HEXADECIMAL     DESCRIPTION
 ```
 {% endcode %}
 
-<figure><img src="../../.gitbook/assets/image (2) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (2) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 We notice 4 distinct portions from the `binwalk` output:
 
@@ -47,7 +47,7 @@ We notice 4 distinct portions from the `binwalk` output:
 
 * raw SPI flash dumps (padding bytes or custom MIPS assembly code) - `0x0` to `0xB673`
   * refer to the notes below to view the custom MIPS assembly code
-* bootloader (for initialization of the system) - `0xB674` to `0x3FFF`&#x20;
+* bootloader (for initialization of the system) - `0xB674` to `0x3FFF`
 
 2. `0x40000`: **TRX firmware header**
 
@@ -148,8 +148,6 @@ DECIMAL       HEXADECIMAL     DESCRIPTION
 
 <figure><img src="../../.gitbook/assets/image (200).png" alt=""><figcaption></figcaption></figure>
 
-
-
 ### Example 2 (D-Link DIR815)
 
 Let's take another example on the [D-Link DIR815 ](https://github.com/Jarrettgohxz/iot.tools/releases/download/dlink-dir815A1-v1.03b01/dlink-dir815A1-v1.03b01.bin)router:
@@ -176,4 +174,3 @@ Firmware portions:
 
 2. `0x6C`: **Kernel**
 3. `0xF008C`: **SquashFS filesystem**
-

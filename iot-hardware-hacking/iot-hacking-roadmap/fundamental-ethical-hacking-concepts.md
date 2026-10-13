@@ -22,31 +22,7 @@ This content provides an introduction to prerequisite knowledge required in the 
 * Payload: ...
 * Backdoor:&#x20;
 
-## **2. `iotsec.tools` framework**
-
-`iotsec.tools` is a security research framework to ease the workflow of IoT pentesting&#x20;
-
-> Pending development ...
-
-{% embed url="https://www.youtube.com/@Jarrettgxz" %}
-
-It will include multiple wrapper around popular tools for IoT security research workflows:
-
-* Firmware-related research (firmware reverse engineering, analysis, emulation)
-* Binary-related research (binary reverse engineering, analysis, emulation/debugger and exploit development)
-* OSINT research (Google dork, FCC - covered in the later chapters)
-* Automated network services enumeration (nmap scripts)
-
-**Other features:**
-
-1. LLM chatbot that can help with explaining usage of the tool, summarizing outputs, or for general queries
-2. Access to a repository of firmware files for IoT research
-3. Integration with `learn.iotsec.tools` learning platform&#x20;
-
-* Access to dashboard (skills, progress, report)
-* Access to custom lab challenges files and flag submissions
-
-## **3.** Linux Fundamentals
+## **2.** Linux Fundamentals
 
 **Purpose**: To introduce the Linux operating system used widely in IoT/embedded systems
 
@@ -68,11 +44,11 @@ It will include multiple wrapper around popular tools for IoT security research 
 
 _**2.1 Windows**_
 
-**(Option 1)** Install pre-built image (contains the file to setup the lab challenge environment - refer below)
+**Option 1:** Install pre-built image (contains the file to setup the lab challenge environment - refer below)
 
 * ...
 
-**(Option 2)** Manually install Ubuntu (without lab challenge files)
+**Option 2:** Manually install Ubuntu (without lab challenge files)
 
 * Visit [https://ubuntu.com/download/desktop](https://ubuntu.com/download/desktop) and download the file under "Intel or AMD 64-bit architecture"
 
@@ -106,7 +82,7 @@ _**2.2 MacOS**_
 
 
 
-    **Installation steps (Manual installation)**&#x20;
+    **Installation steps (Manual installation - 64bit Ubuntu 26.04)**&#x20;
 
     * Name: any name of choice
     * Folder: select a folder of choice (note that I am running from a Linux host so the folder naming is different from Windows)
@@ -115,13 +91,29 @@ _**2.2 MacOS**_
     * Subtype: Ubuntu
     * Version: Ubuntu (64-bit)
 
+    > Check the "Skip Unattended Installation" option
+
 <figure><img src="../../.gitbook/assets/image (15).png" alt=""><figcaption></figcaption></figure>
 
+Move through with the installation steps. Select "Install Ubuntu" and proceed with the defaults
 
+<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+
+Select "Erase disk and install Ubuntu". This will not affect your host operating system.
+
+<figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+
+Wait for the installation steps to complete. Please be patient as this step may take awhile.
+
+<figure><img src="../../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+
+Select "Restart now"
+
+<figure><img src="../../.gitbook/assets/image (42).png" alt=""><figcaption></figcaption></figure>
 
 **Topic overview**:
 
-Learners will be provided with a simulated Linux router environment. More information in the **Lab Practice** section below
+You will be provided with a simulated Linux router environment. More information in the **Lab Practice** section below
 
 
 
@@ -143,12 +135,12 @@ Learners will be provided with a simulated Linux router environment. More inform
 
 3. Introducing **busybox**
 
-* &#x20;Called the "swiss army knife of embedded Linux"
+* Called the "swiss army knife of embedded Linux"
 * Commands that comes with it: `pgrep`, `nc`&#x20;
 
 
 
-**Lab practice**
+**Lab Exercise**
 
 Practice your skills on a simulated Linux router environment:
 
@@ -160,10 +152,9 @@ $ ./linux-router-lab.run
 $ sh linux-router-lab.run
 ```
 
-\
-**Guided walkthrough**
+**Practice your skills!**&#x20;
 
-1. What is the utility that provides a range of Linux command-line tools that nay be missing on a standard IoT device, all packaged into a single binary executable file. People also call it the "swiss army knife of embedded Linux"&#x20;
+1. What is the utility that provides a range of Linux command-line tools that may be missing on a standard IoT device, all packaged into a single binary executable file. People also call it the "swiss army knife of embedded Linux"&#x20;
 
 <details>
 
@@ -191,7 +182,7 @@ $ sh linux-router-lab.run
 
 </details>
 
-2. What is the process ID (PID) of the httpd process?
+3. What is the process ID (PID) of the httpd process?
 
 <details>
 
@@ -211,7 +202,7 @@ We can use the `ps` command (with optional "w" option), or the `pgrep` command t
 
 </details>
 
-3. What is the value of the "flag" nvram field?
+4. What is the value of the "flag" nvram field?
 
 <details>
 
@@ -230,11 +221,9 @@ We can use the `nvram` command for this. You will not find this command on other
 
 </details>
 
+## <mark style="color:red;">**---COMING SOON! —**</mark>&#x20;
 
-
-
-
-## **4. Computer Networking Concepts**
+## **3. Computer Networking Concepts**
 
 **Purpose**: To introduce essential computer networking concepts that will be encountered in both IoT hacking, and everyday cybersecurity research
 
@@ -314,9 +303,29 @@ network@labs> wget ...
 
 </details>
 
+## **4. `iotsec.tools` framework**
 
+`iotsec.tools` is a security research framework to ease the workflow of IoT pentesting&#x20;
 
-## <mark style="color:red;">**---COMING SOON! (CONTENT LISTED BELOW)—**</mark>&#x20;
+> Pending development ...
+
+{% embed url="https://www.youtube.com/@Jarrettgxz" %}
+
+It will include multiple wrapper around popular tools for IoT security research workflows:
+
+* Firmware-related research (firmware reverse engineering, analysis, emulation)
+* Binary-related research (binary reverse engineering, analysis, emulation/debugger and exploit development)
+* OSINT research (Google dork, FCC - covered in the later chapters)
+* Automated network services enumeration (nmap scripts)
+
+**Other features:**
+
+1. LLM chatbot that can help with explaining usage of the tool, summarizing outputs, or for general queries
+2. Access to a repository of firmware files for IoT research
+3. Integration with `learn.iotsec.tools` learning platform&#x20;
+
+* Access to dashboard (skills, progress, report)
+* Access to custom lab challenges files and flag submissions
 
 ## 5. Introduction to MIPS Assembly
 
