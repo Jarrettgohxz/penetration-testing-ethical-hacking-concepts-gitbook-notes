@@ -46,7 +46,7 @@ _**2.1 Windows**_
 
 **Option 1:** Install pre-built image (contains the file to setup the lab challenge environment - refer below)
 
-* ...
+* ... (**username, password -> `linux-router-lab`, `linux-router-lab`**)
 
 **Option 2:** Manually install Ubuntu (without lab challenge files)
 
