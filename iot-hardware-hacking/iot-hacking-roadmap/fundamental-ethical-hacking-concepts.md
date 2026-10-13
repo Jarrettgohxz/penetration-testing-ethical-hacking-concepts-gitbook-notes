@@ -150,11 +150,17 @@ Practice your skills on a simulated Linux router environment:
 
 {% file src="../../.gitbook/assets/linux-router-lab (3).run" %}
 
+{% code overflow="wrap" %}
 ```shellscript
+# 1. Navigate to directory where the file is stored (eg. ~/Downloads by default or ~ if using pre-built Ubuntu image)
+$ cd ~
+
+# 2. Run the file
 $ ./linux-router-lab.run
 # or
 $ sh linux-router-lab.run
 ```
+{% endcode %}
 
 **Practice your skills!**&#x20;
 
