@@ -95,7 +95,7 @@ To shutdown: Click 'X' button on top right hand corner -> "Send the shutdown sig
 
 **Topic overview**:
 
-You will be provided with a simulated Linux router environment. More information in the **Lab Practice** section below
+You will be provided with a simulated Linux router environment. More information in the **Lab exercise setup** section below
 
 
 
@@ -122,16 +122,16 @@ You will be provided with a simulated Linux router environment. More information
 
 
 
-**Lab Exercise**
+**Lab exercise setup**
 
-Practice your skills on a simulated Linux router environment:
+Practice your skills on a simulated Linux router environment. Download this file and run it from the default downloads (`~/Downloads`) directory:
 
 {% file src="../../.gitbook/assets/linux-router-lab (3).run" %}
 
 {% code overflow="wrap" %}
 ```shellscript
-# 1. Navigate to directory where the file is stored (eg. ~/Downloads by default or ~ if using pre-built Ubuntu image)
-$ cd ~
+# 1. Navigate to directory where the file is stored
+$ cd ~/Downloads
 
 # 2. Run the file
 $ ./linux-router-lab.run
@@ -140,7 +140,9 @@ $ sh linux-router-lab.run
 ```
 {% endcode %}
 
-**Practice your skills!**&#x20;
+
+
+**Lab exercise questions**
 
 1. What is the utility that provides a range of Linux command-line tools that may be missing on a standard IoT device, all packaged into a single binary executable file. People also call it the "swiss army knife of embedded Linux"&#x20;
 
@@ -151,8 +153,6 @@ $ sh linux-router-lab.run
 **busybox** -> [https://busybox.net/downloads/binaries/](https://busybox.net/downloads/binaries/). Common architecture types for IoT devices are **ARM** and **MIPS**.
 
 </details>
-
-
 
 2. What is the content of flag.txt in the home directory (`~`)?
 
