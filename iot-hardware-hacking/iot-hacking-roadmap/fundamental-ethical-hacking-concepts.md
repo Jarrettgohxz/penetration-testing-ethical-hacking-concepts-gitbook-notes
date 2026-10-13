@@ -121,22 +121,30 @@ _**2.2 MacOS**_
 
 **Topic overview**:
 
+Learners will be provided with a simulated Linux router environment. More information in the **Lab Practice** section below
+
+
+
 1. Linux filesystem
 
 * Common naming shortcuts: `~`, `/`
 * Folders: `etc`, `tmp`, `bin`, `sbin`
-* Files: `/etc/...`
+* Files: `/etc/preInit` , `/etc/init`, `/etc/rc`
+* File permissions
 
 
 
-2. Getting comfortable with the command-line (terminal)
+2. Getting comfortable with the command-line (terminal) + other concepts
 
-* Basic commands: `ls`, `cat`, `ps`, `netstat`, etc.
-* Keyboard shortcuts (ctrl+A, ctrl+E)
+* Basic commands: `ls`, `cat`, `netstat`, etc.
+* Processes:  `ps`, `kill`, `killall`
 
 
 
-3. ...
+3. Introducing **busybox**
+
+* &#x20;Called the "swiss army knife of embedded Linux"
+* Commands that comes with it: `pgrep`, `nc`&#x20;
 
 
 
