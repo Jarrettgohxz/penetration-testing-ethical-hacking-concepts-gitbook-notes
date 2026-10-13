@@ -144,7 +144,7 @@ You will be provided with a simulated Linux router environment. More information
 
 Practice your skills on a simulated Linux router environment:
 
-{% file src="../../.gitbook/assets/linux-router-lab (1).run" %}
+{% file src="../../.gitbook/assets/linux-router-lab (3).run" %}
 
 ```shellscript
 $ ./linux-router-lab.run
