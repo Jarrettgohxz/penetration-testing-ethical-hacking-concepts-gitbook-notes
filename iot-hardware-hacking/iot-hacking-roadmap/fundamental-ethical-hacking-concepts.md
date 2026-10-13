@@ -48,62 +48,181 @@ It will include multiple wrapper around popular tools for IoT security research 
 
 ## **3.** Linux Fundamentals
 
-**Purpose**: To introduce the Linux operating system&#x20;
-
-* Used widely in IoT/embedded systems
+**Purpose**: To introduce the Linux operating system used widely in IoT/embedded systems
 
 {% embed url="https://www.youtube.com/@Jarrettgxz" %}
 
-**Topic overview**:
+**Setting up a Linux virtual machine (Ubuntu on VirtualBox)**
 
-1. How to setup a Linux virtual machine (Ubuntu on VMWare)&#x20;
+{% embed url="https://www.virtualbox.org/wiki/Downloads" %}
 
-* [https://www.techpowerup.com/download/vmware-workstation-pro/](https://www.techpowerup.com/download/vmware-workstation-pro/)
+1. **Install the VirtualBox application**
+
+* Select according to your host machine type
+
+<figure><img src="../../.gitbook/assets/image (39).png" alt=""><figcaption></figcaption></figure>
+
+
+
+2. **Download the Ubuntu virtual machine image**
+
+_**2.1 Windows**_
+
+**(Option 1)** Install pre-built image (contains the file to setup the lab challenge environment - refer below)
+
 * ...
 
+**(Option 2)** Manually install Ubuntu (without lab challenge files)
+
+* Visit [https://ubuntu.com/download/desktop](https://ubuntu.com/download/desktop) and download the file under "Intel or AMD 64-bit architecture"
 
 
-2. Linux filesystem
+
+_**2.2 MacOS**_
+
+* Visit [https://ubuntu.com/download/desktop](https://ubuntu.com/download/desktop) and download the file under "ARM 64-bit architecture
+
+
+
+3. **Load/Create downloaded Ubuntu image**
+
+**3.1 Open the VirtualBox application**
+
+<figure><img src="../../.gitbook/assets/image (13).png" alt=""><figcaption></figcaption></figure>
+
+**3.2 Perform each step according to the route you have taken in the previous step:**
+
+*   Using pre-built image (Windows option 1)
+
+    * Select the "Add" option
+    * Select the downloaded `.ova` file from previous step and select "Start"
+    * The Ubuntu virtual machine should now be loaded
+
+
+*   Manual installation (Windows option 2 and MacOS)&#x20;
+
+    * Select the "New" option
+    * Proceed with the installation steps listed below
+
+
+
+    **Installation steps (Manual installation)**&#x20;
+
+    * Name: any name of choice
+    * Folder: select a folder of choice (note that I am running from a Linux host so the folder naming is different from Windows)
+    * ISO Image: select the downloaded `.iso` file from previous step
+    * Type: Linux
+    * Subtype: Ubuntu
+    * Version: Ubuntu (64-bit)
+
+<figure><img src="../../.gitbook/assets/image (15).png" alt=""><figcaption></figcaption></figure>
+
+
+
+**Topic overview**:
+
+1. Linux filesystem
 
 * Common naming shortcuts: `~`, `/`
 * Folders: `etc`, `tmp`, `bin`, `sbin`
-* Files: `/etc/init.d`, `/etc/shadow`, `/etc/rc.d`, `/etc/init.d/rcS`
+* Files: `/etc/...`
 
 
 
-3. Getting comfortable with the command-line (terminal)
+2. Getting comfortable with the command-line (terminal)
 
-* Installing tools & packages (`apt`)
-* Basic commands: `ls`, `cat`, `ps w`, `netstat`, `pgrep`
+* Basic commands: `ls`, `cat`, `ps`, `netstat`, etc.
 * Keyboard shortcuts (ctrl+A, ctrl+E)
+
+
+
+3. ...
 
 
 
 **Lab practice**
 
-Practice your skills on a simulated Linux environment! Talk to the Discord bot (xxxx) to access the challenge files. Alternatively, you can access the challenge directly from the `iotsec.tools` CLI interface:
+Practice your skills on a simulated Linux router environment:
+
+{% file src="../../.gitbook/assets/linux-router-lab.run" %}
 
 ```shellscript
-iotsec.tools> labs linux
+$ ./linux-router-lab.run
+# or
+$ sh linux-router-lab.run
 ```
 
 \
-**Solutions**
+**Guided walkthrough**
+
+1. What is the utility that provides a range of Linux command-line tools that nay be missing on a standard IoT device, all packaged into a single binary executable file. People also call it the "swiss army knife of embedded Linux"&#x20;
 
 <details>
 
 <summary>Try it out yourself first!</summary>
 
-```shellscript
-linux@labs> cat ~/flag.txt
-linux@labs> cat /etc/shadow
-#...
-
-linux@labs> ps w | grep 22
-# ...
-```
+**busybox** -> [https://busybox.net/downloads/binaries/](https://busybox.net/downloads/binaries/). Common architecture types for IoT devices are **ARM** and **MIPS**.
 
 </details>
+
+
+
+2. What is the content of flag.txt in the home directory (`~`)?
+
+<details>
+
+<summary>Try it out yourself first!</summary>
+
+**linux FUNdamentals**
+
+{% code title="Linux router shell" %}
+```sh
+/# cat ~/flag.txt
+```
+{% endcode %}
+
+</details>
+
+2. What is the process ID (PID) of the httpd process?
+
+<details>
+
+<summary>Try it out yourself first!</summary>
+
+We can use the `ps` command (with optional "w" option), or the `pgrep` command that comes with `busybox`
+
+> Note that the PID will change across each new lab instance
+
+{% code title="Linux router shell" %}
+```sh
+/# ps w
+/# ps w | grep httpd
+/# busybox pgrep httpd
+```
+{% endcode %}
+
+</details>
+
+3. What is the value of the "flag" nvram field?
+
+<details>
+
+<summary>Try it out yourself first!</summary>
+
+**subscribe**
+
+We can use the `nvram` command for this. You will not find this command on other Linux systems aside from IoT/embedded ones.
+
+{% code title="Linux router shell" %}
+```shellscript
+/# nvram show | grep flag
+/# nvram get flag
+```
+{% endcode %}
+
+</details>
+
+
 
 
 
