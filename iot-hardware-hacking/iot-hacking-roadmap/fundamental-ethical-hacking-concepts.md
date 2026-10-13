@@ -111,6 +111,10 @@ Select "Restart now"
 
 <figure><img src="../../.gitbook/assets/image (42).png" alt=""><figcaption></figcaption></figure>
 
+To shutdown: Click 'X' button on top right hand corner -> "Send the shutdown signal" -> "OK"
+
+<figure><img src="../../.gitbook/assets/image (43).png" alt=""><figcaption></figcaption></figure>
+
 **Topic overview**:
 
 You will be provided with a simulated Linux router environment. More information in the **Lab Practice** section below
