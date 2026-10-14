@@ -154,7 +154,23 @@ $ sh linux-router-lab.run
 
 </details>
 
-2. What is the content of flag.txt in the home directory (`~`)?
+2. What are the names of the startup files?&#x20;
+
+<details>
+
+<summary>Try it out yourself first!</summary>
+
+**/sbin/preInit, /sbin/init, /sbin/rc**
+
+{% code title="Linux router shell" %}
+```sh
+/# ls /sbin
+```
+{% endcode %}
+
+</details>
+
+3. What is the content of flag.txt in the home directory (`~`)?
 
 <details>
 
@@ -170,7 +186,7 @@ $ sh linux-router-lab.run
 
 </details>
 
-3. What is the process ID (PID) of the httpd process?
+4. What is the process ID (PID) of the httpd process?
 
 <details>
 
@@ -190,7 +206,7 @@ We can use the `ps` command (with optional "w" option), or the `pgrep` command t
 
 </details>
 
-4. What is the value of the "flag" nvram field?
+5. What is the value of the "flag" nvram field?
 
 <details>
 
