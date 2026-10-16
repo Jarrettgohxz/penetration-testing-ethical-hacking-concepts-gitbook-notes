@@ -75,7 +75,7 @@ To shutdown: Click 'X' button on top right hand corner -> "Send the shutdown sig
 
 2. **Install Guest Additions CD image**
 
-* From the top menu bar: Devices -> Install Guest Additions CD image
+From the top menu bar: Devices -> Install Guest Additions CD image
 
 <figure><img src="../../.gitbook/assets/image (48).png" alt=""><figcaption></figcaption></figure>
 
@@ -89,18 +89,27 @@ Open that drive in the terminal
 
 Run the `.run` file depending on your host machine :
 
-* `VBoxLinuxAdditions.run`: Windows host machine
-* `VBoxLinuxAdditions.runarm64`: MacOS host machine
+* `VBoxLinuxAdditions.run`: Windows host machine (x86/64)
+* `VBoxLinuxAdditions.runarm64`: MacOS host machine (ARM/ARM64)
 
 Run the packge update and install some necessary tools first
 
 <figure><img src="../../.gitbook/assets/image (97).png" alt=""><figcaption></figcaption></figure>
 
 ```bash
+# Update and install neecessary packages
 sudo apt update
 sudo apt install bzip2 tar build-essential dkms
 
-./VboxLinuxAdditions.run
+# Run the guest additions file
+./VboxLinuxAdditions.run # Windows host
+./VboxLinuxAdditionsarm64.run # MacOS host 
 ```
 
 > **Note**: Adding `build-essential` and `dkms` ensures your system has the proper compiler tools to build the display drivers correctly
+
+
+
+You can remove the drive with right-click: "Unmount", followed by "Eject"
+
+<figure><img src="../../.gitbook/assets/image (121).png" alt=""><figcaption></figcaption></figure>
