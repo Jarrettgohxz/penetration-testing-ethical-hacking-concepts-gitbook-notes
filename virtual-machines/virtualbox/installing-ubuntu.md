@@ -79,3 +79,28 @@ To shutdown: Click 'X' button on top right hand corner -> "Send the shutdown sig
 
 <figure><img src="../../.gitbook/assets/image (48).png" alt=""><figcaption></figcaption></figure>
 
+This will insert a new drive named "VBox\_GAs\_x.xx.xx" depending on the specific version
+
+<figure><img src="../../.gitbook/assets/image (57).png" alt=""><figcaption></figcaption></figure>
+
+Open that drive in the terminal
+
+<figure><img src="../../.gitbook/assets/image (76).png" alt=""><figcaption></figcaption></figure>
+
+Run the `.run` file depending on your host machine :
+
+* `VBoxLinuxAdditions.run`: Windows host machine
+* `VBoxLinuxAdditions.runarm64`: MacOS host machine
+
+Run the packge update and install some necessary tools first
+
+<figure><img src="../../.gitbook/assets/image (97).png" alt=""><figcaption></figcaption></figure>
+
+```bash
+sudo apt update
+sudo apt install bzip2 tar build-essential dkms
+
+./VboxLinuxAdditions.run
+```
+
+> **Note**: Adding `build-essential` and `dkms` ensures your system has the proper compiler tools to build the display drivers correctly
