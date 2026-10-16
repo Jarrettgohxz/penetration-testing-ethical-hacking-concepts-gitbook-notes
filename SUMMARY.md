@@ -19,6 +19,7 @@
     * [Internal network](virtual-machines/virtualbox/network-setup/internal-network.md)
     * [Host-only networking](virtual-machines/virtualbox/network-setup/host-only-networking.md)
     * [Overview](virtual-machines/virtualbox/network-setup/overview.md)
+  * [Installing Ubuntu](virtual-machines/virtualbox/installing-ubuntu.md)
 * [VMware Workstation](virtual-machines/vmware-workstation/README.md)
   * [Install](virtual-machines/vmware-workstation/install.md)
   * [Network setup](virtual-machines/vmware-workstation/network-setup/README.md)
