@@ -26,7 +26,7 @@ This content provides an introduction to prerequisite knowledge required in the 
 
 **Purpose**: To introduce the Linux operating system used widely in IoT/embedded systems
 
-{% embed url="https://www.youtube.com/@Jarrettgxz" %}
+{% embed url="https://youtu.be/0-HXrwpJ3ks" %}
 
 **Setup Linux virtual machine (VM) on VirtualBox**:
 
