@@ -101,7 +101,7 @@ $ sh linux-router-lab.run
 
 <summary>Try it out yourself first!</summary>
 
-**linux FUNdamentals**
+**linux-FUNdamentals**
 
 {% code title="Linux router shell" %}
 ```sh
