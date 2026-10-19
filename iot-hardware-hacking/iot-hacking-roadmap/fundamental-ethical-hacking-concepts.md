@@ -160,33 +160,18 @@ We can use the `nvram` command for this. You will not find this command on other
 
 **Tools:**
 
-* nc, ip, dhclient, wget, nmap, wireshark, iotsec.tools
+* ..
 
 **Topic overview:**
 
-1. IPv4 addresses
+1. Nmap and Nmap Scripting Engine (NSE)
 
-* How do devices on a network find each other to communicate
-
-
-
-2. Transmission Control Protocol (TCP) vs User Datagram Protocol (UDP) communications
-
-* **TCP**: for reliable and stable communication where data integrity is important&#x20;
-* How to use the netcat tool (`nc`) to send TCP requests
-* **UDP**: for fast communication where speed is important
+* How to use Nmap to discover exposed network services
+* How to use the Nmap Scripting Engine (NSE) to perform reconnaissance or check for known vulnerabilities on IoT devices. Refer to the [full list](https://jarrettgxz-sec.gitbook.io/penetration-testing-ethical-hacking-concepts/nmap-scripting-engine-nse)&#x20;
 
 
 
-3. Dynamic Host Configuration Protocol (DHCP)
-
-* How devices connected to a router retrieve an IP address?
-* How to use the `dhclient` tool to retrieve an IP address from the DHCP server
-* How to use the `ip` tool to view the network configurations
-
-
-
-4. HyperText Transfer Protocol (HTTP)
+2. HyperText Transfer Protocol (HTTP)
 
 * Learn about the network protocol used by web servers
 * How to use the `wget` tool to send HTTP requests
