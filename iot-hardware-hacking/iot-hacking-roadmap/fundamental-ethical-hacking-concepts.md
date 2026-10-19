@@ -169,6 +169,13 @@ We can use the `nvram` command for this. You will not find this command on other
 * How to use Nmap to discover exposed network services
 * How to use the Nmap Scripting Engine (NSE) to perform reconnaissance or check for known vulnerabilities on IoT devices. Refer to the [full list](https://jarrettgxz-sec.gitbook.io/penetration-testing-ethical-hacking-concepts/iot-hardware-hacking/nmap-scripting-engine-nse)
 
+```sh
+$ nmap -p [PORT] --script [SCRIPT-NAME] <target-IP>
+
+# eg. 
+$ nmap -p [PORT] --script hnap-info <target-IP>
+```
+
 
 
 2. HyperText Transfer Protocol (HTTP)
@@ -178,28 +185,29 @@ We can use the `nvram` command for this. You will not find this command on other
 
 
 
-5. Ports & services
-
-* What is a port and service?
-* How to investigate open ports/services with `nmap`
+3. ...
 
 
 
-6. Wireshark
+**Lab exercise setup**
 
-* How to analyze network protocols
+Practice your skills on a simulated Linux router environment. Download this file and run it from the default downloads (`~/Downloads`) directory:
 
+{% file src="../../.gitbook/assets/linux-router-lab (3).run" %}
 
-
-**Lab practice**
-
-Practice your skills on a simulated router environment! Talk to the Discord bot (xxxx) to access the challenge files. Alternatively, you can access the challenge directly from the `iotsec.tools` CLI interface:
-
+{% code overflow="wrap" %}
 ```shellscript
-iotsec.tools> labs network
-```
+# 1. Navigate to directory where the file is stored
+$ cd ~/Downloads
 
-**Solutions**
+# 2. Run the file
+$ ./networking-router-lab.run
+# or
+$ sh networking-router-lab.run
+```
+{% endcode %}
+
+**Lab exercise questions**
 
 <details>
 

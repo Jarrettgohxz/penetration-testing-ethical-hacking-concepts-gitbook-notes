@@ -1,6 +1,13 @@
 # Nmap Scripting Engine (NSE)
 
+**Common scripts for IoT device discovery, enumeration, etc.**
 
+```sh
+$ nmap -p [PORT] --script [SCRIPT-NAME] <target-IP>
+
+# eg. 
+$ nmap -p [PORT] --script hnap-info <target-IP>
+```
 
 | **NSE Script Name**            | **Category / Target**                             | **Description**                                                                                                                                            |
 | ------------------------------ | ------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
