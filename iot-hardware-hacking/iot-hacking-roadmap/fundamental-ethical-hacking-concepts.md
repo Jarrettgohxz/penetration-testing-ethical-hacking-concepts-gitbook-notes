@@ -167,7 +167,7 @@ We can use the `nvram` command for this. You will not find this command on other
 1. Nmap and Nmap Scripting Engine (NSE)
 
 * How to use Nmap to discover exposed network services
-* How to use the Nmap Scripting Engine (NSE) to perform reconnaissance or check for known vulnerabilities on IoT devices. Refer to the [full list](https://jarrettgxz-sec.gitbook.io/penetration-testing-ethical-hacking-concepts/nmap-scripting-engine-nse)&#x20;
+* How to use the Nmap Scripting Engine (NSE) to perform reconnaissance or check for known vulnerabilities on IoT devices. Refer to the [full list](https://jarrettgxz-sec.gitbook.io/penetration-testing-ethical-hacking-concepts/iot-hardware-hacking/nmap-scripting-engine-nse)
 
 
 
