@@ -142,7 +142,19 @@ We can use the `nvram` command for this. You will not find this command on other
 
 **Topic overview:**
 
-1. Nmap and Nmap Scripting Engine (NSE)
+1. Common network services
+
+* **HTTP**
+* **SSH**
+* **Telnet**
+* **UPnP**
+  * [https://jumpcloud.com/blog/what-is-upnp](https://jumpcloud.com/blog/what-is-upnp)
+* **SNMP**
+  * [https://www.huntress.com/cybersecurity-101/topic/snmp-networking](https://www.huntress.com/cybersecurity-101/topic/snmp-networking)
+
+
+
+2. Nmap and Nmap Scripting Engine (NSE)
 
 * How to use Nmap to discover exposed network services
 * How to use the Nmap Scripting Engine (NSE) to perform reconnaissance or check for known vulnerabilities on IoT devices. Refer to the [full list](https://jarrettgxz-sec.gitbook.io/penetration-testing-ethical-hacking-concepts/iot-hardware-hacking/nmap-scripting-engine-nse)
@@ -150,20 +162,54 @@ We can use the `nvram` command for this. You will not find this command on other
 ```sh
 $ nmap -p [PORT] --script [SCRIPT-NAME] <target-IP>
 
-# eg. 
-$ nmap -p [PORT] --script hnap-info <target-IP>
+# NSE example
+$ nmap -p [PORT] --script broadcast-upnp-info <target-IP>
+```
+
+NSE scripts example:&#x20;
+
+* `broadcast-upnp-info` (**UDP/1900**)
+* `upnp-info` (**UDP/1900**)
+* `snmp-interfaces` (**UDP/161**)
+
+> Add the `-v` option to enable verbose mode (output more information)
+
+**Enumerate the open ports/services**
+
+```bash
+# Discover open UDP ports (most common ones)
+$ sudo nmap <target-IP> -sU -T4 --max-retries 1 #  "--max-retries 2" may be more reliable
+$ sudo nmap <target-IP> -sU --top-ports 20
+
+# Alternatively, scan specific UDP ports for known services
+$ nmap <target-IP> -sU -p1900 # upnp
+$ nmap <target-IP> -sU -p161 # snmp
 ```
 
 
 
-2. HyperText Transfer Protocol (HTTP)
+**Perform NSE script scan on each service**
+
+```
+$ sudo nmap -v 172.28.0.2 --script snmp-interfaces -Pn -sU -p161
+```
+
+```shellscript
+$ sudo nmap -v 172.28.0.2 --script upnp-info -Pn -sU -p1900
+```
+
+<figure><img src="../../.gitbook/assets/image (176).png" alt=""><figcaption></figcaption></figure>
+
+
+
+3. HyperText Transfer Protocol (HTTP)
 
 * Learn about the network protocol used by web servers
 * How to use the `wget` tool to send HTTP requests
 
 
 
-3. ...
+4. ...
 
 
 
