@@ -1,6 +1,6 @@
 # Prerequisite for IoT Hacking
 
-This content provides an introduction to prerequisite knowledge required in the [IoT Hacking Roadmap](https://jarrettgxz-sec.gitbook.io/penetration-testing-ethical-hacking-concepts/iot-hardware-hacking/iot-hacking-roadmap) course.
+sheThis content provides an introduction to prerequisite knowledge required in the [IoT Hacking Roadmap](https://jarrettgxz-sec.gitbook.io/penetration-testing-ethical-hacking-concepts/iot-hardware-hacking/iot-hacking-roadmap) course.
 
 ## **1.** Linux Fundamentals
 
@@ -147,9 +147,9 @@ We can use the `nvram` command for this. You will not find this command on other
 * **HTTP**
 * **SSH**
 * **Telnet**
-* **UPnP**
+* **Universal Plug and Play (UPnP)**
   * [https://jumpcloud.com/blog/what-is-upnp](https://jumpcloud.com/blog/what-is-upnp)
-* **SNMP**
+* **Simple Network Management Protocol (SNMP)**
   * [https://www.huntress.com/cybersecurity-101/topic/snmp-networking](https://www.huntress.com/cybersecurity-101/topic/snmp-networking)
 
 
@@ -178,9 +178,15 @@ NSE scripts example:&#x20;
 
 ```bash
 # Discover open UDP ports (most common ones)
-$ sudo nmap <target-IP> -sU -T4 --max-retries 1 #  "--max-retries 2" may be more reliable
 $ sudo nmap <target-IP> -sU --top-ports 20
+$ sudo nmap <target-IP> -sU -T4 --max-retries 1 #  "--max-retries 2" may be more reliable
+```
 
+<figure><img src="../../.gitbook/assets/nmap-udp2.png" alt="" width="563"><figcaption></figcaption></figure>
+
+<figure><img src="../../.gitbook/assets/nmap-udp1.png" alt="" width="563"><figcaption></figcaption></figure>
+
+```bash
 # Alternatively, scan specific UDP ports for known services
 $ nmap <target-IP> -sU -p1900 # upnp
 $ nmap <target-IP> -sU -p161 # snmp
@@ -190,15 +196,38 @@ $ nmap <target-IP> -sU -p161 # snmp
 
 **Perform NSE script scan on each service**
 
+```shellscript
+# NSE broadcast-upnp-info
+$ sudo nmap -v <target-IP> --script broadcast-upnp-info 
 ```
-$ sudo nmap -v 172.28.0.2 --script snmp-interfaces -Pn -sU -p161
-```
+
+> **broadcast-upnp-info** does not target a specific port, but rather scans the entire LAN for devices running UPnP on UDP/1900
+
+<figure><img src="../../.gitbook/assets/Screenshot from 2026-11-09 11-24-15.png" alt="" width="560"><figcaption></figcaption></figure>
+
+The output provides us with the UPnP XML file at: **http://172.28.0.2:5000/rootDesc.xml**. This file provides us with more information about the device
+
+<figure><img src="../../.gitbook/assets/image (244).png" alt="" width="361"><figcaption></figcaption></figure>
 
 ```shellscript
-$ sudo nmap -v 172.28.0.2 --script upnp-info -Pn -sU -p1900
+# NSE upnp-info (UDP/161) 
+$ sudo nmap -v <target-IP> --script upnp-info -sU -p1900
 ```
 
-<figure><img src="../../.gitbook/assets/image (176).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Screenshot from 2026-11-09 11-22-19.png" alt="" width="563"><figcaption></figcaption></figure>
+
+This script automatically attempts to parse the information from the provided XML file (rootDesc.xml). This file provides us with a bunch of useful information (given by UPnP) such as the device name, manufacturer, model, version, etc.
+
+> Note that the IP address will vary according to your target device
+
+```bash
+# NSE snmp-interface (UDP/1900) 
+$ sudo nmap -v <target-IP> --script snmp-interfaces -sU -p161
+```
+
+<figure><img src="../../.gitbook/assets/Screenshot from 2026-11-09 11-23-51.png" alt="" width="563"><figcaption></figcaption></figure>
+
+Reads network configuration data from the target device. The output shows us the network interfaces present on the device
 
 
 
