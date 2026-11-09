@@ -2,27 +2,7 @@
 
 This content provides an introduction to prerequisite knowledge required in the [IoT Hacking Roadmap](https://jarrettgxz-sec.gitbook.io/penetration-testing-ethical-hacking-concepts/iot-hardware-hacking/iot-hacking-roadmap) course.
 
-## **1. Fundamental Cybersecurity Terminologies**
-
-**Purpose**: To introduce the foundational cybersecurity knowledge required for the subsequent sections&#x20;
-
-> Note that you do not need to memorize these concepts, but just grasp a general understanding of it. It will all make sense eventually as you explore more in this field!
->
-> You may refer back to this page when you encounter any unfamiliar terms in the future chapters
-
-**Key concepts**:
-
-* OSINT: ...
-* Reconnaissance: ...
-* Information gathering:  ...
-* Common Vulnerability and Exposures (CVEs): ...
-* Zero-days: ...
-* Binary: ...
-* Exploits: ...&#x20;
-* Payload: ...
-* Backdoor:&#x20;
-
-## **2.** Linux Fundamentals
+## **1.** Linux Fundamentals
 
 **Purpose**: To introduce the Linux operating system used widely in IoT/embedded systems
 
@@ -150,9 +130,7 @@ We can use the `nvram` command for this. You will not find this command on other
 
 </details>
 
-## <mark style="color:red;">**---COMING SOON! —**</mark>&#x20;
-
-## **3. Computer Networking Concepts**
+## **2. Network Security Basics**
 
 **Purpose**: To introduce essential computer networking concepts that will be encountered in both IoT hacking, and everyday cybersecurity research
 
@@ -225,7 +203,7 @@ network@labs> wget ...
 
 </details>
 
-## **4. `iotsec.tools` framework**
+## **3. `iotsec.tools` framework (WORKING ON IT!)**
 
 `iotsec.tools` is a security research framework to ease the workflow of IoT pentesting&#x20;
 
@@ -249,12 +227,3 @@ It will include multiple wrapper around popular tools for IoT security research 
 * Access to dashboard (skills, progress, report)
 * Access to custom lab challenges files and flag submissions
 
-## 5. Introduction to MIPS Assembly
-
-* **Purpose**: ...
-* what is assembly?
-* why learn MIPS assembly?
-* legacy, still used in many devices
-* little/big endianness
-* stack structure, registers, delay slots, etc.
-* basic instructions: sw, lw, move, addiu, etc.
