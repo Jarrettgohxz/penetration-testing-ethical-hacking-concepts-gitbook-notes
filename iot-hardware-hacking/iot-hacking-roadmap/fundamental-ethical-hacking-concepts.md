@@ -238,6 +238,14 @@ Reads network configuration data from the target device. The output shows us the
 
 
 
+**Transfer `busybox-mipsel` from host to device**
+
+<figure><img src="../../.gitbook/assets/image (245).png" alt="" width="563"><figcaption></figcaption></figure>
+
+> The `/tmp` directory will usually be used on an actual device to store the temporary binary. However, we are using `/root` in the emulated example
+
+
+
 4. ...
 
 
