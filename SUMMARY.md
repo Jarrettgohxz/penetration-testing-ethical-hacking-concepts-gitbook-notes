@@ -178,7 +178,7 @@
 
 * [How to get into IoT hacking?](iot-hardware-hacking/how-to-get-into-iot-hacking.md)
 * [🛣️ IoT Hacking Roadmap](iot-hardware-hacking/iot-hacking-roadmap/README.md)
-  * [Prerequisite for IoT Hacking](iot-hardware-hacking/iot-hacking-roadmap/fundamental-ethical-hacking-concepts.md)
+  * [Basic Concepts for IoT Hacking](iot-hardware-hacking/iot-hacking-roadmap/fundamental-ethical-hacking-concepts.md)
   * [IoT Hacking Techniques & Methodologies](iot-hardware-hacking/iot-hacking-roadmap/iot-hacking-techniques-and-methodologies/README.md)
     * [1. IoT reconnaissance/Information gathering (OSINT)](iot-hardware-hacking/iot-hacking-roadmap/iot-hacking-techniques-and-methodologies/1.-iot-reconnaissance-information-gathering-osint.md)
     * [2. Hardware interactions & debug console access (UART)](iot-hardware-hacking/iot-hacking-roadmap/iot-hacking-techniques-and-methodologies/2.-hardware-interactions-and-debug-console-access-uart.md)

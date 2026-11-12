@@ -1,4 +1,4 @@
-# Prerequisite for IoT Hacking
+# Basic Concepts for IoT Hacking
 
 sheThis content provides an introduction to prerequisite knowledge required in the [IoT Hacking Roadmap](https://jarrettgxz-sec.gitbook.io/penetration-testing-ethical-hacking-concepts/iot-hardware-hacking/iot-hacking-roadmap) course.
 
@@ -254,7 +254,7 @@ Reads network configuration data from the target device. The output shows us the
 
 Practice your skills on a simulated Linux router environment. Download this file and run it from the default downloads (`~/Downloads`) directory:
 
-{% file src="../../.gitbook/assets/linux-router-lab (3).run" %}
+{% file src="../../.gitbook/assets/network-basics-router-lab.run" %}
 
 {% code overflow="wrap" %}
 ```shellscript
@@ -262,29 +262,13 @@ Practice your skills on a simulated Linux router environment. Download this file
 $ cd ~/Downloads
 
 # 2. Run the file
-$ ./networking-router-lab.run
+$ ./network-basics-router-lab.run
 # or
-$ sh networking-router-lab.run
+$ sh network-basics-router-lab.run
 ```
 {% endcode %}
 
-**Lab exercise questions**
 
-<details>
-
-<summary>Try it out yourself first!</summary>
-
-```shellscript
-network@labs> nmap
-
-network@labs> dhclient ...
-network@labs> ip addr
-
-network@labs> wget ...
-
-```
-
-</details>
 
 ## **3. `iotsec.tools` framework (WORKING ON IT!)**
 
@@ -308,5 +292,5 @@ It will include multiple wrapper around popular tools for IoT security research 
 3. Integration with `learn.iotsec.tools` learning platform&#x20;
 
 * Access to dashboard (skills, progress, report)
-* Access to custom lab challenges files and flag submissions
+  * Access to custom lab challenges files and flag submissions
 
