@@ -197,8 +197,8 @@ $ nmap <target-IP> -sU -p161 # snmp
 **Perform NSE script scan on each service**
 
 ```shellscript
-# NSE broadcast-upnp-info
-$ sudo nmap -v <target-IP> --script broadcast-upnp-info 
+# NSE upnp-info (UDP/1900) 
+$ sudo nmap -v <target-IP> --script upnp-info -sU -p1900
 ```
 
 > **broadcast-upnp-info** does not target a specific port, but rather scans the entire LAN for devices running UPnP on UDP/1900
@@ -210,8 +210,8 @@ The output provides us with the UPnP XML file at: **http://172.28.0.2:5000/rootD
 <figure><img src="../../.gitbook/assets/image (244).png" alt="" width="361"><figcaption></figcaption></figure>
 
 ```shellscript
-# NSE upnp-info (UDP/161) 
-$ sudo nmap -v <target-IP> --script upnp-info -sU -p1900
+# NSE broadcast-upnp-info
+$ sudo nmap -v <target-IP> --script broadcast-upnp-info 
 ```
 
 <figure><img src="../../.gitbook/assets/Screenshot from 2026-11-09 11-22-19.png" alt="" width="563"><figcaption></figcaption></figure>
@@ -221,7 +221,7 @@ This script automatically attempts to parse the information from the provided XM
 > Note that the IP address will vary according to your target device
 
 ```bash
-# NSE snmp-interface (UDP/1900) 
+# NSE snmp-interfaces (UDP/161) 
 $ sudo nmap -v <target-IP> --script snmp-interfaces -sU -p161
 ```
 
