@@ -1,6 +1,6 @@
 # Basic Concepts for IoT Hacking
 
-sheThis content provides an introduction to prerequisite knowledge required in the [IoT Hacking Roadmap](https://jarrettgxz-sec.gitbook.io/penetration-testing-ethical-hacking-concepts/iot-hardware-hacking/iot-hacking-roadmap) course.
+This content provides an introduction to prerequisite knowledge required in the [IoT Hacking Roadmap](https://jarrettgxz-sec.gitbook.io/penetration-testing-ethical-hacking-concepts/iot-hardware-hacking/iot-hacking-roadmap) course.
 
 ## **1.** Linux Fundamentals
 
@@ -181,7 +181,7 @@ $ sh network-basics-router-lab.run
 2. Nmap and Nmap Scripting Engine (NSE)
 
 * How to use Nmap to discover exposed network services
-* How to use the Nmap Scripting Engine (NSE) to perform reconnaissance or check for known vulnerabilities on IoT devices. Refer to the [full list](https://jarrettgxz-sec.gitbook.io/penetration-testing-ethical-hacking-concepts/iot-hardware-hacking/nmap-scripting-engine-nse)
+* How to use the Nmap Scripting Engine (NSE) to perform reconnaissance or discover known vulnerabilities on IoT devices. Refer to the [full list](https://jarrettgxz-sec.gitbook.io/penetration-testing-ethical-hacking-concepts/iot-hardware-hacking/nmap-scripting-engine-nse)
 
 ```sh
 $ nmap -p [PORT] --script [SCRIPT-NAME] <target-IP>
