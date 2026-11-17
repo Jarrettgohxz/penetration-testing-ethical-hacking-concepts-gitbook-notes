@@ -134,7 +134,7 @@ We can use the `nvram` command for this. You will not find this command on other
 
 **Purpose**: To introduce essential computer networking concepts that will be encountered in both IoT hacking, and everyday cybersecurity research
 
-{% embed url="https://www.youtube.com/@Jarrettgxz" %}
+{% embed url="https://youtu.be/3ES3fkdhuSQ" %}
 
 **Tools covered in the video:**
 
