@@ -132,9 +132,9 @@ We can use the `nvram` command for this. You will not find this command on other
 
 ## **2. Network Security Basics**
 
-**Purpose**: To introduce essential computer networking concepts that will be encountered in both IoT hacking, and everyday cybersecurity research
+**Purpose**: To introduce essential computer networking security concepts that will be encountered in both IoT hacking, and everyday cybersecurity research
 
-{% embed url="https://youtu.be/3ES3fkdhuSQ" %}
+{% embed url="https://youtu.be/3ES3fkdhuSQ?si=Bi-aKz7vC98PIZtv" %}
 
 **Tools covered in the video:**
 
@@ -155,6 +155,9 @@ $ cd ~/Downloads
 $ ./network-basics-router-lab.run
 # or
 $ sh network-basics-router-lab.run
+
+# If you encounter permissions error
+$ chmod +x network-basics-router-lab.run
 ```
 {% endcode %}
 
