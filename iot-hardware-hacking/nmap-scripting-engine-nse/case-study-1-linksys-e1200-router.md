@@ -40,6 +40,15 @@ $ nmap -O -sV -sC --traceroute <TARGET>
 
 ### Nmap script scans (NSE)
 
+Due to certain issues with the existing scripts, I have modified a few of them to get better results. You may access ...
+
+Place the updated scripts in:
+
+* `~/.nmap/scripts/hnap-info.nse`
+* `~/.nmap/nselib/upnp.lua`
+
+
+
 #### Universal Plug-n-Play (UPnP)
 
 ```shellscript
