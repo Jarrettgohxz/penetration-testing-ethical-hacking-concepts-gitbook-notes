@@ -47,15 +47,15 @@ _**2.2 MacOS**_
 
 Move through with the installation steps. Select "Install Ubuntu" and proceed with the defaults
 
-<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
 
 Select "Erase disk and install Ubuntu". This will not affect your host operating system.
 
-<figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Wait for the installation steps to complete. Please be patient as this step may take awhile.
 
-<figure><img src="../../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (2) (1).png" alt=""><figcaption></figcaption></figure>
 
 Select "Restart now"
 

@@ -10,7 +10,7 @@ The first and most important step will be to identify the Ground (GND) points (a
 
 > **IMPORTANT**: **NEVER** use the _continuity mode_ on a powered board
 
-1. Turn the digital multimeter to continuity mode ![](<../../../.gitbook/assets/image (4) (1) (1) (1) (1) (1) (1) (1) (1).png>)
+1. Turn the digital multimeter to continuity mode ![](<../../../.gitbook/assets/image (4) (1) (1) (1) (1) (1) (1) (1) (1) (1).png>)
 2. Touch both probes (**black** and **red** probes connected to **COM** and **mAΩA** respectively)
 
 > The middle and right slots in the image below
@@ -74,7 +74,7 @@ If there are no obvious labels on the device, we can still identify an UART inte
 
 After finding a potential UART candidate, we have to identify the TX, RX and GND pins to enable us to provide proper connections with our external adapter that connects to our computer, and to also prevent frying the components on the board
 
-For the steps below, place the black (connected to **COM**) on the Ground point found earlier. Switch multimeter to continuity mode ![](<../../../.gitbook/assets/image (4) (1) (1) (1) (1) (1) (1) (1) (1).png>)
+For the steps below, place the black (connected to **COM**) on the Ground point found earlier. Switch multimeter to continuity mode ![](<../../../.gitbook/assets/image (4) (1) (1) (1) (1) (1) (1) (1) (1) (1).png>)
 
 **a. GND**
 

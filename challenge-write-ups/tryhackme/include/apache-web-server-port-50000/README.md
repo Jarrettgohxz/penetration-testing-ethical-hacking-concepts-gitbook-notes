@@ -21,7 +21,7 @@ I decided to visit a few interesting looking routes:
 
 #### uploads
 
-![](<../../../../.gitbook/assets/image (2) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png>)
+![](<../../../../.gitbook/assets/image (2) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png>)
 
 A single file `profile.png` exists. Perhaps, we can somehow find a way to upload a web shell?
 
