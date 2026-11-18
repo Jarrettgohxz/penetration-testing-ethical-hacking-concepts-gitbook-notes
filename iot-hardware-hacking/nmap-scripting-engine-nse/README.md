@@ -30,3 +30,27 @@ $ nmap -p [PORT] --script hnap-info <target-IP>
 | `http-dlink-backdoor`       | Model/Vendor-Specific (D-Link Routers)            | Tests for a well-known User-Agent authentication bypass backdoor in legacy D-Link router firmware                                                          |
 | `http-tplink-dir-traversal` | Model/Vendor-Specific (TP-Link Devices)           | Checks for directory traversal vulnerabilities in embedded web servers on specific TP-Link routers and Wi-Fi extenders                                     |
 | `http-huawei-hg5xx-vuln`    | Model/Vendor-Specific (Huawei Gateways)           | Detect Huawei modems vulnerable to remote credential and information disclosure vulnerability                                                              |
+
+
+
+**Usage examples**
+
+```shellscript
+# Universal Plug-n-Play (UPnP)
+$ nmap --script broadcast-upnp-info <TARGET>
+$ nmap --script upnp-info -sU -p1900 <TARGET> # or whatever UDP port UPnP is running on 
+
+# Simple Network Management Protocol (SNMP)
+$ nmap --script snmp-interfaces -sU -p161 <TARGET>
+
+# Home Network Management Protocol (HNAP) - via HTTP on older routers
+$ nmap --script hnap-info <TARGET> # may not work for some Nmap versions
+$ curl http://<TARGET>/HNAP1 # workaround
+```
+
+**Other examples**
+
+```shellscript
+$ nmap -A <TARGET>
+```
+

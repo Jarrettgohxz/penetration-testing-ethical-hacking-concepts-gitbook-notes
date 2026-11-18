@@ -233,7 +233,8 @@
         * [libc-ropgadget.txt](iot-hardware-hacking/research-projects/linksys-e1200-v2/5.-reverse-engineering-+-exploit-development/additional/libc-ropgadget.txt.md)
     * [6. Post exploitation & Persistence](iot-hardware-hacking/research-projects/linksys-e1200-v2/6.-post-exploitation-and-persistence.md)
     * [7. Further research](iot-hardware-hacking/research-projects/linksys-e1200-v2/7.-further-research.md)
-* [Nmap Scripting Engine (NSE)](iot-hardware-hacking/nmap-scripting-engine-nse.md)
+* [Nmap Scripting Engine (NSE)](iot-hardware-hacking/nmap-scripting-engine-nse/README.md)
+  * [Case study 1 (Linksys E1200 router)](iot-hardware-hacking/nmap-scripting-engine-nse/case-study-1-linksys-e1200-router.md)
 
 ## iotsec.tools
 
