@@ -33,14 +33,21 @@ View the **full video series** here:
 
 
 
-1. **Regulatory Database** (**FCC**: Federal Communications Commission)
-   * Query regulatory filings to inspect hardware details before acquiring physical access:
-     * Internal hardware images to identify component layouts and potential debug interfaces (e.g., UART)
-     * External images
+2. **Regulatory Database** (**FCC**: Federal Communications Commission)
+
+* Query regulatory filings to inspect hardware details before acquiring physical access:
+  * Internal hardware images to identify component layouts and potential debug interfaces (e.g., UART)
+  * External images
 
 
 
-3. **Vulnerability & Exploit Databases**
+3. Software Bill Of Materials (SBOM)
+
+* ...
+
+
+
+4. **Vulnerability & Exploit Databases**
 
 * Aggregate public threat intelligence information across repositories:
   * CVE repositories (eg. cve.org, nvd.nist.gov) for standardized vulnerability information
@@ -51,7 +58,7 @@ View the **full video series** here:
 
 **Lab exercise**
 
-*
+* ...
 
 
 

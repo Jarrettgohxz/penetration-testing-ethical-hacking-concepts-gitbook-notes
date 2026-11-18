@@ -15,7 +15,7 @@
   * Specialized hardware tools (eg. CH341A, Raspberry Pi)
   * Official vendor webpage
 
-## **2. Advanced Raspberry Pi usage**
+## **2. Raspberry Pi**&#x20;
 
 * How to use Raspberry Pi as an IoT hacking bridge between device and host (your machine)
   * How to setup SSH on Raspberry Pi and connect to it remotely (without an additional monitor screen)
@@ -27,7 +27,16 @@
 ## **3. Man-in-the-Middle (MitM) attacks (coming soon!)**
 
 * ARP, DNS spoofing
+* HTTPS certificate bypass (social engineering)
 
-## **4. Wireless (Bluetooth) attacks** (coming soon!)
+## **4. Wireless attacks** (coming soon!)
 
-...
+* cracking WPS key
+* evil twin
+
+## **5. Bypassing restricted UART**
+
+* running modified kernel image in memory with modified `init` argument (`init=/bin/sh`)
+
+
+
