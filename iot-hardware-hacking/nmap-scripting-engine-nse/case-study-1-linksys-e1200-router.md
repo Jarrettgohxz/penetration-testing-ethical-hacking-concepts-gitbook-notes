@@ -1,8 +1,24 @@
 # Case study 1 (Linksys E1200 router)
 
-Refer here for the full research on this router:
+**Refer here for the full research on this router:**
 
 {% embed url="https://jarrettgxz-sec.gitbook.io/penetration-testing-ethical-hacking-concepts/iot-hardware-hacking/research-projects/linksys-e1200-v2" %}
+
+This router has been used in a real-life malware/botnet campaign named "TheMoon". The Home Network Administration Protocol (HNAP) service (discussed later on) was used by this malware to discover vulnerable targets. You may read more about it here:
+
+{% embed url="https://isc.sans.edu/diary/17621" %}
+
+{% embed url="https://isc.sans.edu/diary/17630" %}
+
+{% embed url="https://isc.sans.edu/diary/17633" %}
+Details on the /HNAP1 endpoint (to discover specific model name and firmware version
+{% endembed %}
+
+{% embed url="https://isc.sans.edu/diary/17648" %}
+More details on the Home Network Administration Protocol (HNAP)
+{% endembed %}
+
+
 
 ### Basic Nmap scans
 

@@ -186,6 +186,8 @@ $ chmod +x network-basics-router-lab.run
 * How to use Nmap to discover exposed network services
 * How to use the Nmap Scripting Engine (NSE) to perform reconnaissance or discover known vulnerabilities on IoT devices. Refer to the [full list](https://jarrettgxz-sec.gitbook.io/penetration-testing-ethical-hacking-concepts/iot-hardware-hacking/nmap-scripting-engine-nse)
 
+> Refer to the Nmap scan [case study](https://jarrettgxz-sec.gitbook.io/penetration-testing-ethical-hacking-concepts/iot-hardware-hacking/nmap-scripting-engine-nse/case-study-1-linksys-e1200-router) on the physical Linksys E1200 router
+
 ```sh
 $ nmap -p [PORT] --script [SCRIPT-NAME] <target-IP>
 
