@@ -1,5 +1,9 @@
 # IoT Hacking Techniques & Methodologies
 
+## PENDING VIDEO, LABS, RESOURCE CREATION -  DO REFER TO THE 'Basic Concepts for IoT Hacking' section instead!
+
+
+
 I have curated a roadmap for those who wants to get started in IoT hacking. It contains everything I have learnt while researching on the [Linksys E1200](https://jarrettgxz-sec.gitbook.io/penetration-testing-ethical-hacking-concepts/iot-hardware-hacking/research-projects/linksys-e1200-v2) v2 router, along with many other mini IoT security projects I have worked on along the way.
 
 I have provided useful learning resources such as custom labs/challenges for some topics. I aim to release a video for each topic on a weekly basis. You may follow me on Instagram for updates:

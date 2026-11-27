@@ -4,7 +4,7 @@
 
 I started off with the curiosity of how vulnerabilties are exploited on IoT/hardware devices. Personally, I was particularly interested in binary exploitation (eg. stack buffer-overflow), and thought that working on a physical device would provide me with the best learning experience.
 
-From there, I actively researched on existing vulnerabilities/CVEs on IoT devices, particularly those that involves "buffer overflow" type ones. I found a router model (_Linksys E1200 v2_) that had a bunch of existing CVEs with no publicly available/working exploit script. I went on to purchase a secondhand one from my local marketplace, along with a few tools: USB-UART adapter, digital multimeter and a stack of jumper wires.&#x20;
+From there, I actively researched on existing vulnerabilities/CVEs on IoT devices, particularly those that involves "buffer overflow" type ones. I found a router model (_Linksys E1200 v2_) that had a bunch of existing CVEs with no publicly available/working exploit script. I went on to purchase a secondhand one from my local marketplace, along with a few tools: USB-UART adapter, digital multimeter and a stack of jumper wires.
 
 > Do not worry if you are unable to get your hands on a physical device, as I will provide methods to emulate a hardware environment later on!
 
@@ -14,8 +14,9 @@ I read a bunch of research articles, watched a bunch of YouTube videos, and expe
 
 ## How to get started?
 
-A foundation in computer networking, basic Python scripting, Linux command-line wil be required from the [Fundamental Ethical Hacking Concepts](https://jarrettgxz-sec.gitbook.io/penetration-testing-ethical-hacking-concepts/iot-hardware-hacking/fundamental-ethical-hacking-concepts) course.&#x20;
+A foundation in computer networking, basic Python scripting, Linux command-line wil be required from the [Basic Concepts for IoT Hacking](https://jarrettgxz-sec.gitbook.io/penetration-testing-ethical-hacking-concepts/iot-hardware-hacking/iot-hacking-roadmap/fundamental-ethical-hacking-concepts) resource.
 
-After you have build the fundamentals, you can proceed with the [step-by-step guide](https://jarrettgxz-sec.gitbook.io/penetration-testing-ethical-hacking-concepts/iot-hardware-hacking/iot-hacking-roadmap) on IoT hacking. Once you have built up the confidence in IoT hacking, you may proceed to research and experiment on different classes of vulnerabilities, on devices you own.&#x20;
+After you have build the fundamentals, you can proceed with the [IoT hacking roadmap](https://jarrettgxz-sec.gitbook.io/penetration-testing-ethical-hacking-concepts/iot-hardware-hacking/iot-hacking-roadmap/iot-hacking-techniques-and-methodologies). Once you have built up the confidence in your skills, you may proceed to research and experiment on different classes of vulnerabilities, on devices you own.
 
 > **Remember to always practice your hacking skills/research on a device you own, ethically!**
+
